@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar tip-header px-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+    <router-link class="d-flex text-light" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <h2>Gratuities</h2>
       </div>
