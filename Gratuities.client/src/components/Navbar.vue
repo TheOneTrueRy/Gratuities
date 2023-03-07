@@ -41,6 +41,7 @@ export default {
   color: white !important;
   font-family: 'Rowdies', cursive;
   background: linear-gradient(270deg, #46F4DF 11.46%, #06D6A0 74.48%);
+  text-shadow: 0px 4px 4px #00000040
 }
 
 a:hover {

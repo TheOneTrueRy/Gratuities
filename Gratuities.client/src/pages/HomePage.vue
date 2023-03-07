@@ -1,13 +1,9 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img
-        src="https://bcw.blob.core.windows.net/public/img/8600856373152463"
-        alt="CodeWorks Logo"
-        class="rounded-circle"
-      >
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
+  <div class="d-flex flex-column align-items-center justify-content-center">
+    <div class="pb-1 mt-3 d-flex flex-column align-items-center justify-content-center">
+      <img class="profile-picture" src="villain.jpg" alt="">
+      <h1 class="my-3 text-dark rounded text-center user-name">
+        Big Jimmy
       </h1>
     </div>
   </div>
@@ -22,6 +18,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.user-name {
+  font-size: 5vh;
+  font-weight: 400;
+}
+
+.profile-picture {
+  height: 20vh;
+  width: 20vh;
+  border-radius: 50%;
+}
+
 .home {
   display: grid;
   height: 80vh;
