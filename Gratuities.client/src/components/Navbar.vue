@@ -1,6 +1,6 @@
 <template>
-  <nav class="text-light navbar tip-header px-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+  <nav class="navbar tip-header px-3">
+    <router-link class="d-flex text-light" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <h2>Gratuities</h2>
       </div>
@@ -41,6 +41,7 @@ export default {
   color: white !important;
   font-family: 'Rowdies', cursive;
   background: linear-gradient(270deg, #46F4DF 11.46%, #06D6A0 74.48%);
+  text-shadow: 0px 4px 4px #00000040
 }
 
 a:hover {
