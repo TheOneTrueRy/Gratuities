@@ -1,5 +1,5 @@
 <template>
-  <nav class="text-light navbar tip-header px-3">
+  <nav class="navbar tip-header px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <h2>Gratuities</h2>
