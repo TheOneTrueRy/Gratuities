@@ -1,7 +1,13 @@
 <template>
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <div class="col-12 mt-5">
+      <div class="col-12 d-flex justify-content-center mt-1">
+        <h1 class="w-ease"><i>Tipping With Ease.</i></h1>
+      </div>
+      <div class="offset-1 col-10 mb-2 mt-2 desc-card rounded d-flex justify-content-center elevation-5">
+        <h6>What is Gratuities? This will be a nice description about what our product is and does.</h6>
+      </div>
+      <div class="col-12 mt-3">
         <div id="carouselExampleCaptions" class="carousel slide">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -17,58 +23,49 @@
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img
-                src="https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=579&q=80"
-                class="d-block w-100" alt="...">
+              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JUTAK8CE-7fb60e9eb27e-512" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
-                <h5>First slide label</h5>
-                <p class="gratuities-links"><a target="_blank" href="https://github.com/"
+                <h5 class="our-names">Joe Calvi</h5>
+                <p class="gratuities-links rounded"><a target="_blank" href="https://github.com/JoeCalvi"
+                    class="text-light mdi mdi-github"></a><a target="_blank" href="https://www.linkedin.com/in/joe-calvi/"
+                    class="mdi mdi-linkedin text-light"></a></p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04KR6PJ7FS-06b92423e603-512" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-md-block">
+                <h5 class="our-names">Ry Wittman</h5>
+                <p class="gratuities-links rounded"><a target="_blank" href="https://github.com/theonetruery"
+                    class="text-light mdi mdi-github"></a><a target="_blank"
+                    href="https://www.linkedin.com/in/theonetruery/" class="mdi mdi-linkedin text-light"></a></p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JYH9MQ3X-085de4f9b941-512" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-md-block">
+                <h5 class="our-names">Andrew Meyers</h5>
+                <p class="gratuities-links rounded"><a target="_blank" href="https://github.com/laxmeyers"
+                    class="text-light mdi mdi-github"></a><a target="_blank"
+                    href="https://www.linkedin.com/in/andrew-meyers-5474ab205/" class="mdi mdi-linkedin text-light"></a>
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JLV5G4NB-7e93e64f0292-512" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-md-block">
+                <h5 class="our-names">Bryson Bloom</h5>
+                <p class="gratuities-links rounded"><a target="_blank" href="https://github.com/BrysonBloom"
                     class="text-light mdi mdi-github"></a><a target="_blank" href="https://linkedin.com/"
                     class="mdi mdi-linkedin text-light"></a></p>
               </div>
             </div>
             <div class="carousel-item">
-              <img
-                src="https://plus.unsplash.com/premium_photo-1666899887863-7fea4751a161?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80"
-                class="d-block w-100" alt="...">
+              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04K3VA3544-b04aee2f5a06-512" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
-                <h5>Second slide label</h5>
-                <p class="gratuities-links"><a target="_blank" href="https://github.com/"
-                    class="text-light mdi mdi-github"></a><a target="_blank" href="https://linkedin.com/"
-                    class="mdi mdi-linkedin text-light"></a></p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img
-                src="https://images.unsplash.com/photo-1633621412960-6df85eff8c85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80"
-                class="d-block w-100" alt="...">
-              <div class="carousel-caption d-md-block">
-                <h5>Third slide label</h5>
-                <p class="gratuities-links"><a target="_blank" href="https://github.com/"
-                    class="text-light mdi mdi-github"></a><a target="_blank" href="https://linkedin.com/"
-                    class="mdi mdi-linkedin text-light"></a></p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img
-                src="https://images.unsplash.com/photo-1633621412960-6df85eff8c85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80"
-                class="d-block w-100" alt="...">
-              <div class="carousel-caption d-md-block">
-                <h5>Fourth slide label</h5>
-                <p class="gratuities-links"><a target="_blank" href="https://github.com/"
-                    class="text-light mdi mdi-github"></a><a target="_blank" href="https://linkedin.com/"
-                    class="mdi mdi-linkedin text-light"></a></p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img
-                src="https://images.unsplash.com/photo-1633621412960-6df85eff8c85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80"
-                class="d-block w-100" alt="...">
-              <div class="carousel-caption d-md-block">
-                <h5>Fifth slide label</h5>
-                <p class="gratuities-links"><a target="_blank" href="https://github.com/"
-                    class="text-light mdi mdi-github"></a><a target="_blank" href="https://linkedin.com/"
-                    class="mdi mdi-linkedin text-light"></a></p>
+                <h5 class="our-names">Jonah Wood</h5>
+                <p class="gratuities-links rounded"><a target="_blank" href="https://github.com/JonahWood"
+                    class="text-light mdi mdi-github"></a><a target="_blank"
+                    href="https://www.linkedin.com/in/jonah-wood-a9591b262/" class="mdi mdi-linkedin text-light"></a></p>
               </div>
             </div>
           </div>
@@ -98,13 +95,31 @@ export default {
 }
 </script>
 <style scoped>
+.w-ease {
+  font-weight: 400;
+}
+
+.desc-card {
+  font-size: 2vh;
+  font-weight: 200;
+  background-color: #06D6A0;
+  color: white;
+}
+
 img {
-  height: 50vh;
+  height: 48vh;
   width: 100%;
 }
 
 .gratuities-links {
-  font-size: 4vh;
+  font-size: 5vh;
+  background-color: #06d69ec1;
+  width: 100%;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.587);
+}
+
+.our-names {
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.587);
 }
 
 .profile-picture {
