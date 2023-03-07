@@ -13,7 +13,7 @@
         <h6 class="biggest-tip">Your Biggest Tip: <span class="biggest-tip-amount">$0.89</span> to AppleBees server @Bill
         </h6>
       </div>
-      <div class="col-12 mt-5">
+      <div class="col-12 mt-4">
         <h6>Search for an employee or business:</h6>
       </div>
       <div class="col-12">
@@ -26,6 +26,71 @@
             </button>
           </div>
         </form>
+      </div>
+      <div class="col-12 mt-5">
+        <h6>Top employees this week:</h6>
+      </div>
+      <div>
+        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4">
+          <div class="row">
+            <div class="col-4">
+              <img class="profile-picture-small" src="villain.jpg" alt="">
+            </div>
+            <div class="col-8">
+              <p>Little Jim at AppleBees<br>*****<br>“Costumer service yay!”</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4">
+          <div class="row">
+            <div class="col-4">
+              <img class="profile-picture-small" src="villain.jpg" alt="">
+            </div>
+            <div class="col-8">
+              <p>Little Jim at AppleBees<br>*****<br>“Costumer service yay!”</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4">
+          <div class="row">
+            <div class="col-4">
+              <img class="profile-picture-small" src="villain.jpg" alt="">
+            </div>
+            <div class="col-8">
+              <p>Little Jim at AppleBees<br>*****<br>“Costumer service yay!”</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4">
+          <div class="row">
+            <div class="col-4">
+              <img class="profile-picture-small" src="villain.jpg" alt="">
+            </div>
+            <div class="col-8">
+              <p>Little Jim at AppleBees<br>*****<br>“Costumer service yay!”</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4">
+          <div class="row">
+            <div class="col-4">
+              <img class="profile-picture-small" src="villain.jpg" alt="">
+            </div>
+            <div class="col-8">
+              <p>Little Jim at AppleBees<br>*****<br>“Costumer service yay!”</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4">
+          <div class="row">
+            <div class="col-4">
+              <img class="profile-picture-small" src="villain.jpg" alt="">
+            </div>
+            <div class="col-8">
+              <p>Little Jim at AppleBees<br>*****<br>“Costumer service yay!”</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -50,6 +115,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.employee-card {
+  background-color: #06D6A0;
+  color: white;
+}
+
 .biggest-tip-amount {
   color: #06D6A0;
 }
@@ -67,6 +137,12 @@ export default {
 .profile-picture {
   height: 20vh;
   width: 20vh;
+  border-radius: 50%;
+}
+
+.profile-picture-small {
+  height: 10vh;
+  width: 10vh;
   border-radius: 50%;
 }
 
