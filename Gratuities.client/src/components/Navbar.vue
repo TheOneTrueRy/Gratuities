@@ -1,19 +1,12 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="text-light navbar tip-header px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+        <h2>Gratuities</h2>
       </div>
     </router-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
@@ -41,6 +34,15 @@ export default {
 </script>
 
 <style scoped>
+.tip-header {
+  display: flex;
+  align-items: center;
+  letter-spacing: 4px;
+  color: white !important;
+  font-family: 'Rowdies', cursive;
+  background: linear-gradient(270deg, #46F4DF 11.46%, #06D6A0 74.48%);
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -60,5 +62,4 @@ a:hover {
     height: 64px;
   }
 }
-
 </style>
