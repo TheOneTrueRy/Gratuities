@@ -1,4 +1,5 @@
 import { dbContext } from '../db/DbContext.js'
+import { BadRequest } from '../utils/Errors.js'
 
 // IMPORTANT profiles should not be updated or modified in any way here. Use the AccountService
 
@@ -9,6 +10,9 @@ class ProfileService {
    */
   async getProfileById(id) {
     const profile = await dbContext.Account.findById(id)
+    if (!profile) {
+      throw new BadRequest('Invalid Profile ID')
+    }
     return profile
   }
 

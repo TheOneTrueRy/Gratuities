@@ -4,16 +4,16 @@ import { profileService } from "./ProfileService"
 
 class TipsService {
   async giveTip(tip) {
-    const giver = await profileService.getProfileById(tip.recieverId)
-    if (!giver) {
-      throw new BadRequest('This user does not exist')
-    } else {
-      if (giver.currency < tip.tip) {
-        throw new BadRequest("You don't have enough money")
-      }
+    const giver = await profileService.getProfileById(tip.giverId)
+    const reciever = await profileService.getProfileById(tip.recieverId)
+    
+    if (giver.currency < tip.tip) {
+      throw new BadRequest("You don't have enough money")
     }
+
     const tips = await dbContext.Tips.create(tip)
     giver.currency -= tip.tip
+    reciever.currency += tip.tip
     await tips.populate('giver', 'name picture')
     return tips
   }
