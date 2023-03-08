@@ -38,7 +38,8 @@
               <p>
                 {{ account?.name }} - <i class="cash">$8</i>
                 <br>
-                *****
+                <i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+                  class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i>
                 <br>
                 "Customer service is great yay"
               </p>
@@ -56,7 +57,8 @@
               <p>
                 {{ account?.name }} - <i class="cash">$8</i>
                 <br>
-                *****
+                <i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+                  class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i>
                 <br>
                 "Customer service is great yay"
               </p>
@@ -72,7 +74,8 @@
               <p>
                 {{ account?.name }} - <i class="cash">$8</i>
                 <br>
-                *****
+                <i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+                  class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i>
                 <br>
                 "Customer service is great yay"
               </p>
@@ -159,5 +162,4 @@ img {
 
 .w-10 {
   width: 10%;
-}
-</style>
+}</style>
