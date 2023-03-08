@@ -1,22 +1,22 @@
 <template>
   <div class="container-fluid">
     <div class="row pb-1 mt-3 d-flex flex-column align-items-center justify-content-center">
-      <div class="offset-3 col-9">
-        <img class="profile-picture" src="villain.jpg" alt="">
+      <div class="col-12 text-center">
+        <img class="profile-picture border border-dark border-2 elevation-1" src="villain.jpg" alt="">
       </div>
-      <div class="col-12">
+      <div class="col-12 text-center">
         <h1 class="my-3 text-dark rounded text-center user-name">
           Big Jimmy
         </h1>
       </div>
-      <div class="col-12">
+      <div class="col-12 text-center">
         <h6 class="biggest-tip">Your Biggest Tip: <span class="biggest-tip-amount">$0.89</span> to AppleBees server @Bill
         </h6>
       </div>
-      <div class="col-12 mt-4">
+      <div class="col-12 col-md-6 mt-4">
         <h6>Search for an employee or business:</h6>
       </div>
-      <div class="col-12">
+      <div class="col-12 col-md-6">
         <form @submit.prevent="search()">
           <div class="input-group">
             <input v-model="editable.query" required class="form-control" placeholder="Search..."
@@ -27,13 +27,13 @@
           </div>
         </form>
       </div>
-      <div class="col-12 mt-5">
+      <div class="col-12 col-md-8 mt-5">
         <h6>Top employees this week:</h6>
       </div>
       <div>
-        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4">
+        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <div class="row">
-            <div class="col-4">
+            <div class="col-4 d-flex align-items-center">
               <img class="profile-picture-small" src="villain.jpg" alt="">
             </div>
             <div class="col-8">
@@ -41,9 +41,9 @@
             </div>
           </div>
         </div>
-        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4">
+        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <div class="row">
-            <div class="col-4">
+            <div class="col-4 d-flex align-items-center">
               <img class="profile-picture-small" src="villain.jpg" alt="">
             </div>
             <div class="col-8">
@@ -51,9 +51,9 @@
             </div>
           </div>
         </div>
-        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4">
+        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <div class="row">
-            <div class="col-4">
+            <div class="col-4 d-flex align-items-center">
               <img class="profile-picture-small" src="villain.jpg" alt="">
             </div>
             <div class="col-8">
@@ -61,9 +61,9 @@
             </div>
           </div>
         </div>
-        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4">
+        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <div class="row">
-            <div class="col-4">
+            <div class="col-4 d-flex align-items-center">
               <img class="profile-picture-small" src="villain.jpg" alt="">
             </div>
             <div class="col-8">
@@ -71,9 +71,9 @@
             </div>
           </div>
         </div>
-        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4">
+        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <div class="row">
-            <div class="col-4">
+            <div class="col-4 d-flex align-items-center">
               <img class="profile-picture-small" src="villain.jpg" alt="">
             </div>
             <div class="col-8">
@@ -81,9 +81,9 @@
             </div>
           </div>
         </div>
-        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4">
+        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <div class="row">
-            <div class="col-4">
+            <div class="col-4 d-flex align-items-center">
               <img class="profile-picture-small" src="villain.jpg" alt="">
             </div>
             <div class="col-8">
@@ -144,6 +144,13 @@ export default {
   height: 10vh;
   width: 10vh;
   border-radius: 50%;
+  border: 2px solid black;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.profile-picture-small:hover {
+  transform: scale(1.1);
 }
 
 .home {
