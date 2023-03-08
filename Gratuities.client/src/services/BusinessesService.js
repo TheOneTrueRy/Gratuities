@@ -19,7 +19,9 @@ class BusinessesService {
     }
 
     async newBusiness(formData){
-        
+        const res = await api.post('api/businesses', formData)
+        AppState.businesses.push(res.data)
+        return res.data
     }
 }
 

@@ -21,8 +21,8 @@
         </div>
       </div>
       <div class="col-12 d-flex justify-content-around pe-4">
-        <button @click="newBusiness()" data-bs-toggle="offcanvas" data-bs-target="#addBusiness"
-          aria-controls="offcanvasExample" class="btn figma-buttons text-light elevation-3 rounded-pill">New
+        <button data-bs-toggle="offcanvas" data-bs-target="#addBusiness" aria-controls="offcanvasExample"
+          class="btn figma-buttons text-light elevation-3 rounded-pill">New
           Business</button>
         <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
           class="btn figma-buttons text-light elevation-3 rounded-pill">Edit</button>
@@ -50,6 +50,8 @@
       </div>
       <!-- SECTION End of offcanvas for edit account ^^^^ -->
 
+
+
       <!-- SECTION Offcanvas for add business vvvv -->
       <div class="offcanvas offcanvas-start" tabindex="-1" id="addBusiness" aria-labelledby="addBusinessLabel">
         <div class="offcanvas-header">
@@ -76,6 +78,7 @@
                 <input required v-model="editable2.coverImg" placeholder="What's it's cover image?" type="text"
                   class="form-control">
               </div>
+              <button data-bs-dismiss="offcanvas" class="btn btn-success" type="submit">Create Business</button>
             </form>
           </div>
         </div>
