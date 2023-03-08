@@ -86,6 +86,12 @@ export default {
 .employee-card {
   background-color: #06D6A0;
   color: white;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.employee-card:active {
+  transform: scale(0.9);
 }
 
 .biggest-tip-amount {
@@ -113,12 +119,6 @@ export default {
   width: 10vh;
   border-radius: 50%;
   border: 2px solid black;
-  transition: 0.5s;
-  cursor: pointer;
-}
-
-.profile-picture-small:hover {
-  transform: scale(1.1);
 }
 
 .home {
