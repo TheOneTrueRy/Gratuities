@@ -8,7 +8,7 @@ export const AccountSchema = new Schema(
     name: { type: String, required: true },
     picture: { type: String },
     // NOTE If you wish to add additional properties do so here
-    currency: { type: Number, default: 0 },
+    currency: { type: Number, default: 0, min: 0 },
     bio: { type: String, default: '' },
     openToFeedback: { type: Boolean, default: false }
   },

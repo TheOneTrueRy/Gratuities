@@ -1,10 +1,26 @@
 import { dbContext } from "../db/DbContext"
+import { BadRequest } from "../utils/Errors"
+import { profileService } from "./ProfileService"
 
 class TipsService {
-    async getMyTips(userId) {
-        const myTips = await dbContext.Tips.find({ recieverId: userId })
-        return myTips
+  async giveTip(tip) {
+    const giver = await profileService.getProfileById(tip.recieverId)
+    if (!giver) {
+      throw new BadRequest('This user does not exist')
+    } else {
+      if (giver.currency < tip.tip) {
+        throw new BadRequest("You don't have enough money")
       }
+    }
+    const tips = await dbContext.Tips.create(tip)
+    giver.currency -= tip.tip
+    await tips.populate('giver', 'name picture')
+    return tips
+  }
+  async getMyTips(userId) {
+    const myTips = await dbContext.Tips.find({ recieverId: userId }).populate('giver', 'name picture')
+    return myTips
+  }
 }
 
 export const tipsService = new TipsService()
