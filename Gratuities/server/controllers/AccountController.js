@@ -1,5 +1,6 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { accountService } from '../services/AccountService'
+import { tipsService } from '../services/TipsService'
 import BaseController from '../utils/BaseController'
 
 export class AccountController extends BaseController {
@@ -14,7 +15,9 @@ export class AccountController extends BaseController {
   }
   async getMyTips(req, res, next) {
     try {
-      const tips = await accountService.getMyTips()
+      const userId = req.userInfo.id
+      const tips = await tipsService.getMyTips(userId)
+      return res.send(tips)
     } catch (error) {
       next(error)
     }
