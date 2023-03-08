@@ -4,8 +4,8 @@ const Schema = mongoose.Schema
 export const BusinessSchema = new Schema({
     ownerId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },
     name: { type: String, required: true, minLength: 3, maxLength: 50 },
-    logo: { type: String, required: true, minLength: 3, maxLength: 100 },
-    coverImg: { type: String, required: true, minLength: 3, maxLength: 100 },
+    logo: { type: String, required: true, minLength: 3, maxLength: 500 },
+    coverImg: { type: String, required: true, minLength: 3, maxLength: 500 },
     location: { type: String, required: true, minLength: 3, maxLength: 500 },
 
 },

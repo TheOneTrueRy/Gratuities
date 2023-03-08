@@ -13,7 +13,7 @@ export class BusinessesController extends BaseController {
     }
     async createBusinesses(req, res, next) {
         try {
-            req.body.ownerid = req.userInfo.id
+            req.body.ownerId = req.userInfo.id
             const business = await businessesService.createBusiness(req.body)
             res.send(business)
         } catch (error) {
