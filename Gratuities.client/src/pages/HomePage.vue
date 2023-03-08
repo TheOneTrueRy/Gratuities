@@ -74,8 +74,15 @@ export default {
       editable,
       account: computed(() => AppState.account),
       businesses: computed(() => AppState.businesses),
+
       async search() {
-        logger.log('we will implement the search function soon')
+        try {
+          let query = editable.value
+          await businessesService.getBusinessesByQuery(query)
+          // TODO await profilesService.getProfilesByQuery(query)
+        } catch (error) {
+          Pop.error('SEARCHING FOR BUSINESSES', error)
+        }
       }
     }
   }
