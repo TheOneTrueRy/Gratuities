@@ -137,7 +137,7 @@ export default {
     const editable = ref({})
     watchEffect(() => {
       if (AppState.account.id) {
-        editable.value = { ...AppState.account }
+        editable.value = { name: AppState.account.name }
       }
     })
 
