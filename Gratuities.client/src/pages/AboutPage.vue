@@ -79,9 +79,9 @@
             </div>
             <!-- SECTION Jonah's Card -->
             <div class="carousel-item">
-              <p class="bio">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
-                molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
-                facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
+              <p class="bio">Being an avid LEGO builder since I was quite young, I've always had a love for creation and
+                programming is exactly that. 5th most handsome guy in Gratuities.
+              </p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04K3VA3544-b04aee2f5a06-512" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5 class="our-names">Jonah Wood</h5>

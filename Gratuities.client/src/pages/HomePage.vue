@@ -2,7 +2,8 @@
   <div class="container-fluid">
     <div class="row pb-1 mt-3 d-flex flex-column align-items-center justify-content-center">
       <div class="col-12 text-center">
-        <img class="profile-picture border border-dark border-2 elevation-1" :src="account.picture" :alt="account.picture">
+        <img class="profile-picture border border-dark border-2 elevation-1" :src="account.picture"
+          :alt="account.picture">
       </div>
       <div class="col-12 text-center">
         <h1 class="my-3 text-dark rounded text-center user-name">
@@ -97,13 +98,27 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
+import Pop from '../utils/Pop.js';
+import { businessesService } from '../services/BusinessesService.js'
 
 export default {
   setup() {
     const editable = ref({})
+
+    async function getHighestRatedBusinesses() {
+      try {
+        await businessesService.getHighestRatedBusinesses()
+      } catch (error) {
+        Pop.error('[GETTING HIGHEST RATED BUSINESSES]', error)
+      }
+    }
+
+    onMounted(() => {
+      getHighestRatedBusinesses()
+    })
 
     return {
       editable,
