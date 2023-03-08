@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-5 mt-4 ps-3">
-        <img class="elevation-3 rounded" :src="account.picture" alt="">
+        <img class="elevation-3 rounded user-picture" :src="account.picture" alt="">
       </div>
       <div class="col-7 mt-4 ps-3">
         <h1>{{ account.name }}</h1>
@@ -26,7 +26,7 @@
           class="btn figma-buttons text-light elevation-3 rounded-pill">Edit</button>
       </div>
 
-      <!-- SECTION Offcanvas vvvv -->
+      <!-- SECTION Offcanvas for edit account vvvv -->
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasExampleLabel">Edit Account</h5>
@@ -35,14 +35,20 @@
         <div class="offcanvas-body">
           <form @submit.prevent="editAccount()">
             <div class="mb-3">
-              <label for="name" class="form-label">name</label>
+              <label for="name" class="form-label">Name</label>
               <input required v-model="editable.name" type="text" class="form-control" id="name" name="name">
+            </div>
+            <div>
+              <label for="picture" class="form-label">Picture</label>
+              <input required v-model="editable.picture" class="form-control" id="picture" type="text">
             </div>
             <button data-bs-dismiss="offcanvas" class="btn btn-success" type="submit">Save Changes</button>
           </form>
         </div>
       </div>
-      <!-- SECTION End of offcanvas ^^^^ -->
+      <!-- SECTION End of offcanvas for edit account ^^^^ -->
+
+
 
       <div class="col-12 mt-3">
         <h1>Recent Tips:</h1>
@@ -138,7 +144,7 @@ export default {
     const editable = ref({})
     watchEffect(() => {
       if (AppState.account.id) {
-        editable.value = { name: AppState.account.name }
+        editable.value = { ...AppState.account }
       }
     })
 
@@ -186,6 +192,8 @@ export default {
   height: 8vh;
   width: 8vh;
   border-radius: 50%;
+  object-fit: cover;
+  background-position: center;
 }
 
 .tips {
@@ -199,10 +207,11 @@ export default {
   background-color: #EF476F;
 }
 
-
-
-img {
+.user-picture {
   width: 150px;
+  height: 150px;
+  object-fit: cover;
+  background-position: center;
 }
 
 .w-90 {
