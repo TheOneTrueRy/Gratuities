@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar tip-header px-3">
     <router-link class="d-flex text-light" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
+      <div class="logo d-flex flex-column align-items-center">
         <h2>Gratuities</h2>
       </div>
     </router-link>
@@ -9,15 +9,21 @@
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="text-start collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
           <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
             About
           </router-link>
         </li>
+        <li>
+          <router-link :to="{ name: 'Account' }" class="btn text-success lighten-30 selectable text-uppercase">
+            Account
+          </router-link>
+        </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
+      <!-- FIXME get rid of the drop down when clicking the logout button -->
       <Login />
     </div>
   </nav>
@@ -37,11 +43,15 @@ export default {
 .tip-header {
   display: flex;
   align-items: center;
-  letter-spacing: 4px;
   color: white !important;
-  font-family: 'Rowdies', cursive;
   background: linear-gradient(270deg, #46F4DF 11.46%, #06D6A0 74.48%);
-  text-shadow: 0px 4px 4px #00000040
+
+}
+
+.logo {
+  font-family: 'Rowdies', cursive;
+  text-shadow: 0px 4px 4px #00000040;
+  letter-spacing: 4px;
 }
 
 a:hover {
