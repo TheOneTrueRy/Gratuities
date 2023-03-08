@@ -7,9 +7,19 @@ export class BusinessesController extends BaseController {
         super('api/businesses')
         this.router
             .get('', this.getBusinesses)
+            .get('/:businessId', this.getBusinessById)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createBusinesses)
 
+    }
+    async getBusinessById(req, res, next) {
+        try {
+            const businessId = req.params.businessId
+            const business = await businessesService.getBusinessById(businessId)
+            res.send(business)
+        } catch (error) {
+            next(error);
+        }
     }
     async createBusinesses(req, res, next) {
         try {
