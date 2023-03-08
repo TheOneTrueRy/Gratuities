@@ -1,23 +1,24 @@
 <template>
-  <nav class="navbar tip-header px-3">
+  <nav class="navbar navbar-expand-lg tip-header px-3">
     <router-link class="d-flex text-light" :to="{ name: 'Home' }">
       <div class="logo d-flex flex-column align-items-center">
-        <h2>Gratuities</h2>
+        <h1>Gratuities</h1>
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="text-start collapse navbar-collapse" id="navbarText">
+    <div class="text-start collapse navbar-collapse ms-5" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase text-light ">
             About
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Account' }" class="btn text-success lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'Account' }"
+            class="btn text-success lighten-30 selectable text-uppercase text-light  ms-3">
             Account
           </router-link>
         </li>
