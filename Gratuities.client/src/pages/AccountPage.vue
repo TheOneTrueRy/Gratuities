@@ -1,8 +1,86 @@
 <template>
-  <div class="about text-center">
-    <h1>Welcome {{ account.name }}</h1>
-    <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-5 mt-4 ps-3">
+        <img class="elevation-3 rounded" :src="account.picture" alt="">
+      </div>
+      <div class="col-7 mt-4 ps-3">
+        <h1>{{ account.name }}</h1>
+        <div class="justify-content-center row">
+          <div class="col-10">
+            <h6>Monthly Payout: <i class="cash">$896.83</i>
+            </h6>
+            <h6>Biggest Tip:</h6>
+            <ul>
+              <li>This Cycle: <i class="cash">$34.25</i>
+              </li>
+              <li>Ever: <i class="cash">$66.66</i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 d-flex justify-content-around pe-4">
+        <button class="btn figma-buttons text-light elevation-3 rounded-pill">Add Business</button>
+        <button class="btn figma-buttons text-light elevation-3 rounded-pill">Edit</button>
+      </div>
+      <div class="col-12 mt-3">
+        <h1>Recent Tips:</h1>
+      </div>
+      <!-- SECTION tips list -->
+      <div>
+        <div class="offset-1 rounded col-10 tips mb-2">
+          <div class="row align-items-center">
+            <div class="col-3">
+              <img class="profile-picture" :src="account?.picture" :alt="account?.name">
+            </div>
+            <div class="col-9">
+              <p>
+                {{ account?.name }} - <i class="cash">$8</i>
+                <br>
+                *****
+                <br>
+                "Customer service is great yay"
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="offset-1 rounded col-10 tips mb-2">
+          <div class="row align-items-center">
+            <div class="col-3">
+              <img class="profile-picture" :src="account?.picture" :alt="account?.name">
+            </div>
+            <div class="col-9">
+              <p>
+                {{ account?.name }} - <i class="cash">$8</i>
+                <br>
+                *****
+                <br>
+                "Customer service is great yay"
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="offset-1 rounded col-10 tips mb-2">
+          <div class="row align-items-center">
+            <div class="col-3">
+              <img class="profile-picture" :src="account?.picture" :alt="account?.name">
+            </div>
+            <div class="col-9">
+              <p>
+                {{ account?.name }} - <i class="cash">$8</i>
+                <br>
+                *****
+                <br>
+                "Customer service is great yay"
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,7 +97,29 @@ export default {
 </script>
 
 <style scoped>
+.profile-picture {
+  height: 8vh;
+  width: 8vh;
+  border-radius: 50%;
+}
+
+.tips {
+  padding: 1vh;
+  background-color: #06D6A0;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.518);
+}
+
+.figma-buttons {
+  background-color: #EF476F;
+}
+
+.cash {
+  color: rgb(1, 136, 53);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.459);
+}
+
 img {
-  max-width: 100px;
+  width: 150px;
 }
 </style>
