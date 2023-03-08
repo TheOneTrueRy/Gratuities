@@ -21,7 +21,9 @@
         </div>
       </div>
       <div class="col-12 d-flex justify-content-around pe-4">
-        <button @click="addBusiness()" class="btn figma-buttons text-light elevation-3 rounded-pill">Add Business</button>
+        <button @click="newBusiness()" data-bs-toggle="offcanvas" data-bs-target="#addBusiness"
+          aria-controls="offcanvasExample" class="btn figma-buttons text-light elevation-3 rounded-pill">New
+          Business</button>
         <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
           class="btn figma-buttons text-light elevation-3 rounded-pill">Edit</button>
       </div>
@@ -48,6 +50,19 @@
       </div>
       <!-- SECTION End of offcanvas for edit account ^^^^ -->
 
+      <!-- SECTION Offcanvas for add business vvvv -->
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="addBusiness" aria-labelledby="addBusinessLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="addBusinessLabel">New Business</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div>
+
+          </div>
+        </div>
+      </div>
+      <!-- SECTION End of offcanvas for add business ^^^ -->
 
 
       <div class="col-12 mt-3">
@@ -160,7 +175,7 @@ export default {
           logger.error(error)
         }
       },
-      async addBusiness() {
+      async newBusiness() {
         try {
           logger.log('this will be the add business function')
         } catch (error) {
