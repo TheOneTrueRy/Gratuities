@@ -1,13 +1,14 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-12 d-flex justify-content-center mt-1">
+      <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center mt-1">
         <h1 class="w-ease"><i>Tipping With Ease.</i></h1>
       </div>
-      <div class="offset-1 col-10 mb-2 mt-2 desc-card rounded d-flex justify-content-center elevation-5">
+      <div
+        class="offset-1 col-10 col-md-8 offset-md-2 mb-2 mt-2 desc-card rounded d-flex justify-content-center elevation-5">
         <h6>What is Gratuities? This will be a nice description about what our product is and does.</h6>
       </div>
-      <div class="col-12 mt-3">
+      <div class="col-12 col-md-6 offset-md-3 mt-3">
         <div id="carouselExampleCaptions" class="carousel slide">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"

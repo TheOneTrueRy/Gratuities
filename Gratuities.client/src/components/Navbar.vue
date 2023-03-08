@@ -9,8 +9,8 @@
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <button class="btn btn-outline-light rounded-circle ms-4"><i class="mdi mdi-bell"></i></button>
-    <div class="text-start collapse navbar-collapse ms-5" id="navbarText">
+    <i id="notifications-bell" class="mdi mdi-bell text-light fs-5 selectable ms-4"></i>
+    <div class="text-start collapse navbar-collapse ms-4" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
           <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase text-light ">
@@ -73,5 +73,17 @@ a:hover {
   nav {
     height: 64px;
   }
+}
+
+#notifications-bell {
+  transition: 0.5s;
+}
+
+#notifications-bell:hover {
+  transform: scale(1.2);
+}
+
+#notifications-bell:active {
+  transform: scale(0.8);
 }
 </style>
