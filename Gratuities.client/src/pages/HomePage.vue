@@ -86,6 +86,7 @@ export default {
 .employee-card {
   background-color: #06D6A0;
   color: white;
+  text-shadow: 1px 1px 2px black;
   transition: 0.5s;
   cursor: pointer;
 }
