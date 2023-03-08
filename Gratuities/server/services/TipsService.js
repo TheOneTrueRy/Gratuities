@@ -12,7 +12,7 @@ class TipsService {
         return tips
     }
     async getMyTips(userId) {
-        const myTips = await dbContext.Tips.find({ recieverId: userId })
+      const myTips = await dbContext.Tips.find(userId)
         return myTips
       }
 }

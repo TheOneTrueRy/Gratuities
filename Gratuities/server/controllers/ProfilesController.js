@@ -10,7 +10,7 @@ export class ProfilesController extends BaseController {
       .get('', this.getProfiles)
       .get('/:id', this.getProfile)
       .use(Auth0Provider.getAuthorizedUserInfo)
-    .post('/:profileId/tips', this.giveTip)
+      .post('/:profileId/tips', this.giveTip)
   }
   async giveTip(req,res,next) {
     try {
