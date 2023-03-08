@@ -17,6 +17,10 @@ class BusinessesService {
         AppState.businesses = res.data.map(b => new Business(b))
         logger.log('[FOUND BUSINESSES]', AppState.businesses)
     }
+
+    async newBusiness(formData){
+        
+    }
 }
 
 export const businessesService = new BusinessesService()

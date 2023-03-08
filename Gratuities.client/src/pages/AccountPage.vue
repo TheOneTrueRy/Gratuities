@@ -58,7 +58,25 @@
         </div>
         <div class="offcanvas-body">
           <div>
-
+            <form @submit.prevent="newBusiness()">
+              <div class="mb-2">
+                <label class="form-label">Name</label>
+                <input required v-model="editable2.name" placeholder="What's it called?" type="text" class="form-control">
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Location</label>
+                <input required v-model="editable2.location" placeholder="Where is it?" type="text" class="form-control">
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Logo</label>
+                <input required v-model="editable2.logo" placeholder="What's it's logo?" type="text" class="form-control">
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Cover Image</label>
+                <input required v-model="editable2.coverImg" placeholder="What's it's cover image?" type="text"
+                  class="form-control">
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -151,12 +169,14 @@
 import { Offcanvas } from 'bootstrap';
 import { computed, ref, watchEffect } from 'vue'
 import { accountService } from '../services/AccountService';
+import { businessesService } from '../services/BusinessesService'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 export default {
   setup() {
     const editable = ref({})
+    const editable2 = ref({})
     watchEffect(() => {
       if (AppState.account.id) {
         editable.value = { ...AppState.account }
@@ -165,6 +185,7 @@ export default {
 
     return {
       editable,
+      editable2,
       account: computed(() => AppState.account),
       async editAccount() {
         try {
@@ -177,7 +198,8 @@ export default {
       },
       async newBusiness() {
         try {
-          logger.log('this will be the add business function')
+          const formData = editable2.value
+          await businessesService.newBusiness(formData)
         } catch (error) {
           Pop.error(error.message)
           logger.error(error)
