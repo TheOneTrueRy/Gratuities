@@ -22,7 +22,7 @@
       </div>
       <div class="col-12 d-flex justify-content-around pe-4">
         <button @click="addBusiness()" class="btn figma-buttons text-light elevation-3 rounded-pill">Add Business</button>
-        <button @click="editBusiness()" class="btn figma-buttons text-light elevation-3 rounded-pill">Edit</button>
+        <button @click="editAccount()" class="btn figma-buttons text-light elevation-3 rounded-pill">Edit</button>
       </div>
       <div class="col-12 mt-3">
         <h1>Recent Tips:</h1>
@@ -115,9 +115,9 @@ export default {
   setup() {
     return {
       account: computed(() => AppState.account),
-      async editBusiness() {
+      async editAccount() {
         try {
-          logger.log('this will be the edit business function')
+          logger.log('this will be the edit account function')
 
         } catch (error) {
           Pop.error(error.message)

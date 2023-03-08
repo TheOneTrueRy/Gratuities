@@ -22,9 +22,18 @@ class BusinessesService {
         await business.populate('owner', 'name picture email')
         return business
     }
-    async getBusinesses() {
-        const businesses = await dbContext.Businesses.find();
-        return businesses
+
+
+    async findBusinesses(name = '') {
+        const filter = new RegExp(name, 'ig')
+        return await dbContext.Businesses
+            .aggregate([{
+                $match: { name: filter }
+            }])
+            .collation({ locale: 'en_US', strength: 1 })
+            // .skip(Number(offset))
+            // .limit(20)
+            .exec()
     }
 
 }
