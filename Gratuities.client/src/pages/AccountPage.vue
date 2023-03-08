@@ -38,7 +38,7 @@
               <label for="name" class="form-label">name</label>
               <input required v-model="editable.name" type="text" class="form-control" id="name" name="name">
             </div>
-            <button class="btn btn-success" type="submit">Save Changes</button>
+            <button data-bs-dismiss="offcanvas" class="btn btn-success" type="submit">Save Changes</button>
           </form>
         </div>
       </div>
@@ -127,6 +127,7 @@
 </template>
 
 <script>
+import { Offcanvas } from 'bootstrap';
 import { computed, ref, watchEffect } from 'vue'
 import { accountService } from '../services/AccountService';
 import { AppState } from '../AppState'
@@ -148,7 +149,6 @@ export default {
         try {
           const formData = editable.value
           await accountService.editAccount(formData)
-
         } catch (error) {
           Pop.error(error.message)
           logger.error(error)
