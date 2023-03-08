@@ -10,7 +10,7 @@ export class BusinessesController extends BaseController {
             .get('/:businessId', this.getBusinessById)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createBusinesses)
-            .delete('/businessId', this.deleteBusiness)
+            .delete('/:businessId', this.deleteBusiness)
 
     }
     async deleteBusiness(req, res, next) {
