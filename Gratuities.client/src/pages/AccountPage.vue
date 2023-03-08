@@ -22,8 +22,28 @@
       </div>
       <div class="col-12 d-flex justify-content-around pe-4">
         <button @click="addBusiness()" class="btn figma-buttons text-light elevation-3 rounded-pill">Add Business</button>
-        <button @click="editAccount()" class="btn figma-buttons text-light elevation-3 rounded-pill">Edit</button>
+        <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+          class="btn figma-buttons text-light elevation-3 rounded-pill">Edit</button>
       </div>
+
+      <!-- SECTION Offcanvas vvvv -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Edit Account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <form @submit.prevent="editAccount()">
+            <div class="mb-3">
+              <label for="name" class="form-label">name</label>
+              <input required v-model="editable.name" type="text" class="form-control" id="name" name="name">
+            </div>
+            <button class="btn btn-success" type="submit">Save Changes</button>
+          </form>
+        </div>
+      </div>
+      <!-- SECTION End of offcanvas ^^^^ -->
+
       <div class="col-12 mt-3">
         <h1>Recent Tips:</h1>
       </div>
@@ -107,17 +127,27 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
+import { accountService } from '../services/AccountService';
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 export default {
   setup() {
+    const editable = ref({})
+    watchEffect(() => {
+      if (AppState.account.id) {
+        editable.value = { ...AppState.account }
+      }
+    })
+
     return {
+      editable,
       account: computed(() => AppState.account),
       async editAccount() {
         try {
-          logger.log('this will be the edit account function')
+          const formData = editable.value
+          await accountService.editAccount(formData)
 
         } catch (error) {
           Pop.error(error.message)
