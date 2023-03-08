@@ -8,7 +8,16 @@ export class AccountController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
+      .get('/tips', this.getMyTips)
       .put('', this.editAccount)
+
+  }
+  async getMyTips(req, res, next) {
+    try {
+      const tips = await accountService.getMyTips()
+    } catch (error) {
+      next(error)
+    }
   }
   async editAccount(req, res, next) {
     try {
