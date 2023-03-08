@@ -22,20 +22,19 @@
           <h2>Log-In or Sign-Up now to get started!</h2>
         </div>
       </div>
-      <div class="col-12 col-md-6 mt-4">
-        <h6>Search for an employee or business:</h6>
-      </div>
       <div class="col-12 col-md-6">
         <div class="d-flex justify-content-center mb-3">
           <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <button @click="searchTypeProfiles()" type="button" class="btn btn-outline-primary">Profiles</button>
-            <button @click="searchTypeBusinesses()" type="button" class="btn btn-outline-primary">Businesses</button>
+            <button @click="searchTypeProfiles()" type="button" class="btn btn-outline-dark">Profiles</button>
+            <button @click="searchTypeBusinesses()" type="button" class="btn btn-outline-dark">Businesses</button>
           </div>
         </div>
         <form @submit.prevent="search()">
           <div class="input-group">
-            <input v-model="editable.query" required class="form-control" placeholder="Search..."
-              aria-describedby="button-addon2" aria-label="Search" type="text">
+            <input v-if="searchType == 'businesses'" v-model="editable.query" required class="form-control"
+              placeholder="Search businesses..." aria-describedby="button-addon2" aria-label="Search" type="text">
+            <input v-if="searchType == 'profiles'" v-model="editable.query" required class="form-control"
+              placeholder="Search profiles..." aria-describedby="button-addon2" aria-label="Search" type="text">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
               <i class="mdi mdi-magnify"></i>
             </button>
