@@ -1,21 +1,24 @@
 import { dbContext } from "../db/DbContext";
-import { Forbidden } from "../utils/Errors";
+import { BadRequest, Forbidden } from "../utils/Errors";
 
 class BusinessesService {
     async deleteBusiness(requestorId, businessId) {
         const foundBusiness = await this.getBusinessById(businessId);
-        if (foundBusiness?.ownerId !== requestorId) {
+        if (foundBusiness.ownerId.toString() != requestorId) {
             throw new Forbidden('Tis not your business')
         }
-        await foundBusiness?.remove()
+        await foundBusiness.remove()
         return foundBusiness
     }
     async getBusinessById(businessId) {
         const business = await dbContext.Businesses.findById(businessId).populate('owner', 'name picture email');
+        if (!business) {
+            throw new BadRequest('Bad Business ID')
+        }
         return business
     }
     async createBusiness(body) {
-        const business = await (await dbContext.Businesses.create(body))
+        const business = await dbContext.Businesses.create(body)
         await business.populate('owner', 'name picture email')
         return business
     }
