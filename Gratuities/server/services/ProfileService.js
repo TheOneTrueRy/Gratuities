@@ -24,7 +24,7 @@ class ProfileService {
         $match: { name: filter }
       }])
       .collation({ locale: 'en_US', strength: 1 })
-      .skip(Number(offset))
+      // .skip(Number(offset))
       // .limit(20)
       .exec()
   }
