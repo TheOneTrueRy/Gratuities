@@ -1,7 +1,7 @@
 
 export class Business{
     constructor(data) {
-        this.id = data.id
+        this.id = data._id
         this.name = data.name
         this.location = data.location
         this.logo = data.logo
