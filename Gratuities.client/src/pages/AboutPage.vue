@@ -22,7 +22,12 @@
               aria-label="Slide 5"></button>
           </div>
           <div class="carousel-inner">
+
+            <!-- SECTION Joe's card -->
             <div class="carousel-item active">
+              <p class="bio rounded bg-gradient">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
+                molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
+                facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JUTAK8CE-7fb60e9eb27e-512" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5 class="our-names">Joe Calvi</h5>
@@ -31,7 +36,11 @@
                     class="mdi mdi-linkedin text-light"></a></p>
               </div>
             </div>
+            <!-- SECTION Ry's Card -->
             <div class="carousel-item">
+              <p class="bio rounded bg-gradient">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
+                molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
+                facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04KR6PJ7FS-06b92423e603-512" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5 class="our-names">Ry Wittman</h5>
@@ -40,7 +49,11 @@
                     href="https://www.linkedin.com/in/theonetruery/" class="mdi mdi-linkedin text-light"></a></p>
               </div>
             </div>
+            <!-- SECTION Andrew's Card -->
             <div class="carousel-item">
+              <p class="bio rounded bg-gradient">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
+                molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
+                facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JYH9MQ3X-085de4f9b941-512" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5 class="our-names">Andrew Meyers</h5>
@@ -50,16 +63,25 @@
                 </p>
               </div>
             </div>
+            <!-- SECTION Bryson's Card -->
             <div class="carousel-item">
+              <p class="bio rounded bg-gradient">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
+                molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
+                facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JLV5G4NB-7e93e64f0292-512" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5 class="our-names">Bryson Bloom</h5>
                 <p class="gratuities-links rounded"><a target="_blank" href="https://github.com/BrysonBloom"
-                    class="text-light mdi mdi-github"></a><a target="_blank" href="https://linkedin.com/"
-                    class="mdi mdi-linkedin text-light"></a></p>
+                    class="text-light mdi mdi-github"></a><a target="_blank"
+                    href="https://www.linkedin.com/in/bryson-bloom-520973262/" class="mdi mdi-linkedin text-light"></a>
+                </p>
               </div>
             </div>
+            <!-- SECTION Jonah's Card -->
             <div class="carousel-item">
+              <p class="bio">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
+                molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
+                facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04K3VA3544-b04aee2f5a06-512" class="d-block w-100" alt="...">
               <div class="carousel-caption d-md-block">
                 <h5 class="our-names">Jonah Wood</h5>
@@ -95,6 +117,13 @@ export default {
 }
 </script>
 <style scoped>
+.bio {
+  padding: 1vh;
+  background-color: #06d69e5d;
+  font-family: 'Lato', sans-serif;
+  font-size: 2vh;
+}
+
 .w-ease {
   font-weight: 400;
 }
