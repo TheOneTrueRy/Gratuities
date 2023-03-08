@@ -29,66 +29,16 @@
         </form>
       </div>
       <div class="col-12 col-md-8 mt-5">
-        <h6>Top employees this week:</h6>
+        <h6>Top businesses:</h6>
       </div>
       <div>
-        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
+        <div v-for="b in businesses" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <div class="row">
             <div class="col-4 d-flex align-items-center">
-              <img class="profile-picture-small" src="villain.jpg" alt="">
+              <img class="profile-picture-small" :src="b.logo" :alt="b.logo">
             </div>
             <div class="col-8">
-              <p>Little Jim at AppleBees<br>*****<br>“Costumer service yay!”</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
-          <div class="row">
-            <div class="col-4 d-flex align-items-center">
-              <img class="profile-picture-small" src="villain.jpg" alt="">
-            </div>
-            <div class="col-8">
-              <p>Little Jim at AppleBees<br>*****<br>“Costumer service yay!”</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
-          <div class="row">
-            <div class="col-4 d-flex align-items-center">
-              <img class="profile-picture-small" src="villain.jpg" alt="">
-            </div>
-            <div class="col-8">
-              <p>Little Jim at AppleBees<br>*****<br>“Costumer service yay!”</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
-          <div class="row">
-            <div class="col-4 d-flex align-items-center">
-              <img class="profile-picture-small" src="villain.jpg" alt="">
-            </div>
-            <div class="col-8">
-              <p>Little Jim at AppleBees<br>*****<br>“Costumer service yay!”</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
-          <div class="row">
-            <div class="col-4 d-flex align-items-center">
-              <img class="profile-picture-small" src="villain.jpg" alt="">
-            </div>
-            <div class="col-8">
-              <p>Little Jim at AppleBees<br>*****<br>“Costumer service yay!”</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
-          <div class="row">
-            <div class="col-4 d-flex align-items-center">
-              <img class="profile-picture-small" src="villain.jpg" alt="">
-            </div>
-            <div class="col-8">
-              <p>Little Jim at AppleBees<br>*****<br>“Costumer service yay!”</p>
+              <p>{{ b.name }}<br>*****<br>{{ b.location }}</p>
             </div>
           </div>
         </div>
@@ -123,6 +73,7 @@ export default {
     return {
       editable,
       account: computed(() => AppState.account),
+      businesses: computed(() => AppState.businesses),
       async search() {
         logger.log('we will implement the search function soon')
       }
@@ -135,6 +86,7 @@ export default {
 .employee-card {
   background-color: #06D6A0;
   color: white;
+  text-shadow: 1px 1px 2px black;
   transition: 0.5s;
   cursor: pointer;
 }
