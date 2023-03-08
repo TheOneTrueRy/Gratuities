@@ -9,6 +9,7 @@
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <button class="btn btn-outline-light rounded-circle ms-4"><i class="mdi mdi-bell"></i></button>
     <div class="text-start collapse navbar-collapse ms-5" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
@@ -17,8 +18,7 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Account' }"
-            class="btn text-success lighten-30 selectable text-uppercase text-light  ms-3">
+          <router-link :to="{ name: 'Account' }" class="btn text-success lighten-30 selectable text-uppercase text-light">
             Account
           </router-link>
         </li>
