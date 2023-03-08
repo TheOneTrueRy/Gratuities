@@ -26,6 +26,12 @@
         <h6>Search for an employee or business:</h6>
       </div>
       <div class="col-12 col-md-6">
+        <div class="d-flex justify-content-center mb-3">
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button @click="toggleSearch()" type="button" class="btn btn-outline-primary">Profiles</button>
+            <button @click="toggleSearch()" type="button" class="btn btn-outline-primary">Businesses</button>
+          </div>
+        </div>
         <form @submit.prevent="search()">
           <div class="input-group">
             <input v-model="editable.query" required class="form-control" placeholder="Search..."
@@ -37,9 +43,9 @@
         </form>
       </div>
       <div class="col-12 col-md-8 mt-5">
-        <h6>Top businesses:</h6>
       </div>
-      <div>
+      <div v-if="searchType == 'businesses'">
+        <h6>Top businesses:</h6>
         <div v-for="b in businesses" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <div class="row">
             <div class="col-4 d-flex align-items-center">
@@ -47,6 +53,19 @@
             </div>
             <div class="col-8">
               <p>{{ b.name }}<br>*****<br>{{ b.location }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-else>
+        <h6>Top profiles:</h6>
+        <div v-for="p in profiles" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
+          <div class="row">
+            <div class="col-4 d-flex align-items-center">
+              <img class="profile-picture-small" :src="p.picture" :alt="p.picture">
+            </div>
+            <div class="col-8">
+              <p>{{ p.name }}<br>*****<br>{{ p.bio }}</p>
             </div>
           </div>
         </div>
@@ -61,6 +80,7 @@ import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
 import { businessesService } from '../services/BusinessesService.js'
+import { profilesService } from "../services/ProfilesService.js";
 
 export default {
   setup() {
@@ -74,22 +94,41 @@ export default {
       }
     }
 
+    async function getHighestRatedProfiles() {
+      try {
+        await profilesService.getHighestRatedProfiles()
+      } catch (error) {
+        Pop.error('[GETTING HIGHEST RATED PROFILES]', error)
+      }
+    }
+
     onMounted(() => {
       getHighestRatedBusinesses()
+      getHighestRatedProfiles()
     })
 
     return {
       editable,
       account: computed(() => AppState.account),
       businesses: computed(() => AppState.businesses),
+      profiles: computed(() => AppState.profiles),
+      searchType: computed(() => AppState.searchType),
 
       async search() {
         try {
           let query = editable.value
           await businessesService.getBusinessesByQuery(query)
-          // TODO await profilesService.getProfilesByQuery(query)
+          await profilesService.getProfilesByQuery(query)
         } catch (error) {
           Pop.error('SEARCHING FOR BUSINESSES', error)
+        }
+      },
+
+      toggleSearch() {
+        if (AppState.searchType == 'businesses') {
+          AppState.searchType == 'profiles'
+        } else if (AppState.searchType == 'profiles') {
+          AppState.searchType == 'businesses'
         }
       }
     }
