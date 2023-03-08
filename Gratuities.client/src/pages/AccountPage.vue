@@ -29,7 +29,7 @@
       </div>
       <!-- SECTION tips list -->
       <div>
-        <div class="offset-1 rounded col-10 tips mb-2">
+        <div class="rounded col-12 tips mb-2">
           <div class="row align-items-center">
             <div class="col-3">
               <img class="profile-picture" :src="account?.picture" :alt="account?.name">
@@ -47,7 +47,7 @@
         </div>
 
 
-        <div class="offset-1 rounded col-10 tips mb-2">
+        <div class="rounded col-12 tips mb-2">
           <div class="row align-items-center">
             <div class="col-3">
               <img class="profile-picture" :src="account?.picture" :alt="account?.name">
@@ -63,7 +63,7 @@
             </div>
           </div>
         </div>
-        <div class="offset-1 rounded col-10 tips mb-2">
+        <div class="rounded col-12 tips mb-2">
           <div class="row align-items-center">
             <div class="col-3">
               <img class="profile-picture" :src="account?.picture" :alt="account?.name">
@@ -78,6 +78,24 @@
               </p>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <h1>My Business:</h1>
+        <div class=" d-flex justify-content-center my-2">
+          <img class="business-logo"
+            src="https://www.applebees.com/-/media/Applebees/Images/logos/applebees-social-logo.ashx" alt="">
+          <div class="dropdown ps-2">
+            <i data-bs-toggle="dropdown" aria-expanded="false" class="mdi mdi-more fs-1 selectable"></i>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Edit</a></li>
+              <li><a class="dropdown-item" href="#">Remove</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <h3><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+              class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i></h3>
         </div>
       </div>
     </div>
@@ -97,6 +115,20 @@ export default {
 </script>
 
 <style scoped>
+.star {
+  color: #FFEE33;
+  text-shadow: 1px 1px 1px black;
+}
+
+.business-logo {
+  border: 2px solid black;
+  width: 16vh;
+  height: 16vh;
+  border-radius: 50%;
+  object-fit: cover;
+  background-position: center;
+}
+
 .profile-picture {
   height: 8vh;
   width: 8vh;
