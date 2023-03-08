@@ -2,7 +2,8 @@ import { dbContext } from "../db/DbContext";
 
 class BusinessesService {
     async createBusiness(body) {
-        const business = await dbContext.Businesses.create(body)
+        const business = await (await dbContext.Businesses.create(body))
+        business.populate('owner', 'name picture email')
         return business
     }
     async getBusinesses() {
