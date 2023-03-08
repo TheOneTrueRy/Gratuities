@@ -43,7 +43,7 @@ export class BusinessesController extends BaseController {
     }
     async getBusinesses(req, res, next) {
         try {
-            const businesses = await businessesService.getBusinesses()
+            const businesses = await businessesService.findBusinesses(req.query.name)
             res.send(businesses)
         } catch (error) {
             next(error)
