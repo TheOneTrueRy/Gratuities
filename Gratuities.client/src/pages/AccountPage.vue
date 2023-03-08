@@ -147,10 +147,7 @@ export default {
   background-color: #EF476F;
 }
 
-.cash {
-  color: rgb(1, 136, 53);
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.459);
-}
+
 
 img {
   width: 150px;

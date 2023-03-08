@@ -24,6 +24,11 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
+.cash {
+  color: rgb(1, 136, 53);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.459);
+}
+
 .white-background {
   background-color: white;
 }
