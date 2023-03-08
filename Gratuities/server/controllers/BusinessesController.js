@@ -10,7 +10,18 @@ export class BusinessesController extends BaseController {
             .get('/:businessId', this.getBusinessById)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createBusinesses)
+            .delete('/:businessId', this.deleteBusiness)
 
+    }
+    async deleteBusiness(req, res, next) {
+        try {
+            const businessId = req.params.businessId
+            const requestorId = req.userInfo.id
+            const business = await businessesService.deleteBusiness(requestorId, businessId)
+            res.send(business)
+        } catch (error) {
+            next(error);
+        }
     }
     async getBusinessById(req, res, next) {
         try {
