@@ -2,11 +2,11 @@
   <div class="container-fluid">
     <div class="row pb-1 mt-3 d-flex flex-column align-items-center justify-content-center">
       <div class="col-12 text-center">
-        <img class="profile-picture border border-dark border-2 elevation-1" src="villain.jpg" alt="">
+        <img class="profile-picture border border-dark border-2 elevation-1" :src="account.picture" :alt="account.picture">
       </div>
       <div class="col-12 text-center">
         <h1 class="my-3 text-dark rounded text-center user-name">
-          Big Jimmy
+          {{ account.name }}
         </h1>
       </div>
       <div class="col-12 text-center">
@@ -97,8 +97,9 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import { logger } from '../utils/Logger';
+import { ref, computed } from 'vue';
+import { AppState } from '../AppState.js';
+import { logger } from '../utils/Logger.js';
 
 export default {
   setup() {
@@ -106,6 +107,7 @@ export default {
 
     return {
       editable,
+      account: computed(() => AppState.account),
       async search() {
         logger.log('we will implement the search function soon')
       }
