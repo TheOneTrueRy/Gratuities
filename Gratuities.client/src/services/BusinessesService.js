@@ -9,7 +9,13 @@ class BusinessesService {
         const res = await api.get('api/businesses')
         AppState.businesses = res.data.map(b => new Business(b))
         // TODO need to add rating to businesses once we get profile ratings
-        logger.log('[APPSTATE.businesses]', AppState.businesses)
+        logger.log('[ALL BUSINESSES]', AppState.businesses)
+    }
+
+    async getBusinessesByQuery(query) {
+        const res = await api.get('/api/businesses', { params: { name: query.query } })
+        AppState.businesses = res.data.map(b => new Business(b))
+        logger.log('[FOUND BUSINESSES]', AppState.businesses)
     }
 }
 
