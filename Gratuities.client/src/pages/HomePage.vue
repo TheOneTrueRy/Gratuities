@@ -1,18 +1,26 @@
 <template>
   <div class="container-fluid">
     <div class="row pb-1 mt-3 d-flex flex-column align-items-center justify-content-center">
-      <div class="col-12 text-center">
-        <img class="profile-picture border border-dark border-2 elevation-1" :src="account.picture"
-          :alt="account.picture">
+      <div v-if="account?.id">
+        <div class="col-12 text-center">
+          <img class="profile-picture border border-dark border-2 elevation-1" :src="account.picture"
+            :alt="account.picture">
+        </div>
+        <div class="col-12 text-center">
+          <h2 class="my-3 text-dark rounded text-center user-name">
+            {{ account.name }}
+          </h2>
+        </div>
+        <div class="col-12 text-center">
+          <h6 class="biggest-tip">Your Biggest Tip: <span class="biggest-tip-amount">$0.89</span> to AppleBees server
+            @Bill
+          </h6>
+        </div>
       </div>
-      <div class="col-12 text-center">
-        <h1 class="my-3 text-dark rounded text-center user-name">
-          {{ account.name }}
-        </h1>
-      </div>
-      <div class="col-12 text-center">
-        <h6 class="biggest-tip">Your Biggest Tip: <span class="biggest-tip-amount">$0.89</span> to AppleBees server @Bill
-        </h6>
+      <div v-else>
+        <div class="col-12 text-center my-5">
+          <h2>Log-In or Sign-Up now to get started!</h2>
+        </div>
       </div>
       <div class="col-12 col-md-6 mt-4">
         <h6>Search for an employee or business:</h6>
