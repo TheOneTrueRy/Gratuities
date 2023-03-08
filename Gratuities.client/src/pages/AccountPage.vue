@@ -82,20 +82,21 @@
       </div>
       <div class="col-12">
         <h1>My Business:</h1>
-        <div class=" d-flex justify-content-center my-2">
-          <img class="business-logo"
-            src="https://www.applebees.com/-/media/Applebees/Images/logos/applebees-social-logo.ashx" alt="">
+        <div class="d-flex align-items-center flex-column">
           <div class="dropdown ps-2">
-            <i data-bs-toggle="dropdown" aria-expanded="false" class="mdi mdi-more fs-1 selectable"></i>
+            <img class="business-logo"
+              src="https://www.applebees.com/-/media/Applebees/Images/logos/applebees-social-logo.ashx" alt=""
+              data-bs-toggle="dropdown">
             <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Go To Business</a></li>
               <li><a class="dropdown-item" href="#">Edit</a></li>
               <li><a class="dropdown-item" href="#">Remove</a></li>
             </ul>
           </div>
-        </div>
-        <div class="d-flex justify-content-center">
-          <h3><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-              class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i></h3>
+          <div>
+            <h3><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+                class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i></h3>
+          </div>
         </div>
       </div>
     </div>
@@ -153,5 +154,13 @@ export default {
 
 img {
   width: 150px;
+}
+
+.w-90 {
+  width: 90%;
+}
+
+.w-10 {
+  width: 10%;
 }
 </style>
