@@ -21,8 +21,8 @@
         </div>
       </div>
       <div class="col-12 d-flex justify-content-around pe-4">
-        <button class="btn figma-buttons text-light elevation-3 rounded-pill">Add Business</button>
-        <button class="btn figma-buttons text-light elevation-3 rounded-pill">Edit</button>
+        <button @click="addBusiness()" class="btn figma-buttons text-light elevation-3 rounded-pill">Add Business</button>
+        <button @click="editBusiness()" class="btn figma-buttons text-light elevation-3 rounded-pill">Edit</button>
       </div>
       <div class="col-12 mt-3">
         <h1>Recent Tips:</h1>
@@ -109,10 +109,29 @@
 <script>
 import { computed } from 'vue'
 import { AppState } from '../AppState'
+import { logger } from '../utils/Logger'
+import Pop from '../utils/Pop'
 export default {
   setup() {
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      async editBusiness() {
+        try {
+          logger.log('this will be the edit business function')
+
+        } catch (error) {
+          Pop.error(error.message)
+          logger.error(error)
+        }
+      },
+      async addBusiness() {
+        try {
+          logger.log('this will be the add business function')
+        } catch (error) {
+          Pop.error(error.message)
+          logger.error(error)
+        }
+      },
     }
   }
 }
@@ -162,4 +181,5 @@ img {
 
 .w-10 {
   width: 10%;
-}</style>
+}
+</style>
