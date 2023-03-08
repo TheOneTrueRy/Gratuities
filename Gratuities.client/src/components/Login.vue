@@ -8,20 +8,7 @@
         <div type="button" class="border-0 selectable no-select d-flex justify-content-start logout-button"
           data-bs-toggle="dropdown" aria-expanded="false">
           <div v-if="account.picture || user.picture">
-            <button @click="logout" class="btn btn-danger"><i class="mdi mdi-logout"></i></button>
-          </div>
-        </div>
-        <div class="dropdown-menu dropdown-menu-lg-left p-0" aria-labelledby="authDropdown">
-          <div class="list-group">
-            <router-link :to="{ name: 'Account' }">
-              <div class="list-group-item dropdown-item list-group-item-action">
-                Manage Account
-              </div>
-            </router-link>
-            <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout">
-              <i class="mdi mdi-logout"></i>
-              logout
-            </div>
+            <button @click="logout" class="btn btn-dark"><i class="mdi mdi-logout"></i> Logout</button>
           </div>
         </div>
       </div>
