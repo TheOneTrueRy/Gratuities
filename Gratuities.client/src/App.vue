@@ -2,7 +2,7 @@
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="white-background">
     <router-view />
   </main>
 </template>
@@ -24,7 +24,11 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
-:root{
+.white-background {
+  background-color: white;
+}
+
+:root {
   --main-height: calc(100vh - 32px - 64px);
 }
 
