@@ -7,7 +7,6 @@ export const BusinessSchema = new Schema({
     logo: { type: String, required: true, minLength: 3, maxLength: 500 },
     coverImg: { type: String, required: true, minLength: 3, maxLength: 500 },
     location: { type: String, required: true, minLength: 3, maxLength: 500 },
-
 },
     { timestamps: true, toJSON: { virtuals: true } })
 
