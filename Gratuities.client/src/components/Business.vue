@@ -2,7 +2,7 @@
     <div>
         <div class="d-flex align-items-center flex-column">
             <div class="dropdown ps-2">
-                <img class="business-logo" :src="business.logo" alt="" data-bs-toggle="dropdown">
+                <img class="business-logo" :src="business?.logo" alt="" data-bs-toggle="dropdown">
                 <ul class="dropdown-menu">
                     <li>
                         <router-link :to="{ name: 'Business', params: { businessId: business._id } }">
