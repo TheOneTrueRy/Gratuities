@@ -29,6 +29,11 @@ class ProfilesService {
     async generateQRCode(profileId) {
         AppState.QRCode = `https://api.qrserver.com/v1/create-qr-code/?data=http://localhost:8080/#/profiles/${profileId};size=100x100`
     }
+
+    async leaveReview(reviewData, profileId) {
+        const res = await api.post(`api/profiles/${profileId}/reviews`, reviewData)
+        logger.log(res.data)
+    }
 }
 
 export const profilesService = new ProfilesService()
