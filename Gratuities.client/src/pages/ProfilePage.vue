@@ -53,7 +53,7 @@ export default {
         })
         return {
             QRCode: computed(() => AppState.QRCode),
-            account: computed(() => AppState.account)
+            profile: computed(() => AppState.profile)
         }
     }
 }
