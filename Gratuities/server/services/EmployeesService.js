@@ -1,7 +1,21 @@
 import { dbContext } from "../db/DbContext";
+import { Forbidden } from "../utils/Errors";
 import { logger } from "../utils/Logger";
+import { businessesService } from "./BusinessesService";
 
 class EmployeesService {
+    async deleteEmployee(requestorId, employeeId) {
+        const foundEmployee = await dbContext.Employees.findById(employeeId)
+        // @ts-ignore
+        const businessId = foundEmployee.businessId
+        const foundBusiness = await businessesService.getBusinessById(businessId);
+        if (foundBusiness.ownerId.toString() != requestorId) {
+            throw new Forbidden('Tis not your business')
+        }
+        // @ts-ignore
+        await foundEmployee.remove()
+        return foundEmployee
+    }
     async getEmployee(name = '', businessId) {
         const filter = new RegExp(name, 'ig')
         const employee = await dbContext.Employees

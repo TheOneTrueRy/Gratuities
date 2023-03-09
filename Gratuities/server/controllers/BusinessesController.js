@@ -12,9 +12,20 @@ export class BusinessesController extends BaseController {
             .get('/:businessId/employees', this.getEmployees)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createBusinesses)
-            .post('/:businessId/employees', this.higherEmployees)
+            .post('/:businessId/employees/', this.higherEmployees)
+            .delete('/employees/:employeeId', this.deleteEmployee)
             .delete('/:businessId', this.deleteBusiness)
 
+    }
+    async deleteEmployee(req, res, next) {
+        try {
+            const employeeId = req.params.employeeId
+            const requestorId = req.userInfo.id
+            const business = await employeesService.deleteEmployee(requestorId, employeeId)
+            res.send(business)
+        } catch (error) {
+            next(error);
+        }
     }
     async getEmployees(req, res, next) {
         try {
