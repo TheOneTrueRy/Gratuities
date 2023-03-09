@@ -8,8 +8,8 @@ export const ReviewSchema = new Schema({
     rating: { type: Number, enum: [0, 1, 2, 3, 4, 5], required: true },
 })
 
-ReviewSchema.virtual('', {
-    localField: 'ownerId',
+ReviewSchema.virtual('creator', {
+    localField: 'creatorId',
     foreignField: '_id',
     justOne: true,
     ref: 'Account'
