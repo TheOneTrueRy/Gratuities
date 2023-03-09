@@ -99,6 +99,15 @@
       <div class="col-12 col-md-6 offset-md-3 mt-4">
         <h1>Recent Tips:</h1>
       </div>
+      <div class="col-12 col-md-6 offset-md-3 mt-4 d-flex justify-content-center">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+          <label class="btn btn-outline-primary" for="btnradio1">Received</label>
+
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btnradio2">&nbsp;&nbsp;Given&nbsp;&nbsp;</label>
+        </div>
+      </div>
       <!-- SECTION tips list -->
       <div v-if="tipType == 'received'">
         <div v-for="t in receivedTips">
