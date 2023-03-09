@@ -18,3 +18,5 @@ EmployeeSchema.virtual('employee', {
     justOne: true,
     ref: 'Account'
 })
+
+EmployeeSchema.index({ businessId: 1, accountId: 1 }, { unique: true })

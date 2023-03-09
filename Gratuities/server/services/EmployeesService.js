@@ -3,7 +3,7 @@ import { dbContext } from "../db/DbContext";
 class EmployeesService {
     async higherEmployees(body) {
         const employee = await dbContext.Employees.create(body)
-        employee.populate('employee business', 'name picture logo')
+        await employee.populate('employee business', 'name picture logo')
         return employee
     }
 
