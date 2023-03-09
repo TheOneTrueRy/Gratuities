@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
 
 
     </div>
@@ -8,6 +8,10 @@
 
 <script>
 export default {
+    props: {
+        business: { type: Object, required: true }
+    },
+
     setup() {
         return {}
     }
