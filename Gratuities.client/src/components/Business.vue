@@ -4,7 +4,11 @@
             <div class="dropdown ps-2">
                 <img class="business-logo" :src="business.logo" alt="" data-bs-toggle="dropdown">
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Go To Business</a></li>
+                    <li>
+                        <router-link :to="{ name: 'Business', params: { businessId: business._id } }">
+                            <a class="dropdown-item">Go To Business</a>
+                        </router-link>
+                    </li>
                     <li><a class="dropdown-item" href="#">Edit</a></li>
                     <li><a class="dropdown-item" href="#">Remove</a></li>
                 </ul>

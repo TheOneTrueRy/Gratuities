@@ -32,6 +32,12 @@ class BusinessesService {
         AppState.businesses = myBusiness
         logger.log('my businesses:',myBusiness)
     }
+
+    async getBusinessById(businessId){
+        AppState.business = null
+        const res = await api.get('api/businesses/' + businessId)
+        AppState.business = new Business(res.data)
+    }
 }
 
 export const businessesService = new BusinessesService()
