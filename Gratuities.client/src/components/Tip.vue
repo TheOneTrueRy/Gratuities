@@ -2,16 +2,11 @@
     <div class="rounded col-12 tips my-1">
         <div class="row align-items-center">
             <div class="col-3">
-                <img class="profile-picture" :src="tip?.creator.picture" :alt="tip?.creator.name">
+                <img class="profile-picture" :src="tip?.giver.picture" :alt="tip?.giver.name">
             </div>
             <div class="col-9">
                 <p>
-                    {{ tip?.creator.name }}
-                    <br>
-                    <i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                        class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i>
-                    <br>
-                    "Customer service is my passion"
+                    {{ tip?.giver.name }} - ${{ tip?.tip }}
                 </p>
             </div>
         </div>
@@ -33,4 +28,12 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.profile-picture {
+    height: 8vh;
+    width: 8vh;
+    border-radius: 50%;
+    object-fit: cover;
+    background-position: center;
+}
+</style>
