@@ -170,7 +170,7 @@
 
 <script>
 import { Offcanvas } from 'bootstrap';
-import { computed, ref, watchEffect } from 'vue'
+import { computed, ref, watchEffect, onMounted } from 'vue'
 import { accountService } from '../services/AccountService';
 import { businessesService } from '../services/BusinessesService'
 import { AppState } from '../AppState'
@@ -180,6 +180,10 @@ export default {
   setup() {
     const editable = ref({})
     const editable2 = ref({})
+
+    onMounted(() => {
+      getMyBusinesses()
+    })
     watchEffect(() => {
       if (AppState.account.id) {
         editable.value = { ...AppState.account }
@@ -189,6 +193,7 @@ export default {
     return {
       editable,
       editable2,
+      business: computed(() => AppState.businesses),
       account: computed(() => AppState.account),
       async editAccount() {
         try {
@@ -208,6 +213,15 @@ export default {
           logger.error(error)
         }
       },
+      async getMyBusinesses() {
+        try {
+          const userId = account.id
+          await businessesService.getMyBusiness(userId)
+        } catch (error) {
+          Pop.error(error.message)
+          logger.error(error)
+        }
+      }
     }
   }
 }
