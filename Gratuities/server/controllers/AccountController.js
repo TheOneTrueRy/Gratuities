@@ -14,8 +14,14 @@ export class AccountController extends BaseController {
       .put('', this.editAccount)
 
   }
-  getSentTips(arg0, getSentTips) {
-    throw new Error('Method not implemented.')
+  async getSentTips(req, res, next) {
+    try {
+      const userId = req.userInfo.id
+      const tips = await tipsService.getSentTips(userId)
+      return res.send(tips)
+    } catch (error) {
+      next(error)
+    }
   }
   async getReceivedTips(req, res, next) {
     try {

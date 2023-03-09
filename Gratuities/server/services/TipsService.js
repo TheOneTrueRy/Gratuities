@@ -3,9 +3,13 @@ import { BadRequest } from "../utils/Errors"
 import { profileService } from "./ProfileService"
 
 class TipsService {
+  async getSentTips(userId) {
+    const myTips = await dbContext.Tips.find({ giverId: userId }).populate('giver', 'name picture')
+    return myTips
+  }
   async giveTip(tip) {
     const giver = await profileService.getProfileById(tip.giverId)
-    const reciever = await profileService.getProfileById(tip.recieverId)
+    const receiver = await profileService.getProfileById(tip.receiverId)
 
     if (giver.currency < tip.tip) {
       throw new BadRequest("You don't have enough money")
@@ -13,12 +17,12 @@ class TipsService {
 
     const tips = await dbContext.Tips.create(tip)
     giver.currency -= tip.tip
-    reciever.currency += tip.tip
+    receiver.currency += tip.tip
     await tips.populate('giver', 'name picture')
     return tips
   }
   async getReceivedTips(userId) {
-    const myTips = await dbContext.Tips.find({ recieverId: userId }).populate('giver', 'name picture')
+    const myTips = await dbContext.Tips.find({ receiverId: userId }).populate('giver', 'name picture')
     return myTips
   }
 }
