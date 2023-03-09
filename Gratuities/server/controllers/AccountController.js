@@ -9,14 +9,14 @@ export class AccountController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
-      .get('/tips', this.getMyTips)
+      .get('tips/received', this.getReceivedTips)
       .put('', this.editAccount)
 
   }
-  async getMyTips(req, res, next) {
+  async getReceivedTips(req, res, next) {
     try {
       const userId = req.userInfo.id
-      const tips = await tipsService.getMyTips(userId)
+      const tips = await tipsService.getReceivedTips(userId)
       return res.send(tips)
     } catch (error) {
       next(error)

@@ -17,7 +17,7 @@ class TipsService {
     await tips.populate('giver', 'name picture')
     return tips
   }
-  async getMyTips(userId) {
+  async getReceivedTips(userId) {
     const myTips = await dbContext.Tips.find({ recieverId: userId }).populate('giver', 'name picture')
     return myTips
   }
