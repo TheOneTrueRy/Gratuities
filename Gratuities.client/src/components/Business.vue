@@ -5,7 +5,7 @@
                 <img class="business-logo" :src="business.logo" alt="" data-bs-toggle="dropdown">
                 <ul class="dropdown-menu">
                     <li>
-                        <router-link :to="{ name: 'Business', params: { businessId: business._id } }">
+                        <router-link :to="{ name: 'Business', params: { businessId: business.id } }">
                             <a class="dropdown-item">Go To Business</a>
                         </router-link>
                     </li>
@@ -26,10 +26,11 @@
 <script>
 import { computed } from 'vue';
 import { AppState } from '../AppState';
+import { Business } from "../models/Business.js";
 
 export default {
     props: {
-        business: { type: Object, required: true }
+        business: { type: Business, required: true }
     },
 
     setup() {
