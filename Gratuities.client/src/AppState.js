@@ -10,5 +10,7 @@ export const AppState = reactive({
 
   profiles: [],
 
-  searchType: 'profiles'
+  searchType: 'profiles',
+
+  QRCode: null,
 })

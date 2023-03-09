@@ -1,5 +1,5 @@
 import { logger } from "../utils/Logger.js"
-import { api } from "./AxiosService.js"
+import { api, QR_api } from "./AxiosService.js"
 import { AppState } from "../AppState.js";
 import { Profile } from "../models/Profile.js";
 
@@ -17,8 +17,8 @@ class ProfilesService {
         logger.log('[FOUND PROFILES]', AppState.profiles)
     }
 
-    async generateQRCode() {
-        
+    async generateQRCode(profileId) {
+        AppState.QRCode = `https://api.qrserver.com/v1/create-qr-code/?data=http://localhost:8080/#/profiles/${profileId};size=100x100`
     }
 }
 
