@@ -6,7 +6,7 @@ export const ReviewSchema = new Schema({
     reviewedId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },
     body: { type: String, maxLength: 500 },
     rating: { type: Number, enum: [0, 1, 2, 3, 4, 5], required: true },
-})
+}, {timestamps: true, toJSON: {virtuals:true}})
 
 ReviewSchema.virtual('creator', {
     localField: 'creatorId',
