@@ -1,7 +1,8 @@
 <template>
     <div class="ProfilePage">
-
-
+        <h1 class="text-dark">
+            hello from profile page
+        </h1>
     </div>
 </template>
 
@@ -11,7 +12,7 @@ import { profilesService } from '../services/ProfilesService.js';
 import Pop from '../utils/Pop.js';
 
 export default {
-    setup(){
+    setup() {
 
         async function generateQRCode() {
             try {
@@ -26,6 +27,4 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
