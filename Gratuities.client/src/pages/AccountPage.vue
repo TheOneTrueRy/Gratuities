@@ -103,11 +103,11 @@
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
           <input @click="showReceivedTips()" type="radio" class="btn-check" name="btnradio" id="btnradio1"
             autocomplete="off" checked>
-          <label class="btn btn-outline-primary" for="btnradio1">Received</label>
+          <label class="btn btn-outline-success" for="btnradio1">Received</label>
 
           <input @click="showGivenTips()" type="radio" class="btn-check" name="btnradio" id="btnradio2"
             autocomplete="off">
-          <label class="btn btn-outline-primary" for="btnradio2">&nbsp;&nbsp;Given&nbsp;&nbsp;</label>
+          <label class="btn btn-outline-success" for="btnradio2">&nbsp;&nbsp;Given&nbsp;&nbsp;</label>
         </div>
       </div>
       <!-- SECTION tips list -->
