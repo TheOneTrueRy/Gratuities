@@ -157,6 +157,13 @@ export default {
   transform: scale(0.9);
 }
 
+.profile-picture-small {
+    height: 10vh;
+    width: 10vh;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
 .biggest-tip-amount {
   color: #06D6A0;
 }

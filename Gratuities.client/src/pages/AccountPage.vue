@@ -52,7 +52,7 @@
             <!-- ANCHOR nvm fixed it -->
             <div>
               <label for="openToFeedback" class="form-label">Would you like to receive feedback?&nbsp;&nbsp;&nbsp;</label>
-              <input required v-model="editable.openToFeedback" class="my-3" id="openToFeedback" type="checkbox">
+              <input v-model="editable.openToFeedback" class="my-3" id="openToFeedback" type="checkbox">
             </div>
             <button data-bs-dismiss="offcanvas" class="btn btn-success" type="submit">Save Changes</button>
           </form>
@@ -100,7 +100,8 @@
         <h1>Recent Tips:</h1>
       </div>
       <!-- SECTION tips list -->
-      <div class="col-12 col-md-6 offset-md-3 mt-3">
+      <div v-if="tipType == 'received'">
+        <!-- NOTE v-for this -->
       </div>
       <div v-if="businesses.length == 1" class="col-12 col-md-6 offset-md-3 mt-4">
         <h1>My Business:</h1>
@@ -192,6 +193,7 @@ export default {
       editable2,
       businesses: computed(() => AppState.businesses),
       account: computed(() => AppState.account),
+      tipType: computed(() => AppState.tipType),
       async editAccount() {
         try {
           const formData = editable.value;
