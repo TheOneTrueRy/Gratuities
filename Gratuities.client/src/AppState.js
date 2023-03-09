@@ -6,5 +6,9 @@ export const AppState = reactive({
   /** @type {import('./models/Account.js').Account} */
   account: {},
 
-  businesses: []
+  businesses: [],
+
+  profiles: [],
+
+  searchType: 'profiles'
 })

@@ -22,14 +22,19 @@
           <h2>Log-In or Sign-Up now to get started!</h2>
         </div>
       </div>
-      <div class="col-12 col-md-6 mt-4">
-        <h6>Search for an employee or business:</h6>
-      </div>
       <div class="col-12 col-md-6">
+        <div class="d-flex justify-content-center mb-3">
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button @click="searchTypeProfiles()" type="button" class="btn btn-outline-dark">Profiles</button>
+            <button @click="searchTypeBusinesses()" type="button" class="btn btn-outline-dark">Businesses</button>
+          </div>
+        </div>
         <form @submit.prevent="search()">
           <div class="input-group">
-            <input v-model="editable.query" required class="form-control" placeholder="Search..."
-              aria-describedby="button-addon2" aria-label="Search" type="text">
+            <input v-if="searchType == 'businesses'" v-model="editable.query" required class="form-control"
+              placeholder="Search businesses..." aria-describedby="button-addon2" aria-label="Search" type="text">
+            <input v-if="searchType == 'profiles'" v-model="editable.query" required class="form-control"
+              placeholder="Search profiles..." aria-describedby="button-addon2" aria-label="Search" type="text">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
               <i class="mdi mdi-magnify"></i>
             </button>
@@ -37,9 +42,11 @@
         </form>
       </div>
       <div class="col-12 col-md-8 mt-5">
-        <h6>Top businesses:</h6>
       </div>
-      <div>
+      <div v-if="searchType == 'businesses'">
+        <div class="col-12 col-md-8 offset-md-2">
+          <h6>Top businesses:</h6>
+        </div>
         <div v-for="b in businesses" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <div class="row">
             <div class="col-4 d-flex align-items-center">
@@ -47,6 +54,21 @@
             </div>
             <div class="col-8">
               <p>{{ b.name }}<br>*****<br>{{ b.location }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-else>
+        <div class="col-12 col-md-8 offset-md-2">
+          <h6>Top profiles:</h6>
+        </div>
+        <div v-for="p in profiles" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
+          <div class="row">
+            <div class="col-4 d-flex align-items-center">
+              <img class="profile-picture-small" :src="p.picture" :alt="p.picture">
+            </div>
+            <div class="col-8">
+              <p>{{ p.name }}<br>*****<br>{{ p.bio }}</p>
             </div>
           </div>
         </div>
@@ -61,6 +83,7 @@ import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
 import { businessesService } from '../services/BusinessesService.js'
+import { profilesService } from "../services/ProfilesService.js";
 
 export default {
   setup() {
@@ -74,23 +97,42 @@ export default {
       }
     }
 
+    async function getHighestRatedProfiles() {
+      try {
+        await profilesService.getHighestRatedProfiles()
+      } catch (error) {
+        Pop.error('[GETTING HIGHEST RATED PROFILES]', error)
+      }
+    }
+
     onMounted(() => {
       getHighestRatedBusinesses()
+      getHighestRatedProfiles()
     })
 
     return {
       editable,
       account: computed(() => AppState.account),
       businesses: computed(() => AppState.businesses),
+      profiles: computed(() => AppState.profiles),
+      searchType: computed(() => AppState.searchType),
 
       async search() {
         try {
           let query = editable.value
           await businessesService.getBusinessesByQuery(query)
-          // TODO await profilesService.getProfilesByQuery(query)
+          await profilesService.getProfilesByQuery(query)
         } catch (error) {
           Pop.error('SEARCHING FOR BUSINESSES', error)
         }
+      },
+
+      searchTypeProfiles() {
+        AppState.searchType = 'profiles'
+      },
+
+      searchTypeBusinesses() {
+        AppState.searchType = 'businesses'
       }
     }
   }
