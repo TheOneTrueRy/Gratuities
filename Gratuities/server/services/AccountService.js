@@ -76,9 +76,15 @@ class AccountService {
       throw new BadRequest('Invalid account Id')
     }
 
+    if (body.currency < 0.01) {
+      throw new BadRequest("You can't get negative money.")
+    }
+
     account.name = body.name || account.name
     account.picture = body.picture || account.picture
     account.currency = (account.currency + body.currency) || account.currency
+    account.bio = body.bio || account.bio
+    account.openToFeedback = !account.openToFeedback
     // const account = await dbContext.Account.findOneAndUpdate(
     //   { _id: user.id },
     //   { $set: update },
