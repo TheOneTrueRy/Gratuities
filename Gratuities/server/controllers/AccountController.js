@@ -10,8 +10,12 @@ export class AccountController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
       .get('tips/received', this.getReceivedTips)
+      .get('tips/sent', this.getSentTips)
       .put('', this.editAccount)
 
+  }
+  getSentTips(arg0, getSentTips) {
+    throw new Error('Method not implemented.')
   }
   async getReceivedTips(req, res, next) {
     try {
