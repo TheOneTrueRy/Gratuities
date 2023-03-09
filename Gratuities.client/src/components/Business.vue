@@ -2,11 +2,11 @@
     <div>
         <div class="d-flex align-items-center flex-column">
             <div class="dropdown ps-2">
-                <img class="business-logo" :src="business?.logo" alt="" data-bs-toggle="dropdown">
+                <img class="business-logo elevation-1" :src="business?.logo" alt="" data-bs-toggle="dropdown">
                 <ul class="dropdown-menu">
                     <li>
-                        <router-link :to="{ name: 'Business', params: { businessId: business.id } }">
-                            <a class="dropdown-item">Go To Business</a>
+                        <router-link :to="{ name: 'Business', params: { businessId: business?.id } }">
+                            <span class="dropdown-item">Go To Business</span>
                         </router-link>
                     </li>
                     <li><a class="dropdown-item" href="#">Edit</a></li>
@@ -18,7 +18,6 @@
                         class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i></h3>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -50,5 +49,11 @@ export default {
     border-radius: 50%;
     object-fit: cover;
     background-position: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.business-logo:hover {
+    transform: scale(1.1);
 }
 </style>
