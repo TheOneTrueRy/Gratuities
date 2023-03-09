@@ -16,6 +16,10 @@ class ProfilesService {
         AppState.profiles = res.data.map(p => new Profile(p))
         logger.log('[FOUND PROFILES]', AppState.profiles)
     }
+
+    async generateQRCode() {
+        
+    }
 }
 
 export const profilesService = new ProfilesService()
