@@ -18,7 +18,7 @@ export class BusinessesController extends BaseController {
     }
     async getEmployees(req, res, next) {
         try {
-            const req.body. = req.params.businessId
+            req.body = req.params.businessId
             const employees = await employeesService.getEmployee()
             res.send(employees)
         } catch (error) {
