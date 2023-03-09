@@ -2,7 +2,7 @@ import mongoose, { SchemaType } from 'mongoose'
 const Schema = mongoose.Schema
 
 export const EmployeeSchema = new Schema({
-    bussinesId: { type: Schema.Types.ObjectId, ref: 'Business', required: true },
+    businessId: { type: Schema.Types.ObjectId, ref: 'Business', required: true },
     accountId: { type: Schema.Types.ObjectId, ref: 'Account', required: true }
 }, { timestamps: true, toJSON: { virtuals: true } })
 
