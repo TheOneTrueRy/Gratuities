@@ -23,6 +23,13 @@ class BusinessesService {
         AppState.businesses.push(res.data)
         return res.data
     }
+
+    async getMyBusiness(userId){
+        const res = await api.get('api/businesses')
+        const myBusiness = res.data.find(b => b.creatorId == userId)
+        AppState.businesses = myBusiness
+        logger.log('my businesses:',myBusiness)
+    }
 }
 
 export const businessesService = new BusinessesService()
