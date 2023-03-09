@@ -17,7 +17,7 @@ class TipsService {
 
     const tips = await dbContext.Tips.create(tip)
     giver.currency -= tip.tip
-    receiver.currency += tip.tip
+    await giver.save()
     await tips.populate('giver', 'name picture')
     return tips
   }
