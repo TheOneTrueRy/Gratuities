@@ -129,9 +129,9 @@ export default {
     const editable2 = ref({});
     const route = useRoute();
 
-    async function getTips() {
+    async function getTipsReceived() {
       try {
-        await tipsService.getTips(AppState.account.id)
+        await tipsService.getTipsReceived(AppState.account.id)
       } catch (error) {
         Pop.error(error.message)
         logger.error(error)
@@ -150,7 +150,7 @@ export default {
     }
     onMounted(() => {
       setTimeout(getMyBusinesses, 1000);
-      getTips()
+      getTipsReceived()
     });
     watchEffect(() => {
       if (AppState.account.id) {
