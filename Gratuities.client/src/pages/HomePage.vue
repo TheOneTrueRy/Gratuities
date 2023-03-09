@@ -50,7 +50,9 @@
         <div v-for="b in businesses" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <div class="row">
             <div class="col-4 d-flex align-items-center">
-              <img class="profile-picture-small img-fluid" :src="b.logo" :alt="b.logo">
+              <router-link :to="{ name: 'Business', params: { businessId: business.id } }">
+                <img class="profile-picture-small img-fluid" :src="b.logo" :alt="b.logo">
+              </router-link>
             </div>
             <div class="col-8">
               <p>{{ b.name }}<br>*****<br>{{ b.location }}</p>
