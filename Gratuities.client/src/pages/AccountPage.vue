@@ -101,7 +101,9 @@
       </div>
       <!-- SECTION tips list -->
       <div v-if="tipType == 'received'">
-        <!-- NOTE v-for this -->
+        <div v-for="t in receivedTips">
+          <Tip :tip="t" />
+        </div>
       </div>
       <div v-if="businesses.length == 1" class="col-12 col-md-6 offset-md-3 mt-4">
         <h1>My Business:</h1>
@@ -133,6 +135,7 @@ import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import Business from '../components/Business.vue';
 import { useRoute } from 'vue-router';
+import Tip from '../components/Tip.vue';
 export default {
   setup() {
     const editable = ref({});
@@ -194,6 +197,8 @@ export default {
       businesses: computed(() => AppState.businesses),
       account: computed(() => AppState.account),
       tipType: computed(() => AppState.tipType),
+      receivedTips: computed(() => AppState.receivedTips),
+      givenTips: computed(() => AppState.givenTips),
       async editAccount() {
         try {
           const formData = editable.value;
@@ -222,7 +227,7 @@ export default {
       }
     };
   },
-  components: { Business }
+  components: { Business, Tip }
 }
 </script>
 
