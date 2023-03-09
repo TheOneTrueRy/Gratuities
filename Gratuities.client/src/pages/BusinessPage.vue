@@ -1,21 +1,21 @@
 <template>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 d-flex justify-content-center">
+            <div class="col-12 g-0 d-flex justify-content-center">
                 <img class="coverImg" :src="business?.coverImg" alt="">
             </div>
             <div class="col-12 d-flex justify-content-center">
-                <span class="move-logo">
+                <span class="move-logo text-center">
                     <img class="business-logo" :src="business?.logo" alt="">
                     <h1>{{ business?.name }}</h1>
-                    <h3 class="ms-4"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+                    <h3 class=""><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
                             class="mdi mdi-star star"></i><i class="mdi mdi-star-outline"></i><i
                             class="mdi mdi-star-outline"></i></h3>
                 </span>
             </div>
-            <div class="col-12">
+            <div class="col-12 col-md-6 offset-md-3">
                 <h2>Top Rated Employees:</h2>
-                <form @submit.prevent="search()">
+                <form class="mb-4" @submit.prevent="search()">
                     <div class="input-group">
                         <input v-model="editable.query" required class="form-control" placeholder="Search Employees"
                             aria-describedby="button-addon2" aria-label="Search Employees" type="text">
@@ -27,7 +27,7 @@
             </div>
             <!-- SECTION employees placeholders -->
             <div>
-                <div class="rounded col-12 tips my-1">
+                <div class="rounded col-12 col-md-6 offset-md-3 tips my-2">
                     <div class="row align-items-center">
                         <div class="col-3">
                             <img class="profile-picture" :src="account?.picture" :alt="account?.name">
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="rounded col-12 tips my-1">
+                <div class="rounded col-12 col-md-6 offset-md-3 tips my-2">
                     <div class="row align-items-center">
                         <div class="col-3">
                             <img class="profile-picture" :src="account?.picture" :alt="account?.name">
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="rounded col-12 tips my-1">
+                <div class="rounded col-12 col-md-6 offset-md-3 tips my-2">
                     <div class="row align-items-center">
                         <div class="col-3">
                             <img class="profile-picture" :src="account?.picture" :alt="account?.name">
@@ -133,6 +133,7 @@ export default {
     max-height: 32vh;
     object-fit: cover;
     background-position: center;
+    width: 100%;
 }
 
 .business-logo {
