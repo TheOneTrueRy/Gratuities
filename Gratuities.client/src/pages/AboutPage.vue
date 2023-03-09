@@ -6,18 +6,18 @@
       </div>
       <div
         class="offset-1 col-10 col-md-8 offset-md-2 mb-2 mt-2 desc-card rounded d-flex justify-content-center elevation-5">
-        <h6>The Gratuities App is all about giving deserving workers their due.
+        <p>&nbsp; &nbsp; &nbsp;The Gratuities App is all about giving deserving workers their due.
           <br>
-
+          &nbsp; &nbsp; &nbsp;
           Ever run into the problem of doing your best but still having to share your tips with co-workers not pulling
           their weight? Maybe you wanted to reward a specific package delivery person for how considerate they were with
           your cargo. NOW with our app you can find a business, employee, or independent user and send them a tip or write
           them a review based on their service.
           <br>
-
+          &nbsp; &nbsp; &nbsp;
           Gratuities is made for both mobile and desktop, though the on-the-fly nature of the service has this leaning
           more towards a mobile application.
-        </h6>
+        </p>
       </div>
       <div class="col-12 col-md-6 offset-md-3 mt-3">
         <div id="carouselExampleCaptions" class="carousel slide">
