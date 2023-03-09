@@ -182,7 +182,7 @@ export default {
     const editable2 = ref({})
     async function getMyBusinesses() {
       try {
-        const userId = AppState.account?.id
+        const userId = AppState.account.id
         await businessesService.getMyBusiness(userId)
       } catch (error) {
         Pop.error(error.message)
@@ -191,7 +191,7 @@ export default {
     }
 
     onMounted(() => {
-      getMyBusinesses()
+      setTimeout(getMyBusinesses, 1000)
     })
 
     watchEffect(() => {
