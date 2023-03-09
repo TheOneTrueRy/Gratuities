@@ -180,10 +180,20 @@ export default {
   setup() {
     const editable = ref({})
     const editable2 = ref({})
+    async function getMyBusinesses() {
+      try {
+        const userId = AppState.account?.id
+        await businessesService.getMyBusiness(userId)
+      } catch (error) {
+        Pop.error(error.message)
+        logger.error(error)
+      }
+    }
 
     onMounted(() => {
       getMyBusinesses()
     })
+
     watchEffect(() => {
       if (AppState.account.id) {
         editable.value = { ...AppState.account }
@@ -208,15 +218,6 @@ export default {
         try {
           const formData = editable2.value
           await businessesService.newBusiness(formData)
-        } catch (error) {
-          Pop.error(error.message)
-          logger.error(error)
-        }
-      },
-      async getMyBusinesses() {
-        try {
-          const userId = account.id
-          await businessesService.getMyBusiness(userId)
         } catch (error) {
           Pop.error(error.message)
           logger.error(error)
