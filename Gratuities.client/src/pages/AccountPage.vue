@@ -140,7 +140,15 @@ export default {
 
     async function getTipsReceived() {
       try {
-        await tipsService.getTipsReceived(AppState.account.id)
+        await tipsService.getTipsReceived()
+      } catch (error) {
+        Pop.error(error.message)
+        logger.error(error)
+      }
+    }
+    async function getTipsGiven() {
+      try {
+        await tipsService.getTipsGiven()
       } catch (error) {
         Pop.error(error.message)
         logger.error(error)
@@ -160,6 +168,7 @@ export default {
     onMounted(() => {
       setTimeout(getMyBusinesses, 1000);
       getTipsReceived()
+      getTipsGiven()
     });
     watchEffect(() => {
       if (AppState.account.id) {
