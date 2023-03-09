@@ -7,5 +7,6 @@ export class Profile {
         this.openToFeedback = data.openToFeedback
         this.picture = data.picture
         this.bio = data.bio
+        this.name = data.name
     }
 }
