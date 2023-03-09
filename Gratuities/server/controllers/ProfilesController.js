@@ -12,12 +12,12 @@ export class ProfilesController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('/:profileId/tips', this.giveTip)
   }
-  async giveTip(req,res,next) {
+  async giveTip(req, res, next) {
     try {
-      const recieverId = req.params.profileId
+      const receiverId = req.params.profileId
       const tip = req.body
       tip.giverId = req.userInfo.id
-      tip.recieverId = recieverId
+      tip.receiverId = receiverId
       const tips = await tipsService.giveTip(tip)
       return res.send(tips)
     } catch (error) {
