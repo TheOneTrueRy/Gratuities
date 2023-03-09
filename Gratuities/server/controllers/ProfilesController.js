@@ -1,5 +1,7 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
+import { request } from 'express'
 import { profileService } from '../services/ProfileService.js'
+import { reviewsService } from '../services/ReviewsService.js'
 import { tipsService } from '../services/TipsService.js'
 import BaseController from '../utils/BaseController'
 
@@ -11,6 +13,27 @@ export class ProfilesController extends BaseController {
       .get('/:id', this.getProfile)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('/:profileId/tips', this.giveTip)
+      .post('/:profileId/reviews', this.giveReview)
+      .get('/:profileId/reviews', this.getReviews)
+  }
+  async getReviews(req, res, next) {
+    try {
+      const reviews = await reviewsService.getReviews(req.params.profileId)
+      res.send(reviews)
+    } catch (error) {
+      next(error);
+    }
+  }
+  async giveReview(req, res, next) {
+    try {
+      const reviewedId = req.params.profileId
+      req.body.reviewedId = reviewedId
+      req.body.creatorId = req.userInfo.id
+      const review = await reviewsService.giveReview(req.body)
+      res.send(review)
+    } catch (error) {
+      next(error)
+    }
   }
   async giveTip(req, res, next) {
     try {

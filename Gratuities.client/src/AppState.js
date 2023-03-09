@@ -7,10 +7,13 @@ export const AppState = reactive({
   account: {},
 
   businesses: [],
+  business: null,
 
   profiles: [],
-
   searchType: 'profiles',
 
-  QRCode: null,
+  receivedTips: [],
+  givenTips: [],
+
+  searchType: 'profiles'
 })

@@ -48,6 +48,12 @@
               <label for="bio" class="form-label">Bio</label>
               <input v-model="editable.bio" class="form-control" id="bio" type="text">
             </div>
+            <!-- FIXME the checkbox isn't actually displaying the value of openToFeedback -->
+            <!-- ANCHOR nvm fixed it -->
+            <div>
+              <label for="openToFeedback" class="form-label">Would you like to receive feedback?&nbsp;&nbsp;&nbsp;</label>
+              <input required v-model="editable.openToFeedback" class="my-3" id="openToFeedback" type="checkbox">
+            </div>
             <button data-bs-dismiss="offcanvas" class="btn btn-success" type="submit">Save Changes</button>
           </form>
         </div>
@@ -95,59 +101,6 @@
       </div>
       <!-- SECTION tips list -->
       <div>
-        <div class="rounded col-12 tips mb-2">
-          <div class="row align-items-center">
-            <div class="col-3">
-              <img class="profile-picture" :src="account?.picture" :alt="account?.name">
-            </div>
-            <div class="col-9">
-              <p>
-                {{ account?.name }} - <i class="cash">$8</i>
-                <br>
-                <i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                  class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i>
-                <br>
-                "Customer service is great yay"
-              </p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="rounded col-12 tips mb-2">
-          <div class="row align-items-center">
-            <div class="col-3">
-              <img class="profile-picture" :src="account?.picture" :alt="account?.name">
-            </div>
-            <div class="col-9">
-              <p>
-                {{ account?.name }} - <i class="cash">$8</i>
-                <br>
-                <i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                  class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i>
-                <br>
-                "Customer service is great yay"
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="rounded col-12 tips mb-2">
-          <div class="row align-items-center">
-            <div class="col-3">
-              <img class="profile-picture" :src="account?.picture" :alt="account?.name">
-            </div>
-            <div class="col-9">
-              <p>
-                {{ account?.name }} - <i class="cash">$8</i>
-                <br>
-                <i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                  class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i>
-                <br>
-                "Customer service is great yay"
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
       <div v-if="business">
         <h1>My Business:</h1>
@@ -162,16 +115,29 @@
 <script>
 import { Offcanvas } from 'bootstrap';
 import { computed, ref, watchEffect, onMounted } from 'vue'
+import { tipsService } from '../services/TipsService'
 import { accountService } from '../services/AccountService';
 import { businessesService } from '../services/BusinessesService'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import Business from '../components/Business.vue';
+import { useRoute } from 'vue-router';
 export default {
   setup() {
     const editable = ref({});
     const editable2 = ref({});
+    const route = useRoute();
+
+    async function getTips() {
+      try {
+        await tipsService.getTips(AppState.account.id)
+      } catch (error) {
+        Pop.error(error.message)
+        logger.error(error)
+      }
+    }
+
     async function getMyBusinesses() {
       try {
         const userId = AppState.account.id;
@@ -184,10 +150,12 @@ export default {
     }
     onMounted(() => {
       setTimeout(getMyBusinesses, 1000);
+      getTips()
     });
     watchEffect(() => {
       if (AppState.account.id) {
         editable.value = { ...AppState.account };
+        editable.bio = { ...AppState.account.bio };
       }
     });
     return {
@@ -214,6 +182,12 @@ export default {
           Pop.error(error.message);
           logger.error(error);
         }
+      },
+      showReceivedTips() {
+        AppState.tipType = 'received'
+      },
+      showGivenTips() {
+        AppState.tipType = 'given'
       }
     };
   },
