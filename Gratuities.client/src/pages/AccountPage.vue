@@ -102,9 +102,15 @@
       <!-- SECTION tips list -->
       <div>
       </div>
-      <div v-if="business">
+      <div v-if="businesses.length == 1">
         <h1>My Business:</h1>
-        <div class="col-12 mb-4" v-for="b in business" :key="b.id">
+        <div class="col-12 mb-4" v-for="b in businesses" :key="b.id">
+          <Business :business="b" />
+        </div>
+      </div>
+      <div v-else-if="businesses.length > 1">
+        <h1>My Businesses:</h1>
+        <div class="col-12 mb-4" v-for="b in businesses" :key="b.id">
           <Business :business="b" />
         </div>
       </div>
@@ -161,7 +167,7 @@ export default {
     return {
       editable,
       editable2,
-      business: computed(() => AppState.businesses),
+      businesses: computed(() => AppState.businesses),
       account: computed(() => AppState.account),
       async editAccount() {
         try {
