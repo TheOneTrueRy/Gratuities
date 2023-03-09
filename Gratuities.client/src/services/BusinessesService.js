@@ -26,7 +26,7 @@ class BusinessesService {
 
     async getMyBusiness(userId){
         const res = await api.get('api/businesses')
-        const myBusiness = res.data.find(b => b.ownerId == userId)
+        const myBusiness = res.data.filter(b => b.ownerId == userId)
         logger.log('userId', userId)
         logger.log('res data of getmybusiness',res.data)
         AppState.businesses = myBusiness
