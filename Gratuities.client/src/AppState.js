@@ -13,6 +13,7 @@ export const AppState = reactive({
   profile: null,
   searchType: 'profiles',
 
+  tipType: 'received',
   receivedTips: [],
   givenTips: [],
 

@@ -100,7 +100,8 @@
         <h1>Recent Tips:</h1>
       </div>
       <!-- SECTION tips list -->
-      <div>
+      <div class="col-12 my-1" v-if="tipType == 'received'">
+        <!-- NOTE v-for this <div></div> -->
       </div>
       <div v-if="businesses.length == 1">
         <h1>My Business:</h1>
@@ -181,6 +182,7 @@ export default {
       editable2,
       businesses: computed(() => AppState.businesses),
       account: computed(() => AppState.account),
+      tipType: computed(() => AppState.tipType),
       async editAccount() {
         try {
           const formData = editable.value;
