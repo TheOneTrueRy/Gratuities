@@ -10,11 +10,20 @@ class ProfilesService {
         const res = await api.get('api/profiles')
         AppState.profiles = res.data.map(p => new Profile(p))
         logger.log('[ALL PROFILES]', AppState.profiles)
+
+        // TODO need to sort profiles once we get ratings calculated
     }
     async getProfilesByQuery(query) {
         const res = await api.get('api/profiles', { params: { name: query.query } })
         AppState.profiles = res.data.map(p => new Profile(p))
         logger.log('[FOUND PROFILES]', AppState.profiles)
+    }
+
+    async getProfileById(profileId) {
+        AppState.profile = null
+        const res = await api.get('api/profiles/' + profileId)
+        AppState.profile = new Profile(res.data)
+        logger.log(AppState.profile)
     }
 
     async generateQRCode(profileId) {

@@ -6,7 +6,7 @@
                     <div id="profileCarousel" class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img :src="account.picture" class="d-block w-100 rounded" :alt="account.picture">
+                                <img :src="profile?.picture" class="d-block w-100 rounded" :alt="profile?.picture">
                             </div>
                             <div class="carousel-item">
                                 <img :src="QRCode" class="d-block w-100 rounded" :alt="QRCode">
@@ -48,12 +48,22 @@ export default {
             }
         }
 
+        async function getProfileById() {
+            try {
+                const profileId = route.params.profileId
+                await profilesService.getProfileById(profileId)
+            } catch (error) {
+                Pop.error('[GETTING PROFILE BY ID]', error)
+            }
+        }
+
         onMounted(() => {
             generateQRCode()
+            getProfileById()
         })
         return {
             QRCode: computed(() => AppState.QRCode),
-            account: computed(() => AppState.account)
+            profile: computed(() => AppState.profile)
         }
     }
 }
