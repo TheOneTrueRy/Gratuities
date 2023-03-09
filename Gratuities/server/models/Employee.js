@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 export const EmployeeSchema = new Schema({
     businessId: { type: Schema.Types.ObjectId, ref: 'Business', required: true },
     accountId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },
-    employee: {type: Object, required: true}
+    employeeName: { type: String, required: true },
+    employeePicture: {type: String, required: true}
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 EmployeeSchema.virtual('business', {
