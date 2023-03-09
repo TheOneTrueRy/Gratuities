@@ -10,7 +10,7 @@
                         </router-link>
                     </li>
                     <li><a class="dropdown-item" href="#">Edit</a></li>
-                    <li><a class="dropdown-item" href="#">Remove</a></li>
+                    <li><a @click="removeBusiness(business.id)" class="dropdown-item">Remove</a></li>
                 </ul>
             </div>
             <div class="mt-1">
@@ -27,15 +27,27 @@
 import { computed } from 'vue';
 import { AppState } from '../AppState';
 import { Business } from "../models/Business.js";
+import { businessesService } from '../services/BusinessesService';
+import { logger } from '../utils/Logger';
+import Pop from '../utils/Pop';
 
 export default {
     props: {
         business: { type: Business, required: true }
     },
-
     setup() {
         return {
-            account: computed(() => AppState.account)
+            account: computed(() => AppState.account),
+            async removeBusiness(businessId) {
+                try {
+                    if (await Pop.confirm('Are you sure you want to remove this business?')) {
+                        await businessesService.removeBusiness(businessId)
+                    }
+                } catch (error) {
+                    Pop.error(error.message)
+                    logger.error(error)
+                }
+            }
         }
     }
 }
