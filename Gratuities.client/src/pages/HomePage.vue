@@ -50,7 +50,7 @@
         <div v-for="b in businesses" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <div class="row">
             <div class="col-4 d-flex align-items-center">
-              <img class="profile-picture-small" :src="b.logo" :alt="b.logo">
+              <img class="profile-picture-small img-fluid" :src="b.logo" :alt="b.logo">
             </div>
             <div class="col-8">
               <p>{{ b.name }}<br>*****<br>{{ b.location }}</p>
@@ -63,7 +63,7 @@
           <h6>Top profiles:</h6>
         </div>
         <div v-for="p in profiles" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
-          <ProfileCard  :profile="p"/>
+          <ProfileCard :profile="p" />
         </div>
       </div>
     </div>
@@ -80,53 +80,53 @@ import { profilesService } from "../services/ProfilesService.js";
 import ProfileCard from '../components/ProfileCard.vue';
 
 export default {
-    setup() {
-        const editable = ref({});
-        async function getHighestRatedBusinesses() {
-            try {
-                await businessesService.getHighestRatedBusinesses();
-            }
-            catch (error) {
-                Pop.error("[GETTING HIGHEST RATED BUSINESSES]", error);
-            }
+  setup() {
+    const editable = ref({});
+    async function getHighestRatedBusinesses() {
+      try {
+        await businessesService.getHighestRatedBusinesses();
+      }
+      catch (error) {
+        Pop.error("[GETTING HIGHEST RATED BUSINESSES]", error);
+      }
+    }
+    async function getHighestRatedProfiles() {
+      try {
+        await profilesService.getHighestRatedProfiles();
+      }
+      catch (error) {
+        Pop.error("[GETTING HIGHEST RATED PROFILES]", error);
+      }
+    }
+    onMounted(() => {
+      getHighestRatedBusinesses();
+      getHighestRatedProfiles();
+    });
+    return {
+      editable,
+      account: computed(() => AppState.account),
+      businesses: computed(() => AppState.businesses),
+      profiles: computed(() => AppState.profiles),
+      searchType: computed(() => AppState.searchType),
+      async search() {
+        try {
+          let query = editable.value;
+          await businessesService.getBusinessesByQuery(query);
+          await profilesService.getProfilesByQuery(query);
         }
-        async function getHighestRatedProfiles() {
-            try {
-                await profilesService.getHighestRatedProfiles();
-            }
-            catch (error) {
-                Pop.error("[GETTING HIGHEST RATED PROFILES]", error);
-            }
+        catch (error) {
+          Pop.error("SEARCHING FOR BUSINESSES", error);
         }
-        onMounted(() => {
-            getHighestRatedBusinesses();
-            getHighestRatedProfiles();
-        });
-        return {
-            editable,
-            account: computed(() => AppState.account),
-            businesses: computed(() => AppState.businesses),
-            profiles: computed(() => AppState.profiles),
-            searchType: computed(() => AppState.searchType),
-            async search() {
-                try {
-                    let query = editable.value;
-                    await businessesService.getBusinessesByQuery(query);
-                    await profilesService.getProfilesByQuery(query);
-                }
-                catch (error) {
-                    Pop.error("SEARCHING FOR BUSINESSES", error);
-                }
-            },
-            searchTypeProfiles() {
-                AppState.searchType = "profiles";
-            },
-            searchTypeBusinesses() {
-                AppState.searchType = "businesses";
-            }
-        };
-    },
-    components: { ProfileCard }
+      },
+      searchTypeProfiles() {
+        AppState.searchType = "profiles";
+      },
+      searchTypeBusinesses() {
+        AppState.searchType = "businesses";
+      }
+    };
+  },
+  components: { ProfileCard }
 }
 </script>
 
