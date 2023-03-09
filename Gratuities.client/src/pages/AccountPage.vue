@@ -123,7 +123,7 @@
 
 <script>
 import { Offcanvas } from 'bootstrap';
-import { computed, ref, watchEffect, onMounted } from 'vue'
+import { computed, ref, watchEffect, onMounted, onUnmounted } from 'vue'
 import { tipsService } from '../services/TipsService'
 import { accountService } from '../services/AccountService';
 import { businessesService } from '../services/BusinessesService'
@@ -165,11 +165,22 @@ export default {
         logger.error(error);
       }
     }
+    function clearBusinesses() {
+      try {
+        AppState.businesses = []
+      } catch (error) {
+        Pop.error(error.message, 'Clearing Businesses')
+      }
+    }
     onMounted(() => {
       setTimeout(getMyBusinesses, 1000);
       getTipsReceived()
       getTipsGiven()
     });
+    onUnmounted(() => {
+      clearBusinesses()
+    });
+
     watchEffect(() => {
       if (AppState.account.id) {
         editable.value = { ...AppState.account };

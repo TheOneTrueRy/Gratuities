@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
@@ -102,10 +102,20 @@ export default {
         Pop.error("[GETTING HIGHEST RATED PROFILES]", error);
       }
     }
+    function clearBusinesses() {
+      try {
+        AppState.businesses = []
+      } catch (error) {
+        Pop.error(error.message, 'Clearing Businesses')
+      }
+    }
     onMounted(() => {
       getHighestRatedBusinesses();
       getHighestRatedProfiles();
     });
+    onUnmounted(() => {
+      clearBusinesses()
+    })
     return {
       editable,
       account: computed(() => AppState.account),
@@ -171,6 +181,10 @@ export default {
 
 .profile-picture:hover {
   transform: scale(1.1);
+}
+
+.profile-picture:active {
+  transform: scale(0.8);
 }
 
 .home {
