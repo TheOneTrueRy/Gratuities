@@ -1,4 +1,6 @@
+import { Logger } from 'sass'
 import { dbContext } from '../db/DbContext'
+import { BadRequest } from '../utils/Errors'
 
 // Private Methods
 
@@ -69,12 +71,20 @@ class AccountService {
    *  @param {any} body Updates to apply to user object
    */
   async updateAccount(user, body) {
-    const update = sanitizeBody(body)
-    const account = await dbContext.Account.findOneAndUpdate(
-      { _id: user.id },
-      { $set: update },
-      { runValidators: true, setDefaultsOnInsert: true, new: true }
-    )
+    const account = await dbContext.Account.findById(user.id)
+    if (!account) {
+      throw new BadRequest('Invalid account Id')
+    }
+
+    account.name = body.name || account.name
+    account.picture = body.picture || account.picture
+    account.currency = (account.currency + body.currency) || account.currency
+    // const account = await dbContext.Account.findOneAndUpdate(
+    //   { _id: user.id },
+    //   { $set: update },
+    //   { runValidators: true, setDefaultsOnInsert: true, new: true }
+    // )
+    await account.save()
     return account
   }
 }
