@@ -8,7 +8,7 @@ class TipsService {
     const reciever = await profileService.getProfileById(tip.recieverId)
 
     if (giver.currency < tip.tip) {
-      throw new BadRequest("You don't have enough money", giver.name)
+      throw new BadRequest("You don't have enough money")
     }
 
     const tips = await dbContext.Tips.create(tip)
