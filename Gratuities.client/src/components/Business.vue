@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
 
 
     </div>
@@ -7,9 +7,18 @@
 
 
 <script>
+import { computed } from 'vue';
+import { AppState } from '../AppState';
+
 export default {
+    props: {
+        business: { type: Object, required: true }
+    },
+
     setup() {
-        return {}
+        return {
+            account: computed(() => AppState.account)
+        }
     }
 }
 </script>
