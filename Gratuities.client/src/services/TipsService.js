@@ -3,7 +3,7 @@ import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
 class TipsService{
-    async getTipsReceived(accountId){
+    async getTipsReceived(){
         const res = await api.get('account/tips/received')
         AppState.receivedTips = res.data
         logger.log('the tips i have received:',AppState.receivedTips)

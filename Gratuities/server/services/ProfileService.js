@@ -21,7 +21,7 @@ class ProfileService {
     * limits to first 20 without offset
     * @param {string} name
    */
-  async findProfiles(name = '', offset = 0) {
+  async findProfiles(name = '') {
     const filter = new RegExp(name, 'ig')
     return await dbContext.Account
       .aggregate([{
