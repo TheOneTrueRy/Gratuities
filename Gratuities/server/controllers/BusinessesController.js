@@ -9,11 +9,21 @@ export class BusinessesController extends BaseController {
         this.router
             .get('', this.getBusinesses)
             .get('/:businessId', this.getBusinessById)
+            .get('/:businessId/employees', this.getEmployees)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createBusinesses)
             .post('/:businessId/employees', this.higherEmployees)
             .delete('/:businessId', this.deleteBusiness)
 
+    }
+    async getEmployees(req, res, next) {
+        try {
+            const businessId = req.params.businessId
+            const employees = await employeesService.getEmployee(req.query.name, businessId)
+            res.send(employees)
+        } catch (error) {
+            next(error)
+        }
     }
     async higherEmployees(req, res, next) {
         try {
