@@ -84,7 +84,7 @@ class AccountService {
     account.picture = body.picture || account.picture
     account.currency = (account.currency + body.currency) || account.currency
     account.bio = body.bio || account.bio
-    account.openToFeedback = !account.openToFeedback
+    account.openToFeedback = body.openToFeedback || account.openToFeedback
     // const account = await dbContext.Account.findOneAndUpdate(
     //   { _id: user.id },
     //   { $set: update },
