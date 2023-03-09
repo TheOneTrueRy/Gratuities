@@ -101,17 +101,24 @@
       </div>
       <div class="col-12 col-md-6 offset-md-3 mt-4 d-flex justify-content-center">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+          <input @click="showReceivedTips()" type="radio" class="btn-check" name="btnradio" id="btnradio1"
+            autocomplete="off" checked>
           <label class="btn btn-outline-primary" for="btnradio1">Received</label>
 
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+          <input @click="showGivenTips()" type="radio" class="btn-check" name="btnradio" id="btnradio2"
+            autocomplete="off">
           <label class="btn btn-outline-primary" for="btnradio2">&nbsp;&nbsp;Given&nbsp;&nbsp;</label>
         </div>
       </div>
       <!-- SECTION tips list -->
-      <div v-if="tipType == 'received'">
+      <div v-if="tipType == 'received'" class="col-12 col-md-6 offset-md-3">
         <div v-for="t in receivedTips">
           <Tip :tip="t" />
+        </div>
+      </div>
+      <div v-else class="col-12 col-md-6 offset-md-3">
+        <div v-for="t in givenTips">
+          <TipGiven :tip="t" />
         </div>
       </div>
       <div v-if="businesses.length == 1" class="col-12 col-md-6 offset-md-3 mt-4">
@@ -145,6 +152,7 @@ import Pop from '../utils/Pop'
 import Business from '../components/Business.vue';
 import { useRoute } from 'vue-router';
 import Tip from '../components/Tip.vue';
+import TipGiven from '../components/TipGiven.vue';
 export default {
   setup() {
     const editable = ref({});
@@ -228,6 +236,7 @@ export default {
           logger.error(error);
         }
       },
+
       showReceivedTips() {
         AppState.tipType = 'received'
       },
@@ -236,7 +245,7 @@ export default {
       }
     };
   },
-  components: { Business, Tip }
+  components: { Business, Tip, TipGiven }
 }
 </script>
 
