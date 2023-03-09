@@ -4,7 +4,6 @@ import { logger } from "../utils/Logger";
 class EmployeesService {
     async getEmployee(name = '', businessId) {
         const filter = new RegExp(name, 'ig')
-        logger.log(name, filter)
         const employee = await dbContext.Employees
             .find({
                 employeeName: { $regex: filter }, businessId
