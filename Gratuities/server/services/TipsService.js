@@ -4,7 +4,7 @@ import { profileService } from "./ProfileService"
 
 class TipsService {
   async getSentTips(userId) {
-    const myTips = await dbContext.Tips.find({ giverId: userId }).populate('giver', 'name picture')
+    const myTips = await dbContext.Tips.find({ giverId: userId }).populate('receiver', 'name picture')
     return myTips
   }
   async giveTip(tip) {
