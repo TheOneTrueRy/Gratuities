@@ -1,6 +1,19 @@
 <template>
     <div>
-
+        <div class="d-flex align-items-center flex-column">
+            <div class="dropdown ps-2">
+                <img class="business-logo" :src="business.logo" alt="" data-bs-toggle="dropdown">
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Go To Business</a></li>
+                    <li><a class="dropdown-item" href="#">Edit</a></li>
+                    <li><a class="dropdown-item" href="#">Remove</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+                        class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i></h3>
+            </div>
+        </div>
 
     </div>
 </template>

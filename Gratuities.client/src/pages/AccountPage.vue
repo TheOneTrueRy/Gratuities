@@ -44,6 +44,10 @@
               <label for="picture" class="form-label">Picture</label>
               <input required v-model="editable.picture" class="form-control" id="picture" type="text">
             </div>
+            <div>
+              <label for="bio" class="form-label">Bio</label>
+              <input v-model="editable.bio" class="form-control" id="bio" type="text">
+            </div>
             <button data-bs-dismiss="offcanvas" class="btn btn-success" type="submit">Save Changes</button>
           </form>
         </div>
@@ -145,23 +149,10 @@
           </div>
         </div>
       </div>
-      <div class="col-12">
+      <div v-if="business">
         <h1>My Business:</h1>
-        <div class="d-flex align-items-center flex-column">
-          <div class="dropdown ps-2">
-            <img class="business-logo"
-              src="https://www.applebees.com/-/media/Applebees/Images/logos/applebees-social-logo.ashx" alt=""
-              data-bs-toggle="dropdown">
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Go To Business</a></li>
-              <li><a class="dropdown-item" href="#">Edit</a></li>
-              <li><a class="dropdown-item" href="#">Remove</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i></h3>
-          </div>
+        <div class="col-12 mb-4" v-for="b in business" :key="b.id">
+          <Business :business="b" />
         </div>
       </div>
     </div>
@@ -176,30 +167,29 @@ import { businessesService } from '../services/BusinessesService'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
+import Business from '../components/Business.vue';
 export default {
   setup() {
-    const editable = ref({})
-    const editable2 = ref({})
+    const editable = ref({});
+    const editable2 = ref({});
     async function getMyBusinesses() {
       try {
-        const userId = AppState.account.id
-        await businessesService.getMyBusiness(userId)
-      } catch (error) {
-        Pop.error(error.message)
-        logger.error(error)
+        const userId = AppState.account.id;
+        await businessesService.getMyBusiness(userId);
+      }
+      catch (error) {
+        Pop.error(error.message);
+        logger.error(error);
       }
     }
-
     onMounted(() => {
-      setTimeout(getMyBusinesses, 1000)
-    })
-
+      setTimeout(getMyBusinesses, 1000);
+    });
     watchEffect(() => {
       if (AppState.account.id) {
-        editable.value = { ...AppState.account }
+        editable.value = { ...AppState.account };
       }
-    })
-
+    });
     return {
       editable,
       editable2,
@@ -207,24 +197,27 @@ export default {
       account: computed(() => AppState.account),
       async editAccount() {
         try {
-          const formData = editable.value
-          await accountService.editAccount(formData)
-        } catch (error) {
-          Pop.error(error.message)
-          logger.error(error)
+          const formData = editable.value;
+          await accountService.editAccount(formData);
+        }
+        catch (error) {
+          Pop.error(error.message);
+          logger.error(error);
         }
       },
       async newBusiness() {
         try {
-          const formData = editable2.value
-          await businessesService.newBusiness(formData)
-        } catch (error) {
-          Pop.error(error.message)
-          logger.error(error)
+          const formData = editable2.value;
+          await businessesService.newBusiness(formData);
+        }
+        catch (error) {
+          Pop.error(error.message);
+          logger.error(error);
         }
       }
-    }
-  }
+    };
+  },
+  components: { Business }
 }
 </script>
 
