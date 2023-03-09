@@ -9,8 +9,8 @@ export class AccountController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
-      .get('tips/received', this.getReceivedTips)
-      .get('tips/sent', this.getSentTips)
+      .get('/tips/received', this.getReceivedTips)
+      .get('/tips/sent', this.getSentTips)
       .put('', this.editAccount)
 
   }

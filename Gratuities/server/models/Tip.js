@@ -13,3 +13,9 @@ TipSchema.virtual('giver', {
     justOne: true,
     ref: "Account"
 })
+TipSchema.virtual('receiver', {
+    localField: "receiverId",
+    foreignField: "_id",
+    justOne: true,
+    ref: "Account"
+})
