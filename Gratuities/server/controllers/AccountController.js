@@ -1,5 +1,6 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { accountService } from '../services/AccountService'
+import { reviewsService } from '../services/ReviewsService'
 import { tipsService } from '../services/TipsService'
 import BaseController from '../utils/BaseController'
 
@@ -11,8 +12,18 @@ export class AccountController extends BaseController {
       .get('', this.getUserAccount)
       .get('/tips/received', this.getReceivedTips)
       .get('/tips/sent', this.getSentTips)
+      .get('/reviews', this.getReviews)
       .put('', this.editAccount)
 
+  }
+  async getReviews(req, res, next) {
+    try {
+      const userId = req.userInfo.id
+      const reviews = await reviewsService.getReviews(userId)
+      return res.send(reviews)
+    } catch (error) {
+      next(error)
+    }
   }
   async getSentTips(req, res, next) {
     try {
