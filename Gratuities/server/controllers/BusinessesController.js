@@ -1,6 +1,7 @@
 import BaseController from "../utils/BaseController"
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { businessesService } from "../services/BusinessesService"
+import { employeesService } from "../services/EmployeesService"
 
 export class BusinessesController extends BaseController {
     constructor() {
@@ -10,8 +11,18 @@ export class BusinessesController extends BaseController {
             .get('/:businessId', this.getBusinessById)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createBusinesses)
+            .post('/:businessId/employees', this.higherEmployees)
             .delete('/:businessId', this.deleteBusiness)
 
+    }
+    async higherEmployees(req, res, next) {
+        try {
+            req.body.businessId = req.params.businessId
+            const employee = await employeesService.higherEmployees(req.body)
+            res.send(employee)
+        } catch (error) {
+            next(error);
+        }
     }
     async deleteBusiness(req, res, next) {
         try {
