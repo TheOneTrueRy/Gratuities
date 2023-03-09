@@ -1,10 +1,10 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-5 mt-4 ps-3">
+      <div class="col-5 col-md-3 offset-md-2 mt-4 ps-3 text-center">
         <img class="elevation-3 rounded user-picture" :src="account.picture" alt="">
       </div>
-      <div class="col-7 mt-4 ps-3">
+      <div class="col-7 col-md-5 mt-4 ps-3">
         <h1>{{ account.name }}</h1>
         <div class="justify-content-center row">
           <div class="col-10">
@@ -20,12 +20,12 @@
           </div>
         </div>
       </div>
-      <div class="col-12 d-flex justify-content-around pe-4">
+      <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-around pe-4">
         <button data-bs-toggle="offcanvas" data-bs-target="#addBusiness" aria-controls="offcanvasExample"
           class="btn figma-buttons text-light elevation-3 rounded-pill">New
           Business</button>
         <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
-          class="btn figma-buttons text-light elevation-3 rounded-pill">Edit</button>
+          class="btn figma-buttons text-light elevation-3 rounded-pill">Edit Account</button>
       </div>
 
       <!-- SECTION Offcanvas for edit account vvvv -->
@@ -96,22 +96,21 @@
       <!-- SECTION End of offcanvas for add business ^^^ -->
 
 
-      <div class="col-12 mt-3">
+      <div class="col-12 col-md-6 offset-md-3 mt-4">
         <h1>Recent Tips:</h1>
       </div>
       <!-- SECTION tips list -->
-      <div class="col-12 my-1" v-if="tipType == 'received'">
-        <!-- NOTE v-for this <div></div> -->
+      <div>
       </div>
-      <div v-if="businesses.length == 1">
+      <div v-if="businesses.length == 1" class="col-12 col-md-6 offset-md-3 mt-4">
         <h1>My Business:</h1>
-        <div class="col-12 mb-4" v-for="business in businesses">
+        <div class="col-12 col-md-6 offset-md-3 my-4" v-for="business in businesses">
           <Business :business="business" />
         </div>
       </div>
-      <div v-else-if="businesses.length > 1">
+      <div v-else-if="businesses.length > 1" class="col-12 col-md-6 offset-md-3 mt-4">
         <h1>My Businesses:</h1>
-        <div class="col-12 mb-4" v-for="business in businesses">
+        <div class="col-12 col-md-6 offset-md-3 my-4" v-for="business in businesses">
           <Business :business="business" />
         </div>
       </div>

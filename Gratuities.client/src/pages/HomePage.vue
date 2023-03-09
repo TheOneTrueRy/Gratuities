@@ -3,8 +3,12 @@
     <div class="row pb-1 mt-3 d-flex flex-column align-items-center justify-content-center">
       <div v-if="account?.id">
         <div class="col-12 text-center">
-          <img class="profile-picture border border-dark border-2 elevation-1" :src="account.picture"
-            :alt="account.picture">
+          <router-link :to="{
+            name: 'Account'
+          }">
+            <img class="profile-picture border border-dark border-2 elevation-1" :src="account.picture"
+              :alt="account.picture" title="Go to your account page!">
+          </router-link>
         </div>
         <div class="col-12 text-center">
           <h2 class="my-3 text-dark rounded text-center user-name">
@@ -161,6 +165,12 @@ export default {
   height: 20vh;
   width: 20vh;
   border-radius: 50%;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.profile-picture:hover {
+  transform: scale(1.1);
 }
 
 .home {

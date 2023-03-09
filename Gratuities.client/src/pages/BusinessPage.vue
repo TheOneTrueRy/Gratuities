@@ -7,7 +7,7 @@
             <div class="col-12 d-flex justify-content-center">
                 <span class="move-logo text-center">
                     <img class="business-logo" :src="business?.logo" alt="">
-                    <h1>{{ business?.name }}</h1>
+                    <h1>{{ business.name }}</h1>
                     <h3 class=""><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
                             class="mdi mdi-star star"></i><i class="mdi mdi-star-outline"></i><i
                             class="mdi mdi-star-outline"></i></h3>
@@ -68,7 +68,7 @@
                         <div class="col-3">
                             <img class="profile-picture" :src="account?.picture" :alt="account?.name">
                         </div>
-                        <div class="col-9">
+                        <div class="col-9 mt-2">
                             <p>
                                 {{ account?.name }}
                                 <br>
