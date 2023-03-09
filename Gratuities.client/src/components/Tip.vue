@@ -6,12 +6,7 @@
             </div>
             <div class="col-9">
                 <p>
-                    {{ tip?.giver.name }}
-                    <br>
-                    <i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                        class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i>
-                    <br>
-                    "Customer service is my passion"
+                    {{ tip?.giver.name }} - ${{ tip?.tip }}
                 </p>
             </div>
         </div>
