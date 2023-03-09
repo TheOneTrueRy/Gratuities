@@ -48,6 +48,12 @@
               <label for="bio" class="form-label">Bio</label>
               <input v-model="editable.bio" class="form-control" id="bio" type="text">
             </div>
+            <!-- FIXME the checkbox isn't actually displaying the value of openToFeedback -->
+            <!-- ANCHOR nvm fixed it -->
+            <div>
+              <label for="openToFeedback" class="form-label">Would you like to receive feedback?&nbsp;&nbsp;&nbsp;</label>
+              <input required v-model="editable.openToFeedback" class="my-3" id="openToFeedback" type="checkbox">
+            </div>
             <button data-bs-dismiss="offcanvas" class="btn btn-success" type="submit">Save Changes</button>
           </form>
         </div>
@@ -188,6 +194,7 @@ export default {
     watchEffect(() => {
       if (AppState.account.id) {
         editable.value = { ...AppState.account };
+        editable.bio = { ...AppState.account.bio };
       }
     });
     return {
