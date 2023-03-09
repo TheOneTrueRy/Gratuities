@@ -13,10 +13,11 @@
                     <li><a class="dropdown-item" href="#">Remove</a></li>
                 </ul>
             </div>
-            <div>
-                <h3><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                        class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i></h3>
+            <div class="mt-1">
+                <h3>{{ business.name }}</h3>
             </div>
+            <h3><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+                    class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i></h3>
         </div>
     </div>
 </template>
