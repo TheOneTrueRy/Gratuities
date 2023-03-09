@@ -29,7 +29,7 @@ class BusinessesService {
         const myBusiness = res.data.filter(b => b.ownerId == userId)
         logger.log('userId', userId)
         logger.log('res data of getmybusiness',res.data)
-        AppState.businesses = myBusiness
+        AppState.businesses = myBusiness.map(b => new Business(b))
         logger.log('my businesses:',myBusiness)
     }
 

@@ -104,15 +104,18 @@
       </div>
       <div v-if="businesses.length == 1">
         <h1>My Business:</h1>
-        <div class="col-12 mb-4" v-for="b in businesses" :key="b.id">
-          <Business :business="b" />
+        <div class="col-12 mb-4" v-for="business in businesses">
+          <Business :business="business" />
         </div>
       </div>
       <div v-else-if="businesses.length > 1">
         <h1>My Businesses:</h1>
-        <div class="col-12 mb-4" v-for="b in businesses" :key="b.id">
-          <Business :business="b" />
+        <div class="col-12 mb-4" v-for="business in businesses">
+          <Business :business="business" />
         </div>
+      </div>
+      <div v-else>
+
       </div>
     </div>
   </div>
