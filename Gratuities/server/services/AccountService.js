@@ -12,7 +12,7 @@ import { BadRequest } from '../utils/Errors'
 async function createAccountIfNeeded(account, user) {
   if (!account) {
     user._id = user.id
-    if(typeof user.name == 'string' && user.name.includes('@')){
+    if (typeof user.name == 'string' && user.name.includes('@')) {
       user.name = user.nickname
     }
     account = await dbContext.Account.create({
@@ -84,7 +84,9 @@ class AccountService {
     account.picture = body.picture || account.picture
     account.currency = (account.currency + body.currency) || account.currency
     account.bio = body.bio || account.bio
-    account.openToFeedback = body.openToFeedback || account.openToFeedback
+    account.openToFeedback = body.openToFeedback != null ? body.openToFeedback : account.openToFeedback
+    account.tips = body.tips || account.tips
+    account.rating = body.rating || account.rating
     // const account = await dbContext.Account.findOneAndUpdate(
     //   { _id: user.id },
     //   { $set: update },

@@ -1,10 +1,11 @@
 import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 import { profileService } from "./ProfileService"
+import { courier } from "../../authkey";
 
 class TipsService {
   async getSentTips(userId) {
-    const myTips = await dbContext.Tips.find({ giverId: userId }).populate('receiver', 'name picture')
+    const myTips = await dbContext.Tips.find({ giverId: userId }).populate('receiver', 'name rating picture')
     return myTips
   }
   async giveTip(tip) {
@@ -17,8 +18,25 @@ class TipsService {
 
     const tips = await dbContext.Tips.create(tip)
     giver.currency -= tip.tip
+    receiver.tips += tip.tip
     await giver.save()
+    await receiver.save()
     await tips.populate('giver receiver', 'name picture')
+
+
+    await courier.send({
+      message: {
+        to: {
+          email: receiver.email
+        },
+        template: "Y8REJMFD13M9MFQJVRRXH45T3HHA",
+        data: {
+          receiverName: receiver.name,
+          senderName: giver.name,
+          tip: tip.tip
+        },
+      },
+    });
     return tips
   }
   async getReceivedTips(userId) {

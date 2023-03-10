@@ -19,7 +19,8 @@
                                     ...
                                 </button>
                                 <ul class="dropdown-menu text-center">
-                                    Add to business.
+                                    <li><a class="dropdown-item selectable">Add to business</a></li>
+                                    <li><a class="dropdown-item selectable">Send feedback</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -59,19 +60,21 @@
                                 data-bs-target="#reviewOffcanvas" aria-controls="reviewOffcanvas">Review</button>
                         </div>
                     </div>
-                    <!-- FIXME currently displays ALL profiles, needs to display only those that have reviewed this profile -->
+                    <!-- SECTION displays all profiles that have reviewed this profile -->
                     <div class="row justify-content-center mt-3">
-                        <div v-for="p in profiles" class="col-11 employee-card rounded elevation-5 p-2 mb-4 col-md-8">
-                            <ProfileCard :profile="p" />
+                        <div v-for="r in reviews" class="col-11 review-card rounded elevation-5 p-2 mb-4 col-md-8">
+                            <ReviewCard :review="r" />
                         </div>
                     </div>
+                    <!-- SECTION reviews end -->
                 </div>
             </div>
         </div>
     </div>
 
     <!-- SECTION offcanvas with review form -->
-    <div class="offcanvas offcanvas-top review-offcanvas" tabindex="-1" id="reviewOffcanvas" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas offcanvas-top review-offcanvas" tabindex="-1" id="reviewOffcanvas"
+        aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasRightLabel">New Review</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -80,7 +83,11 @@
             <form @submit.prevent="leaveReview()">
                 <div class="mb-3">
                     <label for="rating" class="form-label">Rate {{ profile?.name }}'s Service</label>
-                    <input type="range" class="form-range" min="0" max="5" id="rating" v-model="editable.rating" required>
+                    <div class="d-flex justify-content-between">
+                        <i class="mdi mdi-numeric-0-circle-outline"></i><i class="mdi mdi-numeric-5-circle-outline"></i>
+                    </div>
+                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="rating" v-model="editable.rating"
+                        required>
                 </div>
                 <div class="mb-3">
                     <label for="review-body" class="form-label">Leave {{ profile?.name }} a comment</label>
@@ -97,10 +104,11 @@
 
 
 <script>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState.js';
 import ProfileCard from '../components/ProfileCard.vue';
+import ReviewCard from '../components/ReviewCard.vue';
 import { profilesService } from '../services/ProfilesService.js';
 import Pop from '../utils/Pop.js';
 
@@ -126,15 +134,35 @@ export default {
                 Pop.error("[GETTING PROFILE BY ID]", error);
             }
         }
+
+        async function getReviewsByProfileId() {
+            try {
+                const profileId = route.params.profileId
+                await profilesService.getReviewsByProfileId(profileId)
+            } catch (error) {
+                Pop.error('[GETTING REVIEWS BY PROFILEID]', error)
+            }
+        }
+
         onMounted(() => {
-            generateQRCode();
             getProfileById();
+            generateQRCode();
+            getReviewsByProfileId();
         });
+
+        watchEffect(() => {
+            if (route.params.profileId) {
+                getProfileById();
+                generateQRCode();
+                getReviewsByProfileId();
+            }
+        })
         return {
             editable,
             QRCode: computed(() => AppState.QRCode),
             profile: computed(() => AppState.profile),
             profiles: computed(() => AppState.profiles),
+            reviews: computed(() => AppState.reviews),
 
             async leaveReview() {
                 try {
@@ -147,7 +175,7 @@ export default {
             }
         };
     },
-    components: { ProfileCard }
+    components: { ProfileCard, ReviewCard }
 }
 </script>
 
@@ -158,6 +186,20 @@ export default {
     width: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+.scroller {
+    height: 40px;
+    overflow-y: scroll;
+    scrollbar-color: #EF476F;
+    scrollbar-width: thin;
+}
+
+.profile-picture-small {
+    height: 10vh;
+    width: 10vh;
+    border-radius: 50%;
+    border: 2px solid black;
 }
 
 .star-yellow {
@@ -180,7 +222,7 @@ export default {
     text-shadow: 1px 1px 2px black;
 }
 
-.employee-card {
+.review-card {
     background-color: #06D6A0;
     color: white;
     text-shadow: 1px 1px 2px black;
@@ -192,7 +234,7 @@ export default {
     transform: scale(0.9);
 }
 
-.review-offcanvas{
+.review-offcanvas {
     height: 50vh;
 }
 </style>

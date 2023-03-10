@@ -2,6 +2,42 @@ import { dbContext } from "../db/DbContext";
 import { BadRequest, Forbidden } from "../utils/Errors";
 
 class BusinessesService {
+
+
+
+    async updateBusiness(user, business, body) {
+        const businessToEdit
+            = await dbContext.Businesses.findById(business)
+        if (!businessToEdit) {
+            throw new BadRequest('Invalid business Id')
+        }
+        if (businessToEdit.ownerId.toString() !== user) {
+            throw new Forbidden('this is not your business')
+        }
+
+        businessToEdit
+            .name = body.name || businessToEdit
+                .name
+        businessToEdit
+            .coverImg = body.coverImg || businessToEdit
+                .coverImg
+        businessToEdit
+            .logo = body.logo || businessToEdit
+                .logo
+        businessToEdit
+            .rating = body.rating || businessToEdit
+                .rating
+        // const account = await dbContext.Account.findOneAndUpdate(
+        //   { _id: user.id },
+        //   { $set: update },
+        //   { runValidators: true, setDefaultsOnInsert: true, new: true }
+        // )
+        await businessToEdit
+            .save()
+        return businessToEdit
+
+    }
+
     async deleteBusiness(requestorId, businessId) {
         const foundBusiness = await this.getBusinessById(businessId);
         if (foundBusiness.ownerId.toString() != requestorId) {

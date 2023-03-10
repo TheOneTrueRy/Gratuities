@@ -1,8 +1,8 @@
 import { logger } from "../utils/Logger.js"
-import { api, QR_api } from "./AxiosService.js"
+import { api } from "./AxiosService.js"
 import { AppState } from "../AppState.js";
 import { Profile } from "../models/Profile.js";
-
+import { Review } from "../models/Review.js";
 
 class ProfilesService {
 
@@ -24,6 +24,13 @@ class ProfilesService {
         const res = await api.get('api/profiles/' + profileId)
         AppState.profile = new Profile(res.data)
         logger.log(AppState.profile)
+    }
+
+    async getReviewsByProfileId(profileId) {
+        AppState.reviews = []
+        const res = await api.get(`api/profiles/${profileId}/reviews`)
+        AppState.reviews = res.data.map(r => new Review(r))
+        logger.log('[REVIEWS BY PROFILEID]', AppState.reviews)
     }
 
     async generateQRCode(profileId) {

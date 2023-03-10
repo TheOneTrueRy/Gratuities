@@ -8,9 +8,11 @@ export const AccountSchema = new Schema(
     name: { type: String, required: true },
     picture: { type: String },
     // NOTE If you wish to add additional properties do so here
-    currency: { type: Number, required:true, default: 0, min: 0 },
+    currency: { type: Number, required: true, default: 0, min: 0 },
     bio: { type: String, default: '' },
-    openToFeedback: { type: Boolean, default: false }
+    openToFeedback: { type: Boolean, default: false },
+    tips: { type: Number, default: 0, min: 0 },
+    rating: { type: Number, default: 0, min: 0, max: 5 }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
