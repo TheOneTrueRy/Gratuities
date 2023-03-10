@@ -12,13 +12,13 @@
         </h1>
         <div class="justify-content-center row">
           <div class="col-10">
-            <h6>Monthly Payout: <i class="cash">$896.83</i>
+            <h6>Available to Payout: <i class="cash">${{ availableToPayout }}</i>
             </h6>
             <h6>Biggest Tip:</h6>
             <ul>
-              <li>This Cycle: <i class="cash">{{ highestTipMonth }}</i>
+              <li>This Month: <i class="cash">${{ highestTipMonth }}</i>
               </li>
-              <li>Ever: <i class="cash">{{ highestTipEver }}</i>
+              <li>Ever: <i class="cash">${{ highestTipEver }}</i>
               </li>
             </ul>
           </div>
@@ -235,6 +235,7 @@ export default {
       givenTips: computed(() => AppState.givenTips),
       highestTipMonth: computed(() => AppState.highestTipMonth),
       highestTipEver: computed(() => AppState.highestTipEver),
+      availableToPayout: computed(() => AppState.availableToPayout),
       async editAccount() {
         try {
           const formData = editable.value;

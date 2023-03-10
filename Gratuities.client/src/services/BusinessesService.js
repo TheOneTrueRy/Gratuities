@@ -45,6 +45,11 @@ class BusinessesService {
             AppState.businesses.splice(businessIndex, 1)
         }
     }
+
+    async editBusiness(formData, businessId){
+        const res = await api.put('api/businesses/' + businessId, formData)
+        AppState.business = new Business(res.data)
+    }
 }
 
 export const businessesService = new BusinessesService()
