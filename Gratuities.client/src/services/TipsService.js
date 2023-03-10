@@ -7,9 +7,12 @@ class TipsService{
         const res = await api.get('account/tips/received')
         AppState.receivedTips = res.data
         const currentMonth = new Date().getMonth()
+        logger.log('current month:', currentMonth)
         // const tipsThisMonth = res.data.filter()
         logger.log('the tips i have received:', AppState.receivedTips)
-        logger.log('does this work', new Date(res.data[0].createdAt).getMonth())
+        if(res.data.length > 0){
+            logger.log('does this work', new Date(res.data[0].createdAt).getMonth())
+        }
     }
     async getTipsGiven(){
         const res = await api.get('account/tips/sent')
