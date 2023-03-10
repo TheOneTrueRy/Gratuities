@@ -159,7 +159,7 @@ import { useRoute } from 'vue-router';
 import Tip from '../components/Tip.vue';
 import TipGiven from '../components/TipGiven.vue';
 import { ratingsService } from '../services/RatingsService';
-import StarRating from '../components/MyStarRating.vue';
+import MyStarRating from '../components/MyStarRating.vue';
 export default {
   setup() {
     const editable = ref({});
