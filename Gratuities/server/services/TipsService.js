@@ -4,6 +4,14 @@ import { profileService } from "./ProfileService"
 import { courier } from "../../authkey";
 
 class TipsService {
+  async tipsIsPayedOut(requestorId) {
+    const tips = await dbContext.Tips.find({ receiverId: requestorId })
+    tips.forEach(async t => {
+      t.isPayedOut = true
+      await t.save()
+    })
+    return tips
+  }
   async getSentTips(userId) {
     const myTips = await dbContext.Tips.find({ giverId: userId }).populate('receiver', 'name rating picture')
     return myTips
@@ -37,7 +45,7 @@ class TipsService {
         },
       },
     });
-    
+
     return tips
   }
   async getReceivedTips(userId) {

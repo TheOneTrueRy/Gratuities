@@ -14,7 +14,20 @@ export class AccountController extends BaseController {
       .get('/tips/sent', this.getSentTips)
       .get('/reviews', this.getReviews)
       .put('', this.editAccount)
-
+      .delete('/tips', this.tipsIsPayedOut)
+      .delete('/reviews', this.reviewsOpened)
+    }
+  reviewsOpened(arg0, reviewsOpened) {
+    throw new Error('Method not implemented.')
+  }
+  async tipsIsPayedOut(req, res, next) {
+    try {
+      const requestorId = req.userInfo.id
+      const tips = await tipsService.tipsIsPayedOut(requestorId)
+      return res.send(tips)
+    } catch (error) {
+      next(error)
+    }
   }
   async getReviews(req, res, next) {
     try {
