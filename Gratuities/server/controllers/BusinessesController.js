@@ -22,7 +22,7 @@ export class BusinessesController extends BaseController {
 
     async editBusiness(req, res, next) {
         try {
-            const business = await businessesService.updateBusiness(req.userInfo, req.body)
+            const business = await businessesService.updateBusiness(req.userInfo.id, req.params.businessId, req.body)
             res.send(business)
         } catch (error) {
             next(error)
