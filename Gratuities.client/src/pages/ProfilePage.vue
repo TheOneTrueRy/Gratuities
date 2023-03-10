@@ -68,6 +68,7 @@ import ReviewCard from '../components/ReviewCard.vue';
 import ProfileStarRating from '../components/ProfileStarRating.vue';
 import TipUserModal from '../components/TipUserModal.vue';
 import { profilesService } from '../services/ProfilesService.js';
+import { ratingsService } from "../services/RatingsService.js";
 import Pop from '../utils/Pop.js';
 
 export default {
@@ -93,6 +94,15 @@ export default {
             }
         }
 
+        async function calculateProfileRating() {
+            try {
+                const profileId = route.params.profileId
+                await ratingsService.calculateProfileRating(profileId)
+            } catch (error) {
+                Pop.error('[CALCULATING PROFILE RATING]')
+            }
+        }
+
         async function getReviewsByProfileId() {
             try {
                 const profileId = route.params.profileId
@@ -106,6 +116,7 @@ export default {
             getProfileById();
             generateQRCode();
             getReviewsByProfileId();
+            calculateProfileRating();
         });
 
         watchEffect(() => {
@@ -113,6 +124,7 @@ export default {
                 getProfileById();
                 generateQRCode();
                 getReviewsByProfileId();
+                calculateProfileRating();
             }
         })
         return {

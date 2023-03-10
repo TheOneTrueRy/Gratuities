@@ -16,7 +16,22 @@ class RatingsService {
         logger.log('average:', rating)
         const setRating = await api.put('account', rating)
         AppState.account.rating = rating
-        logger.log('account:', AppState.account)
+    }
+
+    async calculateProfileRating(profileId) {
+        const res = await api.get(`api/profiles/${profileId}/reviews`)
+        const review = res.data
+
+        const mappedRating = review.map(r => r.rating)
+        
+        let average = 0
+
+        mappedRating.forEach(r => {
+            average += r
+        })
+        average = average / mappedRating.length
+        let rating = Math.round(average * 2) / 2
+        AppState.profile.rating = rating
     }
 }
 export const ratingsService = new RatingsService 
