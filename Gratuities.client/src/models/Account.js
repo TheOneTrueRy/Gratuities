@@ -6,6 +6,7 @@ export class Account {
     this.picture = data.picture
     this.bio = data.bio
     this.openToFeedback = data.openToFeedback
+    this.rating = data.rating
     // TODO add additional properties if needed
   }
 }
