@@ -11,26 +11,27 @@ class ProfilesService {
         AppState.profiles = res.data.map(p => new Profile(p))
         logger.log('[ALL PROFILES]', AppState.profiles)
 
-        // TODO need to sort profiles once we get ratings calculated
+        // TODO make sure this vvv sorts correctly
+        AppState.profiles.sort(function (a, b) { return a.rating - b.rating }).reverse()
     }
     async getProfilesByQuery(query) {
         const res = await api.get('api/profiles', { params: { name: query.query } })
         AppState.profiles = res.data.map(p => new Profile(p))
-        logger.log('[FOUND PROFILES]', AppState.profiles)
     }
 
     async getProfileById(profileId) {
         AppState.profile = null
         const res = await api.get('api/profiles/' + profileId)
         AppState.profile = new Profile(res.data)
-        logger.log(AppState.profile)
     }
 
     async getReviewsByProfileId(profileId) {
         AppState.reviews = []
         const res = await api.get(`api/profiles/${profileId}/reviews`)
         AppState.reviews = res.data.map(r => new Review(r))
-        logger.log('[REVIEWS BY PROFILEID]', AppState.reviews)
+
+        // NOTE vvv sorts reviews BY RATING - highest to lowest
+        AppState.reviews.sort(function (a, b) { return a.rating - b.rating }).reverse()
     }
 
     async generateQRCode(profileId) {
@@ -39,7 +40,6 @@ class ProfilesService {
 
     async leaveReview(reviewData, profileId) {
         const res = await api.post(`api/profiles/${profileId}/reviews`, reviewData)
-        logger.log(res.data)
     }
 }
 
