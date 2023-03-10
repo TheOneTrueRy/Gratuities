@@ -5,18 +5,24 @@ import { api } from "./AxiosService"
 class TipsService{
     async getTipsReceived(){
         const res = await api.get('account/tips/received')
-        AppState.receivedTips = res.data
+        AppState.receivedTips = res.data.reverse()
         const currentMonth = new Date().getMonth()
-        logger.log('current month:', currentMonth)
-        // const tipsThisMonth = res.data.filter()
+        const tipsThisMonth = []
         logger.log('the tips i have received:', AppState.receivedTips)
-        if(res.data.length > 0){
-            logger.log('does this work', new Date(res.data[0].createdAt).getMonth())
-        }
+        res.data.forEach(t => {
+            if(new Date(t.createdAt).getMonth() == currentMonth){
+                tipsThisMonth.push(t)
+            }
+        })
+        tipsThisMonth.sort((a,b) => b.tip - a.tip)
+        const sortedTips = res.data.sort((a,b => b.tip - a.tip))
+        AppState.highestTipMonth = tipsThisMonth[0]
+        AppState.highestTipEver = sortedTips[0]
+        logger.log('Highest Tip This Month:', AppState.highestTipMonth)
     }
     async getTipsGiven(){
         const res = await api.get('account/tips/sent')
-        AppState.givenTips = res.data
+        AppState.givenTips = res.data.reverse()
         logger.log('the tips i have given:', AppState.givenTips)
     }
 }
