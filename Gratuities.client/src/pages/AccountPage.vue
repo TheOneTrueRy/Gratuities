@@ -214,7 +214,6 @@ export default {
       getTipsReceived()
       getTipsGiven()
       calculateRating()
-      findLargestTip()
     });
     onUnmounted(() => {
       clearBusinesses()
