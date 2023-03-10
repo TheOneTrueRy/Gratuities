@@ -29,7 +29,7 @@ class TipsService {
         to: {email: receiver.email},
         template: "Y8REJMFD13M9MFQJVRRXH45T3HHA",
         data: {
-          reciverName: receiver.name,
+          receiverName: receiver.name,
           senderName: giver.name,
           tip: tip.tip
         },
