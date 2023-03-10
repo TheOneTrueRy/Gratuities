@@ -15,9 +15,9 @@ class TipsService{
             }
         })
         tipsThisMonth.sort((a,b) => b.tip - a.tip)
-        const sortedTips = res.data.sort((a,b => b.tip - a.tip))
-        AppState.highestTipMonth = tipsThisMonth[0]
-        AppState.highestTipEver = sortedTips[0]
+        const sortedTips = AppState.receivedTips.sort((a,b) => b.tip - a.tip)
+        AppState.highestTipMonth = tipsThisMonth[0].tip
+        AppState.highestTipEver = sortedTips[0].tip
         logger.log('Highest Tip This Month:', AppState.highestTipMonth)
     }
     async getTipsGiven(){
