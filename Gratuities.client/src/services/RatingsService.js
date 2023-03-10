@@ -33,5 +33,13 @@ class RatingsService {
         let rating = Math.round(average * 2) / 2
         AppState.profile.rating = rating
     }
+
+    async deleteReview(reviewId){
+        const res = await api.delete('api/profiles/reviews/' + reviewId)
+        const reviewIndex = AppState.reviews.findIndex(r=>r.id == reviewId)
+        if (reviewIndex >= 0) {
+            AppState.reviews.splice(reviewIndex, 1)
+        }
+    }
 }
 export const ratingsService = new RatingsService 
