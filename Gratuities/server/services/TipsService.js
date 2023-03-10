@@ -5,7 +5,7 @@ import { courier } from "../../authkey";
 
 class TipsService {
   async getSentTips(userId) {
-    const myTips = await dbContext.Tips.find({ giverId: userId }).populate('receiver', 'name picture')
+    const myTips = await dbContext.Tips.find({ giverId: userId }).populate('receiver', 'name rating picture')
     return myTips
   }
   async giveTip(tip) {
