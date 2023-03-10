@@ -16,9 +16,9 @@
             </h6>
             <h6>Biggest Tip:</h6>
             <ul>
-              <li>This Cycle: <i class="cash">$34.25</i>
+              <li>This Cycle: <i class="cash">{{ highestTipMonth }}</i>
               </li>
-              <li>Ever: <i class="cash"></i>
+              <li>Ever: <i class="cash">{{ highestTipEver }}</i>
               </li>
             </ul>
           </div>
@@ -233,6 +233,8 @@ export default {
       tipType: computed(() => AppState.tipType),
       receivedTips: computed(() => AppState.receivedTips),
       givenTips: computed(() => AppState.givenTips),
+      highestTipMonth: computed(() => AppState.highestTipMonth),
+      highestTipEver: computed(() => AppState.highestTipEver),
       async editAccount() {
         try {
           const formData = editable.value;
