@@ -100,7 +100,7 @@
         <h1>Recent Tips:</h1>
       </div>
       <!-- SECTION buttons to switch between tip types -->
-      <div class="col-12 col-md-6 offset-md-3 mt-4 d-flex justify-content-center">
+      <div class="col-12 col-md-6 offset-md-3 mt-3 d-flex justify-content-center mb-3">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
           <input @click="showReceivedTips()" type="radio" class="btn-check" name="btnradio" id="btnradio1"
             autocomplete="off" checked>
