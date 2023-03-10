@@ -15,13 +15,14 @@ export class AccountController extends BaseController {
       .get('/reviews', this.getReviews)
       .put('', this.editAccount)
       .delete('/tips', this.tipsIsPayedOut)
-      .delete('/reviews', this.reviewsOpened)
+      .delete('/notifications', this.notificationsOpened)
     }
-  async reviewsOpened(req, res, next) {
+  async notificationsOpened(req, res, next) {
     try {
       const requestorId = req.userInfo.id
       const reviews = await tipsService.reviewsIsOpened(requestorId)
-      return res.send(reviews)
+      const tips = await tipsService.tipsIsOpened(requestorId)
+      return res.send(reviews, tips)
     } catch (error) {
       next(error)
     }
