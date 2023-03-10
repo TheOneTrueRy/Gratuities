@@ -8,5 +8,6 @@ export class Profile {
         this.picture = data.picture
         this.bio = data.bio
         this.name = data.name
+        this.rating = data.rating
     }
 }

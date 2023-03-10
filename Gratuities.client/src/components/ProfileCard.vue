@@ -1,14 +1,14 @@
 <template>
     <div class="ProfileCard">
-        <router-link :to="{ name: 'Profile', params: { profileId: profile.id } }" class="text-light">
+        <router-link :to="{ name: 'Profile', params: { profileId: profile?.id } }" class="text-light">
             <div class="row">
                 <div class="col-3 d-flex align-items-center">
-                    <img class="profile-picture-small selectable" :src="profile.picture" :alt="profile.picture">
+                    <img class="profile-picture-small selectable" :src="profile?.picture" :alt="profile?.picture">
                 </div>
                 <div class="col-9">
-                    <h6 class="text-center">{{ profile.name }} | {{ profile.rating }} Stars</h6>
+                    <h6 class="text-center">{{ profile?.name }} | {{ profile?.rating }} Stars</h6>
                     <div class="scroller">
-                        <p>"{{ profile.bio }}"</p>
+                        <p>"{{ profile?.bio }}"</p>
                     </div>
                 </div>
             </div>

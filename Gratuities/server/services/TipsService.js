@@ -37,6 +37,7 @@ class TipsService {
         },
       },
     });
+    
     return tips
   }
   async getReceivedTips(userId) {
