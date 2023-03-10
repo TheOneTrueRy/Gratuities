@@ -18,7 +18,7 @@
             <ul>
               <li>This Cycle: <i class="cash">$34.25</i>
               </li>
-              <li>Ever: <i class="cash">$66.66</i>
+              <li>Ever: <i class="cash"></i>
               </li>
             </ul>
           </div>
@@ -165,7 +165,6 @@ export default {
     const editable = ref({});
     const editable2 = ref({});
     const route = useRoute();
-
     async function calculateRating() {
       try {
         await ratingsService.calculateAccountRating()
@@ -215,6 +214,7 @@ export default {
       getTipsReceived()
       getTipsGiven()
       calculateRating()
+      findLargestTip()
     });
     onUnmounted(() => {
       clearBusinesses()
@@ -229,6 +229,7 @@ export default {
     return {
       editable,
       editable2,
+      maxTip,
       businesses: computed(() => AppState.businesses),
       account: computed(() => AppState.account),
       tipType: computed(() => AppState.tipType),
