@@ -42,6 +42,7 @@ import { AppState } from '../AppState.js'
 import { ref, computed } from "vue";
 import { useRoute } from 'vue-router';
 import Pop from '../utils/Pop.js';
+import { profilesService } from '../services/ProfilesService.js';
 
 export default {
     setup() {
