@@ -1,6 +1,7 @@
 import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 import { profileService } from "./ProfileService"
+import { courier } from "../../authkey";
 
 class TipsService {
   async getSentTips(userId) {
@@ -21,6 +22,18 @@ class TipsService {
     await giver.save()
     await receiver.save()
     await tips.populate('giver receiver', 'name picture')
+
+
+    await courier.send({
+      message: {
+        to: {"email": receiver.email},
+        template: "Y8REJMFD13M9MFQJVRRXH45T3HHA",
+        data: {
+          reciverName: receiver.name,
+          senderName: senderError.name,
+        },
+      },
+    });
     return tips
   }
   async getReceivedTips(userId) {
