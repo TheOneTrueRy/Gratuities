@@ -7,36 +7,8 @@
       <div class="col-7 col-md-5 mt-4 ps-3">
         <h1>{{ account.name }}<br>
           <div>
-            <h3 v-if="account.rating == 0.5"><i class="mdi mdi-star-half star"></i><i class="mdi mdi-star-outline"></i><i
-                class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i>
-            </h3>
-            <h3 v-if="account.rating == 1"><i class="mdi mdi-star star"></i><i class="mdi mdi-star-outline"></i><i
-                class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i>
-            </h3>
-            <h3 v-if="account.rating == 1.5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star-half star"></i><i
-                class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i>
-            </h3>
-            <h3 v-if="account.rating == 2"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i>
-            </h3>
-            <h3 v-if="account.rating == 2.5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                class="mdi mdi-star-half star"></i><i class="mdi mdi-star-outline"></i><i
-                class="mdi mdi-star-outline"></i>
-            </h3>
-            <h3 v-if="account.rating == 3"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                class="mdi mdi-star star"></i><i class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i>
-            </h3>
-            <h3 v-if="account.rating == 3.5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                class="mdi mdi-star star"></i><i class="mdi mdi-star-half  star"></i><i class="mdi mdi-star-outline"></i>
-            </h3>
-            <h3 v-if="account.rating == 4"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star-outline"></i></h3>
-            <h3 v-if="account.rating == 4.5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                class="mdi mdi-star star"></i><i class="mdi mdi-star"></i><i class="mdi mdi-star-half star"></i></h3>
-            <h3 v-if="account.rating == 5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                class="mdi mdi-star star"></i><i class="mdi mdi-star"></i><i class="mdi mdi-star star"></i></h3>
+            <StarRating />
           </div>
-
         </h1>
         <div class="justify-content-center row">
           <div class="col-10">
@@ -46,7 +18,7 @@
             <ul>
               <li>This Cycle: <i class="cash">$34.25</i>
               </li>
-              <li>Ever: <i class="cash">$66.66</i>
+              <li>Ever: <i class="cash"></i>
               </li>
             </ul>
           </div>
@@ -187,12 +159,12 @@ import { useRoute } from 'vue-router';
 import Tip from '../components/Tip.vue';
 import TipGiven from '../components/TipGiven.vue';
 import { ratingsService } from '../services/RatingsService';
+import StarRating from '../components/StarRating.vue';
 export default {
   setup() {
     const editable = ref({});
     const editable2 = ref({});
     const route = useRoute();
-
     async function calculateRating() {
       try {
         await ratingsService.calculateAccountRating()
@@ -290,7 +262,7 @@ export default {
       }
     };
   },
-  components: { Business, Tip, TipGiven }
+  components: { Business, Tip, TipGiven, StarRating }
 }
 </script>
 
