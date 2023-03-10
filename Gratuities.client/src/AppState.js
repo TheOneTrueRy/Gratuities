@@ -8,6 +8,7 @@ export const AppState = reactive({
 
   businesses: [],
   business: null,
+  businessRating: null,
 
   profiles: [],
   profile: null,

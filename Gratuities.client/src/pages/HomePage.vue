@@ -52,14 +52,7 @@
           <h6>Top businesses:</h6>
         </div>
         <div v-for="b in businesses" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
-          <div class="row">
-            <div class="col-4 d-flex align-items-center">
-              <img class="profile-picture-small img-fluid" :src="b.logo" :alt="b.logo">
-            </div>
-            <div class="col-8">
-              <p>{{ b.name }}<br>*****<br>{{ b.location }}</p>
-            </div>
-          </div>
+          <BusinessCard :business="b" />
         </div>
       </div>
       <div v-else>
@@ -82,6 +75,7 @@ import Pop from '../utils/Pop.js';
 import { businessesService } from '../services/BusinessesService.js'
 import { profilesService } from "../services/ProfilesService.js";
 import ProfileCard from '../components/ProfileCard.vue';
+import BusinessCard from '../components/BusinessCard.vue';
 
 export default {
   setup() {
@@ -140,7 +134,7 @@ export default {
       }
     };
   },
-  components: { ProfileCard }
+  components: { ProfileCard, BusinessCard }
 }
 </script>
 
@@ -158,10 +152,10 @@ export default {
 }
 
 .profile-picture-small {
-    height: 10vh;
-    width: 10vh;
-    border-radius: 50%;
-    border: 2px solid black;
+  height: 10vh;
+  width: 10vh;
+  border-radius: 50%;
+  border: 2px solid black;
 }
 
 .biggest-tip-amount {
