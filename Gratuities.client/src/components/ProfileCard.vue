@@ -47,4 +47,8 @@ export default {
     overflow-y: scroll;
     scrollbar-width: none;
 }
+
+.scroller::-webkit-scrollbar {
+    display: none;
+}
 </style>
