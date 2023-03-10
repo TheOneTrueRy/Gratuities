@@ -17,5 +17,7 @@ export const AppState = reactive({
   receivedTips: [],
   givenTips: [],
 
+  reviews: [],
+
   QRCode: null
 })
