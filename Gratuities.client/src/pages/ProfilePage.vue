@@ -33,7 +33,8 @@
                             <h1>{{ profile?.name }}</h1>
                         </div>
                         <div class="col-6 d-flex justify-content-center">
-                            <button class="btn tip-button elevation-2 rounded-pill px-4">Tip</button>
+                            <button class="btn tip-button elevation-2 rounded-pill px-4" data-bs-toggle="modal"
+                                data-bs-target="#tipUserModal">Tip</button>
                         </div>
                         <div class="col-6 d-flex justify-content-center">
                             <button class="btn review-button elevation-2 rounded-pill" data-bs-toggle="offcanvas"
@@ -46,7 +47,6 @@
                             <ReviewCard :review="r" />
                         </div>
                     </div>
-                    <!-- SECTION reviews end -->
                 </div>
             </div>
         </div>
@@ -54,6 +54,8 @@
 
     <!-- SECTION offcanvas with review form -->
     <RateProfileOffcanvas />
+    <!-- SECTION modal to tip user -->
+    <TipUserModal />
 </template>
 
 
@@ -65,6 +67,7 @@ import ProfileCard from '../components/ProfileCard.vue';
 import ProfileCarousel from '../components/ProfileCarousel.vue';
 import RateProfileOffcanvas from '../components/RateProfileOffcanvas.vue';
 import ReviewCard from '../components/ReviewCard.vue';
+import TipUserModal from '../components/TipUserModal.vue';
 import { profilesService } from '../services/ProfilesService.js';
 import Pop from '../utils/Pop.js';
 
@@ -119,19 +122,9 @@ export default {
             profile: computed(() => AppState.profile),
             profiles: computed(() => AppState.profiles),
             reviews: computed(() => AppState.reviews),
-
-            async leaveReview() {
-                try {
-                    const profileId = route.params.profileId
-                    const reviewData = editable.value
-                    await profilesService.leaveReview(reviewData, profileId)
-                } catch (error) {
-                    Pop.error('[LEAVING REVIEW]', error)
-                }
-            }
         };
     },
-    components: { ProfileCard, ReviewCard, ProfileCarousel, RateProfileOffcanvas }
+    components: { ProfileCard, ReviewCard, ProfileCarousel, RateProfileOffcanvas, TipUserModal }
 }
 </script>
 
@@ -189,5 +182,4 @@ export default {
 .employee-card:active {
     transform: scale(0.9);
 }
-
 </style>
