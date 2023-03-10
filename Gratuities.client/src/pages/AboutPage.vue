@@ -11,7 +11,8 @@
           &nbsp; &nbsp; &nbsp;
           Ever run into the problem of doing your best but still having to share your tips with co-workers not pulling
           their weight? Maybe you wanted to reward a specific package delivery person for how considerate they were with
-          your cargo. NOW with our app you can find a business, employee, or independent user and send them a tip or write
+          your cargo. Now, with Gratuities, you can find a business, employee, or independent user and send them a tip or
+          write
           them a review based on their service.
           <br><br>
           &nbsp; &nbsp; &nbsp;
@@ -41,9 +42,9 @@
                 molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
                 facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JUTAK8CE-7fb60e9eb27e-512" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-md-block">
+              <div class="carousel-caption d-md-block d-flex align-items-center flex-column">
                 <h5 class="our-names">Joe Calvi</h5>
-                <p class="gratuities-links rounded"><a target="_blank" href="https://github.com/JoeCalvi"
+                <p class="gratuities-links rounded-pill w-50"><a target="_blank" href="https://github.com/JoeCalvi"
                     class="text-light mdi mdi-github"></a><a target="_blank" href="https://www.linkedin.com/in/joe-calvi/"
                     class="mdi mdi-linkedin text-light"></a></p>
               </div>
@@ -54,9 +55,9 @@
                 molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
                 facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04KR6PJ7FS-06b92423e603-512" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-md-block">
+              <div class="carousel-caption d-md-block d-flex align-items-center flex-column">
                 <h5 class="our-names">Ry Wittman</h5>
-                <p class="gratuities-links rounded"><a target="_blank" href="https://github.com/theonetruery"
+                <p class="gratuities-links rounded-pill w-50"><a target="_blank" href="https://github.com/theonetruery"
                     class="text-light mdi mdi-github"></a><a target="_blank"
                     href="https://www.linkedin.com/in/theonetruery/" class="mdi mdi-linkedin text-light"></a></p>
               </div>
@@ -67,9 +68,9 @@
                 molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
                 facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JYH9MQ3X-085de4f9b941-512" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-md-block">
+              <div class="carousel-caption d-md-block d-flex align-items-center flex-column">
                 <h5 class="our-names">Andrew Meyers</h5>
-                <p class="gratuities-links rounded"><a target="_blank" href="https://github.com/laxmeyers"
+                <p class="gratuities-links rounded-pill w-50"><a target="_blank" href="https://github.com/laxmeyers"
                     class="text-light mdi mdi-github"></a><a target="_blank"
                     href="https://www.linkedin.com/in/andrew-meyers-5474ab205/" class="mdi mdi-linkedin text-light"></a>
                 </p>
@@ -81,9 +82,9 @@
                 molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
                 facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JLV5G4NB-7e93e64f0292-512" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-md-block">
+              <div class="carousel-caption d-md-block d-flex align-items-center flex-column">
                 <h5 class="our-names">Bryson Bloom</h5>
-                <p class="gratuities-links rounded"><a target="_blank" href="https://github.com/BrysonBloom"
+                <p class="gratuities-links rounded-pill w-50"><a target="_blank" href="https://github.com/BrysonBloom"
                     class="text-light mdi mdi-github"></a><a target="_blank"
                     href="https://www.linkedin.com/in/bryson-bloom-520973262/" class="mdi mdi-linkedin text-light"></a>
                 </p>
@@ -96,9 +97,9 @@
                 programming gives exactly that. 5th most handsome developer in Gratuities dev team.
               </p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04K3VA3544-b04aee2f5a06-512" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-md-block">
+              <div class="carousel-caption d-md-block d-flex align-items-center flex-column">
                 <h5 class="our-names">Jonah Wood</h5>
-                <p class="gratuities-links rounded"><a target="_blank" href="https://github.com/JonahWood"
+                <p class="gratuities-links rounded-pill w-50"><a target="_blank" href="https://github.com/JonahWood"
                     class="text-light mdi mdi-github"></a><a target="_blank"
                     href="https://www.linkedin.com/in/jonah-wood-a9591b262/" class="mdi mdi-linkedin text-light"></a></p>
               </div>
