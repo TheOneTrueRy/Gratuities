@@ -5,7 +5,10 @@
         <img class="elevation-3 rounded user-picture" :src="account.picture" alt="">
       </div>
       <div class="col-7 col-md-5 mt-4 ps-3">
-        <h1>{{ account.name }}</h1>
+        <h1>{{ account.name }}<br>
+          <h3><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+              class="mdi mdi-star-outline"></i><i class="mdi mdi-star-outline"></i></h3>
+        </h1>
         <div class="justify-content-center row">
           <div class="col-10">
             <h6>Monthly Payout: <i class="cash">$896.83</i>
@@ -154,11 +157,22 @@ import Business from '../components/Business.vue';
 import { useRoute } from 'vue-router';
 import Tip from '../components/Tip.vue';
 import TipGiven from '../components/TipGiven.vue';
+import { ratingsService } from '../services/RatingsService';
 export default {
   setup() {
     const editable = ref({});
     const editable2 = ref({});
     const route = useRoute();
+
+    async function calculateRating() {
+      try {
+        await ratingsService.calculateRating(AppState.account.id)
+      } catch (error) {
+        Pop.error(error.message)
+        logger.error(error)
+      }
+    }
+
 
     async function getTipsReceived() {
       try {
@@ -198,6 +212,7 @@ export default {
       setTimeout(getMyBusinesses, 1000);
       getTipsReceived()
       getTipsGiven()
+      calculateRating()
     });
     onUnmounted(() => {
       clearBusinesses()
