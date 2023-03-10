@@ -166,7 +166,7 @@ export default {
 
     async function calculateRating() {
       try {
-        await ratingsService.calculateRating(AppState.account.id)
+        await ratingsService.calculateAccountRating()
       } catch (error) {
         Pop.error(error.message)
         logger.error(error)
