@@ -11,7 +11,7 @@ class BusinessesService {
         if (!businessToEdit) {
             throw new BadRequest('Invalid business Id')
         }
-        if (businessToEdit.ownerId !== user.id) {
+        if (businessToEdit.ownerId.toString() !== user) {
             throw new Forbidden('this is not your business')
         }
 
