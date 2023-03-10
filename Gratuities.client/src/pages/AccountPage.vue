@@ -7,18 +7,18 @@
       <div class="col-7 col-md-5 mt-4 ps-3">
         <h1>{{ account.name }}<br>
           <div>
-            <StarRating />
+            <MyStarRating />
           </div>
         </h1>
         <div class="justify-content-center row">
           <div class="col-10">
-            <h6>Available to Payout: <i class="cash">$896.83</i>
+            <h6>Available to Payout: <i class="cash">${{ availableToPayout }}</i>
             </h6>
             <h6>Biggest Tip:</h6>
             <ul>
-              <li>This Month: <i class="cash">{{ highestTipMonth }}</i>
+              <li>This Month: <i class="cash">${{ highestTipMonth }}</i>
               </li>
-              <li>Ever: <i class="cash">{{ highestTipEver }}</i>
+              <li>Ever: <i class="cash">${{ highestTipEver }}</i>
               </li>
             </ul>
           </div>
@@ -159,7 +159,7 @@ import { useRoute } from 'vue-router';
 import Tip from '../components/Tip.vue';
 import TipGiven from '../components/TipGiven.vue';
 import { ratingsService } from '../services/RatingsService';
-import StarRating from '../components/StarRating.vue';
+import MyStarRating from '../components/MyStarRating.vue';
 export default {
   setup() {
     const editable = ref({});
@@ -235,6 +235,7 @@ export default {
       givenTips: computed(() => AppState.givenTips),
       highestTipMonth: computed(() => AppState.highestTipMonth),
       highestTipEver: computed(() => AppState.highestTipEver),
+      availableToPayout: computed(() => AppState.availableToPayout),
       async editAccount() {
         try {
           const formData = editable.value;
@@ -264,7 +265,7 @@ export default {
       }
     };
   },
-  components: { Business, Tip, TipGiven, StarRating }
+  components: { Business, Tip, TipGiven, MyStarRating }
 }
 </script>
 

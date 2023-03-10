@@ -6,10 +6,8 @@
                     <div class="row align-items-center">
                         <div class="col-6">
                             <!-- TODO needs to reflect user's actual rating -->
-                            <div class="h1"><i class="mdi mdi-star star-yellow star-shadow"></i><i
-                                    class="mdi mdi-star star-yellow star-shadow"></i>
-                                <i class="mdi mdi-star star-yellow star-shadow"></i><i class="mdi mdi-star-outline"></i><i
-                                    class="mdi mdi-star-outline"></i>
+                            <div>
+                                <ProfileStarRating />
                             </div>
                         </div>
                         <div class="col-6 text-end">
@@ -67,6 +65,7 @@ import ProfileCard from '../components/ProfileCard.vue';
 import ProfileCarousel from '../components/ProfileCarousel.vue';
 import RateProfileOffcanvas from '../components/RateProfileOffcanvas.vue';
 import ReviewCard from '../components/ReviewCard.vue';
+import ProfileStarRating from '../components/ProfileStarRating.vue';
 import TipUserModal from '../components/TipUserModal.vue';
 import { profilesService } from '../services/ProfilesService.js';
 import Pop from '../utils/Pop.js';
@@ -124,7 +123,7 @@ export default {
             reviews: computed(() => AppState.reviews),
         };
     },
-    components: { ProfileCard, ReviewCard, ProfileCarousel, RateProfileOffcanvas, TipUserModal }
+    components: { ProfileCard, ReviewCard, ProfileCarousel, RateProfileOffcanvas, TipUserModal, ProfileStarRating }
 }
 </script>
 

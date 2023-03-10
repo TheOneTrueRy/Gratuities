@@ -23,6 +23,7 @@ class ProfilesService {
         AppState.profile = null
         const res = await api.get('api/profiles/' + profileId)
         AppState.profile = new Profile(res.data)
+        logger.log(AppState.profile)
     }
 
     async getReviewsByProfileId(profileId) {

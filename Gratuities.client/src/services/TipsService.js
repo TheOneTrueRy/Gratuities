@@ -8,16 +8,23 @@ class TipsService {
         AppState.receivedTips = res.data.reverse()
         const currentMonth = new Date().getMonth()
         const tipsThisMonth = []
+        let notPayedoutTips = []
+        let availableToPayout = 0
+        notPayedoutTips = res.data.filter(t => t.isPayedOut == false)
         logger.log('the tips i have received:', AppState.receivedTips)
         res.data.forEach(t => {
             if (new Date(t.createdAt).getMonth() == currentMonth) {
                 tipsThisMonth.push(t)
             }
         })
+        notPayedoutTips.forEach(t => {
+            availableToPayout += t.tip
+        })
         tipsThisMonth.sort((a, b) => b.tip - a.tip)
         const sortedTips = AppState.receivedTips.sort((a, b) => b.tip - a.tip)
         AppState.highestTipMonth = tipsThisMonth[0].tip
         AppState.highestTipEver = sortedTips[0].tip
+        AppState.availableToPayout = availableToPayout
         logger.log('Highest Tip This Month:', AppState.highestTipMonth)
     }
     async getTipsGiven() {
