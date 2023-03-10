@@ -8,10 +8,11 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form @submit.prevent="">
+                        <form @submit.prevent="sendTip()">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Recipient's username"
-                                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <input v-model="editable.tip" type="number" min="1" class="form-control"
+                                    placeholder="tip amount" aria-label="Recipient's username"
+                                    aria-describedby="button-addon2">
                                 <button class="btn btn-outline-light modal-button" type="submit" required
                                     data-bs-dismiss="modal" id="button-addon2">Send</button>
                             </div>
@@ -27,21 +28,24 @@
 
 <script>
 import { AppState } from "../AppState.js";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useRoute } from "vue-router";
 import Pop from "../utils/Pop.js";
 import { tipsService } from "../services/TipsService.js";
 
 export default {
     setup() {
+        const editable = ref({})
         const route = useRoute()
         return {
+            editable,
             profile: computed(() => AppState.profile),
 
             async sendTip() {
                 try {
+                    const tip = editable.value
                     const profileId = route.params.profileId
-                    await tipsService.sendTip(profileId)
+                    await tipsService.sendTip(profileId, tip)
                 } catch (error) {
                     Pop.error('[SENDING TIP]', error)
                 }
