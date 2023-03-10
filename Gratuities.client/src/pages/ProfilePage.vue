@@ -27,33 +27,14 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-11">
-                            <div id="profileCarousel" class="carousel slide">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img :src="profile?.picture" class="d-block rounded profile-picture"
-                                            :alt="profile?.picture">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img :src="QRCode" class="d-block rounded profile-picture" :alt="QRCode">
-                                    </div>
-                                </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#profileCarousel"
-                                    data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon visually-hidden" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#profileCarousel"
-                                    data-bs-slide="next">
-                                    <span class="carousel-control-next-icon visually-hidden" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
+                            <ProfileCarousel />
                         </div>
                         <div class="col-12 mt-2 text-center">
                             <h1>{{ profile?.name }}</h1>
                         </div>
                         <div class="col-6 d-flex justify-content-center">
-                            <button class="btn tip-button elevation-2 rounded-pill px-4">Tip</button>
+                            <button class="btn tip-button elevation-2 rounded-pill px-4" data-bs-toggle="modal"
+                                data-bs-target="#tipUserModal">Tip</button>
                         </div>
                         <div class="col-6 d-flex justify-content-center">
                             <button class="btn review-button elevation-2 rounded-pill" data-bs-toggle="offcanvas"
@@ -66,40 +47,15 @@
                             <ReviewCard :review="r" />
                         </div>
                     </div>
-                    <!-- SECTION reviews end -->
                 </div>
             </div>
         </div>
     </div>
 
     <!-- SECTION offcanvas with review form -->
-    <div class="offcanvas offcanvas-top review-offcanvas" tabindex="-1" id="reviewOffcanvas"
-        aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">New Review</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <form @submit.prevent="leaveReview()">
-                <div class="mb-3">
-                    <label for="rating" class="form-label">Rate {{ profile?.name }}'s Service</label>
-                    <div class="d-flex justify-content-between">
-                        <i class="mdi mdi-numeric-0-circle-outline"></i><i class="mdi mdi-numeric-5-circle-outline"></i>
-                    </div>
-                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="rating" v-model="editable.rating"
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label for="review-body" class="form-label">Leave {{ profile?.name }} a comment</label>
-                    <textarea class="form-control" id="body" maxlength="500" rows="3" v-model="editable.body"></textarea>
-                </div>
-                <div class="text-end">
-                    <button class="btn review-button" data-bs-dismiss="offcanvas" type="submit">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- SECTION review offcanvas end -->
+    <RateProfileOffcanvas />
+    <!-- SECTION modal to tip user -->
+    <TipUserModal />
 </template>
 
 
@@ -108,7 +64,10 @@ import { computed, onMounted, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState.js';
 import ProfileCard from '../components/ProfileCard.vue';
+import ProfileCarousel from '../components/ProfileCarousel.vue';
+import RateProfileOffcanvas from '../components/RateProfileOffcanvas.vue';
 import ReviewCard from '../components/ReviewCard.vue';
+import TipUserModal from '../components/TipUserModal.vue';
 import { profilesService } from '../services/ProfilesService.js';
 import Pop from '../utils/Pop.js';
 
@@ -163,19 +122,9 @@ export default {
             profile: computed(() => AppState.profile),
             profiles: computed(() => AppState.profiles),
             reviews: computed(() => AppState.reviews),
-
-            async leaveReview() {
-                try {
-                    const profileId = route.params.profileId
-                    const reviewData = editable.value
-                    await profilesService.leaveReview(reviewData, profileId)
-                } catch (error) {
-                    Pop.error('[LEAVING REVIEW]', error)
-                }
-            }
         };
     },
-    components: { ProfileCard, ReviewCard }
+    components: { ProfileCard, ReviewCard, ProfileCarousel, RateProfileOffcanvas, TipUserModal }
 }
 </script>
 
@@ -232,9 +181,5 @@ export default {
 
 .employee-card:active {
     transform: scale(0.9);
-}
-
-.review-offcanvas {
-    height: 50vh;
 }
 </style>
