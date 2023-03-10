@@ -11,10 +11,10 @@ export class ProfilesController extends BaseController {
     this.router
       .get('', this.getProfiles)
       .get('/:id', this.getProfile)
+      .get('/:profileId/reviews', this.getReviews)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('/:profileId/tips', this.giveTip)
       .post('/:profileId/reviews', this.giveReview)
-      .get('/:profileId/reviews', this.getReviews)
       .delete('/reviews/:reviewId', this.deleteReview)
   }
   async deleteReview(req, res, next) {
