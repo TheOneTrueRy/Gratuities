@@ -7,7 +7,7 @@
       <div class="col-7 col-md-5 mt-4 ps-3">
         <h1>{{ account.name }}<br>
           <div>
-            <StarRating />
+            <MyStarRating />
           </div>
         </h1>
         <div class="justify-content-center row">
@@ -159,7 +159,7 @@ import { useRoute } from 'vue-router';
 import Tip from '../components/Tip.vue';
 import TipGiven from '../components/TipGiven.vue';
 import { ratingsService } from '../services/RatingsService';
-import StarRating from '../components/StarRating.vue';
+import StarRating from '../components/MyStarRating.vue';
 export default {
   setup() {
     const editable = ref({});
@@ -264,7 +264,7 @@ export default {
       }
     };
   },
-  components: { Business, Tip, TipGiven, StarRating }
+  components: { Business, Tip, TipGiven, MyStarRating }
 }
 </script>
 
