@@ -60,22 +60,13 @@
                                 data-bs-target="#reviewOffcanvas" aria-controls="reviewOffcanvas">Review</button>
                         </div>
                     </div>
-                    <!-- FIXME currently displays ALL profiles, needs to display only those that have reviewed this profile -->
+                    <!-- SECTION displays all profiles that have reviewed this profile -->
                     <div class="row justify-content-center mt-3">
-                        <div v-for="r in reviews" class="col-11 employee-card rounded elevation-5 p-2 mb-4 col-md-8">
-                            <router-link :to="{ name: 'Profile', params: { profileId: r.creatorId } }" class="text-light">
-                                <div class="row">
-                                    <div class="col-4 d-flex align-items-center">
-                                        <img class="profile-picture-small selectable" :src="r.creator.picture"
-                                            :alt="r.creator.picture">
-                                    </div>
-                                    <div class="col-8">
-                                        <p>{{ r.creator.name }}<br>{{ r.rating }}<br>{{ r.review }}</p>
-                                    </div>
-                                </div>
-                            </router-link>
+                        <div v-for="r in reviews" class="col-11 review-card rounded elevation-5 p-2 mb-4 col-md-8">
+                            <ReviewCard :review="r" />
                         </div>
                     </div>
+                    <!-- SECTION reviews end -->
                 </div>
             </div>
         </div>
@@ -113,10 +104,11 @@
 
 
 <script>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState.js';
 import ProfileCard from '../components/ProfileCard.vue';
+import ReviewCard from '../components/ReviewCard.vue';
 import { profilesService } from '../services/ProfilesService.js';
 import Pop from '../utils/Pop.js';
 
@@ -157,10 +149,19 @@ export default {
             generateQRCode();
             getReviewsByProfileId();
         });
+
+        watchEffect(() => {
+            if (route.params.profileId) {
+                getProfileById();
+                generateQRCode();
+                getReviewsByProfileId();
+            }
+        })
         return {
             editable,
             QRCode: computed(() => AppState.QRCode),
             profile: computed(() => AppState.profile),
+            profiles: computed(() => AppState.profiles),
             reviews: computed(() => AppState.reviews),
 
             async leaveReview() {
@@ -174,7 +175,7 @@ export default {
             }
         };
     },
-    components: { ProfileCard }
+    components: { ProfileCard, ReviewCard }
 }
 </script>
 
@@ -185,6 +186,13 @@ export default {
     width: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+.scroller {
+    height: 40px;
+    overflow-y: scroll;
+    scrollbar-color: #EF476F;
+    scrollbar-width: thin;
 }
 
 .profile-picture-small {
@@ -214,7 +222,7 @@ export default {
     text-shadow: 1px 1px 2px black;
 }
 
-.employee-card {
+.review-card {
     background-color: #06D6A0;
     color: white;
     text-shadow: 1px 1px 2px black;
