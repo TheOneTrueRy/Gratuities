@@ -11,7 +11,12 @@
                     <div class="mb-3">
                         <label for="rating" class="form-label">Rate {{ profile?.name }}'s Service</label>
                         <div class="d-flex justify-content-between">
-                            <i class="mdi mdi-numeric-0-circle-outline"></i><i class="mdi mdi-numeric-5-circle-outline"></i>
+                            <i class="mdi mdi-numeric-0-circle-outline"></i>
+                            <i class="mdi mdi-numeric-1-circle-outline"></i>
+                            <i class="mdi mdi-numeric-2-circle-outline"></i>
+                            <i class="mdi mdi-numeric-3-circle-outline"></i>
+                            <i class="mdi mdi-numeric-4-circle-outline"></i>
+                            <i class="mdi mdi-numeric-5-circle-outline"></i>
                         </div>
                         <input type="range" class="form-range" min="0" max="5" step="0.5" id="rating"
                             v-model="editable.rating" required>
