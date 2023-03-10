@@ -229,7 +229,6 @@ export default {
     return {
       editable,
       editable2,
-      maxTip,
       businesses: computed(() => AppState.businesses),
       account: computed(() => AppState.account),
       tipType: computed(() => AppState.tipType),
