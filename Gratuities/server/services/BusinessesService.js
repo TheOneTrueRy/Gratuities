@@ -1,5 +1,7 @@
+import { courier } from "../../authkey";
 import { dbContext } from "../db/DbContext";
 import { BadRequest, Forbidden } from "../utils/Errors";
+import { profileService } from "./ProfileService";
 
 class BusinessesService {
 
@@ -54,8 +56,22 @@ class BusinessesService {
         return business
     }
     async createBusiness(body) {
+        
+        const owner = await profileService.getProfileById(body.ownerId)
         const business = await dbContext.Businesses.create(body)
         await business.populate('owner', 'name picture email')
+
+         await courier.send({
+            message: {
+                to: {
+                    email: owner.email,
+                },
+                template: "4XAPVNN78M4EV5K9ABKDFCK344AS",
+                data: {
+                    business: business.name,
+                },
+            },
+        });
         return business
     }
 
