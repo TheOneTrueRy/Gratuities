@@ -15,6 +15,17 @@ export class ProfilesController extends BaseController {
       .post('/:profileId/tips', this.giveTip)
       .post('/:profileId/reviews', this.giveReview)
       .get('/:profileId/reviews', this.getReviews)
+      .delete('/reviews/:reviewId', this.deleteReview)
+  }
+  async deleteReview(req, res, next) {
+    try {
+      const reviewId = req.params.reviewId
+      const requestorId = req.userInfo.id
+      const review = await profileService.deleteReview(requestorId, reviewId)
+      res.send(review)
+    } catch (error) {
+      next(error);
+    }
   }
   async getReviews(req, res, next) {
     try {

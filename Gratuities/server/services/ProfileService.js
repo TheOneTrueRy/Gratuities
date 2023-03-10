@@ -1,9 +1,21 @@
 import { dbContext } from '../db/DbContext.js'
-import { BadRequest } from '../utils/Errors.js'
+import { BadRequest, Forbidden } from '../utils/Errors.js'
 
 // IMPORTANT profiles should not be updated or modified in any way here. Use the AccountService
 
 class ProfileService {
+  async deleteReview(requestorId, reviewId) {
+    const foundReview = await dbContext.Reviews.findById(reviewId)
+    // @ts-ignore
+    if (!foundReview) {
+      throw new BadRequest('invalid review id: ' + reviewId)
+    }
+    if (foundReview.creatorId.toString() != requestorId) {
+      throw new Forbidden('Tis not your business')
+    }
+    await foundReview.remove()
+    return foundReview
+  }
   /**
     * Returns a user profile from its id
     * @param {string} id
