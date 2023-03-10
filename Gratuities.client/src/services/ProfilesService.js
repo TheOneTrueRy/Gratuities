@@ -26,6 +26,13 @@ class ProfilesService {
         logger.log(AppState.profile)
     }
 
+    async getReviewsByProfileId(profileId) {
+        AppState.profiles = []
+        const res = await api.get(`api/profiles/${profileId}/reviews`)
+        logger.log('[REVIEWS BY PROFILEID]', res.data)
+        // AppState.profiles = res.data.map(p => new Profile(p))
+    }
+
     async generateQRCode(profileId) {
         AppState.QRCode = `https://api.qrserver.com/v1/create-qr-code/?data=http://localhost:8080/#/profiles/${profileId};size=100x100`
     }

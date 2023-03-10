@@ -19,7 +19,8 @@
                                     ...
                                 </button>
                                 <ul class="dropdown-menu text-center">
-                                    Add to business.
+                                    <li><a class="dropdown-item selectable">Add to business</a></li>
+                                    <li><a class="dropdown-item selectable">Send feedback</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -71,7 +72,8 @@
     </div>
 
     <!-- SECTION offcanvas with review form -->
-    <div class="offcanvas offcanvas-top review-offcanvas" tabindex="-1" id="reviewOffcanvas" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas offcanvas-top review-offcanvas" tabindex="-1" id="reviewOffcanvas"
+        aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasRightLabel">New Review</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -80,7 +82,11 @@
             <form @submit.prevent="leaveReview()">
                 <div class="mb-3">
                     <label for="rating" class="form-label">Rate {{ profile?.name }}'s Service</label>
-                    <input type="range" class="form-range" min="0" max="5" id="rating" v-model="editable.rating" required>
+                    <div class="d-flex justify-content-between">
+                        <i class="mdi mdi-numeric-0-circle-outline"></i><i class="mdi mdi-numeric-5-circle-outline"></i>
+                    </div>
+                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="rating" v-model="editable.rating"
+                        required>
                 </div>
                 <div class="mb-3">
                     <label for="review-body" class="form-label">Leave {{ profile?.name }} a comment</label>
@@ -126,9 +132,20 @@ export default {
                 Pop.error("[GETTING PROFILE BY ID]", error);
             }
         }
+
+        async function getReviewsByProfileId() {
+            try {
+                const profileId = route.params.profileId
+                await profilesService.getReviewsByProfileId(profileId)
+            } catch (error) {
+                Pop.error('[GETTING REVIEWS BY PROFILEID]', error)
+            }
+        }
+
         onMounted(() => {
-            generateQRCode();
             getProfileById();
+            generateQRCode();
+            getReviewsByProfileId();
         });
         return {
             editable,
@@ -192,7 +209,7 @@ export default {
     transform: scale(0.9);
 }
 
-.review-offcanvas{
+.review-offcanvas {
     height: 50vh;
 }
 </style>
