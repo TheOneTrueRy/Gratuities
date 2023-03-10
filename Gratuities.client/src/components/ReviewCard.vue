@@ -39,8 +39,7 @@ export default {
 .scroller {
     height: 40px;
     overflow-y: scroll;
-    scrollbar-color: #EF476F;
-    scrollbar-width: thin;
+    scrollbar-width: none;
 }
 
 .profile-picture-small {
