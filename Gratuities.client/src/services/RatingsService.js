@@ -1,3 +1,4 @@
+import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
@@ -11,9 +12,11 @@ mappedRating.forEach(r => {
 average +=r
 })
 average = average/mappedRating.length;
-    let finalRounded = Math.round(average*2)/2
-logger.log('average:', finalRounded)
-return finalRounded
+    let rating = Math.round(average*2)/2
+logger.log('average:', rating)
+const setRating = await api.put('account', rating)
+AppState.account.rating = rating
+logger.log('account:', AppState.account)
 }
 }
 export const ratingsService = new RatingsService 
