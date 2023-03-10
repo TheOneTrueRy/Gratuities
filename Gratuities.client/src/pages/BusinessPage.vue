@@ -7,10 +7,16 @@
             <div class="col-12 d-flex justify-content-center">
                 <span class="move-logo text-center">
                     <img class="business-logo" :src="business?.logo" alt="">
-                    <h1>{{ business?.name }}</h1>
+                    <h1>{{ business?.name }}
+                    </h1>
                     <h3 class=""><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
                             class="mdi mdi-star star"></i><i class="mdi mdi-star-outline"></i><i
                             class="mdi mdi-star-outline"></i></h3>
+                    <button v-if="account.id == business?.ownerId" class="w-50 rounded-pill btn btn-outline-success"
+                        type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                        aria-controls="offcanvasExample">
+                        <i class="mdi mdi-pen"></i>
+                    </button>
                 </span>
             </div>
             <div class="col-12 col-md-6 offset-md-3">
@@ -86,6 +92,33 @@
 
 
     </div>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Edit Business</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <form @submit.prevent="editBusiness(business?.id)">
+                    <div class="mb-3" v-if="business?.name">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" required v-model="editable2.name">
+                    </div>
+                    <div class="mb-3" v-if="business?.name">
+                        <label for="coverImg" class="form-label">CoverImg</label>
+                        <input type="text" class="form-control" required v-model="editable2.coverImg">
+                    </div>
+                    <div class="mb-3" v-if="business?.name">
+                        <label for="logo" class="form-label">Logo</label>
+                        <input type="text" class="form-control" required v-model="editable2.logo">
+                    </div>
+                    <button type="submit" class="btn btn-success">Save Changes</button>
+                </form>
+            </div>
+            <div class="dropdown mt-3">
+            </div>
+        </div>
+    </div>
 </template>
 
 
@@ -100,6 +133,11 @@ import Pop from '../utils/Pop';
 export default {
     setup() {
         const editable = ref({})
+        const editable2 = ref({
+            name: AppState.business?.name,
+            coverImg: AppState.business?.coverImg,
+            logo: AppState.business?.logo,
+        })
         const route = useRoute();
         async function getBusinessById() {
             try {
@@ -120,8 +158,18 @@ export default {
         })
         return {
             editable,
+            editable2,
             business: computed(() => AppState.business),
             account: computed(() => AppState.account),
+            async editBusiness(businessId) {
+                try {
+                    const formData = editable2.value
+                    await businessesService.editBusiness(formData, businessId)
+                } catch (error) {
+                    Pop.error(error.message)
+                    logger.error(error)
+                }
+            }
         }
     }
 }
@@ -129,6 +177,10 @@ export default {
 
 
 <style lang="scss" scoped>
+.figma-buttons {
+    background-color: #ef476eaf;
+}
+
 .coverImg {
     max-height: 32vh;
     object-fit: cover;
