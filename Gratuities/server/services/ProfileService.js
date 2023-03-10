@@ -44,6 +44,13 @@ class ProfileService {
       // .limit(20)
       .exec()
   }
+
+  async editProfile(id, rating){
+    const profile = await dbContext.Account.findById(id)
+    profile.rating = rating
+    profile.save()
+    return profile
+  }
 }
 
 export const profileService = new ProfileService()

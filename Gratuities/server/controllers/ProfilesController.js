@@ -13,6 +13,7 @@ export class ProfilesController extends BaseController {
       .get('/:id', this.getProfile)
       .get('/:profileId/reviews', this.getReviews)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .put('/:profileId', this.editProfile)
       .post('/:profileId/tips', this.giveTip)
       .post('/:profileId/reviews', this.giveReview)
       .delete('/reviews/:reviewId', this.deleteReview)
@@ -71,6 +72,17 @@ export class ProfilesController extends BaseController {
   async getProfile(req, res, next) {
     try {
       const profile = await profileService.getProfileById(req.params.id)
+      res.send(profile)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async editProfile(req, res, next){
+    try {
+      const rating = req.body
+      const profileId = req.params.profileId
+      const profile = await profileService.editProfile(rating, profileId)
       res.send(profile)
     } catch (error) {
       next(error)
