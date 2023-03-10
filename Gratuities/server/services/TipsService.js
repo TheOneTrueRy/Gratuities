@@ -30,7 +30,8 @@ class TipsService {
         template: "Y8REJMFD13M9MFQJVRRXH45T3HHA",
         data: {
           reciverName: receiver.name,
-          senderName: senderError.name,
+          senderName: giver.name,
+          tip: tip.tip
         },
       },
     });
