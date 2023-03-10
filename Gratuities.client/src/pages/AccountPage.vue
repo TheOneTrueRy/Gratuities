@@ -12,11 +12,11 @@
         </h1>
         <div class="justify-content-center row">
           <div class="col-10">
-            <h6>Monthly Payout: <i class="cash">$896.83</i>
+            <h6>Available to Payout: <i class="cash">$896.83</i>
             </h6>
             <h6>Biggest Tip:</h6>
             <ul>
-              <li>This Cycle: <i class="cash">{{ highestTipMonth }}</i>
+              <li>This Month: <i class="cash">{{ highestTipMonth }}</i>
               </li>
               <li>Ever: <i class="cash">{{ highestTipEver }}</i>
               </li>
