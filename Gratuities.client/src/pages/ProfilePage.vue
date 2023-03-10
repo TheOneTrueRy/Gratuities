@@ -53,33 +53,7 @@
     </div>
 
     <!-- SECTION offcanvas with review form -->
-    <div class="offcanvas offcanvas-top review-offcanvas" tabindex="-1" id="reviewOffcanvas"
-        aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">New Review</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <form @submit.prevent="leaveReview()">
-                <div class="mb-3">
-                    <label for="rating" class="form-label">Rate {{ profile?.name }}'s Service</label>
-                    <div class="d-flex justify-content-between">
-                        <i class="mdi mdi-numeric-0-circle-outline"></i><i class="mdi mdi-numeric-5-circle-outline"></i>
-                    </div>
-                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="rating" v-model="editable.rating"
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label for="review-body" class="form-label">Leave {{ profile?.name }} a comment</label>
-                    <textarea class="form-control" id="body" maxlength="500" rows="3" v-model="editable.body"></textarea>
-                </div>
-                <div class="text-end">
-                    <button class="btn review-button" data-bs-dismiss="offcanvas" type="submit">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- SECTION review offcanvas end -->
+    <RateProfileOffcanvas />
 </template>
 
 
@@ -89,6 +63,7 @@ import { useRoute } from 'vue-router';
 import { AppState } from '../AppState.js';
 import ProfileCard from '../components/ProfileCard.vue';
 import ProfileCarousel from '../components/ProfileCarousel.vue';
+import RateProfileOffcanvas from '../components/RateProfileOffcanvas.vue';
 import ReviewCard from '../components/ReviewCard.vue';
 import { profilesService } from '../services/ProfilesService.js';
 import Pop from '../utils/Pop.js';
@@ -156,7 +131,7 @@ export default {
             }
         };
     },
-    components: { ProfileCard, ReviewCard, ProfileCarousel }
+    components: { ProfileCard, ReviewCard, ProfileCarousel, RateProfileOffcanvas }
 }
 </script>
 
@@ -215,7 +190,4 @@ export default {
     transform: scale(0.9);
 }
 
-.review-offcanvas {
-    height: 50vh;
-}
 </style>
