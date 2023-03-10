@@ -80,9 +80,9 @@ export class ProfilesController extends BaseController {
 
   async editProfile(req, res, next){
     try {
-      const rating = req.body
+      const body = req.body
       const profileId = req.params.profileId
-      const profile = await profileService.editProfile(rating, profileId)
+      const profile = await profileService.editProfile(body, profileId)
       res.send(profile)
     } catch (error) {
       next(error)
