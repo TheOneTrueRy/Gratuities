@@ -38,6 +38,13 @@ class BusinessesService {
         const res = await api.get('api/businesses/' + businessId)
         AppState.business = new Business(res.data)
     }
+    async removeBusiness(businessId){
+        const res = await api.delete('api/businesses/' + businessId)
+        const businessIndex = AppState.businesses.findIndex(b => b.id == businessId)
+        if (businessIndex >= 0) {
+            AppState.businesses.splice(businessIndex, 1)
+        }
+    }
 }
 
 export const businessesService = new BusinessesService()

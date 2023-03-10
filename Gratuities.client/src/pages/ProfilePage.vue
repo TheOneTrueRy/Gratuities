@@ -5,6 +5,7 @@
                 <div class="col-12">
                     <div class="row align-items-center">
                         <div class="col-6">
+                            <!-- TODO needs to reflect user's actual rating -->
                             <div class="h1"><i class="mdi mdi-star star-yellow star-shadow"></i><i
                                     class="mdi mdi-star star-yellow star-shadow"></i>
                                 <i class="mdi mdi-star star-yellow star-shadow"></i><i class="mdi mdi-star-outline"></i><i
@@ -28,7 +29,8 @@
                             <div id="profileCarousel" class="carousel slide">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img :src="profile?.picture" class="d-block rounded profile-picture" :alt="profile?.picture">
+                                        <img :src="profile?.picture" class="d-block rounded profile-picture"
+                                            :alt="profile?.picture">
                                     </div>
                                     <div class="carousel-item">
                                         <img :src="QRCode" class="d-block rounded profile-picture" :alt="QRCode">
@@ -53,23 +55,49 @@
                             <button class="btn tip-button elevation-2 rounded-pill px-4">Tip</button>
                         </div>
                         <div class="col-6 d-flex justify-content-center">
-                            <button class="btn review-button elevation-2 rounded-pill">Review</button>
+                            <button class="btn review-button elevation-2 rounded-pill" data-bs-toggle="offcanvas"
+                                data-bs-target="#reviewOffcanvas" aria-controls="reviewOffcanvas">Review</button>
                         </div>
                     </div>
+                    <!-- FIXME currently displays ALL profiles, needs to display only those that have reviewed this profile -->
                     <div class="row justify-content-center mt-3">
                         <div v-for="p in profiles" class="col-11 employee-card rounded elevation-5 p-2 mb-4 col-md-8">
-                            <ProfileCard :profile="p"/>
+                            <ProfileCard :profile="p" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- SECTION offcanvas with review form -->
+    <div class="offcanvas offcanvas-top review-offcanvas" tabindex="-1" id="reviewOffcanvas" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">New Review</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form @submit.prevent="leaveReview()">
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Rate {{ profile?.name }}'s Service</label>
+                    <input type="range" class="form-range" min="0" max="5" id="rating" v-model="editable.rating" required>
+                </div>
+                <div class="mb-3">
+                    <label for="review-body" class="form-label">Leave {{ profile?.name }} a comment</label>
+                    <textarea class="form-control" id="body" maxlength="500" rows="3" v-model="editable.body"></textarea>
+                </div>
+                <div class="text-end">
+                    <button class="btn review-button" data-bs-dismiss="offcanvas" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- SECTION review offcanvas end -->
 </template>
 
 
 <script>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState.js';
 import ProfileCard from '../components/ProfileCard.vue';
@@ -79,6 +107,7 @@ import Pop from '../utils/Pop.js';
 export default {
     setup() {
         const route = useRoute();
+        const editable = ref({})
         async function generateQRCode() {
             try {
                 const profileId = route.params.profileId;
@@ -102,9 +131,20 @@ export default {
             getProfileById();
         });
         return {
+            editable,
             QRCode: computed(() => AppState.QRCode),
             profile: computed(() => AppState.profile),
-            profiles: computed(() => AppState.profiles)
+            profiles: computed(() => AppState.profiles),
+
+            async leaveReview() {
+                try {
+                    const profileId = route.params.profileId
+                    const reviewData = editable.value
+                    await profilesService.leaveReview(reviewData, profileId)
+                } catch (error) {
+                    Pop.error('[LEAVING REVIEW]', error)
+                }
+            }
         };
     },
     components: { ProfileCard }
@@ -113,13 +153,13 @@ export default {
 
 
 <style lang="scss" scoped>
-
-.profile-picture{
+.profile-picture {
     height: 20em;
-    width:100%;
+    width: 100%;
     object-fit: cover;
     object-position: center;
 }
+
 .star-yellow {
     color: #FFD166;
 }
@@ -128,27 +168,31 @@ export default {
     text-shadow: 1px 1px 2px black;
 }
 
-.tip-button{
+.tip-button {
     background-color: #06D6A0;
     color: white;
     text-shadow: 1px 1px 2px black;
 }
 
-.review-button{
+.review-button {
     background-color: #EF476F;
     color: white;
     text-shadow: 1px 1px 2px black;
 }
 
 .employee-card {
-  background-color: #06D6A0;
-  color: white;
-  text-shadow: 1px 1px 2px black;
-  transition: 0.5s;
-  cursor: pointer;
+    background-color: #06D6A0;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    transition: 0.5s;
+    cursor: pointer;
 }
 
 .employee-card:active {
-  transform: scale(0.9);
+    transform: scale(0.9);
+}
+
+.review-offcanvas{
+    height: 50vh;
 }
 </style>
