@@ -21,11 +21,17 @@
             {{ highestTipEverGiven.receiver.name }}
           </h6>
         </div>
+        <div v-else class="col-12 text-center">
+          <h6 class="biggest-tip"><span>No Tips Given Yet</span></h6>
+        </div>
         <div v-if="highestTipEver" class="col-12 text-center">
           <h6 class="biggest-tip">Your Biggest Tip received: <span class="biggest-tip-amount">${{ highestTipEver.tip
           }}</span> from
             {{ highestTipEver.giver.name }}
           </h6>
+        </div>
+        <div v-else class="col-12 text-center">
+          <h6 class="biggest-tip">No Tips Received Yet</h6>
         </div>
       </div>
       <div v-else>
