@@ -15,9 +15,16 @@
             {{ account.name }}
           </h2>
         </div>
-        <div class="col-12 text-center">
-          <h6 class="biggest-tip">Your Biggest Tip: <span class="biggest-tip-amount">$0.89</span> to AppleBees server
-            @Bill
+        <div v-if="highestTipEverGiven" class="col-12 text-center">
+          <h6 class="biggest-tip">Your Biggest Tip Sent: <span class="biggest-tip-amount">${{ highestTipEverGiven.tip
+          }}</span> to
+            {{ highestTipEverGiven.receiver.name }}
+          </h6>
+        </div>
+        <div v-if="highestTipEver" class="col-12 text-center">
+          <h6 class="biggest-tip">Your Biggest Tip received: <span class="biggest-tip-amount">${{ highestTipEver.tip
+          }}</span> from
+            {{ highestTipEver.giver.name }}
           </h6>
         </div>
       </div>
@@ -76,6 +83,7 @@ import { businessesService } from '../services/BusinessesService.js'
 import { profilesService } from "../services/ProfilesService.js";
 import ProfileCard from '../components/ProfileCard.vue';
 import BusinessCard from '../components/BusinessCard.vue';
+import { tipsService } from "../services/TipsService.js";
 
 export default {
   setup() {
@@ -106,6 +114,8 @@ export default {
     onMounted(() => {
       getHighestRatedBusinesses();
       getHighestRatedProfiles();
+      tipsService.getTipsReceived()
+      tipsService.getTipsGiven()
     });
     onUnmounted(() => {
       clearBusinesses()
@@ -116,6 +126,8 @@ export default {
       businesses: computed(() => AppState.businesses),
       profiles: computed(() => AppState.profiles),
       searchType: computed(() => AppState.searchType),
+      highestTipEver: computed(() => AppState.highestTipEver),
+      highestTipEverGiven: computed(() => AppState.highestTipEverGiven),
       async search() {
         try {
           let query = editable.value;
@@ -159,7 +171,8 @@ export default {
 }
 
 .biggest-tip-amount {
-  color: #06D6A0;
+  color: #1c6820;
+  font-weight: 1000;
 }
 
 .biggest-tip {

@@ -20,6 +20,7 @@ export const AppState = reactive({
   highestTipEver: null,
   highestTipMonth: null,
   availableToPayout: null,
+  highestTipEverGiven: null,
 
   reviews: [],
 
