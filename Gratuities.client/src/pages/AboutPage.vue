@@ -42,23 +42,24 @@
                 molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
                 facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JUTAK8CE-7fb60e9eb27e-512" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-md-block d-flex align-items-center flex-column">
+              <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Joe Calvi</h5>
-                <p class="gratuities-links rounded-pill w-50"><a target="_blank" href="https://github.com/JoeCalvi"
-                    class="text-light mdi mdi-github"></a><a target="_blank" href="https://www.linkedin.com/in/joe-calvi/"
-                    class="mdi mdi-linkedin text-light"></a></p>
+                <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
+                    href="https://github.com/JoeCalvi" class="text-light mdi mdi-github"></a><a target="_blank"
+                    href="https://www.linkedin.com/in/joe-calvi/" class="mdi mdi-linkedin text-light"></a></p>
               </div>
             </div>
             <!-- SECTION Ry's Card -->
             <div class="carousel-item">
-              <p class="bio rounded bg-gradient">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
-                molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
-                facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
+              <p class="bio rounded bg-gradient">Video Game GOD and Official "Funniest Man Alive" randomly gets into
+                coding due to actually needing money (we live in a society). 5th most handsome developer on the
+                Gratuities
+                team.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04KR6PJ7FS-06b92423e603-512" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-md-block d-flex align-items-center flex-column">
-                <h5 class="our-names">Ry Wittman</h5>
-                <p class="gratuities-links rounded-pill w-50"><a target="_blank" href="https://github.com/theonetruery"
-                    class="text-light mdi mdi-github"></a><a target="_blank"
+              <div class="carousel-caption d-flex align-items-center flex-column">
+                <h5 class="our-names">Ryan "Ry" Wittman</h5>
+                <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
+                    href="https://github.com/theonetruery" class="text-light mdi mdi-github"></a><a target="_blank"
                     href="https://www.linkedin.com/in/theonetruery/" class="mdi mdi-linkedin text-light"></a></p>
               </div>
             </div>
@@ -68,10 +69,10 @@
                 molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
                 facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JYH9MQ3X-085de4f9b941-512" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-md-block d-flex align-items-center flex-column">
+              <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Andrew Meyers</h5>
-                <p class="gratuities-links rounded-pill w-50"><a target="_blank" href="https://github.com/laxmeyers"
-                    class="text-light mdi mdi-github"></a><a target="_blank"
+                <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
+                    href="https://github.com/laxmeyers" class="text-light mdi mdi-github"></a><a target="_blank"
                     href="https://www.linkedin.com/in/andrew-meyers-5474ab205/" class="mdi mdi-linkedin text-light"></a>
                 </p>
               </div>
@@ -82,10 +83,10 @@
                 molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
                 facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JLV5G4NB-7e93e64f0292-512" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-md-block d-flex align-items-center flex-column">
+              <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Bryson Bloom</h5>
-                <p class="gratuities-links rounded-pill w-50"><a target="_blank" href="https://github.com/BrysonBloom"
-                    class="text-light mdi mdi-github"></a><a target="_blank"
+                <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
+                    href="https://github.com/BrysonBloom" class="text-light mdi mdi-github"></a><a target="_blank"
                     href="https://www.linkedin.com/in/bryson-bloom-520973262/" class="mdi mdi-linkedin text-light"></a>
                 </p>
               </div>
@@ -94,13 +95,13 @@
             <div class="carousel-item">
               <p class="bio">Being an avid LEGO builder since I was quite young, I've always had a love for the art of
                 creation and
-                programming gives exactly that. 5th most handsome developer in Gratuities dev team.
+                programming gives exactly that. 5th most handsome developer on the Gratuities team.
               </p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04K3VA3544-b04aee2f5a06-512" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-md-block d-flex align-items-center flex-column">
+              <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Jonah Wood</h5>
-                <p class="gratuities-links rounded-pill w-50"><a target="_blank" href="https://github.com/JonahWood"
-                    class="text-light mdi mdi-github"></a><a target="_blank"
+                <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
+                    href="https://github.com/JonahWood" class="text-light mdi mdi-github"></a><a target="_blank"
                     href="https://www.linkedin.com/in/jonah-wood-a9591b262/" class="mdi mdi-linkedin text-light"></a></p>
               </div>
             </div>
@@ -136,6 +137,12 @@ export default {
   background-color: #06d69e5d;
   font-family: 'Lato', sans-serif;
   font-size: 2vh;
+  height: 10vh;
+  overflow-y: scroll;
+}
+
+.bio::-webkit-scrollbar {
+  display: none;
 }
 
 .w-ease {
@@ -157,7 +164,7 @@ img {
 .gratuities-links {
   font-size: 5vh;
   background-color: #06d69ec1;
-  width: 100%;
+  width: 35%;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.587);
 }
 

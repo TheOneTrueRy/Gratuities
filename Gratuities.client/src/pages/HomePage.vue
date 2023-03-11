@@ -163,7 +163,7 @@ export default {
 }
 
 .biggest-tip {
-  text-shadow: 2px 4px 4px #00000040;
+  text-shadow: 1px 1px 2px #00000040;
   font-weight: 400;
 }
 
