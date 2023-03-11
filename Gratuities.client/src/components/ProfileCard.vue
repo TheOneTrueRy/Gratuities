@@ -6,7 +6,8 @@
                     <img class="profile-picture-small" :src="profile?.picture" :alt="profile?.picture">
                 </div>
                 <div class="col-9">
-                    <h6 class="text-start">{{ profile?.name }} | {{ profile?.rating }}</h6>
+                    <h6 class="text-start">{{ profile?.name }} | {{ profile?.rating ? profile?.rating : 'No Ratings Yet' }}
+                    </h6>
                     <div class="scroller">
                         <span>"{{ profile?.bio }}"</span>
                     </div>
