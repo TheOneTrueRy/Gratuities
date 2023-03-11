@@ -6,9 +6,9 @@
                     <img class="profile-picture-small" :src="profile?.picture" :alt="profile?.picture">
                 </div>
                 <div class="col-9">
-                    <h6 class="text-center">{{ profile?.name }} | {{ profile?.rating }}</h6>
+                    <h6 class="text-start">{{ profile?.name }} | {{ profile?.rating }}</h6>
                     <div class="scroller">
-                        <p>"{{ profile?.bio }}"</p>
+                        <span>"{{ profile?.bio }}"</span>
                     </div>
                 </div>
             </div>
@@ -43,9 +43,8 @@ export default {
 }
 
 .scroller {
-    height: 40px;
+    height: 75%;
     overflow-y: scroll;
-    scrollbar-width: none;
 }
 
 .scroller::-webkit-scrollbar {
