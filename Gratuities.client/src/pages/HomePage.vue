@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watchEffect } from 'vue';
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
@@ -114,11 +114,15 @@ export default {
     onMounted(() => {
       getHighestRatedBusinesses();
       getHighestRatedProfiles();
-      tipsService.getTipsReceived()
-      tipsService.getTipsGiven()
     });
     onUnmounted(() => {
       clearBusinesses()
+    })
+    watchEffect(() => {
+      if (AppState.account) {
+        tipsService.getTipsReceived()
+        tipsService.getTipsGiven()
+      }
     })
     return {
       editable,

@@ -12,8 +12,8 @@ export class ProfilesController extends BaseController {
       .get('', this.getProfiles)
       .get('/:id', this.getProfile)
       .get('/:profileId/reviews', this.getReviews)
-      .use(Auth0Provider.getAuthorizedUserInfo)
       .put('/:profileId', this.editProfile)
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .post('/:profileId/tips', this.giveTip)
       .post('/:profileId/reviews', this.giveReview)
       .delete('/reviews/:reviewId', this.deleteReview)
@@ -82,10 +82,10 @@ export class ProfilesController extends BaseController {
     try {
       const body = req.body
       const profileId = req.params.profileId
-      const profile = await profileService.editProfile(body, profileId)
+      const profile = await profileService.editProfile(profileId, body)
       res.send(profile)
     } catch (error) {
-      next(error)
+      next(error.message)
     }
   }
 }

@@ -4,7 +4,7 @@
             <div class="row mt-1">
                 <div class="col-12">
                     <div class="row align-items-center">
-                        <div class="col-6">
+                        <div class="col-6 d-md-none">
                             <!-- TODO needs to reflect user's actual rating -->
                             <div>
                                 <ProfileStarRating />
@@ -29,6 +29,9 @@
                         </div>
                         <div class="col-12 mt-2 text-center">
                             <h1>{{ profile?.name }}</h1>
+                        </div>
+                        <div class="col-12 mt-2 d-md-flex justify-content-center d-none">
+                            <ProfileStarRating />
                         </div>
                         <div class="col-6 d-flex justify-content-center">
                             <button class="btn tip-button elevation-2 rounded-pill px-4" data-bs-toggle="modal"
@@ -99,7 +102,7 @@ export default {
                 const profileId = route.params.profileId
                 await ratingsService.calculateProfileRating(profileId)
             } catch (error) {
-                Pop.error('[CALCULATING PROFILE RATING]')
+                Pop.error(error.message, '[CALCULATING PROFILE RATING]')
             }
         }
 
@@ -108,16 +111,9 @@ export default {
                 const profileId = route.params.profileId
                 await profilesService.getReviewsByProfileId(profileId)
             } catch (error) {
-                Pop.error('[GETTING REVIEWS BY PROFILEID]', error)
+                Pop.error('[GETTING REVIEWS BY PROFILEID]', error.message)
             }
         }
-
-        onMounted(() => {
-            getProfileById();
-            generateQRCode();
-            getReviewsByProfileId();
-            calculateProfileRating();
-        });
 
         watchEffect(() => {
             if (route.params.profileId) {

@@ -15,7 +15,7 @@
                     </span>
                 </h6>
                 <div class="scroller">
-                    <p>"{{ review.body }}"</p>
+                    <span>"{{ review.body }}"</span>
                 </div>
             </div>
         </div>
@@ -64,9 +64,12 @@ export default {
 }
 
 .scroller {
-    height: 40px;
+    height: 75%;
     overflow-y: scroll;
-    scrollbar-width: none;
+}
+
+.scroller::-webkit-scrollbar {
+    display: none;
 }
 
 .profile-picture-small {

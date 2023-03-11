@@ -46,7 +46,7 @@ class ProfileService {
   }
 
   async editProfile(id, body){
-    const profile = await dbContext.Account.findById(id)
+    const profile = await this.getProfileById(id)
     profile.rating = body.rating
     profile.save()
     return profile
