@@ -3,6 +3,7 @@ import { api } from "./AxiosService.js"
 import { AppState } from "../AppState.js";
 import { Profile } from "../models/Profile.js";
 import { Review } from "../models/Review.js";
+import { ratingsService } from "./RatingsService.js";
 
 class ProfilesService {
 
@@ -12,6 +13,10 @@ class ProfilesService {
         logger.log('[ALL PROFILES]', AppState.profiles)
 
         // TODO make sure this vvv sorts correctly
+        // AppState.profiles.forEach(p => {
+        //     let profileId = p.id
+        //     ratingsService.calculateProfileRating(profileId)
+        // })
         AppState.profiles.sort(function (a, b) { return a.rating - b.rating }).reverse()
     }
     async getProfilesByQuery(query) {
