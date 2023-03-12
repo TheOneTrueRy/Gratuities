@@ -15,22 +15,24 @@
     <div class="text-start collapse navbar-collapse ms-4" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'About' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow">
+          <router-link :to="{ name: 'About' }"
+            class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
             About
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Account' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow">
+          <router-link :to="{ name: 'Account' }"
+            class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
             Account
           </router-link>
         </li>
         <li>
-          <div class="my-shadow btn-p text-center">
-            <span>G-Bucks: <span>{{ account.currency }}</span></span>
+          <div class="my-shadow btn-p text-start text-uppercase">
+            <span>G-Bucks: <span class="ms-1">{{ account.currency }}</span></span>
           </div>
         </li>
         <li>
-          <router-link :to="{ name: 'Game' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow">
+          <router-link :to="{ name: 'Game' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
             Earn G-Bucks
           </router-link>
         </li>
@@ -108,9 +110,22 @@ a:hover {
 }
 
 .btn-p {
+  margin-top: 1px;
   padding-left: 12px;
   padding-top: 6px;
   padding-right: 12px;
   padding-bottom: 6px;
+}
+
+.hover {
+  transition: 0.5s;
+}
+
+.hover:hover {
+  transform: scale(1.1);
+}
+
+.hover:active {
+  transform: scale(0.8);
 }
 </style>
