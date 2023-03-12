@@ -62,7 +62,7 @@
       </div>
       <div v-if="searchType == 'businesses'">
         <div class="col-12 col-md-8 offset-md-2">
-          <h6>Top businesses:</h6>
+          <h6>Top Businesses:</h6>
         </div>
         <div v-for="b in businesses" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <BusinessCard :business="b" />
@@ -70,7 +70,7 @@
       </div>
       <div v-else>
         <div class="col-12 col-md-8 offset-md-2">
-          <h6>Top profiles:</h6>
+          <h6>Top Profiles:</h6>
         </div>
         <div v-for="p in profiles" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <ProfileCard :profile="p" />
