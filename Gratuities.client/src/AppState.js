@@ -26,6 +26,8 @@ export const AppState = reactive({
 
   QRCode: null,
 
+  notifications: [],
+
   blocks: [
     {
       id: 'diamond',
