@@ -24,5 +24,99 @@ export const AppState = reactive({
 
   reviews: [],
 
-  QRCode: null
+  QRCode: null,
+
+  blocks: [
+    {
+      id: 'diamond',
+      name: 'Diamond Ore',
+      health: 0,
+      value: 0,
+      healthyPic: '',
+      destroyedPic: '',
+      backdrop: '',
+      description: ''
+    },
+    {
+      id: 'emerald',
+      name: 'Emerald Ore',
+      health: 0,
+      value: 0,
+      healthyPic: '',
+      destroyedPic: '',
+      backdrop: '',
+      description: ''
+    },
+    {
+      id: 'coal',
+      name: 'Coal Ore',
+      health: 0,
+      value: 0,
+      healthyPic: '',
+      destroyedPic: '',
+      backdrop: '',
+      description: ''
+    },
+    {
+      id: 'gold',
+      name: 'Gold Ore',
+      health: 0,
+      value: 0,
+      healthyPic: '',
+      destroyedPic: '',
+      backdrop: '',
+      description: ''
+    },
+    {
+      id: 'iron',
+      name: 'Iron Ore',
+      health: 0,
+      value: 0,
+      healthyPic: '',
+      destroyedPic: '',
+      backdrop: '',
+      description: ''
+    },
+    {
+      id: 'redstone',
+      name: 'Redstone Ore',
+      health: 0,
+      value: 0,
+      healthyPic: '',
+      destroyedPic: '',
+      backdrop: '',
+      description: ''
+    },
+    {
+      id: 'quartz',
+      name: 'Quartz Ore',
+      health: 0,
+      value: 0,
+      healthyPic: '',
+      destroyedPic: '',
+      backdrop: '',
+      description: ''
+    },
+    {
+      id: 'chest',
+      name: 'Chest',
+      health: 0,
+      value: 0,
+      healthyPic: '',
+      destroyedPic: '',
+      backdrop: '',
+      description: '',
+    },
+    {
+      id: 'mimic',
+      name: 'Chest',
+      health: 0,
+      value: 0,
+      healthyPic: '',
+      destroyedPic: '',
+      backdrops: '',
+      description: ''
+    },
+  ],
+  block: null,
 })

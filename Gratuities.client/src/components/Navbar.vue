@@ -2,24 +2,36 @@
   <nav class="navbar navbar-expand-lg tip-header px-3">
     <router-link class="d-flex text-light" :to="{ name: 'Home' }">
       <div class="logo d-flex flex-column align-items-center">
-        <h1>Gratuities</h1>
+        <h1 class="nomb">Gratuities</h1>
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <i id="notifications-bell" class="mdi mdi-bell text-light fs-5 selectable ms-4"></i>
+    <div class="bg-dark rounded d-flex justify-content-center align-items-center px-1 ms-4">
+      <i id="notifications-bell" class="mdi mdi-bell text-light fs-5 selectable"></i>
+    </div>
     <div class="text-start collapse navbar-collapse ms-4" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase text-light ">
+          <router-link :to="{ name: 'About' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow">
             About
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Account' }" class="btn text-success lighten-30 selectable text-uppercase text-light">
+          <router-link :to="{ name: 'Account' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow">
             Account
+          </router-link>
+        </li>
+        <li>
+          <div class="my-shadow btn-p text-center">
+            <span>G-Bucks: <span>{{ account.currency }}</span></span>
+          </div>
+        </li>
+        <li>
+          <router-link :to="{ name: 'Game' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow">
+            Earn G-Bucks
           </router-link>
         </li>
       </ul>
@@ -31,10 +43,14 @@
 </template>
 
 <script>
+import { computed } from "vue";
+import { AppState } from "../AppState.js";
 import Login from './Login.vue'
 export default {
   setup() {
-    return {}
+    return {
+      account: computed(() => AppState.account)
+    }
   },
   components: { Login }
 }
@@ -85,5 +101,16 @@ a:hover {
 
 #notifications-bell:active {
   transform: scale(0.8);
+}
+
+.my-shadow {
+  text-shadow: 1px 1px 2px black;
+}
+
+.btn-p {
+  padding-left: 12px;
+  padding-top: 6px;
+  padding-right: 12px;
+  padding-bottom: 6px;
 }
 </style>
