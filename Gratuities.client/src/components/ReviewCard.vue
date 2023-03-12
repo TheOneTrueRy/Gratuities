@@ -8,7 +8,7 @@
                 </router-link>
             </div>
             <div class="col-9">
-                <h6 class="text-center">{{ review.creator.name }} | {{ review.rating }} Stars
+                <h6 class="text-start">{{ review.creator.name }} | {{ review.rating }} Stars
                     <span v-if="review.creator.id == account.id">
                         | <button @click="deleteReview(review.id)" class="btn btn-danger delete-button"><i
                                 title="Delete Review"></i></button>
