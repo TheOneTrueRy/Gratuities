@@ -31,6 +31,7 @@ class ProfilesService {
 
         // NOTE vvv sorts reviews BY RATING - highest to lowest
         AppState.reviews.sort(function (a, b) { return a.rating - b.rating }).reverse()
+        logger.log(AppState.reviews)
     }
 
     async generateQRCode(profileId) {

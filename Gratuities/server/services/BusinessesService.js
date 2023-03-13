@@ -17,18 +17,10 @@ class BusinessesService {
             throw new Forbidden('this is not your business')
         }
 
-        businessToEdit
-            .name = body.name || businessToEdit
-                .name
-        businessToEdit
-            .coverImg = body.coverImg || businessToEdit
-                .coverImg
-        businessToEdit
-            .logo = body.logo || businessToEdit
-                .logo
-        businessToEdit
-            .rating = body.rating || businessToEdit
-                .rating
+        businessToEdit.name = body.name || businessToEdit.name
+        businessToEdit.coverImg = body.coverImg || businessToEdit.coverImg
+        businessToEdit.logo = body.logo || businessToEdit.logo
+        businessToEdit.rating = body.rating || businessToEdit.rating
         // const account = await dbContext.Account.findOneAndUpdate(
         //   { _id: user.id },
         //   { $set: update },
@@ -56,12 +48,12 @@ class BusinessesService {
         return business
     }
     async createBusiness(body) {
-        
+
         const owner = await profileService.getProfileById(body.ownerId)
         const business = await dbContext.Businesses.create(body)
         await business.populate('owner', 'name picture email')
 
-         await courier.send({
+        await courier.send({
             message: {
                 to: {
                     email: owner.email,
