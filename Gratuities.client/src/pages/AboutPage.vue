@@ -138,7 +138,7 @@ export default {
   background-color: #06d69e5d;
   font-family: 'Lato', sans-serif;
   font-size: 2vh;
-  height: 10vh;
+  height: 12vh;
   overflow-y: scroll;
 }
 
@@ -178,4 +178,5 @@ img {
   width: 5vh;
   border-radius: 50%;
   box-shadow: 2px 2px 4px black;
-}</style>
+}
+</style>
