@@ -8,10 +8,10 @@ class EmployeesService {
         const foundEmployee = await dbContext.Employees.findById(employeeId)
         // @ts-ignore
         const businessId = foundEmployee.businessId
-        // const foundBusiness = await businessesService.getBusinessById(requestorId);
-        // if (foundBusiness.ownerId.toString() != requestorId) {
-        //     throw new Forbidden('Tis not your business')
-        // }
+        const foundBusiness = await businessesService.getBusinessById(businessId);
+        if (foundBusiness.ownerId.toString() != requestorId) {
+            throw new Forbidden('Tis not your business')
+        }
         // @ts-ignore
         await foundEmployee.remove()
         return foundEmployee
