@@ -6,13 +6,13 @@
           <router-link :to="{
             name: 'Account'
           }">
-            <img class="profile-picture border border-dark border-2 elevation-1" :src="account.picture"
-              :alt="account.picture" title="Go to your account page!">
+            <img class="profile-picture border border-dark border-2 elevation-1" :src="account?.picture"
+              :alt="account?.picture" title="Go to your account page!">
           </router-link>
         </div>
         <div class="col-12 text-center">
           <h2 class="my-3 text-dark rounded text-center user-name">
-            {{ account.name }}
+            {{ account?.name }}
           </h2>
         </div>
         <div v-if="highestTipEverGiven" class="col-12 text-center">
