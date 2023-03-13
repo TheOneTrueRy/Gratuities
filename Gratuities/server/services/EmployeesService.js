@@ -36,6 +36,8 @@ class EmployeesService {
         body.employeePicture = foundEmployee.picture
         // @ts-ignore
         body.employeeRating = foundEmployee.rating
+        // @ts-ignore
+        body.employeeBio = foundEmployee.bio
         const employee = await dbContext.Employees.create(body)
 
         return employee
