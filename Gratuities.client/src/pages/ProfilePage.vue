@@ -10,7 +10,7 @@
                                 <ProfileStarRating :rating="profile?.rating" />
                             </div>
                         </div>
-                        <div class="col-6 offset-md-6 text-end" v-if="account?.id == !profile?.id">
+                        <div class="col-6 offset-md-6 text-end" v-if="account?.id != profile?.id">
                             <div class="btn dropstart">
                                 <button class="btn btn-secondary-outline btn-sm dropdown-toggle fs-4" type="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
