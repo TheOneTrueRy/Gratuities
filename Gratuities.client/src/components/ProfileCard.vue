@@ -6,8 +6,13 @@
                     <img class="profile-picture-small" :src="profile?.picture" :alt="profile?.picture">
                 </div>
                 <div class="col-9">
-                    <h6 class="text-start">{{ profile?.name }} | {{ profile?.rating ? profile?.rating : 'No Ratings Yet' }}
-                    </h6>
+                    <div class="d-flex align-items-center">
+                        <span>{{ profile?.name }} |&nbsp;</span>
+                        <span class="fs-5">
+                            <ProfileStarRating :rating="profile.rating"></ProfileStarRating>
+                        </span>
+                        <span></span>
+                    </div>
                     <div class="scroller">
                         <span>"{{ profile?.bio }}"</span>
                     </div>
@@ -20,6 +25,7 @@
 
 <script>
 import { Profile } from '../models/Profile.js';
+import ProfileStarRating from "./ProfileStarRating.vue";
 
 export default {
     props: {
@@ -29,8 +35,9 @@ export default {
         }
     },
     setup() {
-        return {}
-    }
+        return {};
+    },
+    components: { ProfileStarRating }
 }
 </script>
 
