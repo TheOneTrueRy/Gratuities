@@ -7,6 +7,7 @@ export class Account {
     this.bio = data.bio
     this.openToFeedback = data.openToFeedback
     this.rating = data.rating
+    this.currency = data.currency
     // TODO add additional properties if needed
   }
 }

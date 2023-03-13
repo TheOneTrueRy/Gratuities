@@ -18,7 +18,7 @@
             <ul>
               <li>This Month: <i class="cash">${{ highestTipMonth }}</i>
               </li>
-              <li>Ever: <i class="cash">${{ highestTipEver }}</i>
+              <li>Ever: <i class="cash">${{ highestTipEver?.tip }}</i>
               </li>
             </ul>
           </div>

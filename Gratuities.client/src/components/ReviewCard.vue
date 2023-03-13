@@ -1,25 +1,35 @@
 <template>
     <div class="ReviewCard">
-        <router-link :to="{ name: 'Profile', params: { profileId: review.creatorId } }" class="text-light">
-            <div class="row align-items-center py-2">
-                <div class="col-3">
+        <div class="row align-items-center py-2">
+            <div class="col-3">
+                <router-link :to="{ name: 'Profile', params: { profileId: review.creatorId } }" class="text-light">
                     <img class="profile-picture-small selectable" :src="review.creator.picture"
                         :alt="review.creator.picture">
-                </div>
-                <div class="col-9">
-                    <h6 class="text-center">{{ review.creator.name }} | {{ review.rating }} Stars</h6>
-                    <div class="scroller">
-                        <p>"{{ review.body }}"</p>
-                    </div>
+                </router-link>
+            </div>
+            <div class="col-9">
+                <h6 class="text-start">{{ review.creator.name }} | {{ review.rating }} Stars
+                    <span v-if="review.creator.id == account.id">
+                        | <button @click="deleteReview(review.id)" class="btn btn-danger delete-button"><i
+                                title="Delete Review"></i></button>
+                    </span>
+                </h6>
+                <div class="scroller">
+                    <span>"{{ review.body }}"</span>
                 </div>
             </div>
-        </router-link>
+        </div>
     </div>
 </template>
 
 
 <script>
+import { computed, onMounted, watchEffect, ref } from 'vue';
+import { AppState } from "../AppState";
 import { Review } from "../models/Review.js";
+import { ratingsService } from '../services/RatingsService';
+import { logger } from '../utils/Logger';
+import Pop from '../utils/Pop';
 
 export default {
     props: {
@@ -29,17 +39,37 @@ export default {
         }
     },
     setup() {
-        return {}
+        return {
+            account: computed(() => AppState.account),
+            async deleteReview(reviewId) {
+                try {
+                    if (await Pop.confirm("Are you sure you'd like to delete this review?")) {
+                        await ratingsService.deleteReview(reviewId)
+                    }
+                } catch (error) {
+                    Pop.error(error.message)
+                    logger.error(error)
+                }
+            }
+        }
     }
 }
 </script>
 
 
 <style lang="scss" scoped>
+.delete-button {
+    height: 3vh;
+    width: 10%;
+}
+
 .scroller {
-    height: 40px;
+    height: 75%;
     overflow-y: scroll;
-    scrollbar-width: none;
+}
+
+.scroller::-webkit-scrollbar {
+    display: none;
 }
 
 .profile-picture-small {

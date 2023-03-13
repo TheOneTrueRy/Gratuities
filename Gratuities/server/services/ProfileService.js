@@ -44,6 +44,13 @@ class ProfileService {
       // .limit(20)
       .exec()
   }
+
+  async editProfile(id, body){
+    const profile = await this.getProfileById(id)
+    profile.rating = body.rating
+    profile.save()
+    return profile
+  }
 }
 
 export const profileService = new ProfileService()

@@ -15,10 +15,23 @@
             {{ account.name }}
           </h2>
         </div>
-        <div class="col-12 text-center">
-          <h6 class="biggest-tip">Your Biggest Tip: <span class="biggest-tip-amount">$0.89</span> to AppleBees server
-            @Bill
+        <div v-if="highestTipEverGiven" class="col-12 text-center">
+          <h6 class="biggest-tip">Your Biggest Tip Sent: <span class="biggest-tip-amount">${{ highestTipEverGiven.tip
+          }}</span> to
+            {{ highestTipEverGiven.receiver.name }}
           </h6>
+        </div>
+        <div v-else class="col-12 text-center">
+          <h6 class="biggest-tip"><span>No Tips Given Yet</span></h6>
+        </div>
+        <div v-if="highestTipEver" class="col-12 text-center">
+          <h6 class="biggest-tip">Your Biggest Tip received: <span class="biggest-tip-amount">${{ highestTipEver.tip
+          }}</span> from
+            {{ highestTipEver.giver.name }}
+          </h6>
+        </div>
+        <div v-else class="col-12 text-center">
+          <h6 class="biggest-tip">No Tips Received Yet</h6>
         </div>
       </div>
       <div v-else>
@@ -49,7 +62,7 @@
       </div>
       <div v-if="searchType == 'businesses'">
         <div class="col-12 col-md-8 offset-md-2">
-          <h6>Top businesses:</h6>
+          <h6>Top Businesses:</h6>
         </div>
         <div v-for="b in businesses" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <BusinessCard :business="b" />
@@ -57,7 +70,7 @@
       </div>
       <div v-else>
         <div class="col-12 col-md-8 offset-md-2">
-          <h6>Top profiles:</h6>
+          <h6>Top Profiles:</h6>
         </div>
         <div v-for="p in profiles" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
           <ProfileCard :profile="p" />
@@ -68,7 +81,7 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watchEffect } from 'vue';
 import { AppState } from '../AppState.js';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
@@ -76,6 +89,7 @@ import { businessesService } from '../services/BusinessesService.js'
 import { profilesService } from "../services/ProfilesService.js";
 import ProfileCard from '../components/ProfileCard.vue';
 import BusinessCard from '../components/BusinessCard.vue';
+import { tipsService } from "../services/TipsService.js";
 
 export default {
   setup() {
@@ -110,12 +124,20 @@ export default {
     onUnmounted(() => {
       clearBusinesses()
     })
+    watchEffect(() => {
+      if (AppState.account) {
+        tipsService.getTipsReceived()
+        tipsService.getTipsGiven()
+      }
+    })
     return {
       editable,
       account: computed(() => AppState.account),
       businesses: computed(() => AppState.businesses),
       profiles: computed(() => AppState.profiles),
       searchType: computed(() => AppState.searchType),
+      highestTipEver: computed(() => AppState.highestTipEver),
+      highestTipEverGiven: computed(() => AppState.highestTipEverGiven),
       async search() {
         try {
           let query = editable.value;
@@ -159,11 +181,12 @@ export default {
 }
 
 .biggest-tip-amount {
-  color: #06D6A0;
+  color: #1c6820;
+  font-weight: 1000;
 }
 
 .biggest-tip {
-  text-shadow: 2px 4px 4px #00000040;
+  text-shadow: 1px 1px 2px #00000040;
   font-weight: 400;
 }
 

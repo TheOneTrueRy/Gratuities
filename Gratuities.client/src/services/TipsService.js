@@ -26,15 +26,24 @@ class TipsService {
             tipsThisMonth.sort((a, b) => b.tip - a.tip)
             sortedTips.sort((a, b) => b.tip - a.tip)
             AppState.highestTipMonth = tipsThisMonth[0].tip
-            AppState.highestTipEver = sortedTips[0].tip
+            AppState.highestTipEver = sortedTips[0]
             AppState.availableToPayout = availableToPayout
             logger.log('Highest Tip This Month:', AppState.highestTipMonth)
         }
     }
     async getTipsGiven() {
         const res = await api.get('account/tips/sent')
-        AppState.givenTips = res.data.reverse()
-        logger.log('the tips i have given:', AppState.givenTips)
+        if(res.data.length > 0){
+
+            AppState.givenTips = res.data.reverse()
+            const tipsGiven = []
+            res.data.forEach(t => {
+                tipsGiven.push(t)
+            })
+            tipsGiven.sort((a, b) => b.tip - a.tip)
+            AppState.highestTipEverGiven = tipsGiven[0]
+            logger.log('the tips i have given:', AppState.givenTips)
+        }
     }
 
     async sendTip(profileId, tip) {

@@ -1,23 +1,25 @@
 <template>
     <div class="ProfileCarousel">
-            <div id="profileCarousel" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img :src="profile?.picture" class="d-block rounded profile-picture" :alt="profile?.picture">
-                    </div>
-                    <div class="carousel-item">
-                        <img :src="QRCode" class="d-block rounded profile-picture" :alt="QRCode">
-                    </div>
+        <div id="profileCarousel" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active text-center">
+                    <img :src="profile?.picture" class="rounded profile-picture" :alt="profile?.picture">
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#profileCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon visually-hidden" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#profileCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon visually-hidden" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                <div class="carousel-item text-center">
+                    <img :src="QRCode" class="profile-picture" :alt="QRCode">
+                </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#profileCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon d-none d-md-block" aria-hidden="true"><i
+                        class="mdi mdi-arrow-left fs-1 text-dark"></i></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#profileCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon d-none d-md-block" aria-hidden=""><i
+                        class="mdi mdi-arrow-right fs-1 text-dark"></i></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
 </template>
 
@@ -40,7 +42,7 @@ export default {
 <style lang="scss" scoped>
 .profile-picture {
     height: 20em;
-    width: 100%;
+    width: auto;
     object-fit: cover;
     object-position: center;
 }
