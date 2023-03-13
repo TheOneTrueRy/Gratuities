@@ -70,7 +70,7 @@
 
 
 <script>
-import { computed, onMounted, watchEffect, ref } from 'vue';
+import { computed, onMounted, watchEffect, ref, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState';
 import ProfileCard from '../components/ProfileCard.vue';
@@ -113,6 +113,9 @@ export default {
             getBusinessById();
             getEmployeesByBusinessId();
         });
+        onUnmounted(() => {
+            AppState.business = null
+        })
         watchEffect(() => {
             if (route.params.businessId) {
                 getBusinessById();

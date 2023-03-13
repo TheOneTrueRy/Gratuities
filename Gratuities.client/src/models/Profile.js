@@ -12,3 +12,10 @@ export class Profile {
         this.businessId = data.businessId || null
     }
 }
+
+export class Employee extends Profile{
+    constructor(data){
+        super(data)
+        this.employeeId = data._id
+    }
+}
