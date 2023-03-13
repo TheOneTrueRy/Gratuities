@@ -9,9 +9,13 @@
                     <img class="business-logo" :src="business?.logo" alt="">
                     <h1>{{ business?.name }}
                     </h1>
-                    <h3 class=""><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                            class="mdi mdi-star star"></i><i class="mdi mdi-star-outline"></i><i
-                            class="mdi mdi-star-outline"></i></h3>
+
+
+                    <div v-if="business?.id">
+                        <ProfileStarRating :rating="business?.rating" />
+                    </div>
+
+
                     <button v-if="account.id == business?.ownerId" class="w-50 rounded-pill btn btn-outline-success"
                         type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                         aria-controls="offcanvasExample">
@@ -74,6 +78,7 @@ import { computed, onMounted, watchEffect, ref, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState';
 import ProfileCard from '../components/ProfileCard.vue';
+import ProfileStarRating from '../components/ProfileStarRating.vue';
 import { businessesService } from '../services/BusinessesService';
 import { employeesService } from '../services/EmployeesService';
 import { logger } from '../utils/Logger';
@@ -99,10 +104,20 @@ export default {
                 logger.error(error);
             }
         }
+        async function getBusinessRating() {
+            try {
+                await businessesService.getBusinessRating()
+            } catch (error) {
+                Pop.error(error.message)
+                logger.error(error)
+            }
+        }
         async function getEmployeesByBusinessId() {
             try {
                 const businessId = route.params.businessId;
                 await employeesService.getEmployeesByBusinessId(businessId);
+                await getBusinessById(businessId)
+                getBusinessRating()
             }
             catch (error) {
                 Pop.error(error.message);
@@ -119,6 +134,7 @@ export default {
         watchEffect(() => {
             if (route.params.businessId) {
                 getBusinessById();
+                // getBusinessRating()
             }
         });
         return {
@@ -138,6 +154,7 @@ export default {
             business: computed(() => AppState.business),
             account: computed(() => AppState.account),
             employees: computed(() => AppState.employees),
+            profiles: computed(() => AppState.profiles),
             async editBusiness(businessId) {
                 try {
                     const formData = editable2.value;
@@ -147,10 +164,11 @@ export default {
                     Pop.error(error.message);
                     logger.error(error);
                 }
-            }
+            },
+
         };
     },
-    components: { ProfileCard }
+    components: { ProfileCard, ProfileStarRating }
 }
 </script>
 
