@@ -49,4 +49,8 @@ footer {
   place-content: center;
   height: 32px;
 }
+
+main {
+  height: 80vh;
+}
 </style>
