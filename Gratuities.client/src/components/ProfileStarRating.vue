@@ -1,42 +1,42 @@
 <template>
-        <h3 v-if="profile?.rating == 0.5"><i class="mdi mdi-star-half-full star"></i><i class="mdi mdi-star-outline star"></i><i
+        <span v-if="rating == 0.5"><i class="mdi mdi-star-half-full star"></i><i class="mdi mdi-star-outline star"></i><i
                         class="mdi mdi-star-outline star"></i><i class="mdi mdi-star-outline star"></i><i
                         class="mdi mdi-star-outline star"></i>
-        </h3>
-        <h3 v-else-if="profile?.rating == 1"><i class="mdi mdi-star star"></i><i class="mdi mdi-star-outline star"></i><i
+        </span>
+        <span v-else-if="rating == 1"><i class="mdi mdi-star star"></i><i class="mdi mdi-star-outline star"></i><i
                         class="mdi mdi-star-outline star"></i><i class="mdi mdi-star-outline star"></i><i
                         class="mdi mdi-star-outline star"></i>
-        </h3>
-        <h3 v-else-if="profile?.rating == 1.5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star-half-full star"></i><i
+        </span>
+        <span v-else-if="rating == 1.5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star-half-full star"></i><i
                         class="mdi mdi-star-outline star"></i><i class="mdi mdi-star-outline star"></i><i
                         class="mdi mdi-star-outline star"></i>
-        </h3>
-        <h3 v-else-if="profile?.rating == 2"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+        </span>
+        <span v-else-if="rating == 2"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
                         class="mdi mdi-star-outline star"></i><i class="mdi mdi-star-outline star"></i><i
                         class="mdi mdi-star-outline star"></i>
-        </h3>
-        <h3 v-else-if="profile?.rating == 2.5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+        </span>
+        <span v-else-if="rating == 2.5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
                         class="mdi mdi-star-half-full star"></i><i class="mdi mdi-star-outline star"></i><i
                         class="mdi mdi-star-outline star"></i>
-        </h3>
-        <h3 v-else-if="profile?.rating == 3"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+        </span>
+        <span v-else-if="rating == 3"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
                         class="mdi mdi-star star"></i><i class="mdi mdi-star-outline star"></i><i
                         class="mdi mdi-star-outline star"></i>
-        </h3>
-        <h3 v-else-if="profile?.rating == 3.5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+        </span>
+        <span v-else-if="rating == 3.5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
                         class="mdi mdi-star star"></i><i class="mdi mdi-star-half-full  star"></i><i
                         class="mdi mdi-star-outline star"></i>
-        </h3>
-        <h3 v-else-if="profile?.rating == 4"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+        </span>
+        <span v-else-if="rating == 4"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
                         class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star-outline star"></i>
-        </h3>
-        <h3 v-else-if="profile?.rating == 4.5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+        </span>
+        <span v-else-if="rating == 4.5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
                         class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
                         class="mdi mdi-star-half-full star"></i>
-        </h3>
-        <h3 v-else-if="profile?.rating == 5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                        class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i></h3>
-        <h3 v-else="profile?.rating">No Ratings Yet</h3>
+        </span>
+        <span v-else-if="rating == 5"><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
+                        class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i></span>
+        <span v-else="rating">No Ratings Yet</span>
 </template>
 
 
@@ -44,6 +44,12 @@
 import { computed } from 'vue'
 import { AppState } from '../AppState';
 export default {
+        props: {
+                rating: {
+                        type: Number,
+                        required: true
+                }
+        },
         setup() {
                 return {
                         profile: computed(() => AppState.profile)
