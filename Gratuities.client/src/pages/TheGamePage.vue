@@ -1,14 +1,19 @@
 <template>
-  <!-- <div class="container-fluid backdrop" :style=""> -->
+  <div v-if="block" class="container-fluid backdrop" :style="{ backgroundImage: `url(${block.backdrop})` }">
 
-  <!-- </div> -->
+  </div>
 </template>
 
 
 <script>
+import { computed } from "vue";
+import { AppState } from "../AppState.js";
+
 export default {
   setup() {
-    return {}
+    return {
+      block: computed(() => AppState.block)
+    }
   }
 }
 </script>
