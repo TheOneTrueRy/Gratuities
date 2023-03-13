@@ -11,7 +11,7 @@
                 <div class="d-flex align-items-center">
                     <span class="text-start">{{ review.creator.name }} |&nbsp;
                     </span>
-                    <span class="fs-5">
+                    <span>
                         <ProfileStarRating :rating="review.rating"></ProfileStarRating>
                     </span>
                 </div>
