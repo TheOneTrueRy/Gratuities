@@ -7,10 +7,7 @@
         <div class="offcanvas-body">
             <form @submit.prevent="">
                 <select class="form-select mb-3" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option v-for="b in businesses" :value="b._id">{{ b.name }}</option>
                 </select>
                 <div class="text-end">
                     <button class="btn btn-success">Add</button>
@@ -22,9 +19,33 @@
 
 
 <script>
+import { onMounted, computed, watchEffect } from 'vue';
+import { AppState } from '../AppState';
+import { Account } from '../models/Account';
+import { businessesService } from '../services/BusinessesService';
+import { logger } from '../utils/Logger';
+import Pop from '../utils/Pop';
+
 export default {
     setup() {
-        return {}
+        async function getMyBusinesses() {
+            try {
+                await businessesService.getMyBusiness(AppState.account.id)
+            } catch (error) {
+                Pop.error(error.message)
+                logger.error(error)
+            }
+        }
+        watchEffect(() => {
+            if (AppState.account.id) {
+                getMyBusinesses()
+
+            }
+        })
+        return {
+            businesses: computed(() => AppState.businesses),
+            account: computed(() => AppState.account)
+        }
     }
 }
 </script>
