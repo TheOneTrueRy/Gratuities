@@ -125,7 +125,7 @@ export default {
       clearBusinesses()
     })
     watchEffect(() => {
-      if (AppState.account) {
+      if (AppState.account.id) {
         tipsService.getTipsReceived()
         tipsService.getTipsGiven()
       }
