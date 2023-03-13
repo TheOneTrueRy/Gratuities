@@ -7,7 +7,7 @@ export const EmployeeSchema = new Schema({
     employeeName: { type: String, required: true },
     employeePicture: { type: String, required: true },
     employeeRating: { type: Number, required: true },
-    employeeBio: {type: String, required: true}
+    employeeBio: {type: String, default: "I Love to be the best at what I do!"}
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 EmployeeSchema.virtual('business', {

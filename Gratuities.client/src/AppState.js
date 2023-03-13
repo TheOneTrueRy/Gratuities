@@ -38,7 +38,7 @@ export const AppState = reactive({
       value: 100,
       healthyPic: 'https://gamepedia.cursecdn.com/minecraft_gamepedia/archive/b/b5/20180407134246!Diamond_Ore_JE3_BE3.png?version=402dac165ea4a57e35da165fc11a94d2',
       destroyedPic: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/ab/Diamond_JE3_BE3.png/revision/latest?cb=20200325185152',
-      backdrop: '',
+      backdrop: 'diamond-bg.png',
       description: "Whoa! Diamonds! Lucky you."
     },
     {
@@ -48,7 +48,7 @@ export const AppState = reactive({
       value: 60,
       healthyPic: 'https://gamepedia.cursecdn.com/minecraft_gamepedia/5/59/Emerald_Ore_JE2_BE2.png',
       destroyedPic: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/26/Emerald_JE3_BE3.png/revision/latest?cb=20191229174220',
-      backdrop: '',
+      backdrop: 'emerald-bg.png',
       description: "Those villagers will LOVE this."
     },
     {
@@ -58,7 +58,7 @@ export const AppState = reactive({
       value: 5,
       healthyPic: 'https://gamepedia.cursecdn.com/minecraft_gamepedia/d/d6/Coal_Ore_JE2_BE2.png',
       destroyedPic: 'https://ftbwiki.org/images/6/6f/Item_Coal.png',
-      backdrop: '',
+      backdrop: 'coal-bg.png',
       description: "Well, ya gotta start somewhere."
     },
     {
@@ -68,7 +68,7 @@ export const AppState = reactive({
       value: 50,
       healthyPic: 'https://gamepedia.cursecdn.com/minecraft_gamepedia/b/b9/Gold_Ore_JE3_BE2.png',
       destroyedPic: 'https://static.wikia.nocookie.net/minecraft_gamepedia/images/8/8a/Gold_Ingot_JE4_BE2.png/revision/latest?cb=20200224211607',
-      backdrop: '',
+      backdrop: 'gold-bg.png',
       description: "This would go great on top of a block of Obsidian..."
     },
     {
@@ -78,7 +78,7 @@ export const AppState = reactive({
       value: 30,
       healthyPic: 'https://gamepedia.cursecdn.com/minecraft_gamepedia/archive/0/0c/20180407134122!Iron_Ore_JE3.png?version=89871d88c66f7cec136d4db4a7306972',
       destroyedPic: 'https://gamepedia.cursecdn.com/minecraft_gamepedia/thumb/0/06/Iron_Ingot_JE2_BE2.png/150px-Iron_Ingot_JE2_BE2.png?version=7bb8ec30baf4eecb85665215913d62d6',
-      backdrop: '',
+      backdrop: 'iron-bg.png',
       description: "Good ol' iron. Maybe you could build a friend?"
     },
     {
@@ -88,7 +88,7 @@ export const AppState = reactive({
       value: 20,
       healthyPic: 'https://gamepedia.cursecdn.com/minecraft_gamepedia/3/3e/Redstone_Ore_JE2_BE2.png',
       destroyedPic: 'https://vignette2.wikia.nocookie.net/magicobjectcruiser/images/e/e8/Redstone_asset._Png/revision/latest?cb=20140329181832',
-      backdrop: '',
+      backdrop: 'redstone-bg.png',
       description: "I guess it's worth something... to an engineer."
     },
     {
@@ -98,7 +98,7 @@ export const AppState = reactive({
       value: 0,
       healthyPic: 'https://vignette.wikia.nocookie.net/minecraft/images/3/39/Nether_Quartz_Ore.png/revision/latest?cb=20130118110604',
       destroyedPic: 'https://gamepedia.cursecdn.com/minecraft_gamepedia/6/64/Nether_Quartz_JE2_BE2.png',
-      backdrop: '',
+      backdrop: 'quartz-bg.png',
       description: 'A builder should pay big for this!'
     },
     {
@@ -108,7 +108,7 @@ export const AppState = reactive({
       value: 50,
       healthyPic: 'https://gamepedia.cursecdn.com/minecraft_gamepedia/b/b3/Chest.png?version=227b3f51ef706a4ce4cf5e91f0e4face',
       destroyedPic: 'https://lh3.googleusercontent.com/eokhKRG0fFZE647P2OT44QMtzRz54cG3lxEAWz28HdLPGXLFirMZSHEbEoBPfOJK3fG6Rc8ktCWB9rznfo9KNQ=s400',
-      backdrop: '',
+      backdrop: 'chest-bg.png',
       description: 'A chest!',
     },
     {
@@ -118,7 +118,7 @@ export const AppState = reactive({
       value: -100,
       healthyPic: 'https://gamepedia.cursecdn.com/minecraft_gamepedia/b/b3/Chest.png?version=227b3f51ef706a4ce4cf5e91f0e4face',
       destroyedPic: 'https://lh3.googleusercontent.com/jNmS7Gq2zRG3zJkpJtKa_fwl-IhvB0nzfyimSOTpjxh-lDzFRhO2bJltdp4SEPfagNM0hOTdQgkGtGofbpLXAg=s400',
-      backdrops: '',
+      backdrops: 'chest-bg.png',
       description: 'Is that... a chest?'
     },
   ],
