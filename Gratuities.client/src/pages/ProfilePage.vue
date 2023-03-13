@@ -43,6 +43,16 @@
                             <button class="btn review-button elevation-2 rounded-pill" data-bs-toggle="offcanvas"
                                 data-bs-target="#reviewOffcanvas" aria-controls="reviewOffcanvas">Review</button>
                         </div>
+                        <div class="col-12 mt-2">
+                            <div class="d-flex justify-content-center">
+                                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                    <button @click="searchTypeDate()" type="button" class="btn btn-outline-dark btn-sm"
+                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Date</button>
+                                    <button @click="searchTypeRating()" type="button" class="btn btn-outline-dark btn-sm"
+                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Rating</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- SECTION displays all profiles that have reviewed this profile -->
                     <div class="row justify-content-center mt-3">
@@ -132,12 +142,23 @@ export default {
         })
         return {
             editable,
+            route,
             QRCode: computed(() => AppState.QRCode),
             profile: computed(() => AppState.profile),
             profiles: computed(() => AppState.profiles),
             reviews: computed(() => AppState.reviews),
             businesses: computed(() => AppState.businesses),
-            account: computed(() => AppState.account)
+            account: computed(() => AppState.account),
+
+            searchTypeDate() {
+                AppState.reviewSearchType = 'date'
+                AppState.reviews.sort(function (a, b) { return a.createdAt - b.createdAt }).reverse()
+            },
+
+            async searchTypeRating() {
+                AppState.reviewSearchType = 'rating'
+                AppState.reviews.sort(function (a, b) { return a.rating - b.rating }).reverse()
+            }
         };
     },
     components: { ProfileCard, ReviewCard, ProfileCarousel, RateProfileOffcanvas, TipUserModal, ProfileStarRating, AddEmployee }

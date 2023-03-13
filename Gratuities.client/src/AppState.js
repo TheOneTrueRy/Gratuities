@@ -24,6 +24,7 @@ export const AppState = reactive({
   employees: [],
 
   reviews: [],
+  reviewSearchType: 'date',
 
   QRCode: null,
 
