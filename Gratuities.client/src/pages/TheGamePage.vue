@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid">
+  <!-- <div class="container-fluid backdrop" :style=""> -->
 
-  </div>
+  <!-- </div> -->
 </template>
 
 
