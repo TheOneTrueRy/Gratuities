@@ -1,5 +1,6 @@
 import { courier } from "../../authkey"
 import { dbContext } from "../db/DbContext"
+import { Forbidden } from "../utils/Errors"
 import { profileService } from "./ProfileService"
 
 class ReviewsService {
@@ -10,6 +11,10 @@ class ReviewsService {
     async giveReview(body) {
         const reviewer = await profileService.getProfileById(body.creatorId)
         const receiver = await profileService.getProfileById(body.reviewedId)
+
+        if (reviewer == receiver) {
+            throw new Forbidden("You can't review yourself naughty naughty")
+        }
 
         const review = await dbContext.Reviews.create(body)
         await review.populate('creator', 'name picture')

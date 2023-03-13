@@ -46,7 +46,9 @@ import { profilesService } from '../services/ProfilesService.js';
 
 export default {
     setup() {
-        const editable = ref({})
+        const editable = ref({
+            rating: 2.5
+        })
         const route = useRoute()
 
         return {
