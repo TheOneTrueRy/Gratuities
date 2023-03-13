@@ -6,8 +6,8 @@
                     <div class="row align-items-center">
                         <div class="col-6 d-md-none">
                             <!-- TODO needs to reflect user's actual rating -->
-                            <div>
-                                <ProfileStarRating />
+                            <div class="fs-2">
+                                <ProfileStarRating :rating="profile.rating" />
                             </div>
                         </div>
                         <div class="col-6 offset-md-6 text-end">
@@ -32,8 +32,8 @@
                         <div class="col-12 mt-2 text-center">
                             <h1>{{ profile?.name }}</h1>
                         </div>
-                        <div class="col-12 mt-2 d-md-flex justify-content-center d-none">
-                            <ProfileStarRating />
+                        <div class="col-12 mt-2 d-md-flex justify-content-center d-none fs-2">
+                            <ProfileStarRating :rating="profile.rating" />
                         </div>
                         <div class="col-6 d-flex justify-content-center">
                             <button class="btn tip-button elevation-2 rounded-pill px-4" data-bs-toggle="modal"
