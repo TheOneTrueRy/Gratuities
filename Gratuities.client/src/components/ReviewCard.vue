@@ -1,22 +1,24 @@
 <template>
     <div class="ReviewCard">
-        <div class="row align-items-center py-2">
+        <div class="row align-items-center">
             <div class="col-3">
                 <router-link :to="{ name: 'Profile', params: { profileId: review.creatorId } }" class="text-light">
                     <img class="profile-picture-small selectable" :src="review.creator.picture"
                         :alt="review.creator.picture">
                 </router-link>
             </div>
-            <div class="col-9">
+            <div class="col-8">
                 <h6 class="text-start">{{ review.creator.name }} | {{ review.rating }} Stars
-                    <span v-if="review.creator.id == account.id">
-                        | <button @click="deleteReview(review.id)" class="btn btn-danger delete-button"><i
-                                title="Delete Review"></i></button>
-                    </span>
                 </h6>
                 <div class="scroller">
                     <span>"{{ review.body }}"</span>
                 </div>
+            </div>
+            <div class="col-1 d-flex justify-content-end align-self-start">
+                <span v-if="review.creator.id == account.id" class="text-end">
+                    <button @click="deleteReview(review.id)" class="btn btn-close btn-sm text-danger delete-button"
+                        title="Delete"></button>
+                </span>
             </div>
         </div>
     </div>
@@ -60,7 +62,6 @@ export default {
 <style lang="scss" scoped>
 .delete-button {
     height: 3vh;
-    width: 10%;
 }
 
 .scroller {
