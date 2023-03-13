@@ -1,5 +1,5 @@
 <template>
-  <div class="conteiner-fluid">
+  <div class="container-fluid">
 
   </div>
 </template>
