@@ -6,7 +6,8 @@ export const EmployeeSchema = new Schema({
     accountId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },
     employeeName: { type: String, required: true },
     employeePicture: { type: String, required: true },
-    employeeRating: { type: Number, required: true }
+    employeeRating: { type: Number, required: true },
+    employeeBio: {type: String, required: true}
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 EmployeeSchema.virtual('business', {
