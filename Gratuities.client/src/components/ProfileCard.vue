@@ -8,7 +8,7 @@
                 <div class="col-9">
                     <div class="d-flex align-items-center">
                         <span>{{ profile?.name }} |&nbsp;</span>
-                        <span class="fs-5">
+                        <span>
                             <ProfileStarRating :rating="profile.rating"></ProfileStarRating>
                         </span>
                         <span></span>
