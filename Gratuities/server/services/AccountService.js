@@ -76,7 +76,7 @@ class AccountService {
       throw new BadRequest('Invalid account Id')
     }
 
-    if (body.currency < 0.01) {
+    if (body.currency < 0) {
       throw new BadRequest("You can't get negative money.")
     }
 
