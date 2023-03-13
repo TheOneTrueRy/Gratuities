@@ -45,5 +45,6 @@ export default {
     width: auto;
     object-fit: cover;
     object-position: center;
+    background-position: center;
 }
 </style>

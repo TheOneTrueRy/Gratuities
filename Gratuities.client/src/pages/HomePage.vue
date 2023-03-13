@@ -18,7 +18,7 @@
         <div v-if="highestTipEverGiven" class="col-12 text-center">
           <h6 class="biggest-tip">Your Biggest Tip Sent: <span class="biggest-tip-amount">${{ highestTipEverGiven.tip
           }}</span> to
-            {{ highestTipEverGiven.receiver.name }}
+            {{ highestTipEverGiven.receiver?.name }}
           </h6>
         </div>
         <div v-else class="col-12 text-center">
@@ -27,7 +27,7 @@
         <div v-if="highestTipEver" class="col-12 text-center">
           <h6 class="biggest-tip">Your Biggest Tip received: <span class="biggest-tip-amount">${{ highestTipEver.tip
           }}</span> from
-            {{ highestTipEver.giver.name }}
+            {{ highestTipEver.giver?.name }}
           </h6>
         </div>
         <div v-else class="col-12 text-center">

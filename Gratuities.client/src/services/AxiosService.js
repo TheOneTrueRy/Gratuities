@@ -5,9 +5,9 @@ export const api = Axios.create({
   timeout: 8000
 })
 
-// export const googleApi = Axios.create({
-//   baseURL: 'https://maps.googleapis.com/maps/api/place/autocomplete/json',
-//   timeout: 5000,
-//   params: { query: { key: 'AIzaSyDxfmcE1E0XIqyw91FjWGp3-Ab4VyQEwVQ' } }
-// })
+export const googleApi = Axios.create({
+  baseURL: 'https://maps.googleapis.com/maps/api/place/autocomplete/json',
+  timeout: 5000,
+  params: { query: { key: 'AIzaSyDxfmcE1E0XIqyw91FjWGp3-Ab4VyQEwVQ' } }
+})
 
