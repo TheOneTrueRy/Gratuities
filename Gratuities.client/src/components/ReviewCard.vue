@@ -8,8 +8,13 @@
                 </router-link>
             </div>
             <div class="col-8">
-                <h6 class="text-start">{{ review.creator.name }} | {{ review.rating }} Stars
-                </h6>
+                <div class="d-flex align-items-center">
+                    <span class="text-start">{{ review.creator.name }} |&nbsp;
+                    </span>
+                    <span class="fs-5">
+                        <ProfileStarRating :rating="review.rating"></ProfileStarRating>
+                    </span>
+                </div>
                 <div class="scroller">
                     <span>"{{ review.body }}"</span>
                 </div>
@@ -32,6 +37,7 @@ import { Review } from "../models/Review.js";
 import { ratingsService } from '../services/RatingsService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
+import ProfileStarRating from "./ProfileStarRating.vue";
 
 export default {
     props: {
@@ -46,15 +52,17 @@ export default {
             async deleteReview(reviewId) {
                 try {
                     if (await Pop.confirm("Are you sure you'd like to delete this review?")) {
-                        await ratingsService.deleteReview(reviewId)
+                        await ratingsService.deleteReview(reviewId);
                     }
-                } catch (error) {
-                    Pop.error(error.message)
-                    logger.error(error)
+                }
+                catch (error) {
+                    Pop.error(error.message);
+                    logger.error(error);
                 }
             }
-        }
-    }
+        };
+    },
+    components: { ProfileStarRating }
 }
 </script>
 
