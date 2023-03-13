@@ -11,12 +11,6 @@ class ProfilesService {
         const res = await api.get('api/profiles')
         AppState.profiles = res.data.map(p => new Profile(p))
         logger.log('[ALL PROFILES]', AppState.profiles)
-
-        // TODO make sure this vvv sorts correctly
-        // AppState.profiles.forEach(p => {
-        //     let profileId = p.id
-        //     ratingsService.calculateProfileRating(profileId)
-        // })
         AppState.profiles.sort(function (a, b) { return a.rating - b.rating }).reverse()
     }
     async getProfilesByQuery(query) {

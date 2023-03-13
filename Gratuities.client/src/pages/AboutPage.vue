@@ -38,9 +38,10 @@
 
             <!-- SECTION Joe's card -->
             <div class="carousel-item active">
-              <p class="bio rounded bg-gradient">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
-                molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
-                facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
+              <p class="bio rounded bg-gradient">After a decade of customer-facing roles, Joe was tired...a lover of both
+                art and logic, coding and software development seemed to be the path forward. His end goal is to work in
+                game development but wants all the experience he can get until then. 5th
+                most handsome member of the Gratuities teamn.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JUTAK8CE-7fb60e9eb27e-512" class="d-block w-100" alt="...">
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Joe Calvi</h5>
@@ -177,5 +178,4 @@ img {
   width: 5vh;
   border-radius: 50%;
   box-shadow: 2px 2px 4px black;
-}
-</style>
+}</style>
