@@ -61,6 +61,14 @@ export default {
                     Pop.error(error.message)
                     logger.error(error)
                 }
+            },
+            async removeEmployee() {
+                try {
+                    await employeesService.removeEmployee()
+                } catch (error) {
+                    Pop.error(error.message)
+                    logger.error(error)
+                }
             }
         }
     }

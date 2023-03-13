@@ -21,6 +21,7 @@ export const AppState = reactive({
   highestTipMonth: null,
   availableToPayout: null,
   highestTipEverGiven: null,
+  employees: [],
 
   reviews: [],
 

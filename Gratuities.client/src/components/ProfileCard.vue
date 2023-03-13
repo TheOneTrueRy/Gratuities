@@ -1,5 +1,5 @@
 <template>
-    <div class="ProfileCard">
+    <div class="ProfileCard rounded elevation-5 mb-4 py-2">
         <router-link :to="{ name: 'Profile', params: { profileId: profile?.id } }" class="text-light">
             <div class="row">
                 <div class="col-3 d-flex align-items-center">
@@ -13,7 +13,7 @@
                         </span>
                         <span></span>
                     </div>
-                    <div class="scroller">
+                    <div class="scroller" v-if="profile.bio">
                         <span>"{{ profile?.bio }}"</span>
                     </div>
                 </div>
@@ -24,7 +24,12 @@
 
 
 <script>
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
 import { Profile } from '../models/Profile.js';
+import { employeesService } from '../services/EmployeesService';
+import { profilesService } from '../services/ProfilesService';
+import Pop from '../utils/Pop';
 import ProfileStarRating from "./ProfileStarRating.vue";
 
 export default {
@@ -35,7 +40,8 @@ export default {
         }
     },
     setup() {
-        return {};
+        return {
+        };
     },
     components: { ProfileStarRating }
 }
@@ -43,6 +49,14 @@ export default {
 
 
 <style lang="scss" scoped>
+.ProfileCard {
+    background-color: #06D6A0;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
 .profile-picture-small {
     height: 10vh;
     width: 10vh;

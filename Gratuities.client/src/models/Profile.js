@@ -5,9 +5,10 @@ export class Profile {
         this.currency = data.currency
         this.email = data.email
         this.openToFeedback = data.openToFeedback
-        this.picture = data.picture
-        this.bio = data.bio
-        this.name = data.name
-        this.rating = data.rating
+        this.picture = data.picture || data.employeePicture
+        this.bio = data.bio || data.employeeBio
+        this.name = data.name || data.employeeName
+        this.rating = data.rating || data.employeeRating
+        this.businessId = data.businessId || null
     }
 }

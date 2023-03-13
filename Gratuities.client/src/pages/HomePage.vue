@@ -72,7 +72,7 @@
         <div class="col-12 col-md-8 offset-md-2">
           <h6>Top Profiles:</h6>
         </div>
-        <div v-for="p in profiles" class="col-12 employee-card rounded elevation-5 p-2 mb-4 col-md-8 offset-md-2">
+        <div v-for="p in profiles" class="col-12 employee-card rounded col-md-8 offset-md-2">
           <ProfileCard :profile="p" />
         </div>
       </div>

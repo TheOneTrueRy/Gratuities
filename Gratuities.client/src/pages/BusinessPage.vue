@@ -23,7 +23,7 @@
                 <h2>Top Rated Employees:</h2>
                 <form class="mb-4" @submit.prevent="search()">
                     <div class="input-group">
-                        <input v-model="editable.query" required class="form-control" placeholder="Search Employees"
+                        <input v-model="editable3.query" class="form-control" placeholder="Search Employees"
                             aria-describedby="button-addon2" aria-label="Search Employees" type="text">
                         <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
                             <i class="mdi mdi-magnify"></i>
@@ -32,61 +32,8 @@
                 </form>
             </div>
             <!-- SECTION employees placeholders -->
-            <div>
-                <div class="rounded col-12 col-md-6 offset-md-3 tips my-2">
-                    <div class="row align-items-center">
-                        <div class="col-3">
-                            <img class="profile-picture" :src="account?.picture" :alt="account?.name">
-                        </div>
-                        <div class="col-9">
-                            <p>
-                                {{ account?.name }}
-                                <br>
-                                <i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                                    class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                                    class="mdi mdi-star star"></i>
-                                <br>
-                                "Customer service is my passion"
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded col-12 col-md-6 offset-md-3 tips my-2">
-                    <div class="row align-items-center">
-                        <div class="col-3">
-                            <img class="profile-picture" :src="account?.picture" :alt="account?.name">
-                        </div>
-                        <div class="col-9">
-                            <p>
-                                {{ account?.name }}
-                                <br>
-                                <i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                                    class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                                    class="mdi mdi-star star"></i>
-                                <br>
-                                "Customer service is my passion"
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded col-12 col-md-6 offset-md-3 tips my-2">
-                    <div class="row align-items-center">
-                        <div class="col-3">
-                            <img class="profile-picture" :src="account?.picture" :alt="account?.name">
-                        </div>
-                        <div class="col-9 mt-2">
-                            <p>
-                                {{ account?.name }}
-                                <br>
-                                <i class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                                    class="mdi mdi-star star"></i><i class="mdi mdi-star star"></i><i
-                                    class="mdi mdi-star star"></i>
-                                <br>
-                                "Customer service is my passion"
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div v-for="e in employees">
+                <ProfileCard :profile='e' />
             </div>
         </div>
 
@@ -126,52 +73,81 @@
 import { computed, onMounted, watchEffect, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState';
+import ProfileCard from '../components/ProfileCard.vue';
 import { businessesService } from '../services/BusinessesService';
+import { employeesService } from '../services/EmployeesService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 
 export default {
     setup() {
-        const editable = ref({})
+        const editable = ref({});
         const editable2 = ref({
             name: AppState.business?.name,
             coverImg: AppState.business?.coverImg,
             logo: AppState.business?.logo,
         })
+        const editable3 = ref({});
         const route = useRoute();
         async function getBusinessById() {
             try {
-                const businessId = route.params.businessId
-                await businessesService.getBusinessById(businessId)
-            } catch (error) {
-                Pop.error(error.message)
-                logger.error(error)
+                const businessId = route.params.businessId;
+                await businessesService.getBusinessById(businessId);
+            }
+            catch (error) {
+                Pop.error(error.message);
+                logger.error(error);
+            }
+        }
+        async function getEmployeesByBusinessId() {
+            try {
+                const businessId = route.params.businessId;
+                await employeesService.getEmployeesByBusinessId(businessId);
+            }
+            catch (error) {
+                Pop.error(error.message);
+                logger.error(error);
             }
         }
         onMounted(() => {
-            getBusinessById()
-        })
+            getBusinessById();
+            getEmployeesByBusinessId();
+        });
         watchEffect(() => {
             if (route.params.businessId) {
-                getBusinessById()
+                getBusinessById();
             }
-        })
+        });
         return {
             editable,
             editable2,
+            editable3,
+            async search() {
+                try {
+                    let query = editable3.value;
+                    const businessId = route.params.businessId
+                    await employeesService.getEmployeeByQuery(query, businessId);
+                }
+                catch (error) {
+                    Pop.error("SEARCHING FOR BUSINESSES", error);
+                }
+            },
             business: computed(() => AppState.business),
             account: computed(() => AppState.account),
+            employees: computed(() => AppState.employees),
             async editBusiness(businessId) {
                 try {
-                    const formData = editable2.value
-                    await businessesService.editBusiness(formData, businessId)
-                } catch (error) {
-                    Pop.error(error.message)
-                    logger.error(error)
+                    const formData = editable2.value;
+                    await businessesService.editBusiness(formData, businessId);
+                }
+                catch (error) {
+                    Pop.error(error.message);
+                    logger.error(error);
                 }
             }
-        }
-    }
+        };
+    },
+    components: { ProfileCard }
 }
 </script>
 
