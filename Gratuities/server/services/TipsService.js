@@ -47,20 +47,21 @@ class TipsService {
     await receiver.save()
     await tips.populate('giver receiver', 'name picture')
 
-
-    await courier.send({
-      message: {
-        to: {
-          email: receiver.email
+    if (receiver.notifications) {
+      await courier.send({
+        message: {
+          to: {
+            email: receiver.email
+          },
+          template: "Y8REJMFD13M9MFQJVRRXH45T3HHA",
+          data: {
+            receiverName: receiver.name,
+            senderName: giver.name,
+            tip: tip.tip
+          },
         },
-        template: "Y8REJMFD13M9MFQJVRRXH45T3HHA",
-        data: {
-          receiverName: receiver.name,
-          senderName: giver.name,
-          tip: tip.tip
-        },
-      },
-    });
+      });      
+    }
 
     return tips
   }

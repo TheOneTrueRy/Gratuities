@@ -19,20 +19,23 @@ class ReviewsService {
         const review = await dbContext.Reviews.create(body)
         await review.populate('creator', 'name picture')
 
-        await courier.send({
-            message: {
-                to: {
-                    email: receiver.email,
+        if (receiver.notifications) {
+            await courier.send({
+                message: {
+                    to: {
+                        email: receiver.email,
+                    },
+                    template: "4K1YX40ZRA4F9FQ7R11DX6575RAP",
+                    data: {
+                        firstName: receiver.name,
+                        senderName: reviewer.name,
+                        reviewRating: body.rating,
+                        reviewBody: body.body
+                    },
                 },
-                template: "4K1YX40ZRA4F9FQ7R11DX6575RAP",
-                data: {
-                    firstName: receiver.name,
-                    senderName: reviewer.name,
-                    reviewRating: body.rating,
-                    reviewBody: body.body
-                },
-            },
-        });
+            });
+        }
+
         return review
     }
 

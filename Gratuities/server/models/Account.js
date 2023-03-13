@@ -12,7 +12,8 @@ export const AccountSchema = new Schema(
     bio: { type: String, default: '' },
     openToFeedback: { type: Boolean, default: false },
     tips: { type: Number, default: 0, min: 0 },
-    rating: { type: Number, default: 0, min: 0, max: 5 }
+    rating: { type: Number, default: 0, min: 0, max: 5 },
+    notifications: {type: Boolean, default: true}
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )

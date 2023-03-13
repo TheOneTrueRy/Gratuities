@@ -85,6 +85,7 @@ class AccountService {
     account.currency = (account.currency + body.currency) || account.currency
     account.bio = body.bio || account.bio
     account.openToFeedback = body.openToFeedback != null ? body.openToFeedback : account.openToFeedback
+    account.notifications = body.notifications != null ? body.notifications : account.notifications
     account.tips = body.tips || account.tips
     account.rating = body.rating || account.rating
     // const account = await dbContext.Account.findOneAndUpdate(
