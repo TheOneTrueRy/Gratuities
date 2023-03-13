@@ -6,19 +6,19 @@
           <router-link :to="{
             name: 'Account'
           }">
-            <img class="profile-picture border border-dark border-2 elevation-1" :src="account.picture"
-              :alt="account.picture" title="Go to your account page!">
+            <img class="profile-picture border border-dark border-2 elevation-1" :src="account?.picture"
+              :alt="account?.picture" title="Go to your account page!">
           </router-link>
         </div>
         <div class="col-12 text-center">
           <h2 class="my-3 text-dark rounded text-center user-name">
-            {{ account.name }}
+            {{ account?.name }}
           </h2>
         </div>
         <div v-if="highestTipEverGiven" class="col-12 text-center">
           <h6 class="biggest-tip">Your Biggest Tip Sent: <span class="biggest-tip-amount">${{ highestTipEverGiven.tip
           }}</span> to
-            {{ highestTipEverGiven.receiver.name }}
+            {{ highestTipEverGiven.receiver?.name }}
           </h6>
         </div>
         <div v-else class="col-12 text-center">
@@ -27,7 +27,7 @@
         <div v-if="highestTipEver" class="col-12 text-center">
           <h6 class="biggest-tip">Your Biggest Tip received: <span class="biggest-tip-amount">${{ highestTipEver.tip
           }}</span> from
-            {{ highestTipEver.giver.name }}
+            {{ highestTipEver.giver?.name }}
           </h6>
         </div>
         <div v-else class="col-12 text-center">
