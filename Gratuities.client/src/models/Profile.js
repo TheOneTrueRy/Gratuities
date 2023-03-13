@@ -1,7 +1,7 @@
 
 export class Profile {
     constructor(data) {
-        this.id = data._id
+        this.id = data.accountId || data._id
         this.currency = data.currency
         this.email = data.email
         this.openToFeedback = data.openToFeedback

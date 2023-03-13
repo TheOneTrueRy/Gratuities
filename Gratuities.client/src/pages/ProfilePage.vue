@@ -78,6 +78,7 @@ import { profilesService } from '../services/ProfilesService.js';
 import { ratingsService } from "../services/RatingsService.js";
 import Pop from '../utils/Pop.js';
 import AddEmployee from '../components/AddEmployee.vue';
+import { logger } from '../utils/Logger';
 
 export default {
     setup() {
@@ -123,6 +124,7 @@ export default {
         watchEffect(() => {
             if (route.params.profileId) {
                 getProfileById();
+                logger.log('alo');
                 generateQRCode();
                 getReviewsByProfileId();
                 calculateProfileRating();

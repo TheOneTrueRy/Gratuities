@@ -1,5 +1,5 @@
 <template>
-    <div class="ProfileCard rounded elevation-5 mb-4 py-2">
+    <div class="ProfileCard rounded elevation-5 mb-4 py-2 px-2">
         <router-link :to="{ name: 'Profile', params: { profileId: profile?.id } }" class="text-light">
             <div class="row">
                 <div class="col-3 d-flex align-items-center">
