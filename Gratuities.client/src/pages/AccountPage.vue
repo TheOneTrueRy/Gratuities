@@ -19,7 +19,7 @@
         <div class="justify-content-center row">
           <div class="col-10">
             <h6>Available to Payout: <div class="d-flex justify-content-around align-items-center mt-1">
-                <i class="cash fs-5">₲{{ availableToPayout
+                <i class="cash fs-5">₲{{ ((availableToPayout)).toLocaleString('en-US')
                 }} </i>
                 <button @click="cashOut(availableToPayout)" class="btn btn-outline-success btn-sm"
                   style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
@@ -29,9 +29,9 @@
             </h6>
             <h6>Biggest Tip:</h6>
             <ul>
-              <li>This Month: <i class="cash fs-5">₲{{ highestTipMonth }}</i>
+              <li>This Month: <i class="cash fs-5">₲{{ ((highestTipMonth).toLocaleString('en-US')) }}</i>
               </li>
-              <li>Ever: <i class="cash fs-5">₲{{ highestTipEver?.tip }}</i>
+              <li>Ever: <i class="cash fs-5">₲{{ ((highestTipEver?.tip).toLocaleString('en-US')) }}</i>
               </li>
             </ul>
           </div>
@@ -90,20 +90,23 @@
             <form @submit.prevent="newBusiness()">
               <div class="mb-2">
                 <label class="form-label">Name</label>
-                <input required v-model="editable2.name" minlength="3" maxlength="50" placeholder="What's it called?" type="text" class="form-control">
+                <input required v-model="editable2.name" minlength="3" maxlength="50" placeholder="What's it called?"
+                  type="text" class="form-control">
               </div>
               <div class="mb-2">
                 <label class="form-label">Location</label>
-                <input required v-model="editable2.location" minlength="3" maxlength="500" placeholder="Where is it?" type="text" class="form-control">
+                <input required v-model="editable2.location" minlength="3" maxlength="500" placeholder="Where is it?"
+                  type="text" class="form-control">
               </div>
               <div class="mb-2">
                 <label class="form-label">Logo</label>
-                <input required v-model="editable2.logo" minlength="3" maxlength="500" placeholder="What's it's logo?" type="text" class="form-control">
+                <input required v-model="editable2.logo" minlength="3" maxlength="500" placeholder="What's it's logo?"
+                  type="text" class="form-control">
               </div>
               <div class="mb-2">
                 <label class="form-label">Cover Image</label>
-                <input required v-model="editable2.coverImg" minlength="3" maxlength="500" placeholder="What's it's cover image?" type="text"
-                  class="form-control">
+                <input required v-model="editable2.coverImg" minlength="3" maxlength="500"
+                  placeholder="What's it's cover image?" type="text" class="form-control">
               </div>
               <button data-bs-dismiss="offcanvas" class="btn btn-success" type="submit">Create Business</button>
             </form>

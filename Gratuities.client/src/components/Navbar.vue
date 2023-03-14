@@ -1,19 +1,19 @@
 <template>
   <nav class="navbar navbar-expand-lg tip-header px-3">
-    <router-link class="d-flex text-light" :to="{ name: 'Home' }">
-      <div class="logo d-flex flex-column align-items-center">
-        <h1 class="nomb">Gratuities</h1>
-      </div>
-    </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <router-link class="d-flex text-light" :to="{ name: 'Home' }">
+      <div class="logo d-flex flex-column align-items-center">
+        <h1 class="nomb ps-4">Gratuities</h1>
+      </div>
+    </router-link>
     <button data-bs-toggle="offcanvas" data-bs-target="#notificationOffcanvas" aria-controls="notificationOffcanvas"
       class="btn btn-dark d-flex justify-content-center align-items-center px-1 ms-4">
-      <i id="notifications-bell" class="mdi mdi-bell text-light fs-5 selectable"></i>
+      <i id="notifications-bell" class="mdi mdi-bell text-light fs-5 selectable notifications-bell"></i>
       <div v-if="notifications" class="notif-icon-bg">
-        <div class="notif-icon-num">1</div>
+        <div class="notif-icon-num">{{ notifications.length }}</div>
       </div>
     </button>
     <div class="text-start collapse navbar-collapse ms-4" id="navbarText">
@@ -32,7 +32,8 @@
         </li>
         <li v-if="account.id">
           <div class="my-shadow btn-p text-start text-uppercase">
-            <span>G-Bucks: <span class="ms-1">{{ account.currency.toFixed(2) }}</span></span>
+            <span>G-Bucks: <span class="ms-1">{{ (((account.currency).toLocaleString('en-US')))
+            }}</span></span>
           </div>
         </li>
         <li v-if="account.id">
@@ -42,7 +43,6 @@
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
-      <!-- FIXME get rid of the drop down when clicking the logout button -->
       <div class="d-flex justify-space-between">
         <Login />
         <button class="btn" @click="toggleTheme()">
@@ -101,7 +101,7 @@ export default {
 }
 
 .notif-icon-num {
-  transform: translate(1px, -1px);
+  transform: translate(-0.05px, -0.2px);
 }
 
 .tip-header {
@@ -136,6 +136,10 @@ a:hover {
   nav {
     height: 64px;
   }
+}
+
+.notifications-bell {
+  transform: translate(7.5px, 0.1px);
 }
 
 #notifications-bell {
