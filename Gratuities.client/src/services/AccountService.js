@@ -20,7 +20,6 @@ class AccountService {
   }
 
   async getMyReviews() {
-    debugger
     const account = new Account(AppState.account)
     const res = await api.get(`api/profiles/${account.id}/reviews`)
     logger.log('my reviews', res.data)

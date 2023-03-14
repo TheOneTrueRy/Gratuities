@@ -26,7 +26,7 @@ export const AppState = reactive({
   reviews: [],
   myReviews: [],
   reviewSearchType: 'date',
-
+  theme: true,
   QRCode: null,
 
   notifications: [],

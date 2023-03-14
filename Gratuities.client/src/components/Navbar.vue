@@ -43,7 +43,12 @@
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <!-- FIXME get rid of the drop down when clicking the logout button -->
-      <Login />
+      <div class="d-flex justify-space-between">
+        <Login />
+        <button class="btn" @click="toggleTheme()">
+          <h1><i class="mdi mdi-theme-light-dark"></i></h1>
+        </button>
+      </div>
     </div>
   </nav>
   <NotificationOffcanvas />
@@ -53,6 +58,7 @@
 import { computed, onMounted, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import { notificationsService } from "../services/NotificationsService";
+import { themeService } from "../services/ThemeService";
 import Login from './Login.vue'
 import NotificationOffcanvas from "./NotificationOffcanvas.vue";
 
@@ -62,7 +68,15 @@ export default {
 
     return {
       account: computed(() => AppState.account),
-      notifications: computed(() => AppState.notifications)
+      notifications: computed(() => AppState.notifications),
+
+      toggleTheme() {
+        if (AppState.theme) {
+          themeService.toggleThemeDark()
+        } else {
+          themeService.toggleThemeLight()
+        }
+      }
     }
 
   },
@@ -71,6 +85,10 @@ export default {
 </script>
 
 <style scoped>
+.theme-button {
+  min-height: 2vh;
+}
+
 .notif-icon-bg {
   font-size: xx-small;
   width: 15px;
