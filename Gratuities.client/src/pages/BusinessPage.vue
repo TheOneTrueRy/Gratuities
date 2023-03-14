@@ -53,15 +53,15 @@
                 <form @submit.prevent="editBusiness(business?.id)">
                     <div class="mb-3" v-if="business?.name">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" required v-model="editable2.name">
+                        <input type="text" class="form-control" minlength="3" maxlength="50" required v-model="editable2.name">
                     </div>
                     <div class="mb-3" v-if="business?.name">
                         <label for="coverImg" class="form-label">CoverImg</label>
-                        <input type="text" class="form-control" required v-model="editable2.coverImg">
+                        <input type="text" class="form-control" minlength="3" maxlength="500" required v-model="editable2.coverImg">
                     </div>
                     <div class="mb-3" v-if="business?.name">
                         <label for="logo" class="form-label">Logo</label>
-                        <input type="text" class="form-control" required v-model="editable2.logo">
+                        <input type="text" class="form-control" minlength="3" maxlength="500" required v-model="editable2.logo">
                     </div>
                     <button type="submit" class="btn btn-success">Save Changes</button>
                 </form>
