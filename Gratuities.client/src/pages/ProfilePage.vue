@@ -139,7 +139,7 @@ export default {
                 generateQRCode();
                 getReviewsByProfileId();
                 calculateProfileRating();
-                tipsService.getTipsReceived()
+                // tipsService.getTipsReceived()
             }
         })
         return {

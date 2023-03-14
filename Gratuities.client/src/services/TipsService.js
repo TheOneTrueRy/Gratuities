@@ -6,8 +6,11 @@ import { api } from "./AxiosService"
 class TipsService {
     async getTipsReceived() {
         const res = await api.get('account/tips/received')
-        if(res.data.length > 0){
+        
+        if (res.data.length > 0) {
+            logger.log('hello there')
             AppState.receivedTips = res.data.reverse()
+            logger.log('mytips',AppState.receivedTips)
             const currentMonth = new Date().getMonth()
             const tipsThisMonth = []
             const sortedTips = []
@@ -29,6 +32,7 @@ class TipsService {
             AppState.highestTipEver = sortedTips[0]
             AppState.availableToPayout = availableToPayout
         }
+        
     }
     async getTipsGiven() {
         const res = await api.get('account/tips/sent')
