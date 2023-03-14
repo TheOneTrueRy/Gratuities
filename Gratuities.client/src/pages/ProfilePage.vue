@@ -152,7 +152,7 @@ export default {
 
             searchTypeDate() {
                 AppState.reviewSearchType = 'date'
-                AppState.reviews.sort(function (a, b) { return a.createdAt - b.createdAt }).reverse()
+                AppState.reviews.sort(function (a, b) { return new Date(a.createdAt) - new Date(b.createdAt) }).reverse()
             },
 
             searchTypeRating() {
