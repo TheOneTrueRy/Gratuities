@@ -1,20 +1,35 @@
 <template>
-    <header class="sticky-top">
-      <Navbar />
-    </header>
-    <main>
-      <router-view />
-    </main>
+  <header class="sticky-top">
+    <Navbar />
+  </header>
+  <main>
+    <router-view />
+  </main>
 </template>
 
 <script>
-import { computed, watchEffect } from 'vue'
+import { computed, watchEffect, onMounted } from 'vue'
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
+import { accountService } from './services/AccountService'
 import { notificationsService } from './services/NotificationsService'
+import Pop from './utils/Pop'
 
 export default {
   setup() {
+
+    async function getMyReviews() {
+      try {
+        await accountService.getMyReviews()
+      } catch (error) {
+        Pop.error('GETTING MY REVIEWS', error)
+      }
+    }
+
+    onMounted(() => {
+      getMyReviews()
+    })
+
     watchEffect(() => {
       if (AppState.reviews && AppState.notifications) {
         notificationsService.findNotifications(AppState.account.id)
@@ -22,7 +37,8 @@ export default {
 
     })
     return {
-      appState: computed(() => AppState)
+      appState: computed(() => AppState),
+      notifications: computed(() => AppState.notifications)
     }
   },
   components: { Navbar }

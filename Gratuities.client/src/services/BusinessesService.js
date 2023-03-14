@@ -8,14 +8,11 @@ class BusinessesService {
     async getHighestRatedBusinesses() {
         const res = await api.get('api/businesses')
         AppState.businesses = res.data.map(b => new Business(b))
-        // TODO need to add rating to businesses once we get profile ratings
-        logger.log('[ALL BUSINESSES]', AppState.businesses)
     }
 
     async getBusinessesByQuery(query) {
         const res = await api.get('/api/businesses', { params: { name: query.query } })
         AppState.businesses = res.data.map(b => new Business(b))
-        logger.log('[FOUND BUSINESSES]', AppState.businesses)
     }
 
     async newBusiness(formData){
@@ -27,10 +24,7 @@ class BusinessesService {
     async getMyBusiness(userId){
         const res = await api.get('api/businesses')
         const myBusiness = res.data.filter(b => b.ownerId == userId)
-        logger.log('userId', userId)
-        logger.log('res data of getmybusiness',res.data)
         AppState.businesses = myBusiness.map(b => new Business(b))
-        logger.log('my businesses:',myBusiness)
     }
 
     async getBusinessById(businessId){
@@ -55,15 +49,12 @@ class BusinessesService {
 
     async getBusinessRating(){
         let calculatedRating = 0
-        logger.log('emp:', AppState.employees)
         if (AppState.employees.length != 0) {
             AppState.employees.forEach(p=>calculatedRating += p.rating )
             // const businessId = AppState.business?.id
             calculatedRating = calculatedRating/AppState.employees.length
             let rating = Math.round(calculatedRating * 2) / 2
             // const res = await api.put('api/businesses/' + businessId, {rating: calculatedRating})
-            logger.log('calc', rating)
-            logger.log('bus', AppState.business)
             if (AppState.business) {
             AppState.business.rating = rating
                 

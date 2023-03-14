@@ -9,7 +9,6 @@ class NotificationsService {
         let foundTipsNotifications = AppState.receivedTips.filter(r => r.isOpened == false)
 
         AppState.notifications = [...foundReviewNotifications, ...foundTipsNotifications]
-        logger.log("Notifications", AppState.notifications)
     }
 
     async clearNotifications() {

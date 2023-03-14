@@ -10,7 +10,6 @@ class ProfilesService {
     async getHighestRatedProfiles() {
         const res = await api.get('api/profiles')
         AppState.profiles = res.data.map(p => new Profile(p))
-        logger.log('[ALL PROFILES]', AppState.profiles)
         AppState.profiles.sort(function (a, b) { return a.rating - b.rating }).reverse()
     }
     async getProfilesByQuery(query) {
@@ -31,7 +30,6 @@ class ProfilesService {
 
         // NOTE vvv sorts reviews BY RATING - highest to lowest
         AppState.reviews.sort(function (a, b) { return a.rating - b.rating }).reverse()
-        logger.log(AppState.reviews)
     }
 
     async generateQRCode(profileId) {

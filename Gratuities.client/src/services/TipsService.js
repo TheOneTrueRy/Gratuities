@@ -13,7 +13,6 @@ class TipsService {
             let notPayedoutTips = []
             let availableToPayout = 0
             notPayedoutTips = res.data.filter(t => t.isPayedOut == false)
-            logger.log('the tips i have received:', res.data)
             res.data.forEach(t => {
                 if (new Date(t.createdAt).getMonth() == currentMonth) {
                     tipsThisMonth.push(t)
@@ -28,7 +27,6 @@ class TipsService {
             AppState.highestTipMonth = tipsThisMonth[0].tip
             AppState.highestTipEver = sortedTips[0]
             AppState.availableToPayout = availableToPayout
-            logger.log('Highest Tip This Month:', AppState.highestTipMonth)
         }
     }
     async getTipsGiven() {
@@ -42,7 +40,6 @@ class TipsService {
             })
             tipsGiven.sort((a, b) => b.tip - a.tip)
             AppState.highestTipEverGiven = tipsGiven[0]
-            logger.log('the tips i have given:', AppState.givenTips)
         }
     }
 

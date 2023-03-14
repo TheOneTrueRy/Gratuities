@@ -7,13 +7,11 @@ import { Employee, Profile } from "../models/Profile";
 class EmployeesService{
     async addEmployee(profileId, businessId){
         const res = await api.post('/api/businesses/'+businessId.businessId+'/employees', {accountId: profileId})
-        logger.log('aaaaa',res)
     }
 
     async getEmployeesByBusinessId(businessId){
         const res = await api.get('api/businesses/'+businessId+'/employees')
         AppState.employees = res.data.map(e=> new Employee(e))
-        logger.log('employees:', AppState.employees)
     }
 
     async getEmployeeByQuery(query,  businessId){
