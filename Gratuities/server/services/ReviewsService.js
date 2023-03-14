@@ -18,6 +18,9 @@ class ReviewsService {
 
         const review = await dbContext.Reviews.create(body)
         await review.populate('creator', 'name picture')
+        if (!body.body) {
+            body.body = "We at Gratitudes are wanting you to be the best at what you do."
+        }
 
         if (receiver.notifications) {
             await courier.send({
