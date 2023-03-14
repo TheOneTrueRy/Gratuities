@@ -21,8 +21,9 @@
             <h6>Available to Payout: <div class="d-flex justify-content-around align-items-center mt-1">
                 <i class="cash fs-5">₲{{ availableToPayout
                 }} </i>
-                <button class="btn btn-outline-success btn-sm"
-                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">cash
+                <button @click="cashOut(availableToPayout)" class="btn btn-outline-success btn-sm"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  :disabled="!availableToPayout">cash
                   out</button>
               </div>
             </h6>
@@ -248,6 +249,14 @@ export default {
       highestTipMonth: computed(() => AppState.highestTipMonth),
       highestTipEver: computed(() => AppState.highestTipEver),
       availableToPayout: computed(() => AppState.availableToPayout),
+      async cashOut(availableToPayout) {
+        try {
+          await tipsService.cashOut(availableToPayout)
+        } catch (error) {
+          Pop.error(error.message)
+          logger.error(error)
+        }
+      },
       async editAccount() {
         try {
           const formData = editable.value;

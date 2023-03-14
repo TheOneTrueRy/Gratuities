@@ -49,5 +49,11 @@ class TipsService {
     async sendTip(profileId, tip) {
         const res = await api.post(`api/profiles/${profileId}/tips`, tip)
     }
+
+    async cashOut(availableToPayout){
+        const res = await api.delete('account/tips')
+        AppState.account.currency += availableToPayout
+        AppState.availableToPayout = 0
+    }
 }
 export const tipsService = new TipsService
