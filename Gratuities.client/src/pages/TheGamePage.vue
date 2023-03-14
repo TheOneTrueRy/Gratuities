@@ -70,9 +70,9 @@ export default {
           await gameService.destroyBlock(value)
           setTimeout(getRandomBlock, 5000)
         } else if (block.value.health == 0 && block.value.id == 'mimic') {
-          let value = block.value.value
+          let value = -block.value.value
           if (account.currency >= 100) {
-            account.currency -= value
+            account.currency += value
           }
           await gameService.destroyBlock(value)
           setTimeout(getRandomBlock, 5000)

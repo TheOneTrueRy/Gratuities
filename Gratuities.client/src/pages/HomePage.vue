@@ -128,7 +128,7 @@ export default {
     onMounted(() => {
       getHighestRatedBusinesses();
       getHighestRatedProfiles();
-      getReviewsByProfileId()
+
     });
     onUnmounted(() => {
       clearBusinesses()
@@ -137,6 +137,7 @@ export default {
       if (AppState.account.id) {
         tipsService.getTipsReceived()
         tipsService.getTipsGiven()
+        getReviewsByProfileId()
       }
     })
     return {
