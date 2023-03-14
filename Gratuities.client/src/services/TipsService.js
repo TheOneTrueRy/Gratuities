@@ -1,4 +1,5 @@
 import { AppState } from "../AppState"
+import { accountService } from "./AccountService"
 import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
@@ -45,6 +46,7 @@ class TipsService {
 
     async sendTip(profileId, tip) {
         const res = await api.post(`api/profiles/${profileId}/tips`, tip)
+        accountService.editAccount({currency: -tip})
     }
 
     async cashOut(availableToPayout){
