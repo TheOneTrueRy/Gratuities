@@ -26,8 +26,8 @@
         <span v-else class="fs-1 mt-3 text-light my-shadow">Sweet, you opened a chest!</span>
       </div>
       <div class="col-12 d-flex justify-content-center">
-        <span v-if="block.id != 'mimic'" class="fs-2 text-light my-shadow">You earned G${{ block.value }}!</span>
-        <span v-else-if="block.id == 'mimic' && account.currency >= 100" class="fs-2 text-light my-shadow">You lost G${{
+        <span v-if="block.id != 'mimic'" class="fs-2 text-light my-shadow">You earned ₲{{ block.value }}!</span>
+        <span v-else-if="block.id == 'mimic' && account.currency >= 100" class="fs-2 text-light my-shadow">You lost ₲{{
           block.value }}...</span>
         <span v-else class="fs-2 text-light my-shadow">You were so broke, the mimic took pity on you...</span>
       </div>
