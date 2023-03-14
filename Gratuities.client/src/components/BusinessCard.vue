@@ -9,6 +9,8 @@
                     <h6>{{ business.name }}<span v-if="businessRating"> {{ businessRating }}Stars</span></h6>
                     {{ business.location }}
                 </div>
+                <div class="col-12">
+                </div>
             </div>
         </router-link>
     </div>
@@ -19,6 +21,7 @@
 import { AppState } from '../AppState.js';
 import { computed } from 'vue';
 import { Business } from '../models/Business.js';
+import ProfileStarRating from './ProfileStarRating.vue';
 
 export default {
     props: {
@@ -30,8 +33,9 @@ export default {
     setup() {
         return {
             businessRating: computed(() => AppState.businessRating)
-        }
-    }
+        };
+    },
+    components: { ProfileStarRating, ProfileStarRating }
 }
 </script>
 
