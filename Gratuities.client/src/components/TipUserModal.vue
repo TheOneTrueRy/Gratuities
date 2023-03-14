@@ -10,7 +10,7 @@
                     <div class="modal-body">
                         <form @submit.prevent="sendTip()">
                             <div class="input-group mb-3">
-                                <input v-model="editable.tip" type="number" min="0.01" step=".01" class="form-control"
+                                <input v-model="editable.tip" type="number" min="0.01" :max="account.currency" step=".01" class="form-control"
                                     placeholder="tip amount" aria-label="Recipient's username"
                                     aria-describedby="button-addon2">
                                 <button class="btn btn-outline-light modal-button" type="submit" required
@@ -40,6 +40,7 @@ export default {
         return {
             editable,
             profile: computed(() => AppState.profile),
+            account: computed(() => AppState.account),
 
             async sendTip() {
                 try {
