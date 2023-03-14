@@ -1,10 +1,10 @@
 <template>
-  <header class="sticky-top">
-    <Navbar />
-  </header>
-  <main class="white-background">
-    <router-view />
-  </main>
+    <header class="sticky-top">
+      <Navbar />
+    </header>
+    <main>
+      <router-view />
+    </main>
 </template>
 
 <script>
@@ -40,10 +40,6 @@ export default {
 .cash {
   color: rgb(1, 136, 53);
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.459);
-}
-
-.white-background {
-  background-color: white;
 }
 
 :root {

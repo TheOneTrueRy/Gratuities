@@ -2,23 +2,23 @@
     <div class="ReviewCard">
         <div class="row align-items-center">
             <div class="col-3">
-                <router-link :to="{ name: 'Profile', params: { profileId: review.creatorId } }" class="text-light">
-                    <img class="profile-picture-small selectable" :src="review.creator.picture"
+                <router-link :to="{ name: 'Profile', params: { profileId: review?.creatorId } }" class="text-light">
+                    <img class="profile-picture-small selectable" :src="review?.creator.picture"
                         :alt="review.creator.picture">
                 </router-link>
             </div>
             <div class="col-8">
                 <div class="d-flex align-items-center">
-                    <span class="text-start">{{ review.creator.name }} |&nbsp;
+                    <span class="text-start">{{ review?.creator.name }} |&nbsp;
                     </span>
                     <span>
-                        <ProfileStarRating :rating="review.rating"></ProfileStarRating>
+                        <ProfileStarRating :rating="review?.rating"></ProfileStarRating>
                     </span>
                 </div>
                 <div class="scroller">
-                    <span>{{ review.body }}</span>
+                    <span>"{{ review?.body }}"</span>
                     <div class="timestamp pt-1">
-                        <p>{{ review.createdAt }}</p>
+                        <p>{{ review?.createdAt }}</p>
                     </div>
                 </div>
             </div>

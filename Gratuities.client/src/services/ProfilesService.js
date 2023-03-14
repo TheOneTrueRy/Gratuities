@@ -40,7 +40,7 @@ class ProfilesService {
 
     async leaveReview(reviewData, profileId) {
         const res = await api.post(`api/profiles/${profileId}/reviews`, reviewData)
-        AppState.reviews.unshift(res.data)
+        AppState.reviews.unshift(new Review(res.data))
         ratingsService.calculateProfileRating(profileId)
     }
 }
