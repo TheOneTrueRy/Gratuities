@@ -90,6 +90,8 @@ import Pop from '../utils/Pop.js';
 import AddEmployee from '../components/AddEmployee.vue';
 import { logger } from '../utils/Logger';
 import { tipsService } from '../services/TipsService';
+import { accountService } from '../services/AccountService';
+import { notificationsService } from '../services/NotificationsService';
 
 export default {
     setup() {
@@ -132,7 +134,7 @@ export default {
             }
         }
 
-        watchEffect(() => {
+        watchEffect(async () => {
             if (route.params.profileId) {
                 getProfileById();
                 logger.log('alo');
@@ -140,6 +142,12 @@ export default {
                 getReviewsByProfileId();
                 calculateProfileRating();
                 // tipsService.getTipsReceived()
+            }
+            if (AppState.account.id && !AppState.hasNotifications) {
+                await accountService.getMyReviews()
+                await tipsService.getTipsReceived()
+                await notificationsService.findNotifications()
+
             }
         })
         return {

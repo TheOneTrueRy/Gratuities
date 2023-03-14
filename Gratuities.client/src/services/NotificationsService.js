@@ -4,7 +4,7 @@ import { api } from "./AxiosService";
 
 class NotificationsService {
 
-    async findNotifications(profileId) {
+    async findNotifications() {
         let foundReviewNotifications = AppState.myReviews.filter(r => r.isOpened == false)
         let foundTipsNotifications = AppState.receivedTips.filter(r => r.isOpened == false)
 

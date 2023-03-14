@@ -40,11 +40,13 @@
 
 
 <script>
-import { computed, onMounted, onUnmounted, ref } from "vue";
+import { computed, onMounted, watchEffect, ref } from "vue";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
 import { gameService } from "../services/gameService.js"
 import { tipsService } from "../services/TipsService";
+import { accountService } from "../services/AccountService";
+import { notificationsService } from "../services/NotificationsService";
 
 export default {
   setup() {
@@ -56,7 +58,15 @@ export default {
     }
     onMounted(() => {
       getRandomBlock()
-      // tipsService.getTipsReceived()
+    })
+
+    watchEffect(async () => {
+      if (AppState.account.id && !AppState.hasNotifications) {
+        await accountService.getMyReviews()
+        await tipsService.getTipsReceived()
+        await notificationsService.findNotifications()
+
+      }
     })
     return {
       block,
