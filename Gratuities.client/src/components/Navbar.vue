@@ -32,7 +32,8 @@
         </li>
         <li v-if="account.id">
           <div class="my-shadow btn-p text-start text-uppercase">
-            <span>G-Bucks: <span class="ms-1">{{ ((account.currency.toFixed(2)).toLocaleString('en-US')) }}</span></span>
+            <span>G-Bucks: <span class="ms-1">{{ (((account.currency).toLocaleString('en-US')))
+            }}</span></span>
           </div>
         </li>
         <li v-if="account.id">
