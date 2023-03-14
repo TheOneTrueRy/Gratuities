@@ -2,12 +2,12 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-5 col-md-3 offset-md-2 mt-4 ps-3 text-center">
-        <img class="elevation-3 rounded user-picture" :src="account.picture" alt="">
+        <img class="elevation-3 rounded user-picture" :src="account?.picture" alt="">
       </div>
       <div class="col-7 col-md-5 mt-4 ps-3">
-        <h1>{{ account.name }}<br>
+        <h1>{{ account?.name }}<br>
           <div>
-            <ProfileStarRating :rating="account.rating" />
+            <ProfileStarRating :rating="account?.rating" />
           </div>
         </h1>
         <div class="justify-content-center row">
