@@ -9,7 +9,6 @@
                             <span class="dropdown-item">Go To Business</span>
                         </router-link>
                     </li>
-                    <li><a class="dropdown-item" href="#">Edit</a></li>
                     <li><a @click="removeBusiness(business.id)" class="dropdown-item">Remove</a></li>
                 </ul>
             </div>
