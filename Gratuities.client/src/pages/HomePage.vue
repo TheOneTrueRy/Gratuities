@@ -90,6 +90,8 @@ import { profilesService } from "../services/ProfilesService.js";
 import ProfileCard from '../components/ProfileCard.vue';
 import BusinessCard from '../components/BusinessCard.vue';
 import { tipsService } from "../services/TipsService.js";
+import { accountService } from '../services/AccountService';
+import { notificationsService } from '../services/NotificationsService';
 
 export default {
   setup() {
@@ -110,14 +112,14 @@ export default {
         Pop.error("[GETTING HIGHEST RATED PROFILES]", error);
       }
     }
-    async function getReviewsByProfileId() {
-      try {
-        const profileId = AppState.account.id
-        await profilesService.getReviewsByProfileId(profileId)
-      } catch (error) {
-        Pop.error('[GETTING REVIEWS BY PROFILEID]', error.message)
-      }
-    }
+    // async function getReviewsByProfileId() {
+    //   try {
+    //     const profileId = AppState.account.id
+    //     await profilesService.getReviewsByProfileId(profileId)
+    //   } catch (error) {
+    //     Pop.error('[GETTING REVIEWS BY PROFILEID]', error.message)
+    //   }
+    // }
     function clearBusinesses() {
       try {
         AppState.businesses = []
@@ -128,16 +130,24 @@ export default {
     onMounted(() => {
       getHighestRatedBusinesses();
       getHighestRatedProfiles();
-
     });
+
     onUnmounted(() => {
       clearBusinesses()
     })
-    watchEffect(() => {
+
+    watchEffect(async () => {
       if (AppState.account.id) {
-        tipsService.getTipsReceived()
+        // tipsService.getTipsReceived()
         tipsService.getTipsGiven()
-        getReviewsByProfileId()
+
+        // getReviewsByProfileId()
+      }
+      if (AppState.account.id && !AppState.hasNotifications) {
+        await accountService.getMyReviews()
+        await tipsService.getTipsReceived()
+        await notificationsService.findNotifications(AppState.account.id)
+
       }
     })
     return {

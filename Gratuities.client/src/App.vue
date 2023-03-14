@@ -28,9 +28,9 @@ export default {
     }
 
     watchEffect(() => {
-      if (AppState.reviews && AppState.notifications) {
-        notificationsService.findNotifications(AppState.account.id)
-      }
+      // if (AppState.reviews && AppState.notifications) {
+      //   notificationsService.findNotifications(AppState.account.id)
+      // }
 
     })
     return {

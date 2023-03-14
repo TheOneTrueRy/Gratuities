@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { Account } from '../models/Account.js'
+import { Review } from '../models/Review'
 import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
@@ -22,7 +23,9 @@ class AccountService {
   async getMyReviews() {
     const account = new Account(AppState.account)
     const res = await api.get(`api/profiles/${account.id}/reviews`)
-    logger.log('my reviews', res.data)
+    AppState.myReviews = await res.data.map(r => new Review(r))
+    logger.log('my reviews', AppState.myReviews)
+    AppState.hasNotifications = true
   }
 }
 

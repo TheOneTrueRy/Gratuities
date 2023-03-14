@@ -56,7 +56,7 @@ export default {
     }
     onMounted(() => {
       getRandomBlock()
-      tipsService.getTipsReceived()
+      // tipsService.getTipsReceived()
     })
     return {
       block,

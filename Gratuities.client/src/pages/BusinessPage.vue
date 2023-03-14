@@ -128,7 +128,7 @@ export default {
         onMounted(() => {
             getBusinessById();
             getEmployeesByBusinessId();
-            tipsService.getTipsReceived()
+            // tipsService.getTipsReceived()
         });
         onUnmounted(() => {
             AppState.business = null

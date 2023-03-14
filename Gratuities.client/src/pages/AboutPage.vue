@@ -132,7 +132,7 @@ import { tipsService } from '../services/TipsService';
 export default {
   setup() {
     onMounted(() => {
-    tipsService.getTipsReceived()
+    // tipsService.getTipsReceived()
   })
     return {
 
