@@ -81,6 +81,7 @@ import ProfileCard from '../components/ProfileCard.vue';
 import ProfileStarRating from '../components/ProfileStarRating.vue';
 import { businessesService } from '../services/BusinessesService';
 import { employeesService } from '../services/EmployeesService';
+import { tipsService } from '../services/TipsService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 
@@ -127,6 +128,7 @@ export default {
         onMounted(() => {
             getBusinessById();
             getEmployeesByBusinessId();
+            tipsService.getTipsReceived()
         });
         onUnmounted(() => {
             AppState.business = null
