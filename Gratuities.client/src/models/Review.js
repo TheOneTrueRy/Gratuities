@@ -7,6 +7,7 @@ export class Review {
         this.creatorId = data.creatorId
         this.createdAt = new Date(data.createdAt).toLocaleString('en-US')
         this.rating = data.rating
+        this.isOpened = data.isOpened
         this.reviewedId = data.reviewedId
     }
 }
