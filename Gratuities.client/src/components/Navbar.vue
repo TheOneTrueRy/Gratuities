@@ -11,6 +11,9 @@
     </button>
     <div class="bg-dark rounded d-flex justify-content-center align-items-center px-1 ms-4">
       <i id="notifications-bell" class="mdi mdi-bell text-light fs-5 selectable"></i>
+      <div class="notif-icon-bg">
+        <div class="notif-icon-num">1</div>
+      </div>
     </div>
     <div class="text-start collapse navbar-collapse ms-4" id="navbarText">
       <ul class="navbar-nav me-auto">
@@ -59,6 +62,21 @@ export default {
 </script>
 
 <style scoped>
+.notif-icon-bg {
+  font-size: xx-small;
+  width: 15px;
+  height: 15px;
+  background-color: rgb(255, 0, 0);
+  border: 1px solid #ffffff;
+  border-radius: 80%;
+  transform: translate(10px, -12px);
+  /* transform: translateY(-10px); */
+}
+
+.notif-icon-num {
+  transform: translate(4px, -1px);
+}
+
 .tip-header {
   display: flex;
   align-items: center;
