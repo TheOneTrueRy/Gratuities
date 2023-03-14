@@ -8,7 +8,13 @@
                     aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12" v-for="n in notification">
+                            <NotificationCard :notification="n" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -24,11 +30,13 @@ import Pop from '../utils/Pop.js';
 import { profilesService } from '../services/ProfilesService.js';
 import ProfileStarRating from './ProfileStarRating.vue';
 import { notificationsService } from '../services/NotificationsService';
+import NotificationCard from './NotificationCard.vue';
 
 export default {
     setup() {
         return {
             account: computed(() => AppState.account),
+            notification: computed(() => AppState.notifications),
             async clearNotifications() {
                 try {
                     await notificationsService.clearNotifications();
@@ -39,7 +47,7 @@ export default {
             }
         };
     },
-    components: { ProfileStarRating }
+    components: { ProfileStarRating, NotificationCard }
 }
 </script>
 

@@ -14,6 +14,7 @@ class NotificationsService {
 
     async clearNotifications() {
         const res = await api.delete('account/notifications')
+        AppState.notifications = []
     }
 }
 
