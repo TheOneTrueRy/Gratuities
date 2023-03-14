@@ -20,15 +20,12 @@ export default {
 
     async function getMyReviews() {
       try {
-        await accountService.getMyReviews()
+        const accountId = AppState.account.id
+        await accountService.getMyReviews(accountId)
       } catch (error) {
         Pop.error('GETTING MY REVIEWS', error)
       }
     }
-
-    onMounted(() => {
-      getMyReviews()
-    })
 
     watchEffect(() => {
       if (AppState.reviews && AppState.notifications) {
