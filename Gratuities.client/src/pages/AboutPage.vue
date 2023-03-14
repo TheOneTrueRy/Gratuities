@@ -80,9 +80,11 @@
             </div>
             <!-- SECTION Bryson's Card -->
             <div class="carousel-item">
-              <p class="bio rounded bg-gradient">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
-                molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
-                facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
+              <p class="bio rounded bg-gradient">Playing and modding video games my whole life has led me to a deep
+                interest in how it
+                all actually works. Since then I've learned that programming comes quite easy to me. Thanks to CodeWorks
+                I've been able to expand my knowledge in programming and web development. Most handsome developer in
+                Gratuities dev team.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JLV5G4NB-7e93e64f0292-512" class="d-block w-100" alt="...">
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Bryson Bloom</h5>
