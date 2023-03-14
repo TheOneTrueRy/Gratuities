@@ -66,9 +66,9 @@
             </div>
             <!-- SECTION Andrew's Card -->
             <div class="carousel-item">
-              <p class="bio rounded bg-gradient">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
-                molestias ducimus, tempore esse laudantium neque optio quibusdam eligendi eaque corrupti officiis voluptas
-                facere reiciendis nesciunt. Perspiciatis recusandae molestias quia reiciendis.</p>
+              <p class="bio rounded bg-gradient">Came into Coding in College. Sought more education at CodeWorks. Fifth
+                most handsome man on the Gratuities dev team. Love being with friends and making knew coding projects.
+                Boardgame enthusiast, driven to learn, and dedicated to coding. </p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JYH9MQ3X-085de4f9b941-512" class="d-block w-100" alt="...">
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Andrew Meyers</h5>
