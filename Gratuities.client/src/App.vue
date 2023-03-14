@@ -16,7 +16,7 @@ import { notificationsService } from './services/NotificationsService'
 export default {
   setup() {
     watchEffect(() => {
-      if (AppState.reviews[0] && AppState.notifications) {
+      if (AppState.reviews && AppState.notifications) {
         notificationsService.findNotifications(AppState.account.id)
       }
 

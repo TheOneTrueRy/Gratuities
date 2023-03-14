@@ -97,6 +97,7 @@ export default {
                     const profileId = route.params.profileId;
                     const reviewData = editable.value;
                     await profilesService.leaveReview(reviewData, profileId);
+                    editable.value = { rating: 2.5 }
                 }
                 catch (error) {
                     Pop.error("[LEAVING REVIEW]", error);
