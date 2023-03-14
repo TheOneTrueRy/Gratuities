@@ -11,7 +11,7 @@
           </router-link>
         </div>
         <div class="col-12 text-center">
-          <h2 class="my-3 text-dark rounded text-center user-name">
+          <h2 class="my-3 rounded text-center user-name">
             {{ account?.name }}
           </h2>
         </div>
