@@ -60,6 +60,7 @@ export default {
       block,
       account: computed(() => AppState.account),
       async mine() {
+        let account = AppState.account
         if (block.value.health > 0) {
           block.value.health -= 1
         }
