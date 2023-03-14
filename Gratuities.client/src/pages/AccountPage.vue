@@ -90,19 +90,19 @@
             <form @submit.prevent="newBusiness()">
               <div class="mb-2">
                 <label class="form-label">Name</label>
-                <input required v-model="editable2.name" placeholder="What's it called?" type="text" class="form-control">
+                <input required v-model="editable2.name" minlength="3" maxlength="50" placeholder="What's it called?" type="text" class="form-control">
               </div>
               <div class="mb-2">
                 <label class="form-label">Location</label>
-                <input required v-model="editable2.location" placeholder="Where is it?" type="text" class="form-control">
+                <input required v-model="editable2.location" minlength="3" maxlength="500" placeholder="Where is it?" type="text" class="form-control">
               </div>
               <div class="mb-2">
                 <label class="form-label">Logo</label>
-                <input required v-model="editable2.logo" placeholder="What's it's logo?" type="text" class="form-control">
+                <input required v-model="editable2.logo" minlength="3" maxlength="500" placeholder="What's it's logo?" type="text" class="form-control">
               </div>
               <div class="mb-2">
                 <label class="form-label">Cover Image</label>
-                <input required v-model="editable2.coverImg" placeholder="What's it's cover image?" type="text"
+                <input required v-model="editable2.coverImg" minlength="3" maxlength="500" placeholder="What's it's cover image?" type="text"
                   class="form-control">
               </div>
               <button data-bs-dismiss="offcanvas" class="btn btn-success" type="submit">Create Business</button>
