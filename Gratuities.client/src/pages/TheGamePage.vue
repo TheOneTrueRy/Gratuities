@@ -44,6 +44,7 @@ import { computed, onMounted, onUnmounted, ref } from "vue";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
 import { gameService } from "../services/gameService.js"
+import { tipsService } from "../services/TipsService";
 
 export default {
   setup() {
@@ -55,6 +56,7 @@ export default {
     }
     onMounted(() => {
       getRandomBlock()
+      tipsService.getTipsReceived()
     })
     return {
       block,

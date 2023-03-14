@@ -89,6 +89,7 @@ import { ratingsService } from "../services/RatingsService.js";
 import Pop from '../utils/Pop.js';
 import AddEmployee from '../components/AddEmployee.vue';
 import { logger } from '../utils/Logger';
+import { tipsService } from '../services/TipsService';
 
 export default {
     setup() {
@@ -138,6 +139,7 @@ export default {
                 generateQRCode();
                 getReviewsByProfileId();
                 calculateProfileRating();
+                tipsService.getTipsReceived()
             }
         })
         return {

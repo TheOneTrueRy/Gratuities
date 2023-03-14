@@ -126,8 +126,14 @@
 </template>
 
 <script>
+import { onMounted } from 'vue';
+import { tipsService } from '../services/TipsService';
+
 export default {
   setup() {
+    onMounted(() => {
+    tipsService.getTipsReceived()
+  })
     return {
 
     }
