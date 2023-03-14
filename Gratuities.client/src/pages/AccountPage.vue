@@ -1,24 +1,36 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-5 col-md-3 offset-md-2 mt-4 ps-3 text-center">
-        <img class="elevation-3 rounded user-picture" :src="account?.picture" alt="">
-      </div>
-      <div class="col-7 col-md-5 mt-4 ps-3">
-        <h1>{{ account?.name }}<br>
+      <div class="col-12 d-flex justify-content-center align-items-center mt-2 mb-0">
+        <h1 class="text-center">{{ account?.name }}
           <div>
             <ProfileStarRating :rating="account?.rating" />
           </div>
         </h1>
+
+      </div>
+      <div class="col-5 col-md-3 offset-md-2 ps-3 text-center d-flex align-items-center">
+        <img class="elevation-3 rounded user-picture" :src="account?.picture" alt="">
+      </div>
+      <div class="col-7 col-md-5 ps-3">
+        <h1>
+
+        </h1>
         <div class="justify-content-center row">
           <div class="col-10">
-            <h6>Available to Payout: <i class="cash">${{ availableToPayout }}</i>
+            <h6>Available to Payout: <div class="d-flex justify-content-around align-items-center mt-1">
+                <i class="cash fs-5">₲{{ availableToPayout
+                }} </i>
+                <button class="btn btn-outline-success btn-sm"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">cash
+                  out</button>
+              </div>
             </h6>
             <h6>Biggest Tip:</h6>
             <ul>
-              <li>This Month: <i class="cash">${{ highestTipMonth }}</i>
+              <li>This Month: <i class="cash fs-5">₲{{ highestTipMonth }}</i>
               </li>
-              <li>Ever: <i class="cash">${{ highestTipEver?.tip }}</i>
+              <li>Ever: <i class="cash fs-5">₲{{ highestTipEver?.tip }}</i>
               </li>
             </ul>
           </div>
@@ -270,6 +282,10 @@ export default {
 </script>
 
 <style scoped>
+.p-tag-be-annoying {
+  margin: 0;
+}
+
 .star {
   color: #FFEE33;
   text-shadow: 1px 1px 1px black;
