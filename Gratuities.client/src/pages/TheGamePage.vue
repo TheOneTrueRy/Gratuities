@@ -16,7 +16,21 @@
         <span class="fs-3 text-light my-shadow">{{ block.description }}</span>
       </div>
       <div class="col-12 d-flex justify-content-center mt-4">
-        <img :src="block.healthyPic" alt="" class="block" @click="mine()">
+        <img :src="block.healthyPic" :alt="block.name" class="block" @click="mine()">
+      </div>
+    </div>
+    <div class="row" v-else>
+      <div class="col-12 d-flex justify-content-center">
+        <span v-if="block.id != 'chest'" class="fs-1 mt-3 text-light my-shadow">{{ block.name }} Mined!</span>
+        <span v-else-if="block.id == 'mimic'" class="fs-1 mt-3 text-light my-shadow"> OH NO! It was a mimic!</span>
+        <span v-else class="fs-1 mt-3 text-light my-shadow">Sweet, you opened a chest!</span>
+      </div>
+      <div class="col-12 d-flex justify-content-center">
+        <span v-if="block.id != 'mimic'" class="fs-2 text-light my-shadow">You earned G${{ block.value }}!</span>
+        <span v-else class="fs-2 text-light my-shadow">You lost G${{ block.value }}...</span>
+      </div>
+      <div class="col-12 d-flex justify-content-center mt-4">
+        <img :src="block.destroyedPic" :alt="block.name" class="item">
       </div>
     </div>
   </div>
@@ -27,12 +41,14 @@
 import { computed, onMounted, onUnmounted, ref } from "vue";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
+import { gameService } from "../services/gameService.js"
 
 export default {
   setup() {
     let block = ref({})
     function getRandomBlock() {
       let randomBlock = AppState.blocks[Math.floor(Math.random() * AppState.blocks.length)]
+      logger.log(randomBlock)
       block.value = randomBlock
     }
     onMounted(() => {
@@ -40,8 +56,23 @@ export default {
     })
     return {
       block,
-      mine() {
-        block.value.health -= 1
+      async mine() {
+        if (block.value.health > 0) {
+          block.value.health -= 1
+        }
+        if (block.value.health == 0 && block.value.id != 'mimic') {
+          let value = block.value.value
+          AppState.account.currency += value
+          await gameService.destroyBlock(value)
+          setTimeout(getRandomBlock, 5000)
+        } else if (block.value.health == 0 && block.value.id == 'mimic') {
+          let value = block.value.value
+          if (AppState.account.currency >= 100) {
+            AppState.account.currency -= value
+          }
+          await gameService.destroyBlock(value)
+          setTimeout(getRandomBlock, 5000)
+        }
       }
     }
   }
@@ -99,6 +130,10 @@ export default {
 .backdrop {
   background-size: cover;
   height: 100%;
+}
+
+.item {
+  height: 45vh;
 }
 
 .block {

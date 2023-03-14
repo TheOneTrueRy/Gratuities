@@ -125,7 +125,7 @@ export const AppState = reactive({
       name: 'Chest',
       health: 1,
       maxHealth: 1,
-      value: -100,
+      value: 100,
       healthyPic: 'https://gamepedia.cursecdn.com/minecraft_gamepedia/b/b3/Chest.png?version=227b3f51ef706a4ce4cf5e91f0e4face',
       destroyedPic: 'https://lh3.googleusercontent.com/jNmS7Gq2zRG3zJkpJtKa_fwl-IhvB0nzfyimSOTpjxh-lDzFRhO2bJltdp4SEPfagNM0hOTdQgkGtGofbpLXAg=s400',
       backdrop: 'chest-bg.png',
