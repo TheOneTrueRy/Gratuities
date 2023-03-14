@@ -27,7 +27,9 @@
       </div>
       <div class="col-12 d-flex justify-content-center">
         <span v-if="block.id != 'mimic'" class="fs-2 text-light my-shadow">You earned G${{ block.value }}!</span>
-        <span v-else class="fs-2 text-light my-shadow">You lost G${{ block.value }}...</span>
+        <span v-else-if="block.id == 'mimic' && account.currency >= 100" class="fs-2 text-light my-shadow">You lost G${{
+          block.value }}...</span>
+        <span v-else class="fs-2 text-light my-shadow">You were so broke, the mimic took pity on you...</span>
       </div>
       <div class="col-12 d-flex justify-content-center mt-4">
         <img :src="block.destroyedPic" :alt="block.name" class="item">
@@ -56,19 +58,20 @@ export default {
     })
     return {
       block,
+      account: computed(() => AppState.account),
       async mine() {
         if (block.value.health > 0) {
           block.value.health -= 1
         }
         if (block.value.health == 0 && block.value.id != 'mimic') {
           let value = block.value.value
-          AppState.account.currency += value
+          account.currency += value
           await gameService.destroyBlock(value)
           setTimeout(getRandomBlock, 5000)
         } else if (block.value.health == 0 && block.value.id == 'mimic') {
           let value = block.value.value
-          if (AppState.account.currency >= 100) {
-            AppState.account.currency -= value
+          if (account.currency >= 100) {
+            account.currency -= value
           }
           await gameService.destroyBlock(value)
           setTimeout(getRandomBlock, 5000)
