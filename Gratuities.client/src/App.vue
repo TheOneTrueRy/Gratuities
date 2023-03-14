@@ -1,10 +1,10 @@
 <template>
-  <header>
-    <Navbar />
-  </header>
-  <main class="white-background">
-    <router-view />
-  </main>
+    <header>
+      <Navbar />
+    </header>
+    <main>
+      <router-view />
+    </main>
 </template>
 
 <script>
