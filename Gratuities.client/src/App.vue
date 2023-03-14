@@ -42,10 +42,6 @@ export default {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.459);
 }
 
-.white-background {
-  background-color: white;
-}
-
 :root {
   --main-height: calc(100vh - 32px - 64px);
 }
