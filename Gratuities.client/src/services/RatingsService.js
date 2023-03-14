@@ -13,9 +13,7 @@ class RatingsService {
         })
         average = average / mappedRating.length;
         let rating = Math.round(average * 2) / 2
-        logger.log('average:', rating)
         const setRating = await api.put('account', { rating: rating })
-        logger.log(setRating)
         AppState.account.rating = rating
     }
 
@@ -34,7 +32,6 @@ class RatingsService {
         let rating = Math.round(average * 2) / 2
 
         const setRating = await api.put(`api/profiles/${profileId}`, { rating: rating })
-        logger.log(setRating)
         AppState.profile.rating = rating
     }
 
