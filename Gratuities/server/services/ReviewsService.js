@@ -39,5 +39,14 @@ class ReviewsService {
         return review
     }
 
+    async reviewsIsOpened(requestorId) {
+        const reviews = await dbContext.Reviews.find({ reviewedId: requestorId })
+        reviews.forEach(async r => {
+          r.isOpened = true
+          await r.save()
+        })
+        return reviews
+      }
+
 }
 export const reviewsService = new ReviewsService

@@ -3,6 +3,7 @@ import { BadRequest } from "../utils/Errors"
 import { profileService } from "./ProfileService"
 import { courier } from "../../authkey";
 import { accountService } from "./AccountService";
+import { logger } from "../utils/Logger";
 
 class TipsService {
   async tipsIsOpened(requestorId) {
@@ -13,14 +14,7 @@ class TipsService {
     })
     return tips
   }
-  async reviewsIsOpened(requestorId) {
-    const reviews = await dbContext.Reviews.find({ receiverId: requestorId })
-    reviews.forEach(async r => {
-      r.isOpened = true
-      await r.save()
-    })
-    return reviews
-  }
+  
   async tipsIsPayedOut(requestorId) {
     const tips = await dbContext.Tips.find({ receiverId: requestorId })
     const user = await dbContext.Account.findById(requestorId)

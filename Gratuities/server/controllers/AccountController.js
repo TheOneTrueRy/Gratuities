@@ -20,9 +20,10 @@ export class AccountController extends BaseController {
   async notificationsOpened(req, res, next) {
     try {
       const requestorId = req.userInfo.id
-      const reviews = await tipsService.reviewsIsOpened(requestorId)
+      const reviews = await reviewsService.reviewsIsOpened(requestorId)
       const tips = await tipsService.tipsIsOpened(requestorId)
-      return res.send(reviews, tips)
+      const notifications = [...tips, ...reviews]
+      return res.send(notifications)
     } catch (error) {
       next(error)
     }
@@ -33,7 +34,7 @@ export class AccountController extends BaseController {
       const tips = await tipsService.tipsIsPayedOut(requestorId)
       return res.send(tips)
     } catch (error) {
-      next(error)
+      next(error.message)
     }
   }
   async getReviews(req, res, next) {
