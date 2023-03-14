@@ -6,7 +6,7 @@
             </div>
             <div class="col-9">
                 <p>
-                    {{ tip?.giver.name }} - ₲{{ tip?.tip }}
+                    {{ tip?.giver.name }} - ₲{{ ((tip?.tip).toLocaleString('en-US')) }}
                 </p>
             </div>
         </div>
