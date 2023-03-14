@@ -9,12 +9,13 @@
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="bg-dark rounded d-flex justify-content-center align-items-center px-1 ms-4">
+    <button data-bs-toggle="offcanvas" data-bs-target="#notificationOffcanvas" aria-controls="notificationOffcanvas"
+      class="btn btn-dark d-flex justify-content-center align-items-center px-1 ms-4">
       <i id="notifications-bell" class="mdi mdi-bell text-light fs-5 selectable"></i>
-      <div class="notif-icon-bg">
+      <div v-if="notifications" class="notif-icon-bg">
         <div class="notif-icon-num">1</div>
       </div>
-    </div>
+    </button>
     <div class="text-start collapse navbar-collapse ms-4" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
@@ -45,19 +46,27 @@
       <Login />
     </div>
   </nav>
+  <NotificationOffcanvas />
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed, onMounted, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
+import { notificationsService } from "../services/NotificationsService";
 import Login from './Login.vue'
+import NotificationOffcanvas from "./NotificationOffcanvas.vue";
+
 export default {
+
   setup() {
+
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      notifications: computed(() => AppState.notifications)
     }
+
   },
-  components: { Login }
+  components: { Login, NotificationOffcanvas }
 }
 </script>
 
@@ -69,12 +78,12 @@ export default {
   background-color: rgb(255, 0, 0);
   border: 1px solid #ffffff;
   border-radius: 80%;
-  transform: translate(10px, -12px);
+  transform: translate(10px, -18px);
   /* transform: translateY(-10px); */
 }
 
 .notif-icon-num {
-  transform: translate(4px, -1px);
+  transform: translate(1px, -1px);
 }
 
 .tip-header {

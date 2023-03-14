@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="sticky-top">
     <Navbar />
   </header>
   <main class="white-background">
@@ -8,12 +8,19 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, watchEffect } from 'vue'
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
+import { notificationsService } from './services/NotificationsService'
 
 export default {
   setup() {
+    watchEffect(() => {
+      if (AppState.reviews[0] && AppState.notifications) {
+        notificationsService.findNotifications(AppState.account.id)
+      }
+
+    })
     return {
       appState: computed(() => AppState)
     }
