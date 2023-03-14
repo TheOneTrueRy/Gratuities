@@ -126,14 +126,21 @@
 </template>
 
 <script>
-import { onMounted } from 'vue';
+import { watchEffect } from 'vue';
+import { accountService } from '../services/AccountService';
+import { notificationsService } from '../services/NotificationsService';
 import { tipsService } from '../services/TipsService';
 
 export default {
   setup() {
-    onMounted(() => {
-    // tipsService.getTipsReceived()
-  })
+    watchEffect(async () => {
+      if (AppState.account.id && !AppState.hasNotifications) {
+        await accountService.getMyReviews()
+        await tipsService.getTipsReceived()
+        await notificationsService.findNotifications()
+
+      }
+    })
     return {
 
     }

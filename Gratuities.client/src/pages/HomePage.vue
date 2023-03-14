@@ -148,7 +148,7 @@ export default {
       if (AppState.account.id && !AppState.hasNotifications) {
         await accountService.getMyReviews()
         await tipsService.getTipsReceived()
-        await notificationsService.findNotifications(AppState.account.id)
+        await notificationsService.findNotifications()
 
       }
     })
