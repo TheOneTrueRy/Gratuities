@@ -110,6 +110,14 @@ export default {
         Pop.error("[GETTING HIGHEST RATED PROFILES]", error);
       }
     }
+    async function getReviewsByProfileId() {
+      try {
+        const profileId = AppState.account.id
+        await profilesService.getReviewsByProfileId(profileId)
+      } catch (error) {
+        Pop.error('[GETTING REVIEWS BY PROFILEID]', error.message)
+      }
+    }
     function clearBusinesses() {
       try {
         AppState.businesses = []
@@ -120,6 +128,7 @@ export default {
     onMounted(() => {
       getHighestRatedBusinesses();
       getHighestRatedProfiles();
+      getReviewsByProfileId()
     });
     onUnmounted(() => {
       clearBusinesses()

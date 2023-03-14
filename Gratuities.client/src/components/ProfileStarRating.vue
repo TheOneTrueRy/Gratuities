@@ -43,6 +43,8 @@
 <script>
 import { computed } from 'vue'
 import { AppState } from '../AppState';
+import { logger } from '../utils/Logger';
+
 export default {
         props: {
                 rating: {
@@ -50,9 +52,11 @@ export default {
                         required: true
                 }
         },
-        setup() {
+        setup(props) {
+                logger.log('props:', props)
                 return {
-                        profile: computed(() => AppState.profile)
+                        profile: computed(() => AppState.profile),
+                        business: computed(() => AppState.business),
                 }
         }
 }

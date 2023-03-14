@@ -7,5 +7,6 @@ export class Business{
         this.logo = data.logo
         this.coverImg = data.coverImg
         this.ownerId = data.ownerId
+        this.rating = data.rating
     }
 }
