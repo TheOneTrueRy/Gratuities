@@ -25,7 +25,9 @@ class TipsService {
     const tips = await dbContext.Tips.find({ receiverId: requestorId })
     const user = await dbContext.Account.findById(requestorId)
     tips.forEach(async t => {
-      accountService.updateAccount(user,{ currency: t.tip })
+      if (!t.isPayedOut) {
+        accountService.updateAccount(user,{ currency: t.tip })
+      }
       t.isPayedOut = true
       await t.save()
     })
