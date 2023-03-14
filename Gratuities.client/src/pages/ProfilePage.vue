@@ -155,7 +155,7 @@ export default {
                 AppState.reviews.sort(function (a, b) { return a.createdAt - b.createdAt }).reverse()
             },
 
-            async searchTypeRating() {
+            searchTypeRating() {
                 AppState.reviewSearchType = 'rating'
                 AppState.reviews.sort(function (a, b) { return a.rating - b.rating }).reverse()
             }

@@ -17,6 +17,9 @@
                 </div>
                 <div class="scroller">
                     <span>"{{ review.body }}"</span>
+                    <div class="timestamp pt-1">
+                        <p>{{ review.createdAt }}</p>
+                    </div>
                 </div>
             </div>
             <div class="col-1 d-flex justify-content-end align-self-start">
@@ -86,5 +89,9 @@ export default {
     width: 10vh;
     border-radius: 50%;
     border: 2px solid black;
+}
+
+.timestamp {
+    font-size: small;
 }
 </style>

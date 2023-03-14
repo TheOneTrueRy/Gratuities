@@ -37,6 +37,8 @@ class BusinessesService {
         AppState.business = null
         const res = await api.get('api/businesses/' + businessId)
         AppState.business = new Business(res.data)
+
+        
     }
     async removeBusiness(businessId){
         const res = await api.delete('api/businesses/' + businessId)
@@ -49,6 +51,24 @@ class BusinessesService {
     async editBusiness(formData, businessId){
         const res = await api.put('api/businesses/' + businessId, formData)
         AppState.business = new Business(res.data)
+    }
+
+    async getBusinessRating(){
+        let calculatedRating = 0
+        logger.log('emp:', AppState.employees)
+        if (AppState.employees.length != 0) {
+            AppState.employees.forEach(p=>calculatedRating += p.rating )
+            // const businessId = AppState.business?.id
+            calculatedRating = calculatedRating/AppState.employees.length
+            let rating = Math.round(calculatedRating * 2) / 2
+            // const res = await api.put('api/businesses/' + businessId, {rating: calculatedRating})
+            logger.log('calc', rating)
+            logger.log('bus', AppState.business)
+            if (AppState.business) {
+            AppState.business.rating = rating
+                
+            }
+        }
     }
 }
 

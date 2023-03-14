@@ -29,12 +29,12 @@
             Account
           </router-link>
         </li>
-        <li>
+        <li v-if="account.id">
           <div class="my-shadow btn-p text-start text-uppercase">
             <span>G-Bucks: <span class="ms-1">{{ account.currency }}</span></span>
           </div>
         </li>
-        <li>
+        <li v-if="account.id">
           <router-link :to="{ name: 'Game' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
             Earn G-Bucks
           </router-link>
