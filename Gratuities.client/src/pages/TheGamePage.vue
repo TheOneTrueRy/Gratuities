@@ -51,6 +51,9 @@ export default {
     let block = ref({})
 
     function getRandomBlock() {
+      if (block) {
+        block.value.health = block.value.maxHealth
+      }
       let randomBlock = AppState.blocks[Math.floor(Math.random() * AppState.blocks.length)]
       logger.log(randomBlock)
       block.value = randomBlock
