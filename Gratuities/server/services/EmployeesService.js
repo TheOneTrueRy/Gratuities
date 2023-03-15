@@ -1,3 +1,4 @@
+import { courier } from "../../authkey";
 import { dbContext } from "../db/DbContext";
 import { Forbidden } from "../utils/Errors";
 import { logger } from "../utils/Logger";
@@ -39,6 +40,29 @@ class EmployeesService {
         // @ts-ignore
         body.employeeBio = foundEmployee.bio
         const employee = await dbContext.Employees.create(body)
+
+        const business = await dbContext.Businesses.findById(body.businessId)
+        // @ts-ignore
+        const owner = await dbContext.Account.findById(business.ownerId)
+
+        // @ts-ignore
+        if (foundEmployee.notifications) {
+            await courier.send({
+                message: {
+                    to: {
+                        // @ts-ignore
+                        email: foundEmployee.email,
+                    },
+                    template: "4XAPVNN78M4EV5K9ABKDFCK344AS",
+                    data: {
+                        // @ts-ignore
+                        businessOwner: owner.name,
+                        // @ts-ignore
+                        businessName: business.name,
+                    },
+                },
+            });
+        }
 
         return employee
     }
