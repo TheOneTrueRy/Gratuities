@@ -166,7 +166,7 @@ export default {
   background-color: #06d69e5d;
   font-family: 'Lato', sans-serif;
   font-size: 2vh;
-  height: 20vh;
+  height: 25vh;
   width: 95%;
   overflow-y: scroll;
   box-shadow: 5px 5px 2px 1px #0158415d;
