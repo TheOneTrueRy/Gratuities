@@ -11,7 +11,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12 d-flex align-items-center" v-for="n in notification">
-                            <div class="selectable" data-bs-dismiss="offcanvas" aria-label="Close">
+                            <div class="w-100" data-bs-dismiss="offcanvas" aria-label="Close">
                                 <NotificationCard :notification="n" />
                             </div>
                         </div>
