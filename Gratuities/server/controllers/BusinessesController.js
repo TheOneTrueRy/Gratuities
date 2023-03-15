@@ -13,7 +13,7 @@ export class BusinessesController extends BaseController {
             .put('/:businessId/rating', this.editBusinessRating)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createBusinesses)
-            .post('/:businessId/employees/', this.higherEmployees)
+            .post('/:businessId/employees/', this.hireEmployees)
             .put('/:businessId', this.editBusiness)
             .delete('/employees/:employeeId', this.deleteEmployee)
             .delete('/:businessId', this.deleteBusiness)
@@ -55,10 +55,10 @@ export class BusinessesController extends BaseController {
             next(error)
         }
     }
-    async higherEmployees(req, res, next) {
+    async hireEmployees(req, res, next) {
         try {
             req.body.businessId = req.params.businessId
-            const employee = await employeesService.higherEmployees(req.body)
+            const employee = await employeesService.hireEmployees(req.body)
             res.send(employee)
         } catch (error) {
             next(error);

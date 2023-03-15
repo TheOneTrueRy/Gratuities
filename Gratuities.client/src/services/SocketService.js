@@ -11,6 +11,7 @@ class SocketService extends SocketHandler {
       .on('error', this.onError)
       .on('toUser:creatingReview', this.createReview)
       .on('toUser:creatingTip', this.createTip)
+      
   }
 
   onError(e) {
