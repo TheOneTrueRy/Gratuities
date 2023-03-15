@@ -1,10 +1,11 @@
 <template>
     <div class="RateProfileOffcanvas">
-        <div class="offcanvas offcanvas-top review-offcanvas" tabindex="-1" id="reviewOffcanvas"
-            aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas offcanvas-top review-offcanvas" :class="theme ? '' : 'text-bg-dark'" tabindex="-1"
+            id="reviewOffcanvas" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasRightLabel">New Review</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <button type="button" class="btn-close" :class="theme ? '' : 'btn-close-white'" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <form @submit.prevent="leaveReview()">
