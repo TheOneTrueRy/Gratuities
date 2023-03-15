@@ -16,9 +16,10 @@
           </h2>
         </div>
         <div v-if="highestTipEverGiven" class="col-12 text-center">
-          <h6 class="biggest-tip">Your Biggest Tip Sent: <span class="biggest-tip-amount">₲{{
-            ((highestTipEverGiven.tip)).toLocaleString('en-US')
-          }}</span> to
+          <h6 class="biggest-tip">Your Biggest Tip Sent: <span
+              :class="theme ? 'biggest-tip-amount' : 'biggest-tip-amount-light'">₲{{
+                ((highestTipEverGiven.tip)).toLocaleString('en-US')
+              }}</span> to
             {{ highestTipEverGiven.receiver?.name }}
           </h6>
         </div>
@@ -26,9 +27,10 @@
           <h6 class="biggest-tip"><span>No Tips Given Yet</span></h6>
         </div>
         <div v-if="highestTipEver" class="col-12 text-center">
-          <h6 class="biggest-tip">Your Biggest Tip received: <span class="biggest-tip-amount">₲{{
-            ((highestTipEver.tip).toLocaleString('en-US'))
-          }}</span> from
+          <h6 class="biggest-tip">Your Biggest Tip received: <span
+              :class="theme ? 'biggest-tip-amount' : 'biggest-tip-amount-light'">₲{{
+                ((highestTipEver.tip).toLocaleString('en-US'))
+              }}</span> from
             {{ highestTipEver.giver?.name }}
           </h6>
         </div>
@@ -219,7 +221,12 @@ export default {
 }
 
 .biggest-tip-amount {
-  color: #1c6820;
+  color: #28922d;
+  font-weight: 1000;
+}
+
+.biggest-tip-amount-light {
+  color: #34ba3b;
   font-weight: 1000;
 }
 
