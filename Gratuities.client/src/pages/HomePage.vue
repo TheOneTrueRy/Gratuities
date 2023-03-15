@@ -44,8 +44,10 @@
       <div class="col-12 col-md-6">
         <div class="d-flex justify-content-center mb-3">
           <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <button @click="searchTypeProfiles()" type="button" class="btn btn-outline-dark">Profiles</button>
-            <button @click="searchTypeBusinesses()" type="button" class="btn btn-outline-dark">Businesses</button>
+            <button @click="searchTypeProfiles()" type="button" class="btn"
+              :class="[theme ? 'btn-outline-dark' : 'btn-outline-light']">Profiles</button>
+            <button @click="searchTypeBusinesses()" type="button" class="btn"
+              :class="[theme ? 'btn-outline-dark' : 'btn-outline-light']">Businesses</button>
           </div>
         </div>
         <form @submit.prevent="search()">
