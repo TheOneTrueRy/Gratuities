@@ -70,7 +70,12 @@ export default {
 
 
 .cash {
-  color: rgb(1, 136, 53);
+  color: #28922d;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.459);
+}
+
+.cash-light {
+  color: #34ba3b;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.459);
 }
 

@@ -63,7 +63,7 @@ class BusinessesService {
             // const res = await api.put('api/businesses/' + businessId, {rating: calculatedRating})
             if (AppState.business) {
                 AppState.business.rating = rating
-                const res = await api.put('api/businesses/' + AppState.business.id, { rating: rating })
+                const res = await api.put('api/businesses/' + AppState.business.id + '/rating', { rating: rating })
             }
         }
     }

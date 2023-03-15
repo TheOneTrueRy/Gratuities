@@ -10,11 +10,11 @@ export class BusinessesController extends BaseController {
             .get('', this.getBusinesses)
             .get('/:businessId', this.getBusinessById)
             .get('/:businessId/employees', this.getEmployees)
+            .put('/:businessId/rating', this.editBusinessRating)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createBusinesses)
             .post('/:businessId/employees/', this.higherEmployees)
             .put('/:businessId', this.editBusiness)
-            .put('/:businessId/rating', this.editBusinessRating)
             .delete('/employees/:employeeId', this.deleteEmployee)
             .delete('/:businessId', this.deleteBusiness)
 

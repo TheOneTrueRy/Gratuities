@@ -7,7 +7,7 @@ class BusinessesService {
 
 
 
-    async updateBusinessRating(user, business, body) {
+    async updateBusinessRating(business, body) {
         const businessToEdit
             = await dbContext.Businesses.findById(business)
         if (!businessToEdit) {
