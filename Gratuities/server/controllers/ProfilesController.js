@@ -3,6 +3,7 @@ import { request } from 'express'
 import { profileService } from '../services/ProfileService.js'
 import { reviewsService } from '../services/ReviewsService.js'
 import { tipsService } from '../services/TipsService.js'
+import { socketProvider } from '../SocketProvider.js'
 import BaseController from '../utils/BaseController'
 
 export class ProfilesController extends BaseController {
@@ -42,6 +43,7 @@ export class ProfilesController extends BaseController {
       req.body.reviewedId = reviewedId
       req.body.creatorId = req.userInfo.id
       const review = await reviewsService.giveReview(req.body)
+      socketProvider.messageUser(review.reviewedId.toString(), 'toUser:creatingReview', review)
       res.send(review)
     } catch (error) {
       next(error)
@@ -54,6 +56,7 @@ export class ProfilesController extends BaseController {
       tip.giverId = req.userInfo.id
       tip.receiverId = receiverId
       const tips = await tipsService.giveTip(tip)
+      socketProvider.messageUser(tip.receiverId.toString(), 'toUser:creatingTip', tip)
       return res.send(tips)
     } catch (error) {
       next(error)
