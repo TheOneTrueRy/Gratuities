@@ -71,6 +71,10 @@
               <label for="openToFeedback" class="form-label">Would you like to receive feedback?&nbsp;&nbsp;&nbsp;</label>
               <input v-model="editable.openToFeedback" class="my-3" id="openToFeedback" type="checkbox">
             </div>
+            <div>
+              <label for="notifications" class="form-label">Would you like email notifications?&nbsp;&nbsp;&nbsp;</label>
+              <input v-model="editable.notifications" class="my-3" id="notifications" type="checkbox">
+            </div>
             <button data-bs-dismiss="offcanvas" class="btn btn-success" type="submit">Save Changes</button>
           </form>
         </div>
