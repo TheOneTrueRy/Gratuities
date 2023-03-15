@@ -51,6 +51,9 @@ export default {
     let block = ref({})
 
     function getRandomBlock() {
+      if (block) {
+        block.value.health = block.value.maxHealth
+      }
       let randomBlock = AppState.blocks[Math.floor(Math.random() * AppState.blocks.length)]
       logger.log(randomBlock)
       block.value = randomBlock
@@ -73,7 +76,6 @@ export default {
           account.currency += value
           await gameService.destroyBlock(value)
           setTimeout(getRandomBlock, 5000)
-          block.value.health = block.value.maxHealth
         } else if (block.value.health == 0 && block.value.id == 'mimic') {
           let value = -block.value.value
           if (account.currency >= 100) {
@@ -81,7 +83,6 @@ export default {
           }
           await gameService.destroyBlock(value)
           setTimeout(getRandomBlock, 5000)
-          block.value.health = block.value.maxHealth
         }
       }
     }
