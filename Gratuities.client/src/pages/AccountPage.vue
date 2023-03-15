@@ -10,7 +10,10 @@
 
       </div>
       <div class="col-5 col-md-3 offset-md-2 ps-3 text-center d-flex align-items-center">
-        <img class="elevation-3 rounded user-picture" :src="account?.picture" alt="">
+        <router-link :to="{ name: 'Profile', params: { profileId: account?.id } }">
+          <img class="elevation-3 rounded user-picture" :src="account?.picture" :alt="account?.name"
+            title="Go to your profile page">
+        </router-link>
       </div>
       <div class="col-7 col-md-5 ps-3">
         <h1>
@@ -353,6 +356,12 @@ export default {
   height: 150px;
   object-fit: cover;
   background-position: center;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.user-picture:hover {
+  transform: scale(1.05);
 }
 
 .w-90 {
