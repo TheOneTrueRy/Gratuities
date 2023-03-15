@@ -1,55 +1,63 @@
 <template>
-    <div v-if="notification.tip" class="rounded col-12 tips my-1">
-        <div class="row align-items-center">
-            <div class="col-3">
-                <img class="profile-picture" :src="notification?.giver.picture" :alt="notification?.giver.name">
-            </div>
-            <div class="col-9">
-                <p>
-                    {{ notification?.giver.name }} - ₲{{ notification?.tip }}
-                </p>
-            </div>
-        </div>
-    </div>
-    <div v-else class="ReviewCard">
-        <div class="row align-items-center">
-            <div class="col-3">
-                <router-link :to="{ name: 'Profile', params: { profileId: notification.creatorId } }" class="text-light">
-                    <img class="profile-picture-small selectable" :src="notification.creator.picture"
-                        :alt="notification.creator.picture">
-                </router-link>
-            </div>
-            <div class="col-8">
-                <div class="d-flex align-items-center">
-                    <span class="text-start">{{ notification.creator.name }} |&nbsp;
-                    </span>
-                    <span>
-                        <ProfileStarRating :rating="notification.rating"></ProfileStarRating>
-                    </span>
+    <div v-if="notification?.tip" class="mb-2">
+        <router-link :to="{ name: 'Profile', params: { profileId: notification?.giverId } }" class="text-dark">
+            <div class="row align-items-center selectable">
+                <div class="col-3 g-0 text-center">
+                    <img class="profile-picture-small" :src="notification?.giver.picture" :alt="notification?.giver.name">
                 </div>
-                <div class="scroller">
-                    <span>{{ notification.body }}</span>
+                <div class="col-9 pt-2">
+                    <div class="d-flex align-items-center">
+                        <p class="m-0">
+                            {{ notification?.giver.name }} tipped you <span class="tip-text">₲{{ notification?.tip
+                            }}.</span>
+                        </p>
+                    </div>
                     <div class="timestamp pt-1">
-                        <p>{{ notification.createdAt }}</p>
+                        <p>{{ notification?.createdAt }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-1 d-flex justify-content-end align-self-start">
-
-            </div>
+        </router-link>
+    </div>
+    <div v-else class="ReviewCard">
+        <div class="mb-2">
+            <router-link :to="{ name: 'Profile', params: { profileId: notification?.creatorId } }" class="text-dark">
+                <div class="row align-items-center selectable">
+                    <div class="col-3 g-0 text-center">
+                        <img class="profile-picture-small selectable" :src="notification?.creator.picture"
+                            :alt="notification?.creator.picture">
+                    </div>
+                    <div class="col-9 pt-2">
+                        <div class="d-flex align-items-center">
+                            <span class="text-start">{{ notification?.creator.name }} |&nbsp;
+                            </span>
+                            <span>
+                                <ProfileStarRating :rating="notification?.rating"></ProfileStarRating>
+                            </span>
+                        </div>
+                        <div class="scroller">
+                            <span>{{ notification?.body }}</span>
+                            <div class="timestamp pt-1">
+                                <p>{{ notification?.createdAt }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </router-link>
         </div>
     </div>
 </template>
 
 
 <script>
+
 export default {
     props: {
         notification: { type: Object, required: true }
     },
     setup() {
-        return {}
-    }
+        return {};
+    },
 }
 </script>
 
@@ -61,6 +69,11 @@ export default {
     border-radius: 50%;
     object-fit: cover;
     background-position: center;
+}
+
+.tip-text {
+    color: #018835;
+    text-shadow: 1px 1px 1px black;
 }
 
 .delete-button {

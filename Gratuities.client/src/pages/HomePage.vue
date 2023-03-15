@@ -60,7 +60,7 @@
           </div>
         </form>
       </div>
-      <div class="col-12 col-md-8 mt-5">
+      <div class="col-12 col-md-8 mt-3">
       </div>
       <div v-if="searchType == 'businesses'">
         <div class="col-12 col-md-8 offset-md-2">

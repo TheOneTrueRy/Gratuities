@@ -40,10 +40,10 @@
 
 
 <script>
-import { computed, onMounted, watchEffect, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
-import { gameService } from "../services/GameService.js"
+import { gameService } from "../services/gameService.js"
 
 export default {
   setup() {
@@ -51,6 +51,9 @@ export default {
     let block = ref({})
 
     function getRandomBlock() {
+      if (block) {
+        block.value.health = block.value.maxHealth
+      }
       let randomBlock = AppState.blocks[Math.floor(Math.random() * AppState.blocks.length)]
       logger.log(randomBlock)
       block.value = randomBlock

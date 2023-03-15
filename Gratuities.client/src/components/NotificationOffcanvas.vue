@@ -8,10 +8,12 @@
                     aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12" v-for="n in notification">
-                            <NotificationCard :notification="n" />
+                        <div class="col-12 d-flex align-items-center" v-for="n in notification">
+                            <div class="w-100" data-bs-dismiss="offcanvas" aria-label="Close">
+                                <NotificationCard :notification="n" />
+                            </div>
                         </div>
                     </div>
                 </div>

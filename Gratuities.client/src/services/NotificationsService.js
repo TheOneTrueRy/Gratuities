@@ -9,7 +9,7 @@ class NotificationsService {
         let foundTipsNotifications = AppState.receivedTips.filter(r => r.isOpened == false)
 
         AppState.notifications = [...foundReviewNotifications, ...foundTipsNotifications]
-        // logger.log('notifications', AppState.notifications)
+        AppState.notifications.sort(function (a, b) { return new Date(a.createdAt) - new Date(b.createdAt) }).reverse()
     }
 
     async clearNotifications() {

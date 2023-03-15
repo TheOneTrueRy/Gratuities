@@ -16,7 +16,7 @@
                     </span>
                 </div>
                 <div class="scroller">
-                    <span>"{{ review?.body }}"</span>
+                    <span v-if="review?.body">"{{ review?.body }}"</span>
                     <div class="timestamp pt-1">
                         <p>{{ review?.createdAt }}</p>
                     </div>
