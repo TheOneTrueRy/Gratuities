@@ -9,12 +9,18 @@
         <h1 class="nomb">Gratuities</h1>
       </div>
     </router-link>
-    <button data-bs-toggle="offcanvas" data-bs-target="#notificationOffcanvas" aria-controls="notificationOffcanvas"
-      class="btn btn-dark d-flex justify-content-center align-items-center px-1">
-      <i id="notifications-bell" class="mdi mdi-bell text-light fs-5 selectable notifications-bell"></i>
-      <div v-if="notifications" class="notif-icon-bg">
-        <div class="notif-icon-num">{{ notifications.length }}</div>
+    <button v-if="notifications?.length > 0" data-bs-toggle="offcanvas" data-bs-target="#notificationOffcanvas"
+      aria-controls="notificationOffcanvas"
+      class="btn btn-dark d-flex justify-content-center align-items-center px-1 ms-3">
+      <i id="notifications-bell" class="mdi mdi-bell text-light fs-5 notifications-bell"></i>
+      <div class="notif-icon-bg">
+        <div class="notif-icon-num">{{ notifications?.length }}</div>
       </div>
+    </button>
+    <button v-else data-bs-toggle="offcanvas" data-bs-target="#notificationOffcanvas"
+      aria-controls="notificationOffcanvas"
+      class="btn btn-dark d-flex justify-content-center align-items-center no-notifications-bell ms-3">
+      <i id="notifications-bell" class="mdi mdi-bell text-light fs-5"></i>
     </button>
     <div class="text-start collapse navbar-collapse ms-4" id="navbarText">
       <ul class="navbar-nav me-auto">
@@ -43,7 +49,7 @@
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
-      <div class="d-flex justify-space-between">
+      <div class="d-flex justify-space-between align-items-center">
         <Login />
         <button class="btn" @click="toggleTheme()">
           <h1><i class="mdi mdi-theme-light-dark"></i></h1>
@@ -55,9 +61,8 @@
 </template>
 
 <script>
-import { computed, onMounted, watchEffect } from "vue";
+import { computed } from "vue";
 import { AppState } from "../AppState.js";
-import { notificationsService } from "../services/NotificationsService";
 import { themeService } from "../services/ThemeService";
 import Login from './Login.vue'
 import NotificationOffcanvas from "./NotificationOffcanvas.vue";
@@ -142,13 +147,17 @@ a:hover {
   transform: translate(7.5px, 0.1px);
 }
 
+.no-notifications-bell {
+  padding: 1;
+}
+
 #notifications-bell {
   transition: 0.5s;
 }
 
-#notifications-bell:hover {
+/* #notifications-bell:hover {
   transform: scale(1.2);
-}
+} */
 
 #notifications-bell:active {
   transform: scale(0.8);

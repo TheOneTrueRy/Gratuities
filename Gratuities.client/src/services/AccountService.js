@@ -24,7 +24,7 @@ class AccountService {
     const account = new Account(AppState.account)
     const res = await api.get(`api/profiles/${account.id}/reviews`)
     AppState.myReviews = await res.data.map(r => new Review(r))
-    logger.log('my reviews', AppState.myReviews)
+    // logger.log('my reviews', AppState.myReviews)
     AppState.hasNotifications = true
   }
 }

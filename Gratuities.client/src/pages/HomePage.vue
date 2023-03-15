@@ -75,7 +75,11 @@
           <h6>Top Profiles:</h6>
         </div>
         <div v-for="p in profiles" class="col-12 employee-card rounded col-md-8 offset-md-2">
-          <ProfileCard :profile="p" />
+          <router-link :to="{
+            name: 'Profile', params: { profileId: p?.id }
+          }">
+            <ProfileCard :profile="p" :title="`Visit ${p?.name}'s profile page!`" />
+          </router-link>
         </div>
       </div>
     </div>
@@ -85,15 +89,12 @@
 <script>
 import { ref, computed, onMounted, onUnmounted, watchEffect } from 'vue';
 import { AppState } from '../AppState.js';
-import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
 import { businessesService } from '../services/BusinessesService.js'
 import { profilesService } from "../services/ProfilesService.js";
 import ProfileCard from '../components/ProfileCard.vue';
 import BusinessCard from '../components/BusinessCard.vue';
 import { tipsService } from "../services/TipsService.js";
-import { accountService } from '../services/AccountService';
-import { notificationsService } from '../services/NotificationsService';
 
 export default {
   setup() {
@@ -145,12 +146,6 @@ export default {
 
         // getReviewsByProfileId()
       }
-      // if (AppState.account.id && !AppState.hasNotifications) {
-      //   await accountService.getMyReviews()
-      //   await tipsService.getTipsReceived()
-      //   await notificationsService.findNotifications()
-
-      // }
     })
     return {
       editable,

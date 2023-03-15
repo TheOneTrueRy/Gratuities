@@ -2,7 +2,7 @@
     <div class="rounded col-12 my-1">
         <div class="row align-items-center">
             <div class="col-3">
-                <img class="profile-picture" :src="tip?.giver.picture" :alt="tip?.giver.name">
+                <img class="profile-picture border border-dark border-1" :src="tip?.giver.picture" :alt="tip?.giver.name">
             </div>
             <div class="col-9">
                 <p>

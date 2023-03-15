@@ -8,9 +8,9 @@ class TipsService {
         const res = await api.get('account/tips/received')
         
         if (res.data.length > 0) {
-            logger.log('hello there')
+            // logger.log('hello there')
             AppState.receivedTips = res.data.reverse()
-            logger.log('mytips',AppState.receivedTips)
+            // logger.log('mytips',AppState.receivedTips)
             const currentMonth = new Date().getMonth()
             const tipsThisMonth = []
             const sortedTips = []
