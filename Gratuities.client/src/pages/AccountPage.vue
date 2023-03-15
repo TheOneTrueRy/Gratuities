@@ -10,7 +10,10 @@
 
       </div>
       <div class="col-5 col-md-3 offset-md-2 ps-3 text-center d-flex align-items-center">
-        <img class="elevation-3 rounded user-picture" :src="account?.picture" alt="">
+        <router-link :to="{ name: 'Profile', params: { profileId: account?.id } }">
+          <img class="elevation-3 rounded user-picture" :src="account?.picture" :alt="account?.name"
+            title="Go to your profile page">
+        </router-link>
       </div>
       <div class="col-7 col-md-5 ps-3">
         <h1>
@@ -18,8 +21,8 @@
         </h1>
         <div class="justify-content-center row">
           <div class="col-10">
-            <h6>Available to Payout: <div class="d-flex justify-content-around align-items-center mt-1">
-                <i class="cash fs-5">₲{{ ((availableToPayout))?.toLocaleString('en-US')
+            <h6>Available to Payout: <div class="d-flex justify-content-between align-items-center mt-1 w-50">
+                <i class="fs-5" :class="theme ? 'cash' : 'cash-light'">₲{{ ((availableToPayout))?.toLocaleString('en-US')
                 }} </i>
                 <button @click="cashOut(availableToPayout)" class="btn btn-outline-success btn-sm fw-bold"
                   style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
@@ -29,9 +32,11 @@
             </h6>
             <h6>Biggest Tip:</h6>
             <ul>
-              <li>This Month: <i class="cash fs-5">₲{{ ((highestTipMonth)?.toLocaleString('en-US')) }}</i>
+              <li>This Month: <i class="fs-5" :class="theme ? 'cash' : 'cash-light'">₲{{
+                ((highestTipMonth)?.toLocaleString('en-US')) }}</i>
               </li>
-              <li>Ever: <i class="cash fs-5">₲{{ ((highestTipEver?.tip)?.toLocaleString('en-US')) }}</i>
+              <li>Ever: <i class="fs-5" :class="theme ? 'cash' : 'cash-light'">₲{{
+                ((highestTipEver?.tip)?.toLocaleString('en-US')) }}</i>
               </li>
             </ul>
           </div>
@@ -132,11 +137,12 @@
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
           <input @click="showReceivedTips()" type="radio" class="btn-check" name="btnradio" id="btnradio1"
             autocomplete="off" checked>
-          <label class="btn btn-outline-dark" for="btnradio1">Received</label>
+          <label class="btn" :class="theme ? 'btn-outline-dark' : 'btn-outline-light'" for="btnradio1">Received</label>
 
           <input @click="showGivenTips()" type="radio" class="btn-check" name="btnradio" id="btnradio2"
             autocomplete="off">
-          <label class="btn btn-outline-dark" for="btnradio2">&nbsp;&nbsp;Given&nbsp;&nbsp;</label>
+          <label class="btn" :class="theme ? 'btn-outline-dark' : 'btn-outline-light'"
+            for="btnradio2">&nbsp;&nbsp;Given&nbsp;&nbsp;</label>
         </div>
       </div>
       <!-- SECTION tips list -->
@@ -350,6 +356,12 @@ export default {
   height: 150px;
   object-fit: cover;
   background-position: center;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.user-picture:hover {
+  transform: scale(1.05);
 }
 
 .w-90 {
