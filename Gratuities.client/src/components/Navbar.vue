@@ -9,15 +9,15 @@
         <h1 class="nomb">Gratuities</h1>
       </div>
     </router-link>
-    <button v-if="notifications?.length > 0" data-bs-toggle="offcanvas" data-bs-target="#notificationOffcanvas"
-      aria-controls="notificationOffcanvas"
+    <button v-if="notifications?.length > 0 && account.id" data-bs-toggle="offcanvas"
+      data-bs-target="#notificationOffcanvas" aria-controls="notificationOffcanvas"
       class="btn btn-dark d-flex justify-content-center align-items-center px-1 ms-3">
       <i id="notifications-bell" class="mdi mdi-bell text-light fs-5 notifications-bell"></i>
       <div class="notif-icon-bg">
         <div class="notif-icon-num">{{ notifications?.length }}</div>
       </div>
     </button>
-    <button v-else data-bs-toggle="offcanvas" data-bs-target="#notificationOffcanvas"
+    <button v-else-if="account.id" data-bs-toggle="offcanvas" data-bs-target="#notificationOffcanvas"
       aria-controls="notificationOffcanvas"
       class="btn btn-dark d-flex justify-content-center align-items-center no-notifications-bell ms-3">
       <i id="notifications-bell" class="mdi mdi-bell text-light fs-5"></i>
