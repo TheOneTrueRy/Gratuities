@@ -256,6 +256,7 @@ export default {
       highestTipMonth: computed(() => AppState.highestTipMonth),
       highestTipEver: computed(() => AppState.highestTipEver),
       availableToPayout: computed(() => AppState.availableToPayout),
+      theme: computed(() => AppState.theme),
       async cashOut(availableToPayout) {
         try {
           await tipsService.cashOut(availableToPayout)
@@ -335,8 +336,9 @@ export default {
   background-color: #EF476F;
 }
 
-.figma-buttons:hover{
-  color: black !important;;
+.figma-buttons:hover {
+  color: black !important;
+  ;
 }
 
 .user-picture {

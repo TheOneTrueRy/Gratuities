@@ -56,7 +56,7 @@
                     </div>
                     <!-- SECTION displays all profiles that have reviewed this profile -->
                     <div class="row justify-content-center mt-3">
-                        <div v-for="r in reviews" class="col-11 rounded p-2 mb-4 col-md-8">
+                        <div v-for="r in reviews" class="col-11 rounded p-2 col-md-8">
                             <ReviewCard :review="r" />
                         </div>
                     </div>
