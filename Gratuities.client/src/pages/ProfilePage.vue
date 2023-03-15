@@ -35,16 +35,21 @@
                         <div class="col-12 mt-2 d-md-flex justify-content-center d-none fs-2">
                             <ProfileStarRating :rating="profile?.rating" />
                         </div>
-                        <div class="col-6 d-flex justify-content-center">
+                        <div v-if="profile?.id != account.id" class="col-6 d-flex justify-content-center">
                             <button class="btn tip-button elevation-2 rounded-pill px-4" data-bs-toggle="modal"
                                 data-bs-target="#tipUserModal">Tip</button>
                         </div>
-                        <div class="col-6 d-flex justify-content-center">
+                        <div v-if="profile?.id != account.id" class="col-6 d-flex justify-content-center">
                             <button class="btn review-button elevation-2 rounded-pill" data-bs-toggle="offcanvas"
                                 data-bs-target="#reviewOffcanvas" aria-controls="reviewOffcanvas">Review</button>
                         </div>
                         <div class="col-12 mt-2">
-                            <div class="d-flex justify-content-center">
+                            <div class="d-flex flex-column align-items-center">
+                                <div class="mb-2">
+                                    <span>
+                                        Sort reviews by:
+                                    </span>
+                                </div>
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                     <button @click="searchTypeDate()" type="button" class="btn btn-outline-dark btn-sm"
                                         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Date</button>

@@ -9,10 +9,8 @@
             </div>
             <div class="col-8">
                 <div class="d-flex align-items-center">
-                    <span class="text-start">{{ review?.creator.name }} |&nbsp;
-                    </span>
-                    <span>
-                        <ProfileStarRating :rating="review?.rating"></ProfileStarRating>
+                    <span class="text-start">{{ review?.creator.name }} | <ProfileStarRating :rating="review?.rating">
+                        </ProfileStarRating>
                     </span>
                 </div>
                 <div class="scroller">
