@@ -6,15 +6,20 @@
     </button>
     <router-link class="text-light" :to="{ name: 'Home' }">
       <div class="logo d-flex flex-column align-items-center">
-        <h1 class="nomb">Gratuities</h1>
+        <h1 class="nomb pe-1">Gratuities</h1>
       </div>
     </router-link>
-    <button data-bs-toggle="offcanvas" data-bs-target="#notificationOffcanvas" aria-controls="notificationOffcanvas"
-      class="btn btn-dark d-flex justify-content-center align-items-center px-1">
-      <i id="notifications-bell" class="mdi mdi-bell text-light fs-5 selectable notifications-bell"></i>
-      <div v-if="notifications" class="notif-icon-bg">
-        <div class="notif-icon-num">{{ notifications.length }}</div>
+    <button v-if="notifications?.length > 0" data-bs-toggle="offcanvas" data-bs-target="#notificationOffcanvas"
+      aria-controls="notificationOffcanvas" class="btn btn-dark d-flex justify-content-center align-items-center px-1">
+      <i id="notifications-bell" class="mdi mdi-bell text-light fs-5 notifications-bell"></i>
+      <div class="notif-icon-bg">
+        <div class="notif-icon-num">{{ notifications?.length }}</div>
       </div>
+    </button>
+    <button v-else data-bs-toggle="offcanvas" data-bs-target="#notificationOffcanvas"
+      aria-controls="notificationOffcanvas"
+      class="btn btn-dark d-flex justify-content-center align-items-center no-notifications-bell">
+      <i id="notifications-bell" class="mdi mdi-bell text-light fs-5"></i>
     </button>
     <div class="text-start collapse navbar-collapse ms-4" id="navbarText">
       <ul class="navbar-nav me-auto">
@@ -140,6 +145,10 @@ a:hover {
 
 .notifications-bell {
   transform: translate(7.5px, 0.1px);
+}
+
+.no-notifications-bell {
+  padding: 1;
 }
 
 #notifications-bell {
