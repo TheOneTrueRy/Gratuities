@@ -10,7 +10,13 @@ class ProfilesService {
     async getHighestRatedProfiles() {
         const res = await api.get('api/profiles')
         AppState.profiles = res.data.map(p => new Profile(p))
+        AppState.profiles.forEach(p => {
+            if (p.rating == null) {
+                p.rating = 0
+            }
+        })
         AppState.profiles.sort(function (a, b) { return a.rating - b.rating }).reverse()
+        logger.log(AppState.profiles)
     }
     async getProfilesByQuery(query) {
         const res = await api.get('api/profiles', { params: { name: query.query } })
