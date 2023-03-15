@@ -6,10 +6,13 @@ import { api } from "./AxiosService"
 class TipsService {
     async getTipsReceived() {
         const res = await api.get('account/tips/received')
-        
+
         if (res.data.length > 0) {
             // logger.log('hello there')
             AppState.receivedTips = res.data.reverse()
+            AppState.receivedTips.forEach(t => {
+                t.createdAt = new Date(t.createdAt).toLocaleString('en-US')
+            })
             // logger.log('mytips',AppState.receivedTips)
             const currentMonth = new Date().getMonth()
             const tipsThisMonth = []
@@ -32,11 +35,11 @@ class TipsService {
             AppState.highestTipEver = sortedTips[0]
             AppState.availableToPayout = availableToPayout
         }
-        
+
     }
     async getTipsGiven() {
         const res = await api.get('account/tips/sent')
-        if(res.data.length > 0){
+        if (res.data.length > 0) {
 
             AppState.givenTips = res.data.reverse()
             const tipsGiven = []
@@ -50,10 +53,10 @@ class TipsService {
 
     async sendTip(profileId, tip) {
         const res = await api.post(`api/profiles/${profileId}/tips`, tip)
-        accountService.editAccount({currency: -tip})
+        accountService.editAccount({ currency: -tip })
     }
 
-    async cashOut(availableToPayout){
+    async cashOut(availableToPayout) {
         const res = await api.delete('account/tips')
         AppState.account.currency += availableToPayout
         AppState.availableToPayout = 0

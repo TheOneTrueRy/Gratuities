@@ -1,41 +1,44 @@
 <template>
-    <div v-if="notification.tip" class="rounded col-12 tips my-1">
+    <div v-if="notification?.tip" class="container-fluid mb-2">
         <div class="row align-items-center">
             <div class="col-3">
-                <img class="profile-picture" :src="notification?.giver.picture" :alt="notification?.giver.name">
+                <img class="profile-picture-small" :src="notification?.giver.picture" :alt="notification?.giver.name">
             </div>
-            <div class="col-9">
-                <p>
-                    {{ notification?.giver.name }} - ₲{{ notification?.tip }}
-                </p>
+            <div class="col-9 pt-2">
+                    <p class="mb-0">
+                        {{ notification?.giver.name }} tipped you <span class="tip-text">₲{{ notification?.tip }}.</span> 
+                    </p>
+                    <div class="timestamp pt-1">
+                        <p>{{ notification?.createdAt }}</p>
+                    </div>
             </div>
         </div>
     </div>
     <div v-else class="ReviewCard">
-        <div class="row align-items-center">
-            <div class="col-3">
-                <router-link :to="{ name: 'Profile', params: { profileId: notification.creatorId } }" class="text-light">
-                    <img class="profile-picture-small selectable" :src="notification.creator.picture"
-                        :alt="notification.creator.picture">
-                </router-link>
-            </div>
-            <div class="col-8">
-                <div class="d-flex align-items-center">
-                    <span class="text-start">{{ notification.creator.name }} |&nbsp;
-                    </span>
-                    <span>
-                        <ProfileStarRating :rating="notification.rating"></ProfileStarRating>
-                    </span>
+        <div class="container-fluid mb-2">
+            <div class="row align-items-center">
+                <div class="col-3">
+                    <router-link :to="{ name: 'Profile', params: { profileId: notification?.creatorId } }"
+                        class="text-light">
+                        <img class="profile-picture-small selectable" :src="notification?.creator.picture"
+                            :alt="notification?.creator.picture">
+                    </router-link>
                 </div>
-                <div class="scroller">
-                    <span>{{ notification.body }}</span>
-                    <div class="timestamp pt-1">
-                        <p>{{ notification.createdAt }}</p>
+                <div class="col-9 pt-2">
+                    <div class="d-flex align-items-center">
+                        <span class="text-start">{{ notification?.creator.name }} |&nbsp;
+                        </span>
+                        <span>
+                            <ProfileStarRating :rating="notification?.rating"></ProfileStarRating>
+                        </span>
+                    </div>
+                    <div class="scroller">
+                        <span>{{ notification?.body }}</span>
+                        <div class="timestamp pt-1">
+                            <p>{{ notification?.createdAt }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-1 d-flex justify-content-end align-self-start">
-
             </div>
         </div>
     </div>
@@ -61,6 +64,11 @@ export default {
     border-radius: 50%;
     object-fit: cover;
     background-position: center;
+}
+
+.tip-text{
+    color: #018835;
+    text-shadow: 1px 1px 1px black;
 }
 
 .delete-button {
