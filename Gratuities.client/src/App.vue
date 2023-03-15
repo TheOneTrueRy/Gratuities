@@ -58,7 +58,6 @@ export default {
 
 .employee-card-dark {
   background-color: #005f45 !important;
-  color: rgb(113, 113, 113);
   text-shadow: 1px 1px 2px black;
   transition: 0.5s;
   cursor: pointer;
