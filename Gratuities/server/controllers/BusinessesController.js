@@ -2,6 +2,7 @@ import BaseController from "../utils/BaseController"
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { businessesService } from "../services/BusinessesService"
 import { employeesService } from "../services/EmployeesService"
+import { socketProvider } from "../SocketProvider"
 
 export class BusinessesController extends BaseController {
     constructor() {
@@ -59,6 +60,7 @@ export class BusinessesController extends BaseController {
         try {
             req.body.businessId = req.params.businessId
             const employee = await employeesService.hireEmployees(req.body)
+            // socketProvider.messageUser(employee.accountId.toString(), 'toUser:hiringEmployee')
             res.send(employee)
         } catch (error) {
             next(error);
