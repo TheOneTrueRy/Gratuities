@@ -5,6 +5,8 @@
   <main>
     <router-view />
   </main>
+  <footer>
+  </footer>
 </template>
 
 <script>
@@ -88,9 +90,8 @@ footer {
   display: grid;
   place-content: center;
   height: 32px;
-}
-
-main {
-  height: 80vh;
+  align-items: center;
+  color: white !important;
+  background: linear-gradient(270deg, #46F4DF 11.46%, #06D6A0 74.48%);
 }
 </style>
