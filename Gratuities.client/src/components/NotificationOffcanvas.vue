@@ -10,7 +10,7 @@
             <div class="offcanvas-body">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12" v-for="n in notification">
+                        <div class="col-12 d-flex align-items-center" v-for="n in notification">
                             <NotificationCard :notification="n" />
                         </div>
                     </div>
