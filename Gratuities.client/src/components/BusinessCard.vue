@@ -5,8 +5,15 @@
                 <div class="col-3">
                     <img class="profile-picture-small img-fluid" :src="business.logo" :alt="business.logo">
                 </div>
+                <div class="d-flex align-items-center hide-overflow">
+                    <span class="hide-overflow">
+                        <h6>{{ business?.name }} | <ProfileStarRating :rating="business.rating">
+                            </ProfileStarRating>
+                        </h6>
+                    </span>
+                </div>
                 <div class="col-9">
-                    <h6>{{ business.name }}<span v-if="businessRating"> {{ businessRating }}Stars</span></h6>
+
                     {{ business.location }}
                 </div>
                 <div class="col-12">
