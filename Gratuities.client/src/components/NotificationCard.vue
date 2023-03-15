@@ -3,12 +3,12 @@
         <router-link :to="{ name: 'Profile', params: { profileId: notification?.giverId } }" class="text-dark">
             <div class="row align-items-center selectable">
                 <div class="col-3 g-0 text-center">
-                    <img class="profile-picture-small" :src="notification?.giver.picture" :alt="notification?.giver.name">
+                    <img class="profile-picture-small" :src="notification.giver?.picture" :alt="notification.giver?.name">
                 </div>
                 <div class="col-9 pt-2">
                     <div class="d-flex align-items-center">
                         <p class="m-0">
-                            {{ notification?.giver.name }} tipped you <span class="tip-text">₲{{ notification?.tip
+                            {{ notification.giver?.name }} tipped you <span class="tip-text">₲{{ notification?.tip
                             }}.</span>
                         </p>
                     </div>
@@ -24,12 +24,12 @@
             <router-link :to="{ name: 'Profile', params: { profileId: notification?.creatorId } }" class="text-dark">
                 <div class="row align-items-center selectable">
                     <div class="col-3 g-0 text-center">
-                        <img class="profile-picture-small selectable" :src="notification?.creator.picture"
-                            :alt="notification?.creator.picture">
+                        <img class="profile-picture-small selectable" :src="notification.creator?.picture"
+                            :alt="notification.creator?.picture">
                     </div>
                     <div class="col-9 pt-2">
                         <div class="d-flex align-items-center">
-                            <span class="text-start">{{ notification?.creator.name }} |&nbsp;
+                            <span class="text-start">{{ notification.creator?.name }} |&nbsp;
                             </span>
                             <span>
                                 <ProfileStarRating :rating="notification?.rating"></ProfileStarRating>
