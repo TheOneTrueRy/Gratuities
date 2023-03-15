@@ -46,10 +46,12 @@
       </div>
 
       <!-- SECTION Offcanvas for edit account vvvv -->
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas offcanvas-end" :class="theme ? '' : 'text-bg-dark'" tabindex="-1" id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasExampleLabel">Edit Account</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <button type="button" class="btn-close" :class="theme ? '' : 'btn-close-white'" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <form @submit.prevent="editAccount()">
@@ -84,10 +86,12 @@
 
 
       <!-- SECTION Offcanvas for add business vvvv -->
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="addBusiness" aria-labelledby="addBusinessLabel">
+      <div class="offcanvas offcanvas-start" :class="theme ? '' : 'text-bg-dark'" tabindex="-1" id="addBusiness"
+        aria-labelledby="addBusinessLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="addBusinessLabel">New Business</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <button type="button" class="btn-close" :class="theme ? '' : 'btn-close-white'" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <div>
