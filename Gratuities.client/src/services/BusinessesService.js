@@ -8,6 +8,12 @@ class BusinessesService {
     async getHighestRatedBusinesses() {
         const res = await api.get('api/businesses')
         AppState.businesses = res.data.map(b => new Business(b))
+        AppState.businesses.forEach(b => {
+            if (b.rating == null) {
+                b.rating = 0
+            }
+        })
+        AppState.businesses.sort(function (a, b) { return a.rating - b.rating }).reverse()
     }
 
     async getBusinessesByQuery(query) {
