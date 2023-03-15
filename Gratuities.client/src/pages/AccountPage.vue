@@ -19,9 +19,9 @@
         <h1>
 
         </h1>
-        <div class="justify-content-center row">
-          <div class="col-10">
-            <h6>Available to Payout: <div class="d-flex justify-content-between align-items-center mt-1 w-50">
+        <div class="justify-content-start row">
+          <div class="col-11 col-md-8">
+            <h6>Available to Payout: <div class="d-flex justify-content-between align-items-center mt-1 w-100">
                 <i class="fs-5" :class="theme ? 'cash' : 'cash-light'">₲{{ ((availableToPayout))?.toLocaleString('en-US')
                 }} </i>
                 <button @click="cashOut(availableToPayout)" class="btn btn-outline-success btn-sm fw-bold"
