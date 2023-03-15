@@ -21,7 +21,7 @@
             <h6>Available to Payout: <div class="d-flex justify-content-around align-items-center mt-1">
                 <i class="cash fs-5">₲{{ ((availableToPayout))?.toLocaleString('en-US')
                 }} </i>
-                <button @click="cashOut(availableToPayout)" class="btn btn-outline-success btn-sm"
+                <button @click="cashOut(availableToPayout)" class="btn btn-outline-success btn-sm fw-bold"
                   style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                   :disabled="!availableToPayout">cash
                   out</button>
@@ -39,10 +39,10 @@
       </div>
       <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-around pe-4">
         <button data-bs-toggle="offcanvas" data-bs-target="#addBusiness" aria-controls="offcanvasExample"
-          class="btn figma-buttons text-light elevation-3 rounded-pill">New
+          class="btn figma-buttons text-light elevation-3 rounded-pill hover-text">New
           Business</button>
         <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
-          class="btn figma-buttons text-light elevation-3 rounded-pill">Edit Account</button>
+          class="btn figma-buttons text-light elevation-3 rounded-pill hover-text">Edit Account</button>
       </div>
 
       <!-- SECTION Offcanvas for edit account vvvv -->
@@ -333,6 +333,10 @@ export default {
 
 .figma-buttons {
   background-color: #EF476F;
+}
+
+.figma-buttons:hover{
+  color: black !important;;
 }
 
 .user-picture {
