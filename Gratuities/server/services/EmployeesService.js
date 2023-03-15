@@ -29,7 +29,7 @@ class EmployeesService {
         // .limit(20)
         // .exec()
     }
-    async higherEmployees(body) {
+    async hireEmployees(body) {
         const foundEmployee = await dbContext.Account.findById(body.accountId)
         // @ts-ignore
         body.employeeName = foundEmployee.name
