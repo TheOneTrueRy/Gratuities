@@ -141,13 +141,6 @@ export default {
                 getBusinessById();
                 // getBusinessRating()
             }
-
-            // if (AppState.account.id && !AppState.hasNotifications) {
-            //     await accountService.getMyReviews()
-            //     await tipsService.getTipsReceived()
-            //     await notificationsService.findNotifications()
-
-            // }
         });
         return {
             editable,

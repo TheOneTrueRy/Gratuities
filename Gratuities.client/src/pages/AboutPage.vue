@@ -83,7 +83,8 @@
               <p class="bio rounded bg-gradient">Playing and modding video games my whole life has led me to a deep
                 interest in how it
                 all actually works. Since then I've learned that programming comes quite easy to me. Thanks to CodeWorks
-                I've been able to expand my knowledge in programming and web development. Most handsome developer in
+                I've been able to expand my knowledge in programming and web development. 1st, 2nd, and 3rd most handsome
+                developer in
                 Gratuities dev team.</p>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JLV5G4NB-7e93e64f0292-512" class="d-block w-100" alt="...">
               <div class="carousel-caption d-flex align-items-center flex-column">
@@ -133,14 +134,6 @@ import { tipsService } from '../services/TipsService';
 
 export default {
   setup() {
-    watchEffect(async () => {
-      // if (AppState.account.id && !AppState.hasNotifications) {
-      //   await accountService.getMyReviews()
-      //   await tipsService.getTipsReceived()
-      //   await notificationsService.findNotifications()
-
-      // }
-    })
     return {
 
     }

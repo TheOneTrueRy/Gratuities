@@ -8,6 +8,7 @@ export class Account {
     this.openToFeedback = data.openToFeedback
     this.rating = data.rating
     this.currency = data.currency
+    this.notifications = data.notifications
     // TODO add additional properties if needed
   }
 }
