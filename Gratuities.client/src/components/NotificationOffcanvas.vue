@@ -1,6 +1,6 @@
 <template>
     <div class="RateProfileOffcanvas">
-        <div class="offcanvas offcanvas-end " tabindex="-1" id="notificationOffcanvas"
+        <div class="offcanvas offcanvas-end" :class="theme ? '' : 'text-bg-dark'" tabindex="-1" id="notificationOffcanvas"
             aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasRightLabel">Notifications</h5>
@@ -38,6 +38,7 @@ export default {
     setup() {
         return {
             account: computed(() => AppState.account),
+            theme: computed(() => AppState.theme),
             notification: computed(() => AppState.notifications),
             async clearNotifications() {
                 try {
