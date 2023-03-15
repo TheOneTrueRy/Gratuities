@@ -11,6 +11,7 @@
 import { computed, watchEffect, onMounted } from 'vue'
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
+import NotificationOffcanvas from './components/NotificationOffcanvas.vue'
 import { accountService } from './services/AccountService'
 import { notificationsService } from './services/NotificationsService'
 import { tipsService } from './services/TipsService'
@@ -41,7 +42,7 @@ export default {
       notifications: computed(() => AppState.notifications)
     }
   },
-  components: { Navbar }
+  components: { Navbar, NotificationOffcanvas }
 }
 </script>
 <style lang="scss">

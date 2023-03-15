@@ -1,58 +1,60 @@
 <template>
     <div v-if="notification?.tip" class="container-fluid mb-2">
-        <div class="row align-items-center">
-            <div class="col-3">
-                <img class="profile-picture-small" :src="notification?.giver.picture" :alt="notification?.giver.name">
-            </div>
-            <div class="col-9 pt-2">
+        <router-link :to="{ name: 'Profile', params: { profileId: notification?.giverId } }" class="text-dark">
+            <div class="row align-items-center">
+                <div class="col-3">
+                    <img class="profile-picture-small" :src="notification?.giver.picture" :alt="notification?.giver.name">
+                </div>
+                <div class="col-9 pt-2">
                     <p class="mb-0">
-                        {{ notification?.giver.name }} tipped you <span class="tip-text">₲{{ notification?.tip }}.</span> 
+                        {{ notification?.giver.name }} tipped you <span class="tip-text">₲{{ notification?.tip }}.</span>
                     </p>
                     <div class="timestamp pt-1">
                         <p>{{ notification?.createdAt }}</p>
                     </div>
+                </div>
             </div>
-        </div>
+        </router-link>
     </div>
     <div v-else class="ReviewCard">
         <div class="container-fluid mb-2">
-            <div class="row align-items-center">
-                <div class="col-3">
-                    <router-link :to="{ name: 'Profile', params: { profileId: notification?.creatorId } }"
-                        class="text-light">
+            <router-link :to="{ name: 'Profile', params: { profileId: notification?.creatorId } }" class="text-dark">
+                <div class="row align-items-center">
+                    <div class="col-3">
                         <img class="profile-picture-small selectable" :src="notification?.creator.picture"
                             :alt="notification?.creator.picture">
-                    </router-link>
-                </div>
-                <div class="col-9 pt-2">
-                    <div class="d-flex align-items-center">
-                        <span class="text-start">{{ notification?.creator.name }} |&nbsp;
-                        </span>
-                        <span>
-                            <ProfileStarRating :rating="notification?.rating"></ProfileStarRating>
-                        </span>
                     </div>
-                    <div class="scroller">
-                        <span>{{ notification?.body }}</span>
-                        <div class="timestamp pt-1">
-                            <p>{{ notification?.createdAt }}</p>
+                    <div class="col-9 pt-2">
+                        <div class="d-flex align-items-center">
+                            <span class="text-start">{{ notification?.creator.name }} |&nbsp;
+                            </span>
+                            <span>
+                                <ProfileStarRating :rating="notification?.rating"></ProfileStarRating>
+                            </span>
+                        </div>
+                        <div class="scroller">
+                            <span>{{ notification?.body }}</span>
+                            <div class="timestamp pt-1">
+                                <p>{{ notification?.createdAt }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </router-link>
         </div>
     </div>
 </template>
 
 
 <script>
+
 export default {
     props: {
         notification: { type: Object, required: true }
     },
     setup() {
-        return {}
-    }
+        return {};
+    },
 }
 </script>
 
@@ -66,7 +68,7 @@ export default {
     background-position: center;
 }
 
-.tip-text{
+.tip-text {
     color: #018835;
     text-shadow: 1px 1px 1px black;
 }
