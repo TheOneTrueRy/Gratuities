@@ -56,7 +56,7 @@ export class ProfilesController extends BaseController {
       tip.giverId = req.userInfo.id
       tip.receiverId = receiverId
       const tips = await tipsService.giveTip(tip)
-      socketProvider.messageUser(tip.receiverId.toString(), 'toUser:creatingTip', tip)
+      socketProvider.messageUser(tips.receiverId.toString(), 'toUser:creatingTip', tips)
       return res.send(tips)
     } catch (error) {
       next(error)

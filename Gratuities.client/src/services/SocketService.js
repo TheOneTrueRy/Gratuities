@@ -28,6 +28,7 @@ class SocketService extends SocketHandler {
   createTip(payload){
     try {
       Pop.toast(`${payload.giver.name} gave you a tip!`)
+      payload.createdAt = new Date(payload.createdAt).toLocaleString('en-US')
       AppState.notifications.unshift(payload)
     } catch (error) {
       Pop.error(error.message)
