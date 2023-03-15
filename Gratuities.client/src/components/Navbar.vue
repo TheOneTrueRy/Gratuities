@@ -61,9 +61,8 @@
 </template>
 
 <script>
-import { computed, onMounted, watchEffect } from "vue";
+import { computed } from "vue";
 import { AppState } from "../AppState.js";
-import { notificationsService } from "../services/NotificationsService";
 import { themeService } from "../services/ThemeService";
 import Login from './Login.vue'
 import NotificationOffcanvas from "./NotificationOffcanvas.vue";
