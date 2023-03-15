@@ -43,31 +43,23 @@
 import { computed, onMounted, watchEffect, ref } from "vue";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
-import { gameService } from "../services/gameService.js"
-import { tipsService } from "../services/TipsService";
-import { accountService } from "../services/AccountService";
-import { notificationsService } from "../services/NotificationsService";
+import { gameService } from "../services/GameService.js"
 
 export default {
   setup() {
+
     let block = ref({})
+
     function getRandomBlock() {
       let randomBlock = AppState.blocks[Math.floor(Math.random() * AppState.blocks.length)]
       logger.log(randomBlock)
       block.value = randomBlock
     }
+
     onMounted(() => {
       getRandomBlock()
     })
 
-    watchEffect(async () => {
-      // if (AppState.account.id && !AppState.hasNotifications) {
-      //   await accountService.getMyReviews()
-      //   await tipsService.getTipsReceived()
-      //   await notificationsService.findNotifications()
-
-      // }
-    })
     return {
       block,
       account: computed(() => AppState.account),
