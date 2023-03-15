@@ -1,5 +1,5 @@
 import { logger } from "../utils/Logger.js"
-import { api } from "./AxiosService.js"
+import { api, googleApi } from "./AxiosService.js"
 import { AppState } from "../AppState.js"
 import { Business } from "../models/Business.js"
 
@@ -67,6 +67,11 @@ class BusinessesService {
             }
         }
     }
+
+    // async google(input){
+    //     const res = await googleApi.get('', {params: {input}})
+    //     // {params: {query: {input}}}
+    // }
 }
 
 export const businessesService = new BusinessesService()

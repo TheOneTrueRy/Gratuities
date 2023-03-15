@@ -10,7 +10,7 @@
 
       </div>
       <div class="col-5 col-md-3 offset-md-2 ps-3 text-center d-flex align-items-center">
-        <router-link :to="{ name: 'Profile', params: { profileId: account?.id } }">
+        <router-link v-if="account.id" :to="{ name: 'Profile', params: { profileId: account?.id } }">
           <img class="elevation-3 rounded user-picture" :src="account?.picture" :alt="account?.name"
             title="Go to your profile page">
         </router-link>
@@ -106,11 +106,13 @@
                 <input required v-model="editable2.name" minlength="3" maxlength="50" placeholder="What's it called?"
                   type="text" class="form-control">
               </div>
+
               <div class="mb-2">
                 <label class="form-label">Location</label>
                 <input required v-model="editable2.location" minlength="3" maxlength="500" placeholder="Where is it?"
                   type="text" class="form-control">
               </div>
+
               <div class="mb-2">
                 <label class="form-label">Logo</label>
                 <input required v-model="editable2.logo" minlength="3" maxlength="500" placeholder="What's it's logo?"
@@ -204,6 +206,15 @@ export default {
       }
     }
 
+    // async function google() {
+    //   try {
+    //     const input = editable2.value.location
+    //     businessesService.google(input)
+    //   } catch (error) {
+    //     Pop.error(error.message)
+    //     logger.error(error)
+    //   }
+    // }
 
     async function getTipsReceived() {
       try {
@@ -254,6 +265,9 @@ export default {
         editable.value = { ...AppState.account };
         editable.bio = { ...AppState.account.bio };
       }
+      // if (editable2.value.location) {
+      //   google()
+      // }
     });
     return {
       editable,
