@@ -74,7 +74,7 @@
         <div class="col-12 col-md-8 offset-md-2">
           <h6>Top Profiles:</h6>
         </div>
-        <div v-for="p in profiles" class="col-12 employee-card rounded col-md-8 offset-md-2">
+        <div v-for="p in profiles" class="col-12 employee-card rounded col-md-8 offset-md-2" id="employee-card">
           <router-link :to="{
             name: 'Profile', params: { profileId: p?.id }
           }">
@@ -95,6 +95,7 @@ import { profilesService } from "../services/ProfilesService.js";
 import ProfileCard from '../components/ProfileCard.vue';
 import BusinessCard from '../components/BusinessCard.vue';
 import { tipsService } from "../services/TipsService.js";
+import { themeService } from '../services/ThemeService';
 
 export default {
   setup() {
@@ -139,6 +140,10 @@ export default {
       clearBusinesses()
     })
 
+    // function themeCheckDark() {
+    //   themeService.themeCheckDark()
+    // }
+
     watchEffect(async () => {
       if (AppState.account.id) {
         // tipsService.getTipsReceived()
@@ -146,6 +151,9 @@ export default {
 
         // getReviewsByProfileId()
       }
+      // if (!AppState.theme) {
+      //   themeCheckDark()
+      // }
     })
     return {
       editable,
@@ -172,12 +180,7 @@ export default {
       searchTypeBusinesses() {
         AppState.searchType = "businesses";
       },
-      themeCheck() {
 
-        if (!AppState.theme) {
-          console.log('is it dark now?');
-        }
-      }
     };
   },
   components: { ProfileCard, BusinessCard }
@@ -188,10 +191,19 @@ export default {
 .employee-card {
   background-color: #06D6A0;
   color: white;
+  text-shadow: 1px 1px 1px black;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.employee-card-dark {
+  background-color: #005f45 !important;
+  color: rgb(113, 113, 113);
   text-shadow: 1px 1px 2px black;
   transition: 0.5s;
   cursor: pointer;
 }
+
 
 .employee-card:active {
   transform: scale(0.9);

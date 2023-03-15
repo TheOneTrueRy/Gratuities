@@ -1,5 +1,5 @@
 <template>
-    <div class="ReviewCard">
+    <div class="ReviewCard" :class="theme ? 'employee-card' : 'employee-card-dark'">
         <div class="row align-items-center">
             <div class="col-3">
                 <router-link :to="{ name: 'Profile', params: { profileId: review?.creatorId } }" class="text-light">
@@ -52,6 +52,7 @@ export default {
     setup() {
         return {
             account: computed(() => AppState.account),
+            theme: computed(() => AppState.theme),
             async deleteReview(reviewId) {
                 try {
                     if (await Pop.confirm("Are you sure you'd like to delete this review?")) {
