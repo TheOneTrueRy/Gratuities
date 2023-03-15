@@ -3,7 +3,8 @@
         <div class="row">
             <div class="col-3 d-flex align-items-center">
                 <router-link :to="{ name: 'Profile', params: { profileId: profile?.id } }" class="text-light">
-                    <img class="profile-picture-small" :src="profile?.picture" :alt="profile?.picture">
+                    <img class="profile-picture-small" :src="profile?.picture" :alt="profile?.picture"
+                        :title="`Visit ${profile?.name}'s profile page!`">
                 </router-link>
             </div>
             <div class="col-8">
@@ -30,12 +31,10 @@
 
 
 <script>
-import { ref, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { computed } from 'vue';
 import { AppState } from '../AppState';
 import { Profile } from '../models/Profile.js';
 import { employeesService } from '../services/EmployeesService';
-import { profilesService } from '../services/ProfilesService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import ProfileStarRating from "./ProfileStarRating.vue";
