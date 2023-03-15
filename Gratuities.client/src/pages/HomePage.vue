@@ -26,7 +26,7 @@
         <div v-else class="col-12 text-center">
           <h6 class="biggest-tip"><span>No Tips Given Yet</span></h6>
         </div>
-        <div v-if="highestTipEver" class="col-12 text-center">
+        <div v-if="highestTipEver" class="col-12 text-center mb-4">
           <h6 class="biggest-tip">Your Biggest Tip received: <span
               :class="theme ? 'biggest-tip-amount' : 'biggest-tip-amount-light'">₲{{
                 ((highestTipEver.tip).toLocaleString('en-US'))
