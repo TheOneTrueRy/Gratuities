@@ -19,7 +19,7 @@
         <div class="justify-content-center row">
           <div class="col-10">
             <h6>Available to Payout: <div class="d-flex justify-content-around align-items-center mt-1">
-                <i class="cash fs-5">₲{{ ((availableToPayout)).toLocaleString('en-US')
+                <i class="cash fs-5">₲{{ ((availableToPayout))?.toLocaleString('en-US')
                 }} </i>
                 <button @click="cashOut(availableToPayout)" class="btn btn-outline-success btn-sm"
                   style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
@@ -29,9 +29,9 @@
             </h6>
             <h6>Biggest Tip:</h6>
             <ul>
-              <li>This Month: <i class="cash fs-5">₲{{ ((highestTipMonth).toLocaleString('en-US')) }}</i>
+              <li>This Month: <i class="cash fs-5">₲{{ ((highestTipMonth)?.toLocaleString('en-US')) }}</i>
               </li>
-              <li>Ever: <i class="cash fs-5">₲{{ ((highestTipEver?.tip).toLocaleString('en-US')) }}</i>
+              <li>Ever: <i class="cash fs-5">₲{{ ((highestTipEver?.tip)?.toLocaleString('en-US')) }}</i>
               </li>
             </ul>
           </div>

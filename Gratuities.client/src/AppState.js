@@ -29,6 +29,7 @@ export const AppState = reactive({
   theme: true,
   QRCode: null,
 
+  hasNotifications: false,
   notifications: [],
 
   // Maybe just... don't worry about all this down here...

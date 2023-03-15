@@ -4,11 +4,12 @@ import { api } from "./AxiosService";
 
 class NotificationsService {
 
-    async findNotifications(profileId) {
-        let foundReviewNotifications = AppState.reviews.filter(r => r.isOpened == false && r.reviewedId == profileId)
+    async findNotifications() {
+        let foundReviewNotifications = AppState.myReviews.filter(r => r.isOpened == false)
         let foundTipsNotifications = AppState.receivedTips.filter(r => r.isOpened == false)
 
         AppState.notifications = [...foundReviewNotifications, ...foundTipsNotifications]
+        logger.log('notifications', AppState.notifications)
     }
 
     async clearNotifications() {
