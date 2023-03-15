@@ -7,6 +7,23 @@ class BusinessesService {
 
 
 
+    async updateBusinessRating(user, business, body) {
+        const businessToEdit
+            = await dbContext.Businesses.findById(business)
+        if (!businessToEdit) {
+            throw new BadRequest('Invalid business Id')
+        }
+        businessToEdit.rating = body.rating || businessToEdit.rating
+        // const account = await dbContext.Account.findOneAndUpdate(
+        //   { _id: user.id },
+        //   { $set: update },
+        //   { runValidators: true, setDefaultsOnInsert: true, new: true }
+        // )
+        await businessToEdit
+            .save()
+        return businessToEdit
+
+    }
     async updateBusiness(user, business, body) {
         const businessToEdit
             = await dbContext.Businesses.findById(business)
@@ -20,7 +37,6 @@ class BusinessesService {
         businessToEdit.name = body.name || businessToEdit.name
         businessToEdit.coverImg = body.coverImg || businessToEdit.coverImg
         businessToEdit.logo = body.logo || businessToEdit.logo
-        businessToEdit.rating = body.rating || businessToEdit.rating
         // const account = await dbContext.Account.findOneAndUpdate(
         //   { _id: user.id },
         //   { $set: update },
