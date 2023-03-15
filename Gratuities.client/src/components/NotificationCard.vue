@@ -1,14 +1,15 @@
 <template>
     <div v-if="notification?.tip" class="mb-2">
         <router-link :to="{ name: 'Profile', params: { profileId: notification?.giverId } }" class="text-dark">
-            <div class="row align-items-center">
-                <div class="col-3">
+            <div class="row align-items-center selectable">
+                <div class="col-3 g-0 text-center">
                     <img class="profile-picture-small" :src="notification?.giver.picture" :alt="notification?.giver.name">
                 </div>
                 <div class="col-9 pt-2">
                     <div class="d-flex align-items-center">
                         <p class="m-0">
-                            {{ notification?.giver.name }} tipped you <span class="tip-text">₲{{ notification?.tip }}.</span>
+                            {{ notification?.giver.name }} tipped you <span class="tip-text">₲{{ notification?.tip
+                            }}.</span>
                         </p>
                     </div>
                     <div class="timestamp pt-1">
@@ -21,8 +22,8 @@
     <div v-else class="ReviewCard">
         <div class="mb-2">
             <router-link :to="{ name: 'Profile', params: { profileId: notification?.creatorId } }" class="text-dark">
-                <div class="row align-items-center">
-                    <div class="col-3">
+                <div class="row align-items-center selectable">
+                    <div class="col-3 g-0 text-center">
                         <img class="profile-picture-small selectable" :src="notification?.creator.picture"
                             :alt="notification?.creator.picture">
                     </div>
