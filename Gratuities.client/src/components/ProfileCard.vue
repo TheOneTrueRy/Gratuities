@@ -8,12 +8,10 @@
                 </router-link>
             </div>
             <div class="col-8">
-                <div class="d-flex align-items-center">
-                    <span>{{ profile?.name }} |&nbsp;</span>
-                    <span>
-                        <ProfileStarRating :rating="profile.rating"></ProfileStarRating>
+                <div class="d-flex align-items-center hide-overflow">
+                    <span class="hide-overflow">{{ profile?.name }} | <ProfileStarRating :rating="profile.rating">
+                        </ProfileStarRating>
                     </span>
-                    <span></span>
                 </div>
                 <div class="scroller" v-if="profile.bio">
                     <span>"{{ profile?.bio }}"</span>
@@ -91,5 +89,9 @@ export default {
 
 .scroller::-webkit-scrollbar {
     display: none;
+}
+
+.hide-overflow {
+    overflow-x: hidden;
 }
 </style>
