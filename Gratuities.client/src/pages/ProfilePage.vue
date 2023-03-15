@@ -143,12 +143,12 @@ export default {
                 calculateProfileRating();
                 // tipsService.getTipsReceived()
             }
-            if (AppState.account.id && !AppState.hasNotifications) {
-                await accountService.getMyReviews()
-                await tipsService.getTipsReceived()
-                await notificationsService.findNotifications()
+            // if (AppState.account.id && !AppState.hasNotifications) {
+            //     await accountService.getMyReviews()
+            //     await tipsService.getTipsReceived()
+            //     await notificationsService.findNotifications()
 
-            }
+            // }
         })
         return {
             editable,

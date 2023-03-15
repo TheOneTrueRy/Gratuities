@@ -134,12 +134,12 @@ import { tipsService } from '../services/TipsService';
 export default {
   setup() {
     watchEffect(async () => {
-      if (AppState.account.id && !AppState.hasNotifications) {
-        await accountService.getMyReviews()
-        await tipsService.getTipsReceived()
-        await notificationsService.findNotifications()
+      // if (AppState.account.id && !AppState.hasNotifications) {
+      //   await accountService.getMyReviews()
+      //   await tipsService.getTipsReceived()
+      //   await notificationsService.findNotifications()
 
-      }
+      // }
     })
     return {
 

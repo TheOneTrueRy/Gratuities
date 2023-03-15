@@ -13,6 +13,7 @@ import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
 import { accountService } from './services/AccountService'
 import { notificationsService } from './services/NotificationsService'
+import { tipsService } from './services/TipsService'
 import Pop from './utils/Pop'
 
 export default {
@@ -27,10 +28,12 @@ export default {
       }
     }
 
-    watchEffect(() => {
-      // if (AppState.reviews && AppState.notifications) {
-      //   notificationsService.findNotifications(AppState.account.id)
-      // }
+    watchEffect(async () => {
+      if (AppState.account.id && !AppState.hasNotifications) {
+        await accountService.getMyReviews()
+        await tipsService.getTipsReceived()
+        await notificationsService.findNotifications()
+      }
 
     })
     return {
