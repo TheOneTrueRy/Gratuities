@@ -40,6 +40,7 @@ class EmployeesService {
         // @ts-ignore
         body.employeeBio = foundEmployee.bio
         const employee = await dbContext.Employees.create(body)
+        await employee.populate('business', 'name location')
 
         const business = await dbContext.Businesses.findById(body.businessId)
         // @ts-ignore
