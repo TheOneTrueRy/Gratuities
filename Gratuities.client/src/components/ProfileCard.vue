@@ -1,5 +1,6 @@
 <template>
-    <div class="ProfileCard rounded elevation-5 mb-4 py-2 px-2">
+    <div class="text-light rounded elevation-5 mb-4 py-2 px-2 ECARD"
+        :class="theme ? 'employee-card' : 'employee-card-dark'">
         <div class="row">
             <div class="col-3 d-flex align-items-center">
                 <router-link :to="{ name: 'Profile', params: { profileId: profile?.id } }" class="text-light">
@@ -29,10 +30,11 @@
 
 
 <script>
-import { computed } from 'vue';
+import { computed, watchEffect } from 'vue';
 import { AppState } from '../AppState';
 import { Profile } from '../models/Profile.js';
 import { employeesService } from '../services/EmployeesService';
+import { themeService } from '../services/ThemeService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import ProfileStarRating from "./ProfileStarRating.vue";
@@ -45,9 +47,19 @@ export default {
         }
     },
     setup() {
+
+        function themeCheckDark() {
+            themeService.themeCheckDark()
+        }
+        // watchEffect(async () => {
+        //     if (!AppState.theme) {
+        //         themeCheckDark()
+        //     }
+        // })
         return {
             business: computed(() => AppState.business),
             account: computed(() => AppState.account),
+            theme: computed(() => AppState.theme),
             async removeEmployee(employeeId) {
                 try {
                     logger.log('employeeId:', employeeId)
@@ -67,14 +79,6 @@ export default {
 
 
 <style lang="scss" scoped>
-.ProfileCard {
-    background-color: #06D6A0;
-    color: white;
-    text-shadow: 1px 1px 2px black;
-    transition: 0.5s;
-    cursor: pointer;
-}
-
 .profile-picture-small {
     height: 10vh;
     width: 10vh;

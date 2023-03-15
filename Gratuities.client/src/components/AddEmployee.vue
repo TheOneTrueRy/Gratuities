@@ -1,8 +1,10 @@
 <template>
-    <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+    <div class="offcanvas offcanvas-top" :class="theme ? '' : 'text-bg-dark'" tabindex="-1" id="offcanvasTop"
+        aria-labelledby="offcanvasTopLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasTopLabel">Add to Business</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" class="btn-close" :class="theme ? '' : 'btn-close-white'" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <form @submit.prevent="addEmployee()">
@@ -50,6 +52,7 @@ export default {
             route,
             editable,
             businesses: computed(() => AppState.businesses),
+            theme: computed(() => AppState.theme),
             account: computed(() => AppState.account),
             async addEmployee() {
                 try {

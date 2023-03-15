@@ -56,7 +56,7 @@
                     </div>
                     <!-- SECTION displays all profiles that have reviewed this profile -->
                     <div class="row justify-content-center mt-3">
-                        <div v-for="r in reviews" class="col-11 review-card rounded elevation-5 p-2 mb-4 col-md-8">
+                        <div v-for="r in reviews" class="col-11 rounded p-2 col-md-8">
                             <ReviewCard :review="r" />
                         </div>
                     </div>
@@ -212,13 +212,13 @@ export default {
     text-shadow: 1px 1px 2px black;
 }
 
-.review-card {
-    background-color: #06D6A0;
-    color: white;
-    text-shadow: 1px 1px 2px black;
-    transition: 0.5s;
-    cursor: pointer;
-}
+// .review-card {
+//     background-color: #06D6A0;
+//     color: white;
+//     text-shadow: 1px 1px 2px black;
+//     transition: 0.5s;
+//     cursor: pointer;
+// }
 
 .employee-card:active {
     transform: scale(0.9);

@@ -48,6 +48,21 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
+.employee-card {
+  background-color: #06D6A0;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.employee-card-dark {
+  background-color: #005f45 !important;
+  text-shadow: 1px 1px 2px black;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
 .star {
   color: #FFEE33;
   text-shadow: 1px 1px 1px black;
