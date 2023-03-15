@@ -160,6 +160,7 @@ export default {
       searchType: computed(() => AppState.searchType),
       highestTipEver: computed(() => AppState.highestTipEver),
       highestTipEverGiven: computed(() => AppState.highestTipEverGiven),
+      theme: computed(() => AppState.theme),
       async search() {
         try {
           let query = editable.value;
@@ -175,6 +176,12 @@ export default {
       },
       searchTypeBusinesses() {
         AppState.searchType = "businesses";
+      },
+      themeCheck() {
+
+        if (!AppState.theme) {
+          console.log('is it dark now?');
+        }
       }
     };
   },
