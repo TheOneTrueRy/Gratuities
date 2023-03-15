@@ -1,16 +1,16 @@
 <template>
-  <nav class="navbar navbar-expand-lg tip-header px-3">
+  <nav class="navbar navbar-expand-lg tip-header px-2">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <router-link class="d-flex text-light" :to="{ name: 'Home' }">
+    <router-link class="text-light" :to="{ name: 'Home' }">
       <div class="logo d-flex flex-column align-items-center">
-        <h1 class="nomb ps-4">Gratuities</h1>
+        <h1 class="nomb">Gratuities</h1>
       </div>
     </router-link>
     <button data-bs-toggle="offcanvas" data-bs-target="#notificationOffcanvas" aria-controls="notificationOffcanvas"
-      class="btn btn-dark d-flex justify-content-center align-items-center px-1 ms-4">
+      class="btn btn-dark d-flex justify-content-center align-items-center px-1">
       <i id="notifications-bell" class="mdi mdi-bell text-light fs-5 selectable notifications-bell"></i>
       <div v-if="notifications" class="notif-icon-bg">
         <div class="notif-icon-num">{{ notifications.length }}</div>
