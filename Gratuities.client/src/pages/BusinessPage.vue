@@ -51,7 +51,7 @@
                 aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <div>
+            <div v-if="business">
                 <form @submit.prevent="editBusiness(business?.id)">
                     <div class="mb-3" v-if="business?.name">
                         <label for="name" class="form-label">Name</label>
@@ -93,17 +93,14 @@ import Pop from '../utils/Pop';
 export default {
     setup() {
         const editable = ref({});
-        const editable2 = ref({
-            name: AppState.business?.name,
-            coverImg: AppState.business?.coverImg,
-            logo: AppState.business?.logo,
-        })
+        let editable2 = ref({})
         const editable3 = ref({});
         const route = useRoute();
         async function getBusinessById() {
             try {
                 const businessId = route.params.businessId;
                 await businessesService.getBusinessById(businessId);
+                editable2.value = AppState.business
             }
             catch (error) {
                 Pop.error(error.message);
