@@ -14,17 +14,20 @@ class TipsService {
     })
     return tips
   }
-  
+
   async tipsIsPayedOut(requestorId) {
     const tips = await dbContext.Tips.find({ receiverId: requestorId })
     const user = await dbContext.Account.findById(requestorId)
+    let tip = 0
     tips.forEach(async t => {
-      if (!t.isPayedOut) {
-        await accountService.updateAccount(user,{ currency: t.tip })
+      if(!t.isPayedOut) {
+        // await accountService.updateAccount(user, { currency: t.tip })
+        tip += t.tip
+        t.isPayedOut = true
+        await t.save()
       }
-      t.isPayedOut = true
-      await t.save()
     })
+    await accountService.updateAccount(user, { currency: tip })
     return tips
   }
   async getSentTips(userId) {
@@ -59,7 +62,7 @@ class TipsService {
             tip: tip.tip
           },
         },
-      });      
+      });
     }
 
     return tips
