@@ -50,52 +50,15 @@
           class="btn figma-buttons text-light elevation-3 rounded-pill hover-text">Edit Account</button>
       </div>
 
-      <!-- SECTION Offcanvas for edit account vvvv -->
-      <div class="offcanvas offcanvas-end" :class="theme ? '' : 'text-bg-dark'" tabindex="-1" id="offcanvasExample"
-        aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Edit Account</h5>
-          <button type="button" class="btn-close" :class="theme ? '' : 'btn-close-white'" data-bs-dismiss="offcanvas"
-            aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <form @submit.prevent="editAccount()">
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input required v-model="editable.name" type="text" class="form-control" id="name" name="name">
-            </div>
-            <div>
-              <label for="picture" class="form-label">Picture</label>
-              <input required v-model="editable.picture" class="form-control" id="picture" type="text">
-            </div>
-            <div>
-              <label for="bio" class="form-label">Bio</label>
-              <input v-model="editable.bio" class="form-control" id="bio" type="text">
-            </div>
-            <!-- FIXME the checkbox isn't actually displaying the value of openToFeedback -->
-            <!-- ANCHOR nvm fixed it -->
-            <div>
-              <label for="openToFeedback" class="form-label">Would you like to receive feedback?&nbsp;&nbsp;&nbsp;</label>
-              <input v-model="editable.openToFeedback" class="my-3" id="openToFeedback" type="checkbox">
-            </div>
-            <div>
-              <label for="notifications" class="form-label">Would you like email notifications?&nbsp;&nbsp;&nbsp;</label>
-              <input v-model="editable.notifications" class="my-3" id="notifications" type="checkbox">
-            </div>
-            <button data-bs-dismiss="offcanvas" class="btn btn-success" type="submit">Save Changes</button>
-          </form>
-        </div>
-      </div>
-      <!-- SECTION End of offcanvas for edit account ^^^^ -->
-
-
-
+      
+      
+      
       <!-- SECTION Offcanvas for add business vvvv -->
       <div class="offcanvas offcanvas-start" :class="theme ? '' : 'text-bg-dark'" tabindex="-1" id="addBusiness"
-        aria-labelledby="addBusinessLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="addBusinessLabel">New Business</h5>
-          <button type="button" class="btn-close" :class="theme ? '' : 'btn-close-white'" data-bs-dismiss="offcanvas"
+      aria-labelledby="addBusinessLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="addBusinessLabel">New Business</h5>
+        <button type="button" class="btn-close" :class="theme ? '' : 'btn-close-white'" data-bs-dismiss="offcanvas"
             aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -104,24 +67,24 @@
               <div class="mb-2">
                 <label class="form-label">Name</label>
                 <input required v-model="editable2.name" minlength="3" maxlength="50" placeholder="What's it called?"
-                  type="text" class="form-control">
+                type="text" class="form-control">
               </div>
-
+              
               <div class="mb-2">
                 <label class="form-label">Location</label>
                 <input required v-model="editable2.location" minlength="3" maxlength="500" placeholder="Where is it?"
-                  type="text" class="form-control">
+                type="text" class="form-control">
               </div>
-
+              
               <div class="mb-2">
                 <label class="form-label">Logo</label>
                 <input required v-model="editable2.logo" minlength="3" maxlength="500" placeholder="What's it's logo?"
-                  type="text" class="form-control">
+                type="text" class="form-control">
               </div>
               <div class="mb-2">
                 <label class="form-label">Cover Image</label>
                 <input required v-model="editable2.coverImg" minlength="3" maxlength="500"
-                  placeholder="What's it's cover image?" type="text" class="form-control">
+                placeholder="What's it's cover image?" type="text" class="form-control">
               </div>
               <button data-bs-dismiss="offcanvas" class="btn btn-success" type="submit">Create Business</button>
             </form>
@@ -129,8 +92,8 @@
         </div>
       </div>
       <!-- SECTION End of offcanvas for add business ^^^ -->
-
-
+      
+      
       <div class="col-12 col-md-6 offset-md-3 mt-4">
         <h1>Recent Tips:</h1>
       </div>
@@ -138,13 +101,13 @@
       <div class="col-12 col-md-6 offset-md-3 mt-3 d-flex justify-content-center mb-3">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
           <input @click="showReceivedTips()" type="radio" class="btn-check" name="btnradio" id="btnradio1"
-            autocomplete="off" checked>
+          autocomplete="off" checked>
           <label class="btn" :class="theme ? 'btn-outline-dark' : 'btn-outline-light'" for="btnradio1">Received</label>
-
+          
           <input @click="showGivenTips()" type="radio" class="btn-check" name="btnradio" id="btnradio2"
             autocomplete="off">
           <label class="btn" :class="theme ? 'btn-outline-dark' : 'btn-outline-light'"
-            for="btnradio2">&nbsp;&nbsp;Given&nbsp;&nbsp;</label>
+          for="btnradio2">&nbsp;&nbsp;Given&nbsp;&nbsp;</label>
         </div>
       </div>
       <!-- SECTION tips list -->
@@ -171,17 +134,19 @@
         </div>
       </div>
       <div v-else>
-
+        
       </div>
     </div>
   </div>
+
+<!-- SECTION Offcanvas for edit account vvvv -->
+<EditAccountOffcanvas />
 </template>
 
 <script>
 import { Offcanvas } from 'bootstrap';
 import { computed, ref, watchEffect, onMounted, onUnmounted } from 'vue'
 import { tipsService } from '../services/TipsService'
-import { accountService } from '../services/AccountService';
 import { businessesService } from '../services/BusinessesService'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
@@ -192,9 +157,9 @@ import Tip from '../components/Tip.vue';
 import TipGiven from '../components/TipGiven.vue';
 import { ratingsService } from '../services/RatingsService';
 import ProfileStarRating from "../components/ProfileStarRating.vue";
+import EditAccountOffcanvas from '../components/EditAccountOffcanvas.vue';
 export default {
   setup() {
-    const editable = ref({});
     const editable2 = ref({});
     const route = useRoute();
     async function calculateRating() {
@@ -261,16 +226,11 @@ export default {
     });
 
     watchEffect(() => {
-      if (AppState.account.id) {
-        editable.value = { ...AppState.account };
-        editable.bio = { ...AppState.account.bio };
-      }
       // if (editable2.value.location) {
       //   google()
       // }
     });
     return {
-      editable,
       editable2,
       businesses: computed(() => AppState.businesses),
       account: computed(() => AppState.account),
@@ -289,16 +249,7 @@ export default {
           logger.error(error)
         }
       },
-      async editAccount() {
-        try {
-          const formData = editable.value;
-          await accountService.editAccount(formData);
-        }
-        catch (error) {
-          Pop.error(error.message);
-          logger.error(error);
-        }
-      },
+
       async newBusiness() {
         try {
           const formData = editable2.value;
@@ -318,7 +269,7 @@ export default {
       }
     };
   },
-  components: { Business, Tip, TipGiven, ProfileStarRating }
+  components: { Business, Tip, TipGiven, ProfileStarRating, EditAccountOffcanvas }
 }
 </script>
 
