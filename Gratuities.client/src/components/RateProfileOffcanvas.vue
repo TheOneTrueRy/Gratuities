@@ -99,6 +99,7 @@ export default {
                     const reviewData = editable.value;
                     await profilesService.leaveReview(reviewData, profileId);
                     editable.value = { rating: 2.5 }
+                    Pop.success('You successfully left a review')
                 }
                 catch (error) {
                     Pop.error("[LEAVING REVIEW]", error);
