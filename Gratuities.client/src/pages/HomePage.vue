@@ -22,7 +22,10 @@
           <h6 class="biggest-tip">Your Biggest Tip Sent: <span :class="theme ? 'cash' : 'cash-light'">₲{{
             ((highestTipEverGiven.tip)).toLocaleString('en-US')
           }}</span><br> to
-            {{ highestTipEverGiven.receiver?.name }}
+            <router-link :to="{ name: 'Profile', params: { profileId: highestTipEverGiven.receiver?.id } }"
+              class="text-dark underline">
+              {{ highestTipEverGiven.receiver?.name }}
+            </router-link>
           </h6>
         </div>
 
@@ -34,7 +37,10 @@
           <h6 class="biggest-tip">Your Biggest Tip received: <span :class="theme ? 'cash' : 'cash-light'">₲{{
             ((highestTipEver.tip).toLocaleString('en-US'))
           }}</span><br> from
-            {{ highestTipEver.giver?.name }}
+            <router-link :to="{ name: 'Profile', params: { profileId: highestTipEver.giver?.id } }"
+              class="text-dark underline">
+              {{ highestTipEver.giver?.name }}
+            </router-link>
           </h6>
         </div>
 
@@ -234,5 +240,9 @@ export default {
 
 .profile-picture:active {
   transform: scale(0.8);
+}
+
+.underline {
+  text-decoration: underline;
 }
 </style>
