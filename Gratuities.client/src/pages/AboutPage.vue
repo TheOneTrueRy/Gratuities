@@ -190,7 +190,7 @@ export default {
 }
 
 img {
-  height: 48vh;
+  height: 55vh;
   width: 100%;
 }
 
@@ -205,10 +205,4 @@ img {
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.587);
 }
 
-.profile-picture {
-  height: 5vh;
-  width: 5vh;
-  border-radius: 50%;
-  box-shadow: 2px 2px 4px black;
-}
 </style>
