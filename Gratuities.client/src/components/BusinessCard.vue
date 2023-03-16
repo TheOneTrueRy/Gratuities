@@ -13,10 +13,7 @@
                     </span>
                 </div>
                 <div class="col-9">
-
                     {{ business.location }}
-                </div>
-                <div class="col-12">
                 </div>
             </div>
         </router-link>
