@@ -66,9 +66,9 @@
         <div>
           <form @submit.prevent="search()">
             <div class="input-group">
-              <input v-if="searchType == 'businesses'" v-model="editable.query" required class="form-control"
+              <input v-if="searchType == 'businesses'" v-model="editable.query" class="form-control"
                 placeholder="Search businesses..." aria-describedby="button-addon2" aria-label="Search" type="text">
-              <input v-if="searchType == 'profiles'" v-model="editable.query" required class="form-control"
+              <input v-if="searchType == 'profiles'" v-model="editable.query" class="form-control"
                 placeholder="Search profiles..." aria-describedby="button-addon2" aria-label="Search" type="text">
               <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
                 <i class="mdi mdi-magnify"></i>
