@@ -140,7 +140,7 @@ export default {
 
 .backdrop {
   background-size: cover;
-  height: 100%;
+  min-height: 89.1vh;
 }
 
 .item {
