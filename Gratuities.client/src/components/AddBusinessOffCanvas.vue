@@ -43,7 +43,8 @@
 
 
 <script>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+import { AppState } from "../AppState.js";
 import { businessesService } from '../services/BusinessesService.js';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
@@ -65,6 +66,7 @@ export default {
                     logger.error(error);
                 }
             },
+            theme: computed(() => AppState.account.theme)
         }
     }
 }

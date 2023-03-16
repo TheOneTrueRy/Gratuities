@@ -52,9 +52,11 @@
                                     </span>
                                 </div>
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                    <button @click="searchTypeDate()" type="button" class="btn btn-outline-dark btn-sm"
+                                    <button @click="searchTypeDate()" type="button" class="btn btn-sm"
+                                        :class="theme ? 'btn-outline-dark' : 'btn-outline-light'"
                                         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Date</button>
-                                    <button @click="searchTypeRating()" type="button" class="btn btn-outline-dark btn-sm"
+                                    <button @click="searchTypeRating()" type="button" class="btn btn-sm"
+                                        :class="theme ? 'btn-outline-dark' : 'btn-outline-light'"
                                         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Rating</button>
                                 </div>
                             </div>
@@ -75,13 +77,13 @@
     <RateProfileOffcanvas />
     <!-- SECTION modal to tip user -->
     <TipUserModal />
-    <!-- SECTION offcanvas of my bussinesses to add profile to -->
+    <!-- SECTION offcanvas of my businesses to add profile to -->
     <AddEmployee />
 </template>
 
 
 <script>
-import { computed, onMounted, ref, watchEffect } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState.js';
 import ProfileCard from '../components/ProfileCard.vue';
@@ -95,9 +97,6 @@ import { ratingsService } from "../services/RatingsService.js";
 import Pop from '../utils/Pop.js';
 import AddEmployee from '../components/AddEmployee.vue';
 import { logger } from '../utils/Logger';
-import { tipsService } from '../services/TipsService';
-import { accountService } from '../services/AccountService';
-import { notificationsService } from '../services/NotificationsService';
 
 export default {
     setup() {
@@ -147,7 +146,6 @@ export default {
                 generateQRCode();
                 getReviewsByProfileId();
                 calculateProfileRating();
-                // tipsService.getTipsReceived()
             }
         })
         return {
@@ -159,6 +157,7 @@ export default {
             reviews: computed(() => AppState.reviews),
             businesses: computed(() => AppState.businesses),
             account: computed(() => AppState.account),
+            theme: computed(() => AppState.account.theme),
 
             searchTypeDate() {
                 AppState.reviewSearchType = 'date'

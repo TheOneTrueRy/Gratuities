@@ -103,7 +103,8 @@ export default {
                 catch (error) {
                     Pop.error("[LEAVING REVIEW]", error);
                 }
-            }
+            },
+            theme: computed(() => AppState.account.theme)
         };
     },
     components: { ProfileStarRating }
