@@ -50,48 +50,10 @@
           class="btn figma-buttons text-light elevation-3 rounded-pill hover-text">Edit Account</button>
       </div>
 
+
+
+
       
-      
-      
-      <!-- SECTION Offcanvas for add business vvvv -->
-      <div class="offcanvas offcanvas-start" :class="theme ? '' : 'text-bg-dark'" tabindex="-1" id="addBusiness"
-      aria-labelledby="addBusinessLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="addBusinessLabel">New Business</h5>
-        <button type="button" class="btn-close" :class="theme ? '' : 'btn-close-white'" data-bs-dismiss="offcanvas"
-            aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <div>
-            <form @submit.prevent="newBusiness()">
-              <div class="mb-2">
-                <label class="form-label">Name</label>
-                <input required v-model="editable2.name" minlength="3" maxlength="50" placeholder="What's it called?"
-                type="text" class="form-control">
-              </div>
-              
-              <div class="mb-2">
-                <label class="form-label">Location</label>
-                <input required v-model="editable2.location" minlength="3" maxlength="500" placeholder="Where is it?"
-                type="text" class="form-control">
-              </div>
-              
-              <div class="mb-2">
-                <label class="form-label">Logo</label>
-                <input required v-model="editable2.logo" minlength="3" maxlength="500" placeholder="What's it's logo?"
-                type="text" class="form-control">
-              </div>
-              <div class="mb-2">
-                <label class="form-label">Cover Image</label>
-                <input required v-model="editable2.coverImg" minlength="3" maxlength="500"
-                placeholder="What's it's cover image?" type="text" class="form-control">
-              </div>
-              <button data-bs-dismiss="offcanvas" class="btn btn-success" type="submit">Create Business</button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <!-- SECTION End of offcanvas for add business ^^^ -->
       
       
       <div class="col-12 col-md-6 offset-md-3 mt-4">
@@ -105,7 +67,7 @@
           <label class="btn" :class="theme ? 'btn-outline-dark' : 'btn-outline-light'" for="btnradio1">Received</label>
           
           <input @click="showGivenTips()" type="radio" class="btn-check" name="btnradio" id="btnradio2"
-            autocomplete="off">
+          autocomplete="off">
           <label class="btn" :class="theme ? 'btn-outline-dark' : 'btn-outline-light'"
           for="btnradio2">&nbsp;&nbsp;Given&nbsp;&nbsp;</label>
         </div>
@@ -139,8 +101,11 @@
     </div>
   </div>
 
-<!-- SECTION Offcanvas for edit account vvvv -->
-<EditAccountOffcanvas />
+  <!-- SECTION Offcanvas for add business vvvv -->
+  <AddBusinessOffCanvas />
+  
+  <!-- SECTION Offcanvas for edit account vvvv -->
+  <EditAccountOffcanvas />
 </template>
 
 <script>
@@ -158,10 +123,11 @@ import TipGiven from '../components/TipGiven.vue';
 import { ratingsService } from '../services/RatingsService';
 import ProfileStarRating from "../components/ProfileStarRating.vue";
 import EditAccountOffcanvas from '../components/EditAccountOffcanvas.vue';
+import AddBusinessOffCanvas from '../components/AddBusinessOffCanvas.vue';
 export default {
   setup() {
-    const editable2 = ref({});
     const route = useRoute();
+
     async function calculateRating() {
       try {
         await ratingsService.calculateAccountRating()
@@ -170,16 +136,6 @@ export default {
         logger.error(error)
       }
     }
-
-    // async function google() {
-    //   try {
-    //     const input = editable2.value.location
-    //     businessesService.google(input)
-    //   } catch (error) {
-    //     Pop.error(error.message)
-    //     logger.error(error)
-    //   }
-    // }
 
     async function getTipsReceived() {
       try {
@@ -225,13 +181,7 @@ export default {
       clearBusinesses()
     });
 
-    watchEffect(() => {
-      // if (editable2.value.location) {
-      //   google()
-      // }
-    });
     return {
-      editable2,
       businesses: computed(() => AppState.businesses),
       account: computed(() => AppState.account),
       tipType: computed(() => AppState.tipType),
@@ -241,23 +191,13 @@ export default {
       highestTipEver: computed(() => AppState.highestTipEver),
       availableToPayout: computed(() => AppState.availableToPayout),
       theme: computed(() => AppState.theme),
+
       async cashOut(availableToPayout) {
         try {
           await tipsService.cashOut(availableToPayout)
         } catch (error) {
           Pop.error(error.message)
           logger.error(error)
-        }
-      },
-
-      async newBusiness() {
-        try {
-          const formData = editable2.value;
-          await businessesService.newBusiness(formData);
-        }
-        catch (error) {
-          Pop.error(error.message);
-          logger.error(error);
         }
       },
 
@@ -269,7 +209,7 @@ export default {
       }
     };
   },
-  components: { Business, Tip, TipGiven, ProfileStarRating, EditAccountOffcanvas }
+  components: { Business, Tip, TipGiven, ProfileStarRating, EditAccountOffcanvas, AddBusinessOffCanvas }
 }
 </script>
 
