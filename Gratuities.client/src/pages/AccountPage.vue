@@ -1,24 +1,23 @@
 <template>
   <div class="container-fluid">
     <div class="row">
+
       <div class="col-12 d-flex justify-content-center align-items-center mt-2 mb-0">
         <h1 class="text-center">{{ account?.name }}
           <div>
             <ProfileStarRating :rating="account?.rating" />
           </div>
         </h1>
-
       </div>
+
       <div class="col-5 col-md-3 offset-md-2 ps-3 text-center d-flex align-items-center">
         <router-link v-if="account.id" :to="{ name: 'Profile', params: { profileId: account?.id } }">
           <img class="elevation-3 rounded user-picture" :src="account?.picture" :alt="account?.name"
             title="Go to your profile page">
         </router-link>
       </div>
-      <div class="col-7 col-md-5 ps-3">
-        <h1>
 
-        </h1>
+      <div class="col-7 col-md-5 ps-3">
         <div class="justify-content-start row">
           <div class="col-11 col-md-8">
             <h6>Available to Payout: <div class="d-flex justify-content-between align-items-center mt-1 w-100">
@@ -42,6 +41,7 @@
           </div>
         </div>
       </div>
+
       <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-around pe-4">
         <button data-bs-toggle="offcanvas" data-bs-target="#addBusiness" aria-controls="offcanvasExample"
           class="btn figma-buttons text-light elevation-3 rounded-pill hover-text">New
@@ -49,48 +49,48 @@
         <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
           class="btn figma-buttons text-light elevation-3 rounded-pill hover-text">Edit Account</button>
       </div>
-      
+
       <div class="col-12 col-md-6 offset-md-3 mt-4">
         <h1>Recent Tips:</h1>
       </div>
+
       <!-- SECTION buttons to switch between tip types -->
       <div class="col-12 col-md-6 offset-md-3 mt-3 d-flex justify-content-center mb-3">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
           <input @click="showReceivedTips()" type="radio" class="btn-check" name="btnradio" id="btnradio1"
             autocomplete="off" checked>
           <label class="btn" :class="theme ? 'btn-outline-dark' : 'btn-outline-light'" for="btnradio1">Received</label>
-
           <input @click="showGivenTips()" type="radio" class="btn-check" name="btnradio" id="btnradio2"
             autocomplete="off">
           <label class="btn" :class="theme ? 'btn-outline-dark' : 'btn-outline-light'"
             for="btnradio2">&nbsp;&nbsp;Given&nbsp;&nbsp;</label>
         </div>
       </div>
+
       <!-- SECTION tips list -->
-      <div v-if="tipType == 'received'" class="col-12 col-md-6 offset-md-3">
+      <div v-if="tipType == 'received'" class="col-12 col-md-6 offset-md-3 tips-section">
         <div v-for="t in receivedTips">
           <Tip :tip="t" />
         </div>
       </div>
-      <div v-else class="col-12 col-md-6 offset-md-3">
+      <div v-else class="col-12 col-md-6 offset-md-3 tips-section">
         <div v-for="t in givenTips">
           <TipGiven :tip="t" />
         </div>
       </div>
-      <div v-if="businesses.length == 1" class="col-12 col-md-6 offset-md-3 mt-4">
+      <div v-if="businesses.length == 1" class="col-12 col-md-6 offset-md-3 mt-3">
         <h1>My Business:</h1>
         <div class="col-12 col-md-6 offset-md-3 my-4" v-for="business in businesses">
           <Business :business="business" />
         </div>
       </div>
-      <div v-else-if="businesses.length > 1" class="col-12 col-md-6 offset-md-3 mt-4">
+      <div v-else-if="businesses.length > 1" class="col-12 col-md-6 offset-md-3 mt-3">
         <h1>My Businesses:</h1>
         <div class="col-12 col-md-6 offset-md-3 my-4" v-for="business in businesses">
           <Business :business="business" />
         </div>
       </div>
       <div v-else>
-
       </div>
     </div>
   </div>
@@ -103,8 +103,7 @@
 </template>
 
 <script>
-import { Offcanvas } from 'bootstrap';
-import { computed, ref, watchEffect, onMounted, onUnmounted } from 'vue'
+import { computed, onMounted, onUnmounted } from 'vue'
 import { tipsService } from '../services/TipsService'
 import { businessesService } from '../services/BusinessesService'
 import { AppState } from '../AppState'
@@ -139,6 +138,7 @@ export default {
         logger.error(error)
       }
     }
+
     async function getTipsGiven() {
       try {
         await tipsService.getTipsGiven()
@@ -208,39 +208,6 @@ export default {
 </script>
 
 <style scoped>
-.p-tag-be-annoying {
-  margin: 0;
-}
-
-.star {
-  color: #FFEE33;
-  text-shadow: 1px 1px 1px black;
-}
-
-.business-logo {
-  border: 2px solid black;
-  width: 16vh;
-  height: 16vh;
-  border-radius: 50%;
-  object-fit: cover;
-  background-position: center;
-}
-
-.profile-picture {
-  height: 8vh;
-  width: 8vh;
-  border-radius: 50%;
-  object-fit: cover;
-  background-position: center;
-}
-
-.tips {
-  padding: 1vh;
-  background-color: #06D6A0;
-  color: white;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.518);
-}
-
 .figma-buttons {
   background-color: #EF476F;
 }
@@ -263,11 +230,10 @@ export default {
   transform: scale(1.05);
 }
 
-.w-90 {
-  width: 90%;
-}
-
-.w-10 {
-  width: 10%;
+.tips-section {
+  padding: 1vh;
+  height: 60vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 </style>
