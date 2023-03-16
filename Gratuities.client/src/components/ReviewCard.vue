@@ -3,13 +3,14 @@
         <div class="row align-items-center">
             <div class="col-3">
                 <router-link :to="{ name: 'Profile', params: { profileId: review?.creatorId } }" class="text-light">
-                    <img class="profile-picture-small selectable" :src="review?.creator.picture"
-                        :alt="review.creator.picture">
+                    <img class="profile-picture-small selectable" :src="review.creator?.picture"
+                        :alt="review.creator?.picture">
                 </router-link>
             </div>
-            <div class="col-8">
+
+            <div class="col-8 pt-3">
                 <div class="d-flex align-items-center">
-                    <span class="text-start">{{ review?.creator.name }} | <ProfileStarRating :rating="review?.rating">
+                    <span class="text-start">{{ review.creator?.name }} | <ProfileStarRating :rating="review?.rating">
                         </ProfileStarRating>
                     </span>
                 </div>
@@ -20,8 +21,9 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-1 d-flex justify-content-end align-self-start">
-                <span v-if="review.creator.id == account.id" class="text-end">
+                <span v-if="review.creator?.id == account.id" class="text-end">
                     <button @click="deleteReview(review.id)" class="btn btn-close btn-sm text-danger delete-button"
                         title="Delete"></button>
                 </span>
@@ -32,7 +34,7 @@
 
 
 <script>
-import { computed, onMounted, watchEffect, ref } from 'vue';
+import { computed } from 'vue';
 import { AppState } from "../AppState";
 import { Review } from "../models/Review.js";
 import { ratingsService } from '../services/RatingsService';
@@ -51,6 +53,7 @@ export default {
         return {
             account: computed(() => AppState.account),
             theme: computed(() => AppState.account.theme),
+
             async deleteReview(reviewId) {
                 try {
                     if (await Pop.confirm("Are you sure you'd like to delete this review?")) {
@@ -64,16 +67,13 @@ export default {
             }
         };
     },
+
     components: { ProfileStarRating }
 }
 </script>
 
 
 <style lang="scss" scoped>
-// .ReviewCard {
-//     margin: 0;
-// }
-
 .delete-button {
     height: 3vh;
 }

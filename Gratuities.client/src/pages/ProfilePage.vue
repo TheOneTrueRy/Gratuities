@@ -5,7 +5,7 @@
                 <div class="col-12">
                     <div class="row align-items-center">
                         <div class="col-6 d-md-none">
-                            <!-- TODO needs to reflect user's actual rating -->
+                            
                             <div class="fs-2">
                                 <ProfileStarRating :rating="profile?.rating" />
                             </div>
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <!-- SECTION displays all profiles that have reviewed this profile -->
-                    <div class="row justify-content-center mt-3">
+                    <div class="row justify-content-center my-3">
                         <div v-for="r in reviews" class="col-11 rounded p-2 col-md-8">
                             <ReviewCard :review="r" />
                         </div>
