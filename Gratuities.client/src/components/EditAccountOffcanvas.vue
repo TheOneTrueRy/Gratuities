@@ -42,9 +42,8 @@
 
 
 <script>
-import { ref, watchEffect } from "vue";
+import { ref, watchEffect, computed } from "vue";
 import { AppState } from "../AppState";
-import { Account } from "../models/Account";
 import { accountService } from "../services/AccountService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
@@ -56,9 +55,9 @@ export default {
         const editable = ref({})
 
         watchEffect(() => {
-            if(AppState.account.id) {
-                editable.value = {...AppState.account}
-                editable.bio = {...AppState.account.bio}
+            if (AppState.account.id) {
+                editable.value = { ...AppState.account }
+                editable.bio = { ...AppState.account.bio }
             }
         })
 
@@ -73,7 +72,8 @@ export default {
                     Pop.error(error.message);
                     logger.error(error);
                 }
-            }
+            },
+            theme: computed(() => AppState.account.theme)
         }
     }
 }
