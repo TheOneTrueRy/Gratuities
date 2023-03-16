@@ -1,9 +1,9 @@
 <template>
-    <div class="BusinessCard">
+    <div class="BusinessCard p-2 rounded" :class="theme ? 'employee-card' : 'employee-card-dark'">
         <router-link :to="{ name: 'Business', params: { businessId: business.id } }" class="text-light">
             <div class="row align-items-center">
                 <div class="col-3">
-                    <img class="profile-picture-small img-fluid" :src="business.logo" :alt="business.logo">
+                    <img class="profile-picture-small" :src="business.logo" :alt="business.logo">
                 </div>
                 <div class="d-flex align-items-center hide-overflow">
                     <span class="hide-overflow">
@@ -13,7 +13,7 @@
                     </span>
                 </div>
                 <div class="col-9">
-                    {{ business.location }}
+                    {{ business?.location }}
                 </div>
             </div>
         </router-link>
@@ -36,7 +36,8 @@ export default {
     },
     setup() {
         return {
-            businessRating: computed(() => AppState.businessRating)
+            businessRating: computed(() => AppState.businessRating),
+            theme: computed(() => AppState.theme),
         };
     },
     components: { ProfileStarRating, ProfileStarRating }
