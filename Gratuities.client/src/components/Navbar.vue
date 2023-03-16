@@ -57,7 +57,7 @@
       <!-- LOGIN COMPONENT HERE -->
       <div class="d-flex justify-space-between align-items-center">
         <Login />
-        <button class="btn" @click="toggleTheme()">
+        <button v-if="account.id" class="btn" @click="toggleTheme()">
           <h1><i class="mdi mdi-theme-light-dark"></i></h1>
         </button>
       </div>
@@ -85,14 +85,8 @@ export default {
 
       async toggleTheme() {
         await themeService.toggleTheme()
-        // if (AppState.account.theme) {
-        //   themeService.toggleThemeDark()
-        // } else {
-        //   themeService.toggleThemeLight()
-        // }
       }
     }
-
   },
   components: { Login, NotificationOffcanvas }
 }
