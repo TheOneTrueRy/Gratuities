@@ -17,6 +17,7 @@ import NotificationOffcanvas from './components/NotificationOffcanvas.vue'
 import { accountService } from './services/AccountService'
 import { notificationsService } from './services/NotificationsService'
 import { tipsService } from './services/TipsService'
+import { themeService } from './services/ThemeService'
 import Pop from './utils/Pop'
 
 export default {
@@ -36,9 +37,18 @@ export default {
         await accountService.getMyReviews()
         await tipsService.getTipsReceived()
         await notificationsService.findNotifications()
+        if (AppState.account.theme == true && AppState.account.theme != null) {
+          themeService.toggleThemeLight()
+        }
+
+        if (AppState.account.theme == false && AppState.account.theme != null) {
+          themeService.toggleThemeDark()
+        }
       }
 
+
     })
+
     return {
       appState: computed(() => AppState),
       notifications: computed(() => AppState.notifications)

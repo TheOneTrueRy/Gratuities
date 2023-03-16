@@ -51,15 +51,10 @@ export default {
         function themeCheckDark() {
             themeService.themeCheckDark()
         }
-        // watchEffect(async () => {
-        //     if (!AppState.theme) {
-        //         themeCheckDark()
-        //     }
-        // })
         return {
             business: computed(() => AppState.business),
             account: computed(() => AppState.account),
-            theme: computed(() => AppState.theme),
+            theme: computed(() => AppState.account.theme),
             async removeEmployee(employeeId) {
                 try {
                     logger.log('employeeId:', employeeId)

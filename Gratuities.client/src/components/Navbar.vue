@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import { themeService } from "../services/ThemeService";
 import Login from './Login.vue'
@@ -71,17 +71,19 @@ export default {
 
   setup() {
 
+
     return {
       account: computed(() => AppState.account),
       notifications: computed(() => AppState.notifications),
-      theme: computed(() => AppState.theme),
+      theme: computed(() => AppState.account.theme),
 
-      toggleTheme() {
-        if (AppState.theme) {
-          themeService.toggleThemeDark()
-        } else {
-          themeService.toggleThemeLight()
-        }
+      async toggleTheme() {
+        await themeService.toggleTheme()
+        // if (AppState.account.theme) {
+        //   themeService.toggleThemeDark()
+        // } else {
+        //   themeService.toggleThemeLight()
+        // }
       }
     }
 

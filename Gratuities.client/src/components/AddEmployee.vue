@@ -52,7 +52,7 @@ export default {
             route,
             editable,
             businesses: computed(() => AppState.businesses),
-            theme: computed(() => AppState.theme),
+            theme: computed(() => AppState.account.theme),
             account: computed(() => AppState.account),
             async addEmployee() {
                 try {

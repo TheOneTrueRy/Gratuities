@@ -1,32 +1,34 @@
 import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
+import { api } from "./AxiosService"
 
 class ThemeService{
     toggleThemeDark(){
         let indexBody = document.getElementById('HTMLBody')
         indexBody.classList.remove('light')
         indexBody.classList.add('dark')
-        AppState.theme = false
-        logger.log(AppState.theme)
+        AppState.account.theme = false
+        logger.log('toggleThemeDark:',AppState.account.theme)
 
     }
     toggleThemeLight(){
         let indexBody = document.getElementById('HTMLBody')
         indexBody.classList.remove('dark')
         indexBody.classList.add('light')
-        AppState.theme = true
-        logger.log(AppState.theme)
+        AppState.account.theme = true
+        logger.log('toggleThemeLight:',AppState.account.theme)
     }
 
-    // themeCheckDark(){
-    //     let eCardIndex = document.getElementsByClassName('ECARD')
-    //     for (let i = 0; i < eCardIndex.length; i++) {
-    //         const e = eCardIndex[i];
-    //         e.classList.replace('employee-card' ,'employee-card-dark')
-            
-    //     }
-    //     logger.log(eCardIndex)
-    // }
+    async toggleTheme(){
+        const res = await api.put('account', {theme: (!AppState.account.theme)})
+        logger.log('theme:', res.data.theme)
+        AppState.account.theme = res.data.theme
+        if (AppState.account.theme) {
+            this.toggleThemeLight()
+        } else if (!AppState.account.theme){
+            this.toggleThemeDark()
+        }
+    }
 }
 
 export const themeService = new ThemeService

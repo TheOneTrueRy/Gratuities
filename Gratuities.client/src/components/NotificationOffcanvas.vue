@@ -38,7 +38,7 @@ export default {
     setup() {
         return {
             account: computed(() => AppState.account),
-            theme: computed(() => AppState.theme),
+            theme: computed(() => AppState.account.theme),
             notification: computed(() => AppState.notifications),
             async clearNotifications() {
                 try {

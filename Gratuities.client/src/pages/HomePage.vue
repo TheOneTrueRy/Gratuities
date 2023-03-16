@@ -160,7 +160,7 @@ export default {
       searchType: computed(() => AppState.searchType),
       highestTipEver: computed(() => AppState.highestTipEver),
       highestTipEverGiven: computed(() => AppState.highestTipEverGiven),
-      theme: computed(() => AppState.theme),
+      theme: computed(() => AppState.account.theme),
       async search() {
         try {
           let query = editable.value;

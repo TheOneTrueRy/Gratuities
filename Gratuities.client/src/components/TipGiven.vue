@@ -25,7 +25,7 @@ export default {
     },
     setup() {
         return {
-            theme: computed(() => AppState.theme),
+            theme: computed(() => AppState.account.theme),
         }
     }
 }

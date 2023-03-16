@@ -50,7 +50,7 @@ export default {
     setup() {
         return {
             account: computed(() => AppState.account),
-            theme: computed(() => AppState.theme),
+            theme: computed(() => AppState.account.theme),
             async deleteReview(reviewId) {
                 try {
                     if (await Pop.confirm("Are you sure you'd like to delete this review?")) {

@@ -159,7 +159,7 @@ export default {
             account: computed(() => AppState.account),
             employees: computed(() => AppState.employees),
             profiles: computed(() => AppState.profiles),
-            theme: computed(() => AppState.theme),
+            theme: computed(() => AppState.account.theme),
             async editBusiness(businessId) {
                 try {
                     const formData = editable2.value;

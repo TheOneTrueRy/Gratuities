@@ -33,7 +33,7 @@ export default {
         return {
             QRCode: computed(() => AppState.QRCode),
             profile: computed(() => AppState.profile),
-            theme: computed(() => AppState.theme)
+            theme: computed(() => AppState.account.theme)
         }
     }
 }

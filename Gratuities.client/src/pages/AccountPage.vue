@@ -53,9 +53,9 @@
 
 
 
-      
-      
-      
+
+
+
       <div class="col-12 col-md-6 offset-md-3 mt-4">
         <h1>Recent Tips:</h1>
       </div>
@@ -63,13 +63,13 @@
       <div class="col-12 col-md-6 offset-md-3 mt-3 d-flex justify-content-center mb-3">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
           <input @click="showReceivedTips()" type="radio" class="btn-check" name="btnradio" id="btnradio1"
-          autocomplete="off" checked>
+            autocomplete="off" checked>
           <label class="btn" :class="theme ? 'btn-outline-dark' : 'btn-outline-light'" for="btnradio1">Received</label>
-          
+
           <input @click="showGivenTips()" type="radio" class="btn-check" name="btnradio" id="btnradio2"
-          autocomplete="off">
+            autocomplete="off">
           <label class="btn" :class="theme ? 'btn-outline-dark' : 'btn-outline-light'"
-          for="btnradio2">&nbsp;&nbsp;Given&nbsp;&nbsp;</label>
+            for="btnradio2">&nbsp;&nbsp;Given&nbsp;&nbsp;</label>
         </div>
       </div>
       <!-- SECTION tips list -->
@@ -96,14 +96,14 @@
         </div>
       </div>
       <div v-else>
-        
+
       </div>
     </div>
   </div>
 
   <!-- SECTION Offcanvas for add business vvvv -->
   <AddBusinessOffCanvas />
-  
+
   <!-- SECTION Offcanvas for edit account vvvv -->
   <EditAccountOffcanvas />
 </template>
@@ -190,7 +190,7 @@ export default {
       highestTipMonth: computed(() => AppState.highestTipMonth),
       highestTipEver: computed(() => AppState.highestTipEver),
       availableToPayout: computed(() => AppState.availableToPayout),
-      theme: computed(() => AppState.theme),
+      theme: computed(() => AppState.account.theme),
 
       async cashOut(availableToPayout) {
         try {
