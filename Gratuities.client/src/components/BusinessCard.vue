@@ -36,7 +36,8 @@ export default {
     },
     setup() {
         return {
-            businessRating: computed(() => AppState.businessRating)
+            businessRating: computed(() => AppState.businessRating),
+            theme: computed(() => AppState.theme),
         };
     },
     components: { ProfileStarRating, ProfileStarRating }
