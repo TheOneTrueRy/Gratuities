@@ -7,9 +7,10 @@
                         :alt="tip?.receiver.name">
                 </div>
                 <div class="col-9">
-                    <p>
-                        {{ tip?.receiver.name }} - ${{ ((tip?.tip).toLocaleString('en-US')) }}
-                    </p>
+                        <p class="pt-2">
+                            {{ tip?.receiver.name }} - ₲{{ ((tip?.tip).toLocaleString('en-US')) }}<br>
+                            {{ new Date(tip?.createdAt).toLocaleString('en-US') }}
+                        </p>
                 </div>
             </div>
         </div>
