@@ -1,17 +1,19 @@
 <template>
-    <div class="rounded col-12 tips my-1" :class="theme ? 'employee-card' : 'employee-card-dark'">
-        <div class="row align-items-center">
-            <div class="col-3">
-                <img class="profile-picture border border-dark border-1" :src="tip?.receiver.picture"
-                    :alt="tip?.receiver.name">
-            </div>
-            <div class="col-9">
-                <p>
-                    {{ tip?.receiver.name }} - ${{ ((tip?.tip).toLocaleString('en-US')) }}
-                </p>
+    <router-link :to="{ name: 'Profile', params: { profileId: tip?.receiver.id } }" class="text-light">
+        <div class="rounded col-12 tips my-1" :class="theme ? 'employee-card' : 'employee-card-dark'">
+            <div class="row align-items-center p-2 mb-2">
+                <div class="col-3">
+                    <img class="profile-picture border border-dark border-1" :src="tip?.receiver.picture"
+                        :alt="tip?.receiver.name">
+                </div>
+                <div class="col-9">
+                    <p>
+                        {{ tip?.receiver.name }} - ${{ ((tip?.tip).toLocaleString('en-US')) }}
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
+    </router-link>
 </template>
 
 

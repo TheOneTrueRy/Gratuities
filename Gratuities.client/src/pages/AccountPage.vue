@@ -49,13 +49,7 @@
         <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
           class="btn figma-buttons text-light elevation-3 rounded-pill hover-text">Edit Account</button>
       </div>
-
-
-
-
-
-
-
+      
       <div class="col-12 col-md-6 offset-md-3 mt-4">
         <h1>Recent Tips:</h1>
       </div>
