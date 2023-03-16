@@ -25,7 +25,7 @@
                 <i class="fs-5" :class="theme ? 'cash' : 'cash-light'" v-if="availableToPayout">₲{{
                   ((availableToPayout))?.toLocaleString('en-US')
                 }} </i>
-                <i v-else>No Tips Yet</i>
+                <i v-else class="fs-5" :class="theme ? 'cash' : 'cash-light'">₲0.00</i>
                 <button @click="cashOut(availableToPayout)" class="btn btn-outline-success btn-sm fw-bold"
                   style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                   :disabled="!availableToPayout">cash
@@ -38,7 +38,7 @@
                 ((highestTipMonth)?.toLocaleString('en-US')) }}</i>
                 <i v-else>No Tips Yet</i>
               </li>
-              <li>Ever: <i class="fs-5" :class="theme ? 'cash' : 'cash-light'" v-if="highestTipGiven">₲{{
+              <li>Ever: <i class="fs-5" :class="theme ? 'cash' : 'cash-light'" v-if="highestTipEver">₲{{
                 ((highestTipEver?.tip)?.toLocaleString('en-US')) }}</i>
                 <i v-else>No Tips Yet</i>
               </li>
