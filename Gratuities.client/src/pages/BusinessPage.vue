@@ -68,7 +68,7 @@
                         <input type="text" class="form-control" minlength="3" maxlength="500" required
                             v-model="editable2.logo">
                     </div>
-                    <button type="submit" class="btn btn-success">Save Changes</button>
+                    <button data-bs-dismiss="offcanvas" type="submit" class="btn btn-success">Save Changes</button>
                 </form>
             </div>
             <div class="dropdown mt-3">
