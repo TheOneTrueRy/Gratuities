@@ -86,6 +86,7 @@ class AccountService {
     account.bio = body.bio || account.bio
     account.openToFeedback = body.openToFeedback != null ? body.openToFeedback : account.openToFeedback
     account.notifications = body.notifications != null ? body.notifications : account.notifications
+    account.theme = body.theme != null ? body.theme : account.theme
     account.tips = body.tips || account.tips
     account.rating = body.rating || account.rating
     // const account = await dbContext.Account.findOneAndUpdate(
