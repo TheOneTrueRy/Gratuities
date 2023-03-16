@@ -6,7 +6,8 @@ import { Employee, Profile } from "../models/Profile";
 
 class EmployeesService{
     async addEmployee(profileId, businessId){
-        const res = await api.post('/api/businesses/'+businessId.businessId+'/employees', {accountId: profileId})
+        const res = await api.post('/api/businesses/' + businessId.businessId + '/employees', { accountId: profileId })
+        return res.data
     }
 
     async getEmployeesByBusinessId(businessId){

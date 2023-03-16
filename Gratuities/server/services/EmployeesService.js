@@ -54,7 +54,7 @@ class EmployeesService {
                         // @ts-ignore
                         email: foundEmployee.email,
                     },
-                    template: "4XAPVNN78M4EV5K9ABKDFCK344AS",
+                    template: "N8ZGTV7FXS43S1NYYRNDZHMXCDZ3",
                     data: {
                         // @ts-ignore
                         businessOwner: owner.name,

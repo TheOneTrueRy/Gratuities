@@ -8,11 +8,11 @@
         </div>
         <div class="offcanvas-body">
             <form @submit.prevent="addEmployee()">
-                <select v-model="editable.businessId" class="form-select mb-3" aria-label="Default select example">
+                <select v-model="editable.businessId" class="form-select mb-3" required aria-label="Default select example">
                     <option v-for="b in businesses" :value="b.id">{{ b.name }}</option>
                 </select>
                 <div class="text-end">
-                    <button class="btn btn-success">Add</button>
+                    <button data-bs-dismiss="offcanvas" class="btn btn-success">Add</button>
                 </div>
             </form>
         </div>
@@ -59,7 +59,8 @@ export default {
                     const businessId = editable.value
                     logger.log('businessId', businessId)
                     const profileId = route.params.profileId
-                    await employeesService.addEmployee(profileId, businessId)
+                    const employee = await employeesService.addEmployee(profileId, businessId)
+                    Pop.success(`You hired ${employee.employeeName}`)
                 } catch (error) {
                     Pop.error(error.message)
                     logger.error(error)
