@@ -27,13 +27,17 @@
         <li>
           <router-link :to="{ name: 'About' }"
             class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
-            About
+            <div data-bs-toggle="collapse" data-bs-target="#navbarText">
+              About
+            </div>
           </router-link>
         </li>
         <li>
           <router-link :to="{ name: 'Account' }"
             class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
-            Account
+            <div data-bs-toggle="collapse" data-bs-target="#navbarText">
+              Account
+            </div>
           </router-link>
         </li>
         <li v-if="account.id">
@@ -44,7 +48,9 @@
         </li>
         <li v-if="account.id">
           <router-link :to="{ name: 'Game' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
-            Earn G-Bucks
+            <div data-bs-toggle="collapse" data-bs-target="#navbarText">
+              Earn G-Bucks
+            </div>
           </router-link>
         </li>
       </ul>
