@@ -67,23 +67,23 @@
         </div>
       </div>
       <!-- SECTION tips list -->
-      <div v-if="tipType == 'received'" class="col-12 col-md-6 offset-md-3">
+      <div v-if="tipType == 'received'" class="col-12 col-md-6 offset-md-3 tips-section">
         <div v-for="t in receivedTips">
           <Tip :tip="t" />
         </div>
       </div>
-      <div v-else class="col-12 col-md-6 offset-md-3">
+      <div v-else class="col-12 col-md-6 offset-md-3 tips-section">
         <div v-for="t in givenTips">
           <TipGiven :tip="t" />
         </div>
       </div>
-      <div v-if="businesses.length == 1" class="col-12 col-md-6 offset-md-3 mt-4">
+      <div v-if="businesses.length == 1" class="col-12 col-md-6 offset-md-3 mt-3">
         <h1>My Business:</h1>
         <div class="col-12 col-md-6 offset-md-3 my-4" v-for="business in businesses">
           <Business :business="business" />
         </div>
       </div>
-      <div v-else-if="businesses.length > 1" class="col-12 col-md-6 offset-md-3 mt-4">
+      <div v-else-if="businesses.length > 1" class="col-12 col-md-6 offset-md-3 mt-3">
         <h1>My Businesses:</h1>
         <div class="col-12 col-md-6 offset-md-3 my-4" v-for="business in businesses">
           <Business :business="business" />
@@ -269,5 +269,12 @@ export default {
 
 .w-10 {
   width: 10%;
+}
+
+.tips-section{
+  padding: 1vh;
+  height: 60vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 </style>
