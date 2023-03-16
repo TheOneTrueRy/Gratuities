@@ -7,8 +7,9 @@
                         :alt="tip?.giver.name">
                 </div>
                 <div class="col-9 d-flex align-items-center">
-                    <p>
-                        {{ tip?.giver.name }} - ₲{{ ((tip?.tip).toLocaleString('en-US')) }}
+                    <p class="pt-2">
+                        {{ tip?.giver.name }} - ₲{{ ((tip?.tip).toLocaleString('en-US')) }}<br>
+                        {{ new Date(tip?.createdAt).toLocaleString('en-US') }}
                     </p>
                 </div>
             </div>
