@@ -2,18 +2,18 @@ import { AppState } from "../AppState"
 import { accountService } from "./AccountService"
 import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
+import Pop from "../utils/Pop"
 
 class TipsService {
     async getTipsReceived() {
         const res = await api.get('account/tips/received')
 
         if (res.data.length > 0) {
-            // logger.log('hello there')
             AppState.receivedTips = res.data.reverse()
             AppState.receivedTips.forEach(t => {
                 t.createdAt = new Date(t.createdAt).toLocaleString('en-US')
             })
-            // logger.log('mytips',AppState.receivedTips)
+
             const currentMonth = new Date().getMonth()
             const tipsThisMonth = []
             const sortedTips = []

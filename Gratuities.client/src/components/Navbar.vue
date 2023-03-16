@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg tip-header px-2">
+  <nav class="navbar navbar-expand-lg px-2" :class="theme ? 'tip-header' : 'tip-header-dark'">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -74,6 +74,7 @@ export default {
     return {
       account: computed(() => AppState.account),
       notifications: computed(() => AppState.notifications),
+      theme: computed(() => AppState.theme),
 
       toggleTheme() {
         if (AppState.theme) {
@@ -114,7 +115,13 @@ export default {
   align-items: center;
   color: white !important;
   background: linear-gradient(270deg, #46F4DF 11.46%, #06D6A0 74.48%);
+}
 
+.tip-header-dark {
+  display: flex;
+  align-items: center;
+  color: white !important;
+  background: linear-gradient(270deg, #50cbbd 11.46%, #05926c 74.48%);
 }
 
 .logo {

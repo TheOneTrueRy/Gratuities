@@ -31,6 +31,7 @@
                         </div>
                         <div class="col-12 mt-2 text-center">
                             <h1>{{ profile?.name }}</h1>
+                            <p v-if="profile.bio">"{{ profile?.bio }}"</p>
                         </div>
                         <div class="col-12 mt-2 d-md-flex justify-content-center d-none fs-2">
                             <ProfileStarRating :rating="profile?.rating" />
