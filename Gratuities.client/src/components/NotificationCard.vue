@@ -1,7 +1,7 @@
 <template>
     <div v-if="notification?.tip" class="mb-2">
-        <router-link :to="{ name: 'Profile', params: { profileId: notification?.giverId } }" class="text-dark">
-            <div class="row align-items-center selectable">
+        <router-link :to="{ name: 'Profile', params: { profileId: notification?.giverId } }" :class="theme ? 'text-dark' : 'text-light'">
+            <div class="row align-items-center selectable p-2 rounded">
                 <div class="col-3 g-0 text-center">
                     <img class="profile-picture-small" :src="notification.giver?.picture" :alt="notification.giver?.name">
                 </div>
@@ -22,7 +22,7 @@
     <div v-else class="ReviewCard">
         <div class="mb-2">
             <router-link :to="{ name: 'Profile', params: { profileId: notification?.creatorId } }" class="text-dark">
-                <div class="row align-items-center selectable">
+                <div class="row align-items-center selectable p-2 rounded">
                     <div class="col-3 g-0 text-center">
                         <img class="profile-picture-small selectable" :src="notification.creator?.picture"
                             :alt="notification.creator?.picture">
@@ -50,13 +50,18 @@
 
 
 <script>
+import { computed } from 'vue';
+import { AppState } from '../AppState';
+
 
 export default {
     props: {
         notification: { type: Object, required: true }
     },
     setup() {
-        return {};
+        return {
+            theme: computed(() => AppState.account.theme)
+        };
     },
 }
 </script>

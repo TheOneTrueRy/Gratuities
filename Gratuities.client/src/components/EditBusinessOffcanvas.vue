@@ -66,7 +66,8 @@ export default {
                     Pop.error(error.message);
                     logger.error(error);
                 }
-            }
+            },
+            theme: computed(() => AppState.account.theme)
         }
     }
 }

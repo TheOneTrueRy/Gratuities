@@ -18,19 +18,9 @@ import { accountService } from './services/AccountService'
 import { notificationsService } from './services/NotificationsService'
 import { tipsService } from './services/TipsService'
 import { themeService } from './services/ThemeService'
-import Pop from './utils/Pop'
 
 export default {
   setup() {
-
-    async function getMyReviews() {
-      try {
-        const accountId = AppState.account.id
-        await accountService.getMyReviews(accountId)
-      } catch (error) {
-        Pop.error('GETTING MY REVIEWS', error)
-      }
-    }
 
     watchEffect(async () => {
       if (AppState.account.id && !AppState.hasNotifications) {
@@ -44,6 +34,9 @@ export default {
         if (AppState.account.theme == false && AppState.account.theme != null) {
           themeService.toggleThemeDark()
         }
+      }
+      if (!AppState.account.id) {
+        themeService.toggleThemeLight()
       }
 
 
