@@ -13,7 +13,7 @@
                     </span>
                 </div>
                 <div class="col-9">
-                    {{ business.location }}
+                    {{ business?.location }}
                 </div>
             </div>
         </router-link>
