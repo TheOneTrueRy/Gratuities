@@ -20,9 +20,12 @@
       <div class="col-7 col-md-5 ps-3">
         <div class="justify-content-start row">
           <div class="col-11 col-md-8">
-            <h6>Available to Payout: <div class="d-flex justify-content-between align-items-center mt-1 w-100">
-                <i class="fs-5" :class="theme ? 'cash' : 'cash-light'">₲{{ ((availableToPayout))?.toLocaleString('en-US')
+            <h6>Available to Payout:
+              <div class="d-flex justify-content-between align-items-center mt-1 w-100">
+                <i class="fs-5" :class="theme ? 'cash' : 'cash-light'" v-if="availableToPayout">₲{{
+                  ((availableToPayout))?.toLocaleString('en-US')
                 }} </i>
+                <i v-else>No Tips Yet</i>
                 <button @click="cashOut(availableToPayout)" class="btn btn-outline-success btn-sm fw-bold"
                   style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                   :disabled="!availableToPayout">cash
@@ -31,11 +34,13 @@
             </h6>
             <h6>Biggest Tip:</h6>
             <ul>
-              <li>This Month: <i class="fs-5" :class="theme ? 'cash' : 'cash-light'">₲{{
+              <li>This Month: <i class="fs-5" :class="theme ? 'cash' : 'cash-light'" v-if="highestTipMonth">₲{{
                 ((highestTipMonth)?.toLocaleString('en-US')) }}</i>
+                <i v-else>No Tips Yet</i>
               </li>
-              <li>Ever: <i class="fs-5" :class="theme ? 'cash' : 'cash-light'">₲{{
+              <li>Ever: <i class="fs-5" :class="theme ? 'cash' : 'cash-light'" v-if="highestTipGiven">₲{{
                 ((highestTipEver?.tip)?.toLocaleString('en-US')) }}</i>
+                <i v-else>No Tips Yet</i>
               </li>
             </ul>
           </div>
@@ -235,5 +240,9 @@ export default {
   height: 60vh;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.tips-section::-webkit-scrollbar {
+  display: none;
 }
 </style>
