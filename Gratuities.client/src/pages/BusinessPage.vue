@@ -32,7 +32,7 @@
                 </form>
             </div>
             <!-- SECTION employees -->
-            <div v-for="e in employees">
+            <div v-for="e in employees" class="col-12 col-md-8 offset-md-2">
                 <ProfileCard :profile='e' />
             </div>
         </div>

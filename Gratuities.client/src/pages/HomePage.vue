@@ -73,7 +73,7 @@
         </div>
       </div>
       <div v-else>
-        <div class="col-12 col-md-8 offset-md-2">
+        <div class="col-12 col-md-8 offset-md-2 mt-3">
           <h6>Top Profiles:</h6>
         </div>
         <div v-for="p in profiles" class="col-12 employee-card rounded col-md-8 offset-md-2" id="employee-card">
