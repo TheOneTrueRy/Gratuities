@@ -28,7 +28,7 @@ class ReviewsService {
                     to: {
                         email: receiver.email,
                     },
-                    template: "4K1YX40ZRA4F9FQ7R11DX6575RAP",
+                    template: "BAH6JRB6ND4N4SQAFRBR2WZR5RV0",
                     data: {
                         firstName: receiver.name,
                         senderName: reviewer.name,

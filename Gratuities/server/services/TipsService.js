@@ -55,7 +55,7 @@ class TipsService {
           to: {
             email: receiver.email
           },
-          template: "Y8REJMFD13M9MFQJVRRXH45T3HHA",
+          template: "3E5ZS3WKF54MRXPP2F94JW59163Y",
           data: {
             receiverName: receiver.name,
             senderName: giver.name,
