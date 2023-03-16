@@ -1,9 +1,9 @@
 <template>
     <div class="ProfileCarousel">
         <div id="profileCarousel" class="carousel slide">
-            <div class="carousel-inner">
+            <div class="carousel-inner rounded text-center">
                 <div class="carousel-item active text-center">
-                    <img :src="profile?.picture" class="rounded profile-picture" :alt="profile?.picture">
+                    <img :src="profile?.picture" class="profile-picture" :alt="profile?.picture">
                 </div>
                 <div class="carousel-item text-center">
                     <img :src="QRCode" class="profile-picture" :alt="QRCode">
@@ -46,6 +46,5 @@ export default {
     width: auto;
     object-fit: cover;
     object-position: center;
-    background-position: center;
 }
 </style>
