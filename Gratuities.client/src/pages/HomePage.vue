@@ -19,10 +19,9 @@
         </div>
 
         <div v-if="highestTipEverGiven" class="col-12 text-center">
-          <h6 class="biggest-tip">Your Biggest Tip Sent: <span
-              :class="theme ? 'biggest-tip-amount' : 'biggest-tip-amount-light'">₲{{
-                ((highestTipEverGiven.tip)).toLocaleString('en-US')
-              }}</span><br> to
+          <h6 class="biggest-tip">Your Biggest Tip Sent: <span :class="theme ? 'cash' : 'cash-light'">₲{{
+            ((highestTipEverGiven.tip)).toLocaleString('en-US')
+          }}</span><br> to
             {{ highestTipEverGiven.receiver?.name }}
           </h6>
         </div>
@@ -32,10 +31,9 @@
         </div>
 
         <div v-if="highestTipEver" class="col-12 text-center mb-4">
-          <h6 class="biggest-tip">Your Biggest Tip received: <span
-              :class="theme ? 'biggest-tip-amount' : 'biggest-tip-amount-light'">₲{{
-                ((highestTipEver.tip).toLocaleString('en-US'))
-              }}</span><br> from
+          <h6 class="biggest-tip">Your Biggest Tip received: <span :class="theme ? 'cash' : 'cash-light'">₲{{
+            ((highestTipEver.tip).toLocaleString('en-US'))
+          }}</span><br> from
             {{ highestTipEver.giver?.name }}
           </h6>
         </div>
@@ -207,17 +205,21 @@ export default {
   transition: 0.5s;
   cursor: pointer;
 }
+
 .employee-card:active {
   transform: scale(0.9);
 }
+
 .biggest-tip {
   text-shadow: 1px 1px 2px #00000040;
   font-weight: 400;
 }
+
 .user-name {
   font-size: 5vh;
   font-weight: 400;
 }
+
 .profile-picture {
   height: 20vh;
   width: 20vh;
@@ -225,11 +227,12 @@ export default {
   cursor: pointer;
   transition: 0.5s;
 }
+
 .profile-picture:hover {
   transform: scale(1.1);
 }
+
 .profile-picture:active {
   transform: scale(0.8);
 }
-
 </style>
