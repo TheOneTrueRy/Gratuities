@@ -1,5 +1,5 @@
 <template>
-    <div class="BusinessCard p-2 rounded" :class="theme ? 'employee-card' : 'employee-card-dark'">
+    <div class="BusinessCard elevation-5 mb-4 p-2 rounded" :class="theme ? 'employee-card' : 'employee-card-dark'">
         <router-link :to="{ name: 'Business', params: { businessId: business.id } }" class="text-light">
             <div class="row align-items-center">
                 <div class="col-3">

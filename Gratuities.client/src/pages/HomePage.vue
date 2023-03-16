@@ -70,7 +70,7 @@
         <div class="col-12 col-md-8 offset-md-2">
           <h6>Top Businesses:</h6>
         </div>
-        <div v-for="b in businesses" class="col-12 rounded p-2 mb-4 col-md-8 offset-md-2">
+        <div v-for="b in businesses" class="col-12 rounded col-md-8 offset-md-2">
           <BusinessCard :business="b" />
         </div>
       </div>
