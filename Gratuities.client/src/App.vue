@@ -5,7 +5,7 @@
   <main>
     <router-view />
   </main>
-  <footer>
+  <footer :class="theme ? 'footer-light' : 'footer-dark'">
   </footer>
 </template>
 
@@ -51,7 +51,9 @@ export default {
 
     return {
       appState: computed(() => AppState),
-      notifications: computed(() => AppState.notifications)
+      notifications: computed(() => AppState.notifications),
+      theme: computed(() => AppState.account.theme),
+
     }
   },
   components: { Navbar, NotificationOffcanvas }
@@ -96,12 +98,21 @@ export default {
 }
 
 
-footer {
+.footer-light {
   display: grid;
   place-content: center;
   height: 32px;
   align-items: center;
   color: white !important;
   background: linear-gradient(270deg, #46F4DF 11.46%, #06D6A0 74.48%);
+}
+
+.footer-dark {
+  display: grid;
+  place-content: center;
+  height: 32px;
+  align-items: center;
+  color: white !important;
+  background: linear-gradient(270deg, #50cbbd 11.46%, #05926c 74.48%);
 }
 </style>
