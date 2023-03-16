@@ -99,7 +99,6 @@ import { profilesService } from "../services/ProfilesService.js";
 import ProfileCard from '../components/ProfileCard.vue';
 import BusinessCard from '../components/BusinessCard.vue';
 import { tipsService } from "../services/TipsService.js";
-import { themeService } from '../services/ThemeService';
 
 export default {
   setup() {
@@ -144,10 +143,6 @@ export default {
       clearBusinesses()
     })
 
-    // function themeCheckDark() {
-    //   themeService.themeCheckDark()
-    // }
-
     watchEffect(async () => {
       if (AppState.account.id) {
         // tipsService.getTipsReceived()
@@ -155,9 +150,7 @@ export default {
 
         // getReviewsByProfileId()
       }
-      // if (!AppState.theme) {
-      //   themeCheckDark()
-      // }
+
     })
     return {
       editable,

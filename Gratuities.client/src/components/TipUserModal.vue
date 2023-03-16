@@ -47,6 +47,9 @@ export default {
                     const tip = editable.value
                     const profileId = route.params.profileId
                     await tipsService.sendTip(profileId, tip)
+                    // if(account.currency) {
+
+                    // }
                     editable.value = {}
                 } catch (error) {
                     Pop.error('[SENDING TIP]', error)
