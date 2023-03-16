@@ -10,8 +10,8 @@
                     <div class="modal-body">
                         <form v-if="account?.currency > 0" @submit.prevent="sendTip()">
                             <div class="input-group mb-3">
-                                <input v-model="editable.tip" type="number" min="0.01" :max="account?.currency" step=".01" class="form-control"
-                                    placeholder="tip amount" aria-label="Recipient's username"
+                                <input v-model="editable.tip" type="number" min="0.01" :max="account?.currency" step=".01"
+                                    class="form-control" placeholder="tip amount" aria-label="Recipient's username"
                                     aria-describedby="button-addon2">
                                 <button class="btn btn-outline-light modal-button" type="submit" required
                                     data-bs-dismiss="modal" id="button-addon2">Send</button>
@@ -54,7 +54,7 @@ export default {
                     const tip = editable.value
                     const profileId = route.params.profileId
                     await tipsService.sendTip(profileId, tip)
-                    Pop.success(`Tip of ${editable.value.tip} sent to ${AppState.profile.name}`)
+                    Pop.success(`Tip of ₲${editable.value.tip} sent to ${AppState.profile.name}`)
                     editable.value = {}
                 } catch (error) {
                     Pop.error('[SENDING TIP]', error)
