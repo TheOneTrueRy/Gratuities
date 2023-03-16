@@ -3,7 +3,7 @@
         <router-link :to="{ name: 'Business', params: { businessId: business.id } }" class="text-light">
             <div class="row align-items-center">
                 <div class="col-3">
-                    <img class="profile-picture-small img-fluid" :src="business.logo" :alt="business.logo">
+                    <img class="profile-picture-small" :src="business.logo" :alt="business.logo">
                 </div>
                 <div class="d-flex align-items-center hide-overflow">
                     <span class="hide-overflow">
