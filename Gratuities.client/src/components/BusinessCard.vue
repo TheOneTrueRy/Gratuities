@@ -5,15 +5,17 @@
                 <div class="col-3">
                     <img class="profile-picture-small" :src="business.logo" :alt="business.logo">
                 </div>
-                <div class="d-flex align-items-center hide-overflow">
-                    <span class="hide-overflow">
-                        <h6>{{ business?.name }} | <ProfileStarRating :rating="business.rating">
-                            </ProfileStarRating>
-                        </h6>
-                    </span>
-                </div>
                 <div class="col-9">
-                    {{ business?.location }}
+                    <div>
+                        <span class="d-flex align-items-center hide-overflow">
+                            <h6>{{ business?.name }} | <ProfileStarRating :rating="business.rating">
+                                </ProfileStarRating>
+                            </h6>
+                        </span>
+                    </div>
+                    <div>
+                        {{ business?.location }}
+                    </div>
                 </div>
             </div>
         </router-link>
