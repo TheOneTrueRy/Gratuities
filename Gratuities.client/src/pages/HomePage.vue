@@ -64,10 +64,8 @@
           </div>
         </form>
       </div>
-      <div class="col-12 col-md-8 mt-3">
-      </div>
       <div v-if="searchType == 'businesses'">
-        <div class="col-12 col-md-8 offset-md-2">
+        <div class="col-12 col-md-8 offset-md-2 mt-3">
           <h6>Top Businesses:</h6>
         </div>
         <div v-for="b in businesses" class="col-12 rounded col-md-8 offset-md-2">
@@ -119,14 +117,6 @@ export default {
         Pop.error("[GETTING HIGHEST RATED PROFILES]", error);
       }
     }
-    // async function getReviewsByProfileId() {
-    //   try {
-    //     const profileId = AppState.account.id
-    //     await profilesService.getReviewsByProfileId(profileId)
-    //   } catch (error) {
-    //     Pop.error('[GETTING REVIEWS BY PROFILEID]', error.message)
-    //   }
-    // }
     function clearBusinesses() {
       try {
         AppState.businesses = []
@@ -145,10 +135,7 @@ export default {
 
     watchEffect(async () => {
       if (AppState.account.id) {
-        // tipsService.getTipsReceived()
         tipsService.getTipsGiven()
-
-        // getReviewsByProfileId()
       }
 
     })
