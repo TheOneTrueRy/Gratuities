@@ -1,6 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row pb-1 mt-3 d-flex flex-column align-items-center justify-content-center">
+      <!-- SECTION display of user's picture and info -->
       <div v-if="account?.id">
         <div class="col-12 text-center">
           <router-link :to="{
@@ -10,41 +11,51 @@
               :alt="account?.picture" title="Go to your account page!">
           </router-link>
         </div>
+
         <div class="col-12 text-center">
-          <h2 class="my-3 rounded text-center user-name">
+          <h2 class="mt-2 mb-3 rounded text-center user-name">
             {{ account?.name }}
           </h2>
         </div>
+
         <div v-if="highestTipEverGiven" class="col-12 text-center">
           <h6 class="biggest-tip">Your Biggest Tip Sent: <span
               :class="theme ? 'biggest-tip-amount' : 'biggest-tip-amount-light'">₲{{
                 ((highestTipEverGiven.tip)).toLocaleString('en-US')
-              }}</span> to
+              }}</span><br> to
             {{ highestTipEverGiven.receiver?.name }}
           </h6>
         </div>
+
         <div v-else class="col-12 text-center">
           <h6 class="biggest-tip"><span>No Tips Given Yet</span></h6>
         </div>
+
         <div v-if="highestTipEver" class="col-12 text-center mb-4">
           <h6 class="biggest-tip">Your Biggest Tip received: <span
               :class="theme ? 'biggest-tip-amount' : 'biggest-tip-amount-light'">₲{{
                 ((highestTipEver.tip).toLocaleString('en-US'))
-              }}</span> from
+              }}</span><br> from
             {{ highestTipEver.giver?.name }}
           </h6>
         </div>
+
         <div v-else class="col-12 text-center">
           <h6 class="biggest-tip">No Tips Received Yet</h6>
         </div>
       </div>
+
+      <!-- SECTION shows if user isn't logged in -->
       <div v-else>
         <div class="col-12 text-center my-5">
           <h2>Log-In or Sign-Up now to get started!</h2>
         </div>
       </div>
+
+      <!-- SECTION sort/search -->
       <div class="col-12 col-md-6">
-        <div class="d-flex justify-content-center mb-3">
+        <!-- SECTION buttons to show profiles OR businesses -->
+        <div class="d-flex justify-content-center mb-4">
           <div class="btn-group" role="group" aria-label="Basic outlined example">
             <button @click="searchTypeProfiles()" type="button" class="btn"
               :class="[theme ? 'btn-outline-dark' : 'btn-outline-light']">Profiles</button>
@@ -52,28 +63,36 @@
               :class="[theme ? 'btn-outline-dark' : 'btn-outline-light']">Businesses</button>
           </div>
         </div>
-        <form @submit.prevent="search()">
-          <div class="input-group">
-            <input v-if="searchType == 'businesses'" v-model="editable.query" required class="form-control"
-              placeholder="Search businesses..." aria-describedby="button-addon2" aria-label="Search" type="text">
-            <input v-if="searchType == 'profiles'" v-model="editable.query" required class="form-control"
-              placeholder="Search profiles..." aria-describedby="button-addon2" aria-label="Search" type="text">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
-              <i class="mdi mdi-magnify"></i>
-            </button>
-          </div>
-        </form>
+
+        <!-- SECTION search bar for profiles/businesses -->
+        <div>
+          <form @submit.prevent="search()">
+            <div class="input-group">
+              <input v-if="searchType == 'businesses'" v-model="editable.query" required class="form-control"
+                placeholder="Search businesses..." aria-describedby="button-addon2" aria-label="Search" type="text">
+              <input v-if="searchType == 'profiles'" v-model="editable.query" required class="form-control"
+                placeholder="Search profiles..." aria-describedby="button-addon2" aria-label="Search" type="text">
+              <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                <i class="mdi mdi-magnify"></i>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
+
+      <!-- SECTION displays businesses -->
       <div v-if="searchType == 'businesses'">
-        <div class="col-12 col-md-8 offset-md-2 mt-3">
+        <div class="col-12 col-md-8 offset-md-2 my-3">
           <h6>Top Businesses:</h6>
         </div>
         <div v-for="b in businesses" class="col-12 rounded col-md-8 offset-md-2">
           <BusinessCard :business="b" />
         </div>
       </div>
+
+      <!-- SECTION displays profiles -->
       <div v-else>
-        <div class="col-12 col-md-8 offset-md-2 mt-3">
+        <div class="col-12 col-md-8 offset-md-2 my-3">
           <h6>Top Profiles:</h6>
         </div>
         <div v-for="p in profiles" class="col-12 employee-card rounded col-md-8 offset-md-2" id="employee-card">
@@ -101,6 +120,7 @@ import { tipsService } from "../services/TipsService.js";
 export default {
   setup() {
     const editable = ref({});
+
     async function getHighestRatedBusinesses() {
       try {
         await businessesService.getHighestRatedBusinesses();
@@ -109,6 +129,7 @@ export default {
         Pop.error("[GETTING HIGHEST RATED BUSINESSES]", error);
       }
     }
+
     async function getHighestRatedProfiles() {
       try {
         await profilesService.getHighestRatedProfiles();
@@ -117,6 +138,7 @@ export default {
         Pop.error("[GETTING HIGHEST RATED PROFILES]", error);
       }
     }
+
     function clearBusinesses() {
       try {
         AppState.businesses = []
@@ -124,6 +146,7 @@ export default {
         Pop.error(error.message, 'Clearing Businesses')
       }
     }
+
     onMounted(() => {
       getHighestRatedBusinesses();
       getHighestRatedProfiles();
@@ -141,6 +164,7 @@ export default {
     })
     return {
       editable,
+
       account: computed(() => AppState.account),
       businesses: computed(() => AppState.businesses),
       profiles: computed(() => AppState.profiles),
@@ -148,6 +172,7 @@ export default {
       highestTipEver: computed(() => AppState.highestTipEver),
       highestTipEverGiven: computed(() => AppState.highestTipEverGiven),
       theme: computed(() => AppState.account.theme),
+
       async search() {
         try {
           let query = editable.value;
@@ -158,15 +183,18 @@ export default {
           Pop.error("SEARCHING FOR BUSINESSES", error);
         }
       },
+
       searchTypeProfiles() {
         AppState.searchType = "profiles";
       },
+
       searchTypeBusinesses() {
         AppState.searchType = "businesses";
       },
 
     };
   },
+
   components: { ProfileCard, BusinessCard }
 }
 </script>
@@ -179,47 +207,17 @@ export default {
   transition: 0.5s;
   cursor: pointer;
 }
-
-.employee-card-dark {
-  background-color: #005f45 !important;
-  color: rgb(113, 113, 113);
-  text-shadow: 1px 1px 2px black;
-  transition: 0.5s;
-  cursor: pointer;
-}
-
-
 .employee-card:active {
   transform: scale(0.9);
 }
-
-.profile-picture-small {
-  height: 10vh;
-  width: 10vh;
-  border-radius: 50%;
-  border: 2px solid black;
-}
-
-.biggest-tip-amount {
-  color: #28922d;
-  font-weight: 1000;
-}
-
-.biggest-tip-amount-light {
-  color: #34ba3b;
-  font-weight: 1000;
-}
-
 .biggest-tip {
   text-shadow: 1px 1px 2px #00000040;
   font-weight: 400;
 }
-
 .user-name {
   font-size: 5vh;
   font-weight: 400;
 }
-
 .profile-picture {
   height: 20vh;
   width: 20vh;
@@ -227,32 +225,11 @@ export default {
   cursor: pointer;
   transition: 0.5s;
 }
-
 .profile-picture:hover {
   transform: scale(1.1);
 }
-
 .profile-picture:active {
   transform: scale(0.8);
 }
 
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
-
-  .home-card {
-    width: 50vw;
-
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
-}
 </style>
