@@ -7,7 +7,7 @@ class FeedbacksService {
             throw new Forbidden("You can't give yourself feedback")
         }
         const feedback = await dbContext.Feedbacks.create(body)
-        await feedback.populate('giver reciever', 'name picture')
+        await feedback.populate('giver receiver', 'name picture')
         return feedback
     }
 
