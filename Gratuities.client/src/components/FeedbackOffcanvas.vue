@@ -15,30 +15,8 @@
             </div>
             <div class="offcanvas-body d-flex align-items-end justify-content-center">
                 <div class="container-fluid">
-                    <div class="row justify-content-end">
-                        <div class="col-11">
-                            <div class="alert alert-secondary" role="alert">
-                                <div class="row justify-content-end mb-2 pe-2">
-                                    You at 12:47 PM
-                                </div>
-                                A simple light alert with an example link. Give it a click if
-                                you
-                                like.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-start">
-                        <div class="col-11">
-                            <div class="alert alert-success" role="alert">
-                                <div class="row justify-content-start mb-2 ps-2">
-                                    FeedbackReceiver at 12:30 PM
-                                </div>
-                                A simple light alert with. Give it a click if
-                                you
-                                like.
-                            </div>
-                        </div>
-                    </div>
+                    <FeedbackSenderMessage />
+                    <FeedbackReceiverMessage />
                     <div class="row">
                         <div class="col-12">
                             <form @submit.prevent="">
@@ -60,10 +38,35 @@
 
 
 <script>
+import Pop from '../utils/Pop.js';
+import FeedbackSenderMessage from '../components/FeedbackSenderMessage.vue';
+import FeedbackReceiverMessage from '../components/FeedbackReceiverMessage.vue';
+import { computed, watchEffect } from 'vue';
+import { AppState } from '../AppState.js';
+import { accountService } from '../services/AccountService.js';
+import { profilesService } from '../services/ProfilesService';
+
 export default {
     setup() {
-        return {}
-    }
+
+        async function getChat(chatId) {
+            try {
+                await accountService.getChat(chatId)
+            } catch (error) {
+                Pop.error('[GETTING CHAT]', error)
+            }
+        }
+
+        watchEffect(() => {
+
+        })
+        return {
+            chat: computed(() => AppState.chat),
+
+            
+        }
+    },
+    components: { FeedbackSenderMessage, FeedbackReceiverMessage }
 }
 </script>
 

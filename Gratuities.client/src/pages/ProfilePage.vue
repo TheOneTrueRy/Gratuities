@@ -20,7 +20,7 @@
                                     <li><a class="dropdown-item selectable" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Add to business</a>
                                     </li>
-                                    <li v-if="profile?.openToFeedback"><a class="dropdown-item selectable"
+                                    <li v-if="profile?.openToFeedback" @click="startChat()"><a class="dropdown-item selectable"
                                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
                                             aria-controls="offcanvasBottom">Send feedback</a>
                                     </li>
@@ -112,7 +112,6 @@ import { profilesService } from '../services/ProfilesService.js';
 import { ratingsService } from "../services/RatingsService.js";
 import Pop from '../utils/Pop.js';
 import AddEmployee from '../components/AddEmployee.vue';
-import { logger } from '../utils/Logger';
 
 export default {
     setup() {
@@ -158,7 +157,6 @@ export default {
         watchEffect(async () => {
             if (route.params.profileId) {
                 getProfileById();
-                logger.log('alo');
                 generateQRCode();
                 getReviewsByProfileId();
                 calculateProfileRating();
@@ -183,6 +181,15 @@ export default {
             searchTypeRating() {
                 AppState.reviewSearchType = 'rating'
                 AppState.reviews.sort(function (a, b) { return a.rating - b.rating }).reverse()
+            },
+
+            async startChat() {
+                try {
+                    const profileId = route.params.profileId
+                    await profilesService.startChat(profileId)
+                } catch (error) {
+                    Pop.error('[STARTING CHAT]', error)
+                }
             }
         };
     },
@@ -203,5 +210,4 @@ export default {
     color: white;
     text-shadow: 1px 1px 2px black;
 }
-
 </style>
