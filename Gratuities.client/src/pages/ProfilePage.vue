@@ -20,9 +20,10 @@
                                     <li><a class="dropdown-item selectable" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Add to business</a>
                                     </li>
-                                    <li v-if="profile?.openToFeedback" @click="startChat()"><a class="dropdown-item selectable"
-                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-                                            aria-controls="offcanvasBottom">Send feedback</a>
+                                    <li v-if="profile?.openToFeedback" @click="startChat()"><a
+                                            class="dropdown-item selectable" data-bs-toggle="offcanvas"
+                                            data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Send
+                                            feedback</a>
                                     </li>
                                 </ul>
                             </div>
@@ -172,6 +173,7 @@ export default {
             businesses: computed(() => AppState.businesses),
             account: computed(() => AppState.account),
             theme: computed(() => AppState.account.theme),
+            chat: computed(() => AppState.chat),
 
             searchTypeDate() {
                 AppState.reviewSearchType = 'date'

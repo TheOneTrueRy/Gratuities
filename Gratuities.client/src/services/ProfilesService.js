@@ -4,6 +4,7 @@ import { AppState } from "../AppState.js";
 import { Profile } from "../models/Profile.js";
 import { Review } from "../models/Review.js";
 import { ratingsService } from "./RatingsService.js";
+import { accountService } from "./AccountService.js";
 
 class ProfilesService {
 
@@ -48,8 +49,15 @@ class ProfilesService {
     }
 
     async startChat(profileId) {
-        // const res = await api.post(`api/profiles/${profileId}/chats`)
-        logger.log(profileId)
+        if (AppState.chat && AppState.chat.receiverId != profileId) {
+            const res = await api.post(`api/profiles/${profileId}/chats`)
+            AppState.chat = res.data
+            logger.log('APPSTATE CHAT', AppState.chat)
+        } else if (AppState.chat) {
+            const chatId = AppState.chat.id
+            await accountService.getChat(chatId)
+            logger.log('APPSTATE CHAT', AppState.chat)
+        }
     }
 }
 

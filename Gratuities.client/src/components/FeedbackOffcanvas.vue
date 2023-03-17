@@ -51,6 +51,7 @@ export default {
 
         async function getChat(chatId) {
             try {
+                const chatId = AppState.chat.id
                 await accountService.getChat(chatId)
             } catch (error) {
                 Pop.error('[GETTING CHAT]', error)
