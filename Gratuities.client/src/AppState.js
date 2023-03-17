@@ -10,6 +10,10 @@ export const AppState = reactive({
   business: null,
   businessRating: null,
 
+  chats: [],
+  chat: null,
+  feedback: [],
+
   profiles: [],
   profile: null,
   searchType: 'profiles',

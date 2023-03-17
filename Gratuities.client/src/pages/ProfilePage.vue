@@ -20,7 +20,9 @@
                                     <li><a class="dropdown-item selectable" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Add to business</a>
                                     </li>
-                                    <li v-if="profile?.openToFeedback"><a class="dropdown-item selectable">Send feedback</a>
+                                    <li v-if="profile?.openToFeedback" @click="startChat()"><a class="dropdown-item selectable"
+                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                                            aria-controls="offcanvasBottom">Send feedback</a>
                                     </li>
                                 </ul>
                             </div>
@@ -91,15 +93,7 @@
     <AddEmployee />
 
     <!-- SECTION feedback offcanvas -->
-    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body small">
-            ...
-        </div>
-    </div>
+    <FeedbackOffcanvas />
 </template>
 
 
@@ -110,6 +104,7 @@ import { AppState } from '../AppState.js';
 import ProfileCard from '../components/ProfileCard.vue';
 import ProfileCarousel from '../components/ProfileCarousel.vue';
 import RateProfileOffcanvas from '../components/RateProfileOffcanvas.vue';
+import FeedbackOffcanvas from '../components/FeedbackOffcanvas.vue';
 import ReviewCard from '../components/ReviewCard.vue';
 import ProfileStarRating from '../components/ProfileStarRating.vue';
 import TipUserModal from '../components/TipUserModal.vue';
@@ -117,7 +112,6 @@ import { profilesService } from '../services/ProfilesService.js';
 import { ratingsService } from "../services/RatingsService.js";
 import Pop from '../utils/Pop.js';
 import AddEmployee from '../components/AddEmployee.vue';
-import { logger } from '../utils/Logger';
 
 export default {
     setup() {
@@ -163,7 +157,6 @@ export default {
         watchEffect(async () => {
             if (route.params.profileId) {
                 getProfileById();
-                logger.log('alo');
                 generateQRCode();
                 getReviewsByProfileId();
                 calculateProfileRating();
@@ -188,44 +181,24 @@ export default {
             searchTypeRating() {
                 AppState.reviewSearchType = 'rating'
                 AppState.reviews.sort(function (a, b) { return a.rating - b.rating }).reverse()
+            },
+
+            async startChat() {
+                try {
+                    const profileId = route.params.profileId
+                    await profilesService.startChat(profileId)
+                } catch (error) {
+                    Pop.error('[STARTING CHAT]', error)
+                }
             }
         };
     },
-    components: { ProfileCard, ReviewCard, ProfileCarousel, RateProfileOffcanvas, TipUserModal, ProfileStarRating, AddEmployee }
+    components: { ProfileCard, ReviewCard, ProfileCarousel, RateProfileOffcanvas, FeedbackOffcanvas, TipUserModal, ProfileStarRating, AddEmployee }
 }
 </script>
 
 
 <style lang="scss" scoped>
-.profile-picture {
-    height: 20em;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.scroller {
-    height: 40px;
-    overflow-y: scroll;
-    scrollbar-color: #EF476F;
-    scrollbar-width: thin;
-}
-
-.profile-picture-small {
-    height: 10vh;
-    width: 10vh;
-    border-radius: 50%;
-    border: 2px solid black;
-}
-
-.star-yellow {
-    color: #FFD166;
-}
-
-.star-shadow {
-    text-shadow: 1px 1px 2px black;
-}
-
 .tip-button {
     background-color: #06D6A0;
     color: white;
@@ -236,17 +209,5 @@ export default {
     background-color: #EF476F;
     color: white;
     text-shadow: 1px 1px 2px black;
-}
-
-// .review-card {
-//     background-color: #06D6A0;
-//     color: white;
-//     text-shadow: 1px 1px 2px black;
-//     transition: 0.5s;
-//     cursor: pointer;
-// }
-
-.employee-card:active {
-    transform: scale(0.9);
 }
 </style>

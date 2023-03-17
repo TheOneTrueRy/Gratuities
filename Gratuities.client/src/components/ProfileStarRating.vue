@@ -52,8 +52,8 @@ export default {
                         required: true
                 }
         },
-        setup(props) {
-                logger.log('props:', props)
+        setup() {
+
                 return {
                         profile: computed(() => AppState.profile),
                         business: computed(() => AppState.business),

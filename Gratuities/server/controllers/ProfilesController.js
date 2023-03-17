@@ -1,5 +1,6 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { request } from 'express'
+import { feedbacksService } from '../services/FeedbacksService.js'
 import { profileService } from '../services/ProfileService.js'
 import { reviewsService } from '../services/ReviewsService.js'
 import { tipsService } from '../services/TipsService.js'
@@ -15,20 +16,35 @@ export class ProfilesController extends BaseController {
       .get('/:profileId/reviews', this.getReviews)
       .put('/:profileId', this.editProfile)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      // .get('/:chatId', this.getChatFeedback)
       .post('/:profileId/tips', this.giveTip)
       .post('/:profileId/reviews', this.giveReview)
+      .post('/:profileId/chats', this.createChat)
+      .post('/:chatId', this.sendFeedback)
       .delete('/reviews/:reviewId', this.deleteReview)
   }
-  async deleteReview(req, res, next) {
+  async createChat(req, res, next) {
     try {
-      const reviewId = req.params.reviewId
-      const requestorId = req.userInfo.id
-      const review = await profileService.deleteReview(requestorId, reviewId)
-      res.send(review)
+      const body = req.body
+      body.receiverId = req.params.profileId
+      body.starterId = req.userInfo.id
+      const chat = await feedbacksService.createChat(body)
+      return res.send(chat)
     } catch (error) {
-      next(error);
+      next(error)
     }
   }
+  // async getChatFeedback(req, res, next) {
+  //   try {
+  //     const requestorId = req.userInfo.id
+  //     const chatId = req.params.chatId
+  //     const feedback = await feedbacksService.getChatFeedback(requestorId, chatId)
+  //     return res.send(feedback)
+  //   } catch (error) {
+  //     next(error)
+  //   }
+  // }
+
   async getReviews(req, res, next) {
     try {
       const reviews = await reviewsService.getReviews(req.params.profileId)
@@ -81,7 +97,7 @@ export class ProfilesController extends BaseController {
     }
   }
 
-  async editProfile(req, res, next){
+  async editProfile(req, res, next) {
     try {
       const body = req.body
       const profileId = req.params.profileId
@@ -89,6 +105,29 @@ export class ProfilesController extends BaseController {
       res.send(profile)
     } catch (error) {
       next(error.message)
+    }
+  }
+
+  async sendFeedback(req, res, next) {
+    try {
+      const body = req.body
+      body.receiverId = req.params.profileId
+      body.giverId = req.userInfo.id
+      const feedback = await feedbacksService.createFeedback(body)
+      return res.send(feedback)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async deleteReview(req, res, next) {
+    try {
+      const reviewId = req.params.reviewId
+      const requestorId = req.userInfo.id
+      const review = await profileService.deleteReview(requestorId, reviewId)
+      res.send(review)
+    } catch (error) {
+      next(error);
     }
   }
 }

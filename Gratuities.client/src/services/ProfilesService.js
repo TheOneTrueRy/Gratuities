@@ -16,7 +16,6 @@ class ProfilesService {
             }
         })
         AppState.profiles.sort(function (a, b) { return a.rating - b.rating }).reverse()
-        logger.log(AppState.profiles)
     }
     async getProfilesByQuery(query) {
         const res = await api.get('api/profiles', { params: { name: query.query } })
@@ -46,6 +45,11 @@ class ProfilesService {
         const res = await api.post(`api/profiles/${profileId}/reviews`, reviewData)
         AppState.reviews.unshift(new Review(res.data))
         ratingsService.calculateProfileRating(profileId)
+    }
+
+    async startChat(profileId) {
+        // const res = await api.post(`api/profiles/${profileId}/chats`)
+        logger.log(profileId)
     }
 }
 
