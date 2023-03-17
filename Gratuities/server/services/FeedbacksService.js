@@ -3,14 +3,14 @@ import { Forbidden } from "../utils/Errors"
 
 class FeedbacksService {
     async getMyChats(requestorId) {
-        const chatsStarted = await dbContext.Chats.find({starterId: requestorId }).populate('starter receiver', 'name picture')
-        const chatsRecieved = await dbContext.Chats.find({ receiverId: requestorId })
+        const chatsStarted = await dbContext.Chats.find({ starterId: requestorId }).populate('starter receiver', 'name picture')
+        const chatsRecieved = await dbContext.Chats.find({ receiverId: requestorId }).populate('starter receiver', 'name picture')
         const chats = [...chatsStarted, ...chatsRecieved]
         return chats
     }
     async getMyChatFeedback(requestorId, chatId) {
-        const feedbackGiven = await dbContext.Feedbacks.find({ chatId, giverId: requestorId })
-        const feedbackRecieved = await dbContext.Feedbacks.find({ chatId, receiverId: requestorId })
+        const feedbackGiven = await dbContext.Feedbacks.find({ chatId, giverId: requestorId }).populate('giver receiver', 'name picture')
+        const feedbackRecieved = await dbContext.Feedbacks.find({ chatId, receiverId: requestorId }).populate('giver receiver', 'name picture')
         const feedback = [...feedbackGiven, ...feedbackRecieved]
         return feedback
     }
@@ -19,7 +19,7 @@ class FeedbacksService {
         await chat.populate('starter receiver', 'name picture')
         return chat
     }
-    async sendFeedback(body) {
+    async createFeedback(body) {
         if (body.receiverId == body.giverId) {
             throw new Forbidden("You can't give yourself feedback")
         }
