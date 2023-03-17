@@ -10,14 +10,25 @@ export class AccountController extends BaseController {
     super('account')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/:chatId', this.getChatFeedback)
       .get('', this.getUserAccount)
       .get('/tips/received', this.getReceivedTips)
       .get('/tips/sent', this.getSentTips)
       .get('/reviews', this.getReviews)
-      .get('/feedback', this.gettingMyFeedback)
       .put('', this.editAccount)
       .delete('/tips', this.tipsIsPayedOut)
       .delete('/notifications', this.notificationsOpened)
+  }
+
+  async getChatFeedback(req, res, next) {
+    try {
+      const requestorId = req.userInfo.id
+      const chatId = req.params.chatId
+      const feedback = await feedbacksService.getMyChatFeedback(requestorId, chatId)
+      return res.send(feedback)
+    } catch (error) {
+      next(error)
+    }
   }
   async notificationsOpened(req, res, next) {
     try {
@@ -67,15 +78,7 @@ export class AccountController extends BaseController {
     }
   }
 
-  async gettingMyFeedback(req, res, next) {
-    try {
-      const requestorId = req.userInfo.id 
-      const feedback = await feedbacksService.gettingMyFeedback(requestorId)
-      return res.send(feedback)
-    } catch (error) {
-      next(error)
-    }
-  }
+
   async editAccount(req, res, next) {
     try {
       const account = await accountService.updateAccount(req.userInfo, req.body)

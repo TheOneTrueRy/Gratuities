@@ -21,3 +21,5 @@ ChatSchema.virtual('receiver', {
     justOne: true,
     ref: "Account"
 })
+
+ChatSchema.index({starterId: 1, receiverId: 1}, {unique: true})
