@@ -1,5 +1,6 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { request } from 'express'
+import { feedbacksService } from '../services/FeedbacksService.js'
 import { profileService } from '../services/ProfileService.js'
 import { reviewsService } from '../services/ReviewsService.js'
 import { tipsService } from '../services/TipsService.js'
@@ -17,18 +18,10 @@ export class ProfilesController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('/:profileId/tips', this.giveTip)
       .post('/:profileId/reviews', this.giveReview)
+      .post('/:profileId/feedback', this.sendFeedback)
       .delete('/reviews/:reviewId', this.deleteReview)
   }
-  async deleteReview(req, res, next) {
-    try {
-      const reviewId = req.params.reviewId
-      const requestorId = req.userInfo.id
-      const review = await profileService.deleteReview(requestorId, reviewId)
-      res.send(review)
-    } catch (error) {
-      next(error);
-    }
-  }
+
   async getReviews(req, res, next) {
     try {
       const reviews = await reviewsService.getReviews(req.params.profileId)
@@ -81,7 +74,7 @@ export class ProfilesController extends BaseController {
     }
   }
 
-  async editProfile(req, res, next){
+  async editProfile(req, res, next) {
     try {
       const body = req.body
       const profileId = req.params.profileId
@@ -89,6 +82,29 @@ export class ProfilesController extends BaseController {
       res.send(profile)
     } catch (error) {
       next(error.message)
+    }
+  }
+
+  async sendFeedback(req, res, next) {
+    try {
+      const body = req.body
+      body.receiverId = req.params.profileId
+      body.giverId = req.userInfo.id
+      const feedback = await feedbacksService.sendFeedback(body)
+      return res.send(feedback)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async deleteReview(req, res, next) {
+    try {
+      const reviewId = req.params.reviewId
+      const requestorId = req.userInfo.id
+      const review = await profileService.deleteReview(requestorId, reviewId)
+      res.send(review)
+    } catch (error) {
+      next(error);
     }
   }
 }

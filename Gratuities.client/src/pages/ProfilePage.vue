@@ -36,11 +36,11 @@
                         <div class="col-12 mt-2 d-md-flex justify-content-center d-none fs-2">
                             <ProfileStarRating :rating="profile?.rating" />
                         </div>
-                        <div v-if="profile?.id != account.id" class="col-6 d-flex justify-content-center">
+                        <div v-if="profile?.id != account.id && account.id" class="col-6 d-flex justify-content-center">
                             <button class="btn tip-button elevation-2 rounded-pill px-4" data-bs-toggle="modal"
                                 data-bs-target="#tipUserModal">Tip</button>
                         </div>
-                        <div v-if="profile?.id != account.id" class="col-6 d-flex justify-content-center">
+                        <div v-if="profile?.id != account.id && account.id" class="col-6 d-flex justify-content-center">
                             <button class="btn review-button elevation-2 rounded-pill" data-bs-toggle="offcanvas"
                                 data-bs-target="#reviewOffcanvas" aria-controls="reviewOffcanvas">Review</button>
                         </div>

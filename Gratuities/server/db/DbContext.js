@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import { AccountSchema } from '../models/Account'
 import { BusinessSchema } from '../models/Business';
 import { EmployeeSchema } from '../models/Employee';
+import { FeedbackSchema } from '../models/Feedback';
 import { ReviewSchema } from '../models/Review';
 import { TipSchema } from '../models/Tip';
 import { ValueSchema } from '../models/Value'
@@ -17,6 +18,8 @@ class DbContext {
   Reviews = mongoose.model('Review', ReviewSchema)
 
   Employees = mongoose.model('Employee', EmployeeSchema)
+
+  Feedbacks = mongoose.model('Feedback', FeedbackSchema)
 }
 
 export const dbContext = new DbContext()
