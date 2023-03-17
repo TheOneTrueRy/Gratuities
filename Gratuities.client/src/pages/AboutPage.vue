@@ -2,7 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center mt-2">
-        <h1 class="w-ease container-type"><i>Tipping <span class="typewriter d-flex">With Ease.</span></i></h1>
+        <h1 class="w-ease container-type "><i><span class="ms-3 ms-md-0">Tipping</span><span
+              class="typewriter ms-md-2 d-flex">With
+              Ease.</span></i></h1>
       </div>
       <div class="offset-1 col-10 col-md-8 offset-md-2 mb-2 mt-1 desc-card rounded d-flex justify-content-center">
         <p class="p-2 pt-3">&nbsp; &nbsp; &nbsp;The Gratuities App is all about giving deserving workers their due.
