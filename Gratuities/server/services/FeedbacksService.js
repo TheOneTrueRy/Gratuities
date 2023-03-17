@@ -2,6 +2,13 @@ import { dbContext } from "../db/DbContext"
 import { Forbidden } from "../utils/Errors"
 
 class FeedbacksService {
+    async gettingMyFeedback(requestorId) {
+        const feedbackGiven = await dbContext.Feedbacks.find({ giverId: requestorId })
+        const feedbackRecieved = await dbContext.Feedbacks.find({ receiverId: requestorId })
+        const feedback = [...feedbackGiven, ...feedbackRecieved]
+        return feedback
+    }
+
     async sendFeedback(body) {
         if (body.receiverId == body.giverId) {
             throw new Forbidden("You can't give yourself feedback")
@@ -10,7 +17,6 @@ class FeedbacksService {
         await feedback.populate('giver receiver', 'name picture')
         return feedback
     }
-
 }
 
 export const feedbacksService = new FeedbacksService()

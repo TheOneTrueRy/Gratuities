@@ -1,5 +1,6 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { accountService } from '../services/AccountService'
+import { feedbacksService } from '../services/FeedbacksService'
 import { reviewsService } from '../services/ReviewsService'
 import { tipsService } from '../services/TipsService'
 import BaseController from '../utils/BaseController'
@@ -13,10 +14,11 @@ export class AccountController extends BaseController {
       .get('/tips/received', this.getReceivedTips)
       .get('/tips/sent', this.getSentTips)
       .get('/reviews', this.getReviews)
+      .get('/feedback', this.gettingMyFeedback)
       .put('', this.editAccount)
       .delete('/tips', this.tipsIsPayedOut)
       .delete('/notifications', this.notificationsOpened)
-    }
+  }
   async notificationsOpened(req, res, next) {
     try {
       const requestorId = req.userInfo.id
@@ -60,6 +62,16 @@ export class AccountController extends BaseController {
       const userId = req.userInfo.id
       const tips = await tipsService.getReceivedTips(userId)
       return res.send(tips)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async gettingMyFeedback(req, res, next) {
+    try {
+      const requestorId = req.userInfo.id 
+      const feedback = await feedbacksService.gettingMyFeedback(requestorId)
+      return res.send(feedback)
     } catch (error) {
       next(error)
     }

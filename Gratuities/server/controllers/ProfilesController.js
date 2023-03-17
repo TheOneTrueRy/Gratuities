@@ -16,10 +16,18 @@ export class ProfilesController extends BaseController {
       .get('/:profileId/reviews', this.getReviews)
       .put('/:profileId', this.editProfile)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/:chatId', this.getChatFeedback)
       .post('/:profileId/tips', this.giveTip)
       .post('/:profileId/reviews', this.giveReview)
-      .post('/:profileId/feedback', this.sendFeedback)
+      .post('/:chatId', this.sendFeedback)
       .delete('/reviews/:reviewId', this.deleteReview)
+  }
+  getChatFeedback(req,res,nextk) {
+  try {
+    const
+  } catch (error) {
+    next(error)
+  }
   }
 
   async getReviews(req, res, next) {
