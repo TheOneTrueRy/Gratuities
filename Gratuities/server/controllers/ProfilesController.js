@@ -19,7 +19,7 @@ export class ProfilesController extends BaseController {
       // .get('/:chatId', this.getChatFeedback)
       .post('/:profileId/tips', this.giveTip)
       .post('/:profileId/reviews', this.giveReview)
-      .post('/:profileId/chat', this.createChat)
+      .post('/:profileId/chats', this.createChat)
       .post('/:chatId', this.sendFeedback)
       .delete('/reviews/:reviewId', this.deleteReview)
   }
