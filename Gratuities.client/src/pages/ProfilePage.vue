@@ -3,10 +3,10 @@
         <div class="container-fluid">
             <div class="row mt-1">
                 <div class="col-12">
+                    <!-- SECTION user rating/dropdown for adding to business/sending feedback -->
                     <div class="row align-items-center">
                         <div class="col-6 d-md-none">
-                            
-                            <div class="fs-2">
+                            <div class="fs-1 mb-1">
                                 <ProfileStarRating :rating="profile?.rating" />
                             </div>
                         </div>
@@ -20,31 +20,40 @@
                                     <li><a class="dropdown-item selectable" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Add to business</a>
                                     </li>
-                                    <li><a class="dropdown-item selectable">Send feedback</a></li>
+                                    <li v-if="profile?.openToFeedback"><a class="dropdown-item selectable">Send feedback</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+
                     <div class="row justify-content-center">
-                        <div class="col-11">
+                        <!-- SECTION user picture/QR code, name, bio, and rating -->
+                        <div class="col-12">
                             <ProfileCarousel />
                         </div>
-                        <div class="col-12 mt-2 text-center">
+                        <div class="col-12 mt-2 d-flex flex-column justify-content-center align-items-center">
                             <h1>{{ profile?.name }}</h1>
-                            <p v-if="profile?.bio">"{{ profile?.bio }}"</p>
+                            <p v-if="profile?.bio" class="pt-2">"{{ profile?.bio }}"</p>
                         </div>
-                        <div class="col-12 mt-2 d-md-flex justify-content-center d-none fs-2">
+                        <div class="col-12 d-md-flex justify-content-center d-none fs-2">
                             <ProfileStarRating :rating="profile?.rating" />
                         </div>
-                        <div v-if="profile?.id != account.id && account.id" class="col-6 d-flex justify-content-center">
-                            <button class="btn tip-button elevation-2 rounded-pill px-4" data-bs-toggle="modal"
-                                data-bs-target="#tipUserModal">Tip</button>
+
+                        <!-- SECTION tip and review buttons -->
+                        <div class="d-flex justify-content-around my-2">
+                            <div v-if="profile?.id != account.id" class="col-6 d-flex justify-content-center">
+                                <button class="btn tip-button elevation-2 rounded-pill px-4" data-bs-toggle="modal"
+                                    data-bs-target="#tipUserModal">Tip</button>
+                            </div>
+                            <div v-if="profile?.id != account.id" class="col-6 d-flex justify-content-center">
+                                <button class="btn review-button elevation-2 rounded-pill" data-bs-toggle="offcanvas"
+                                    data-bs-target="#reviewOffcanvas" aria-controls="reviewOffcanvas">Review</button>
+                            </div>
                         </div>
-                        <div v-if="profile?.id != account.id && account.id" class="col-6 d-flex justify-content-center">
-                            <button class="btn review-button elevation-2 rounded-pill" data-bs-toggle="offcanvas"
-                                data-bs-target="#reviewOffcanvas" aria-controls="reviewOffcanvas">Review</button>
-                        </div>
-                        <div class="col-12 mt-2">
+
+                        <!-- SECTION sort reviews button group -->
+                        <div class="col-12 mt-1">
                             <div class="d-flex flex-column align-items-center">
                                 <div class="mb-2">
                                     <span>
@@ -62,6 +71,7 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- SECTION displays all profiles that have reviewed this profile -->
                     <div class="row justify-content-center my-3">
                         <div v-for="r in reviews" class="col-11 rounded p-2 col-md-8">
@@ -79,6 +89,17 @@
     <TipUserModal />
     <!-- SECTION offcanvas of my businesses to add profile to -->
     <AddEmployee />
+
+    <!-- SECTION feedback offcanvas -->
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body small">
+            ...
+        </div>
+    </div>
 </template>
 
 
