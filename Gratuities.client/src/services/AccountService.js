@@ -27,11 +27,11 @@ class AccountService {
     AppState.hasNotifications = true
   }
 
-  async getChat(chatId) {
-    const res = await api.get(`/account/${chatId}`)
-    AppState.chat = res.data
-    logger.log(AppState.chat)
-  }
+  // async getChat(chatId) {
+  //   const res = await api.get(`/account/${chatId}`)
+  //   AppState.chat = res.data
+  //   logger.log(AppState.chat)
+  // }
 }
 
 export const accountService = new AccountService()

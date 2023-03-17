@@ -11,7 +11,7 @@ export class AccountController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/chats', this.getMyChats)
-      .get('/:chatId', this.getChatFeedback)
+      .get('/chats/:chatId', this.getChatFeedback)
       .get('', this.getUserAccount)
       .get('/tips/received', this.getReceivedTips)
       .get('/tips/sent', this.getSentTips)

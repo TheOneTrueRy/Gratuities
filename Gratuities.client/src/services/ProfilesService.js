@@ -48,17 +48,19 @@ class ProfilesService {
         ratingsService.calculateProfileRating(profileId)
     }
 
-    async startChat(profileId) {
-        if (AppState.chat && AppState.chat.receiverId != profileId) {
-            const res = await api.post(`api/profiles/${profileId}/chats`)
-            AppState.chat = res.data
-            logger.log('APPSTATE CHAT', AppState.chat)
-        } else if (AppState.chat) {
-            const chatId = AppState.chat.id
-            await accountService.getChat(chatId)
-            logger.log('APPSTATE CHAT', AppState.chat)
-        }
-    }
+    // async startChat(profileId) {
+    //     if (AppState.chat && AppState.chat.receiverId != profileId) {
+    //         const res = await api.post(`api/profiles/${profileId}/chats`)
+    //         AppState.chat = res.data
+    //         logger.log('APPSTATE CHAT', AppState.chat)
+    //     } else if (AppState.chat) {
+    //         const chatId = AppState.chat.id
+    //         await accountService.getChat(chatId)
+    //         logger.log('APPSTATE CHAT', AppState.chat)
+    //     } else {
+    //         logger.log('this is bananas')
+    //     }
+    // }
 }
 
 export const profilesService = new ProfilesService()
