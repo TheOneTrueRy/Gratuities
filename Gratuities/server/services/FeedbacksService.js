@@ -2,6 +2,12 @@ import { dbContext } from "../db/DbContext"
 import { Forbidden } from "../utils/Errors"
 
 class FeedbacksService {
+    async getMyChats(requestorId) {
+        const chatsStarted = await dbContext.Chats.find({starterId: requestorId })
+        const chatsRecieved = await dbContext.Chats.find({ receiverId: requestorId })
+        const chats = [...chatsStarted, ...chatsRecieved]
+        return chats
+    }
     async getMyChatFeedback(requestorId, chatId) {
         const feedbackGiven = await dbContext.Feedbacks.find({ chatId, giverId: requestorId })
         const feedbackRecieved = await dbContext.Feedbacks.find({ chatId, receiverId: requestorId })

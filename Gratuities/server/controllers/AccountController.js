@@ -10,6 +10,7 @@ export class AccountController extends BaseController {
     super('account')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/chats', this.getMyChats)
       .get('/:chatId', this.getChatFeedback)
       .get('', this.getUserAccount)
       .get('/tips/received', this.getReceivedTips)
@@ -18,6 +19,15 @@ export class AccountController extends BaseController {
       .put('', this.editAccount)
       .delete('/tips', this.tipsIsPayedOut)
       .delete('/notifications', this.notificationsOpened)
+  }
+  async getMyChats(req, res, next) {
+    try {
+      const requestorId = req.userInfo.id
+      const chats = await feedbacksService.getMyChats(requestorId)
+      return res.send(chats)
+    } catch (error) {
+      next(error)
+    }
   }
 
   async getChatFeedback(req, res, next) {
