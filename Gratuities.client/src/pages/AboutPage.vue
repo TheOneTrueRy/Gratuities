@@ -232,7 +232,7 @@ img {
   animation:
     typing 1s steps(20, end) forwards,
     blink .8s infinite;
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 
 .container-type {
