@@ -2,10 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center mt-2">
-        <h1 class="w-ease"><i>Tipping With Ease.</i></h1>
+        <h1 class="w-ease container-type"><i>Tipping <span class="typewriter d-flex">With Ease.</span></i></h1>
       </div>
-      <div
-        class="offset-1 col-10 col-md-8 offset-md-2 mb-2 mt-1 desc-card rounded d-flex justify-content-center">
+      <div class="offset-1 col-10 col-md-8 offset-md-2 mb-2 mt-1 desc-card rounded d-flex justify-content-center">
         <p class="p-2 pt-3">&nbsp; &nbsp; &nbsp;The Gratuities App is all about giving deserving workers their due.
           <br><br>
           &nbsp; &nbsp; &nbsp;
@@ -47,10 +46,11 @@
                   game development but wants all the experience he can get until then. 5th
                   most handsome member of the Gratuities team.</p>
               </div>
-              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JUTAK8CE-7fb60e9eb27e-512" class="d-block w-100 rounded" alt="...">
+              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JUTAK8CE-7fb60e9eb27e-512" class="d-block w-100 rounded"
+                alt="...">
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Joe Calvi</h5>
-                <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
+                <p class="gratuities-links d-flex justify-content-around rounded-pill px-3 ze-border"><a target="_blank"
                     href="https://github.com/JoeCalvi" class="text-light mdi mdi-github"></a><a target="_blank"
                     href="https://www.linkedin.com/in/joe-calvi/" class="mdi mdi-linkedin text-light"></a></p>
               </div>
@@ -59,13 +59,15 @@
             <!-- SECTION Ry's Card -->
             <div class="carousel-item">
               <div class="d-flex justify-content-center">
-                <p class="bio rounded bg-gradient px-3 d-flex align-items-center">Video Game GOD and Official "Funniest Man
+                <p class="bio rounded bg-gradient px-3 d-flex align-items-center">Video Game GOD and Official "Funniest
+                  Man
                   Alive" randomly gets into
                   coding due to actually needing money (we live in a society). 5th most handsome developer on the
                   Gratuities
                   team.</p>
               </div>
-              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04KR6PJ7FS-06b92423e603-512" class="d-block w-100 rounded" alt="...">
+              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04KR6PJ7FS-06b92423e603-512" class="d-block w-100 rounded"
+                alt="...">
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Ryan "Ry" Wittman</h5>
                 <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
@@ -82,7 +84,8 @@
                   most handsome man on the Gratuities dev team. Love being with friends and making new coding projects.
                   Boardgame enthusiast, driven to learn, and dedicated to coding. </p>
               </div>
-              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JYH9MQ3X-085de4f9b941-512" class="d-block w-100 rounded" alt="...">
+              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JYH9MQ3X-085de4f9b941-512" class="d-block w-100 rounded"
+                alt="...">
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Andrew Meyers</h5>
                 <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
@@ -99,11 +102,13 @@
                   life has led me to a deep
                   interest in how it
                   all actually works. Thanks to CodeWorks
-                  I've been able to expand my knowledge in programming and web development. 1st, 2nd, and 3rd most handsome
+                  I've been able to expand my knowledge in programming and web development. 1st, 2nd, and 3rd most
+                  handsome
                   developer in
                   Gratuities dev team.</p>
               </div>
-              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JLV5G4NB-7e93e64f0292-512" class="d-block w-100 rounded" alt="...">
+              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JLV5G4NB-7e93e64f0292-512" class="d-block w-100 rounded"
+                alt="...">
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Bryson Bloom</h5>
                 <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
@@ -122,7 +127,8 @@
                   programming gives exactly that. 5th most handsome developer on the Gratuities team.
                 </p>
               </div>
-              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04K3VA3544-b04aee2f5a06-512" class="d-block w-100 rounded" alt="...">
+              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04K3VA3544-b04aee2f5a06-512" class="d-block w-100 rounded"
+                alt="...">
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Jonah Wood</h5>
                 <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
@@ -194,6 +200,69 @@ img {
   width: 100%;
 }
 
+.ze-border {
+  animation-name: borderColorPalette;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes borderColorPalette {
+  0% {
+    border: 2px solid #06d69ec1;
+  }
+
+
+  50% {
+    border: 2px solid #06d69eba;
+  }
+
+
+  100% {
+    border: 2px solid #46f4e0b1;
+  }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: .15em solid #07805fc1;
+  white-space: nowrap;
+  font-size: 1.6rem;
+  width: 0;
+  animation:
+    typing 1s steps(20, end) forwards,
+    blink .8s infinite;
+  animation-delay: 2s;
+}
+
+.container-type {
+  display: inline-block;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+
+  to {
+    width: 100%
+  }
+}
+
+@keyframes blink {
+  from {
+    border-color: transparent
+  }
+
+  to {
+    border-color: #07805fc1;
+  }
+}
+
+
+
+
+
 .gratuities-links {
   font-size: 5vh;
   background-color: #06d69ec1;
@@ -204,5 +273,4 @@ img {
 .our-names {
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.587);
 }
-
 </style>
