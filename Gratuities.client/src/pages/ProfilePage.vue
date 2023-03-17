@@ -20,7 +20,8 @@
                                     <li><a class="dropdown-item selectable" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Add to business</a>
                                     </li>
-                                    <li><a class="dropdown-item selectable">Send feedback</a></li>
+                                    <li v-if="profile?.openToFeedback"><a class="dropdown-item selectable">Send feedback</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -88,6 +89,17 @@
     <TipUserModal />
     <!-- SECTION offcanvas of my businesses to add profile to -->
     <AddEmployee />
+
+    <!-- SECTION feedback offcanvas -->
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body small">
+            ...
+        </div>
+    </div>
 </template>
 
 
