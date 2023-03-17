@@ -1,5 +1,5 @@
 import { dbContext } from "../db/DbContext"
-import { Forbidden } from "../utils/Errors"
+import { BadRequest, Forbidden } from "../utils/Errors"
 
 class FeedbacksService {
     async getMyChats(requestorId) {
@@ -20,9 +20,21 @@ class FeedbacksService {
         return chat
     }
     async createFeedback(body) {
+        const chat = await dbContext.Chats.findById(body.chatId)
+        if (!chat) {
+            throw new BadRequest('This chat Id is invalid')
+        }
+        // @ts-ignore
+        if (chat.starterId == body.giverId) {
+            body.receiverId = chat.receiverId  
+        } else {
+            body.receiverId = chat.starterId
+        }
+
         if (body.receiverId == body.giverId) {
             throw new Forbidden("You can't give yourself feedback")
         }
+        
         const feedback = await dbContext.Feedbacks.create(body)
         await feedback.populate('giver receiver', 'name picture')
         return feedback

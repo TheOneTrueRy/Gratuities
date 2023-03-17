@@ -111,8 +111,8 @@ export class ProfilesController extends BaseController {
   async sendFeedback(req, res, next) {
     try {
       const body = req.body
-      body.receiverId = req.params.profileId
       body.giverId = req.userInfo.id
+      body.chatId = req.params.chatId
       const feedback = await feedbacksService.createFeedback(body)
       return res.send(feedback)
     } catch (error) {
