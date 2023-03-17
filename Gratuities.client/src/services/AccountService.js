@@ -27,6 +27,10 @@ class AccountService {
     // logger.log('my reviews', AppState.myReviews)
     AppState.hasNotifications = true
   }
+
+  async getChat(chatId) {
+    
+  }
 }
 
 export const accountService = new AccountService()

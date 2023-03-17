@@ -57,21 +57,15 @@ class BusinessesService {
         let calculatedRating = 0
         if (AppState.employees.length != 0) {
             AppState.employees.forEach(p => calculatedRating += p.rating)
-            // const businessId = AppState.business?.id
             calculatedRating = calculatedRating / AppState.employees.length
             let rating = Math.round(calculatedRating * 2) / 2
-            // const res = await api.put('api/businesses/' + businessId, {rating: calculatedRating})
+
             if (AppState.business) {
                 AppState.business.rating = rating
                 const res = await api.put('api/businesses/' + AppState.business.id + '/rating', { rating: rating })
             }
         }
     }
-
-    // async google(input){
-    //     const res = await googleApi.get('', {params: {input}})
-    //     // {params: {query: {input}}}
-    // }
 }
 
 export const businessesService = new BusinessesService()
