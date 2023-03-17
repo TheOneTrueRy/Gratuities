@@ -1,5 +1,6 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { accountService } from '../services/AccountService'
+import { feedbacksService } from '../services/FeedbacksService'
 import { reviewsService } from '../services/ReviewsService'
 import { tipsService } from '../services/TipsService'
 import BaseController from '../utils/BaseController'
@@ -9,6 +10,8 @@ export class AccountController extends BaseController {
     super('account')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/chats', this.getMyChats)
+      .get('/:chatId', this.getChatFeedback)
       .get('', this.getUserAccount)
       .get('/tips/received', this.getReceivedTips)
       .get('/tips/sent', this.getSentTips)
@@ -16,7 +19,27 @@ export class AccountController extends BaseController {
       .put('', this.editAccount)
       .delete('/tips', this.tipsIsPayedOut)
       .delete('/notifications', this.notificationsOpened)
+  }
+  async getMyChats(req, res, next) {
+    try {
+      const requestorId = req.userInfo.id
+      const chats = await feedbacksService.getMyChats(requestorId)
+      return res.send(chats)
+    } catch (error) {
+      next(error)
     }
+  }
+
+  async getChatFeedback(req, res, next) {
+    try {
+      const requestorId = req.userInfo.id
+      const chatId = req.params.chatId
+      const feedback = await feedbacksService.getMyChatFeedback(requestorId, chatId)
+      return res.send(feedback)
+    } catch (error) {
+      next(error)
+    }
+  }
   async notificationsOpened(req, res, next) {
     try {
       const requestorId = req.userInfo.id
@@ -64,6 +87,8 @@ export class AccountController extends BaseController {
       next(error)
     }
   }
+
+
   async editAccount(req, res, next) {
     try {
       const account = await accountService.updateAccount(req.userInfo, req.body)

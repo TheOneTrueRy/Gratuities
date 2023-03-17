@@ -16,11 +16,34 @@ export class ProfilesController extends BaseController {
       .get('/:profileId/reviews', this.getReviews)
       .put('/:profileId', this.editProfile)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      // .get('/:chatId', this.getChatFeedback)
       .post('/:profileId/tips', this.giveTip)
       .post('/:profileId/reviews', this.giveReview)
-      .post('/:profileId/feedback', this.sendFeedback)
+      .post('/:profileId/chat', this.createChat)
+      .post('/:chatId', this.sendFeedback)
       .delete('/reviews/:reviewId', this.deleteReview)
   }
+  async createChat(req, res, next) {
+    try {
+      const body = req.body
+      body.receiverId = req.params.profileId
+      body.starterId = req.userInfo.id
+      const chat = await feedbacksService.createChat(body)
+      return res.send(chat)
+    } catch (error) {
+      next(error)
+    }
+  }
+  // async getChatFeedback(req, res, next) {
+  //   try {
+  //     const requestorId = req.userInfo.id
+  //     const chatId = req.params.chatId
+  //     const feedback = await feedbacksService.getChatFeedback(requestorId, chatId)
+  //     return res.send(feedback)
+  //   } catch (error) {
+  //     next(error)
+  //   }
+  // }
 
   async getReviews(req, res, next) {
     try {
