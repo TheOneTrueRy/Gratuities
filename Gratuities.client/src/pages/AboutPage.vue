@@ -104,7 +104,7 @@
                   life has led me to a deep
                   interest in how it
                   all actually works. Thanks to CodeWorks
-                  I've been able to expand my knowledge in programming and web development. 1st, 2nd, and 3rd most
+                  I've been able to expand my knowledge in programming and web development. Most
                   handsome
                   developer in
                   Gratuities dev team.</p>
