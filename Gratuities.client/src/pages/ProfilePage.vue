@@ -20,12 +20,12 @@
                                     <li><a class="dropdown-item selectable" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Add to business</a>
                                     </li>
-                                    <li v-if="profile?.openToFeedback && !chat" @click=""><a class="dropdown-item selectable"
+                                    <li v-if="profile?.openToFeedback && !chat" @click="createChat()"><a class="dropdown-item selectable"
                                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
                                             aria-controls="offcanvasBottom">Send
                                             feedback</a>
                                     </li>
-                                    <li v-if="profile?.openToFeedback && chat" @click=""><a class="dropdown-item selectable"
+                                    <li v-if="profile?.openToFeedback && chat" @click="openChat()"><a class="dropdown-item selectable"
                                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
                                             aria-controls="offcanvasBottom">Open Chat</a>
                                     </li>
@@ -208,6 +208,14 @@ export default {
             //         Pop.error('[STARTING CHAT]', error)
             //     }
             // }
+            async createChat() {
+                try {
+                    const profileId = route.params.profileId
+                    await feedbackService.createChat(profileId)
+                } catch (error) {
+                    Pop.error(error, '[creating chat]')
+                }
+            }
         };
     },
     components: { ProfileCard, ReviewCard, ProfileCarousel, RateProfileOffcanvas, FeedbackOffcanvas, TipUserModal, ProfileStarRating, AddEmployee }

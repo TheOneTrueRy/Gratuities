@@ -12,15 +12,20 @@ class FeedbackService {
         AppState.chats.forEach(c => {
             if (c.receiverId == profileId) {
                 AppState.chat = c
-                logger.log(c.receiverId, profileId)
+                logger.log('appstate', AppState.chat, c.receiverId, profileId)
+                return
             }else if (c.starterId == profileId) {
                 AppState.chat = c
                 logger.log('2')
-            } else {
-                logger.log(c.starterId, profileId)
-                AppState.chat = null
+                return
             }
         })
+    }
+
+    async createChat(profileId) {
+        const res = await api.post('api/profiles/' + profileId + '/chats')
+        AppState.chat = res.data
+        AppState.chats.push(res.data)
     }
 }
 
