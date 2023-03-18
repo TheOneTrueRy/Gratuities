@@ -20,10 +20,14 @@
                                     <li><a class="dropdown-item selectable" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Add to business</a>
                                     </li>
-                                    <li v-if="profile?.openToFeedback" @click=""><a class="dropdown-item selectable"
+                                    <li v-if="profile?.openToFeedback && !chat" @click=""><a class="dropdown-item selectable"
                                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
                                             aria-controls="offcanvasBottom">Send
                                             feedback</a>
+                                    </li>
+                                    <li v-if="profile?.openToFeedback && chat" @click=""><a class="dropdown-item selectable"
+                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                                            aria-controls="offcanvasBottom">Open Chat</a>
                                     </li>
                                 </ul>
                             </div>
