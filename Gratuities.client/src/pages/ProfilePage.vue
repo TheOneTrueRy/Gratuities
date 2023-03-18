@@ -113,6 +113,7 @@ import { profilesService } from '../services/ProfilesService.js';
 import { ratingsService } from "../services/RatingsService.js";
 import Pop from '../utils/Pop.js';
 import AddEmployee from '../components/AddEmployee.vue';
+import { feedbackService } from '../services/FeedbackService';
 
 export default {
     setup() {
@@ -155,12 +156,22 @@ export default {
             }
         }
 
+        async function getChat(){
+            try {
+                const profileId = route.params.profileId
+                await feedbackService.getChat(profileId)
+            } catch (error) {
+                Pop.error(error, '[getting chat]')
+            }
+        }
+
         watchEffect(async () => {
             if (route.params.profileId) {
                 getProfileById();
                 generateQRCode();
                 getReviewsByProfileId();
                 calculateProfileRating();
+                getChat();
             }
         })
         return {
@@ -173,7 +184,7 @@ export default {
             businesses: computed(() => AppState.businesses),
             account: computed(() => AppState.account),
             theme: computed(() => AppState.account.theme),
-            // chat: computed(() => AppState.chat),
+            chat: computed(() => AppState.chat),
 
             searchTypeDate() {
                 AppState.reviewSearchType = 'date'

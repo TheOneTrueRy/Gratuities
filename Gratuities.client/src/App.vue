@@ -18,7 +18,7 @@ import { accountService } from './services/AccountService'
 import { notificationsService } from './services/NotificationsService'
 import { tipsService } from './services/TipsService'
 import { themeService } from './services/ThemeService'
-
+import {feedbackService} from './services/FeedbackService'
 export default {
   setup() {
 
@@ -27,6 +27,7 @@ export default {
         await accountService.getMyReviews()
         await tipsService.getTipsReceived()
         await notificationsService.findNotifications()
+        await feedbackService.getMyChats()
         if (AppState.account.theme == true && AppState.account.theme != null) {
           themeService.toggleThemeLight()
         }
