@@ -169,6 +169,14 @@ export default {
             }
         }
 
+        async function getFeedbackInChat() {
+            try {
+                await feedbackService.getFeedbackInChat()
+            } catch (error) {
+                Pop.error(error, '[getting feedback]')
+            }
+        }
+
         watchEffect(async () => {
             if (route.params.profileId) {
                 getProfileById();
@@ -208,10 +216,18 @@ export default {
             //         Pop.error('[STARTING CHAT]', error)
             //     }
             // }
+            async openChat() {
+                try {
+                    await getFeedbackInChat()
+                } catch (error) {
+                    Pop.error(error, '[open chat]')
+                }
+            },
             async createChat() {
                 try {
                     const profileId = route.params.profileId
                     await feedbackService.createChat(profileId)
+                    await getFeedbackInChat()
                 } catch (error) {
                     Pop.error(error, '[creating chat]')
                 }
