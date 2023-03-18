@@ -114,6 +114,8 @@ export class ProfilesController extends BaseController {
       body.giverId = req.userInfo.id
       body.chatId = req.params.chatId
       const feedback = await feedbacksService.createFeedback(body)
+      socketProvider.messageRoom(body.chatId.toString(), 'created:feedback', feedback)
+      // socketProvider.messageUser(feedback.receiverId.toString(), 'toUser:creatingFeedback', feedback)
       return res.send(feedback)
     } catch (error) {
       next(error)
