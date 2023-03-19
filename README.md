@@ -13,13 +13,13 @@ Gratuities is made for both mobile and desktop, though the on-the-fly nature of 
 
 ## Features
 
-- People can create accounts to be able to either receive tips as a customer service worker or give tips to their favorite workers.
-- Users can add and manage a business profile that is a collection of all users that work at that specific business/branch.
-- Every business and user has their own QR Code automatically generated for them to display at their place of business or share to others interested in tipping them.
+- People can create accounts to be able to either receive tips as a service worker or give tips to their favorite service providers..
+- Users can add and manage a business page that is a collection of all users that work at that specific business/branch.
+- Every user has their own QR Code automatically generated for them to display at their place of business or share to others interested in tipping them.
 - You can search by business name or profile name (toggleable) on the home page to find whoever you like.
 - Light-Mode/Dark-Mode Toggle
 - Notifications on page (until marked as read) for all new tips and reviews you have received.
-- Users receive an e-mail notification from our app when they have received a tip or review
+- Users receive an e-mail notification from our app when they have received a tip, review, or been added to a business's page.
 - And more! Probably!
 
 
@@ -37,6 +37,4 @@ Gratuities is made for both mobile and desktop, though the on-the-fly nature of 
 [Courier API](https://www.courier.com/)
 
 [QR code API](https://goqr.me/api/)
-
-[Google Maps Places API](https://developers.google.com/maps/documentation/places/web-service/overview)
 
