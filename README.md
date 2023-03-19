@@ -20,6 +20,7 @@ Gratuities is made for both mobile and desktop, though the on-the-fly nature of 
 - Light-Mode/Dark-Mode Toggle
 - Notifications on page (until marked as read) for all new tips and reviews you have received.
 - Users receive an e-mail notification from our app when they have received a tip, review, or been added to a business's page.
+- WebSockets allow users on the site to be notified, in real time, when they have received a tip or review.
 - And more! Probably!
 
 
