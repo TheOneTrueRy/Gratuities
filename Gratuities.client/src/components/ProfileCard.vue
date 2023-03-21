@@ -82,7 +82,7 @@ export default {
 }
 
 .scroller {
-    height: 75%;
+    height: 9vh;
     overflow-y: scroll;
 }
 
