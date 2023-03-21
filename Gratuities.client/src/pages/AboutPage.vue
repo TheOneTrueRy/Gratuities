@@ -53,8 +53,8 @@
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Joe Calvi</h5>
                 <p class="gratuities-links d-flex justify-content-around rounded-pill px-3 ze-border"><a target="_blank"
-                    href="https://github.com/JoeCalvi" class="text-light mdi mdi-github"></a><a target="_blank"
-                    href="https://www.linkedin.com/in/joe-calvi/" class="mdi mdi-linkedin text-light"></a></p>
+                    href="https://github.com/JoeCalvi" class="text-light mdi link-logo mdi-github"></a><a target="_blank"
+                    href="https://www.linkedin.com/in/joe-calvi/" class="mdi link-logo mdi-linkedin text-light"></a></p>
               </div>
             </div>
 
@@ -73,8 +73,9 @@
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Ryan "Ry" Wittman</h5>
                 <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
-                    href="https://github.com/theonetruery" class="text-light mdi mdi-github"></a><a target="_blank"
-                    href="https://www.linkedin.com/in/theonetruery/" class="mdi mdi-linkedin text-light"></a></p>
+                    href="https://github.com/theonetruery" class="text-light mdi link-logo mdi-github"></a><a
+                    target="_blank" href="https://www.linkedin.com/in/theonetruery/"
+                    class="mdi link-logo mdi-linkedin text-light"></a></p>
               </div>
             </div>
 
@@ -91,8 +92,9 @@
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Andrew Meyers</h5>
                 <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
-                    href="https://github.com/laxmeyers" class="text-light mdi mdi-github"></a><a target="_blank"
-                    href="https://www.linkedin.com/in/andrew-meyers-5474ab205/" class="mdi mdi-linkedin text-light"></a>
+                    href="https://github.com/laxmeyers" class="text-light mdi link-logo mdi-github"></a><a target="_blank"
+                    href="https://www.linkedin.com/in/andrew-meyers-5474ab205/"
+                    class="mdi link-logo mdi-linkedin text-light"></a>
                 </p>
               </div>
             </div>
@@ -114,8 +116,9 @@
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Bryson Bloom</h5>
                 <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
-                    href="https://github.com/BrysonBloom" class="text-light mdi mdi-github"></a><a target="_blank"
-                    href="https://www.linkedin.com/in/bryson-bloom-520973262/" class="mdi mdi-linkedin text-light"></a>
+                    href="https://github.com/BrysonBloom" class="text-light mdi link-logo mdi-github"></a><a
+                    target="_blank" href="https://www.linkedin.com/in/bryson-bloom-520973262/"
+                    class="mdi link-logo mdi-linkedin text-light"></a>
                 </p>
               </div>
             </div>
@@ -134,8 +137,9 @@
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Jonah Wood</h5>
                 <p class="gratuities-links d-flex justify-content-around rounded-pill px-3"><a target="_blank"
-                    href="https://github.com/JonahWood" class="text-light mdi mdi-github"></a><a target="_blank"
-                    href="https://www.linkedin.com/in/jonah-wood-a9591b262/" class="mdi mdi-linkedin text-light"></a></p>
+                    href="https://github.com/JonahWood" class="text-light mdi link-logo mdi-github"></a><a target="_blank"
+                    href="https://www.linkedin.com/in/jonah-wood-a9591b262/"
+                    class="mdi link-logo mdi-linkedin text-light"></a></p>
               </div>
             </div>
           </div>
@@ -200,6 +204,14 @@ export default {
 img {
   height: 55vh;
   width: 100%;
+}
+
+.link-logo {
+  transition: 0.5s;
+}
+
+.link-logo:hover {
+  transform: scale(1.1);
 }
 
 .ze-border {
@@ -274,5 +286,4 @@ img {
 
 .our-names {
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.587);
-}
-</style>
+}</style>
