@@ -12,7 +12,7 @@ class ReviewsService {
         const reviewer = await profileService.getProfileById(body.creatorId)
         const receiver = await profileService.getProfileById(body.reviewedId)
 
-        if (reviewer == receiver) {
+        if (reviewer.id == receiver.id) {
             throw new Forbidden("You can't review yourself naughty naughty")
         }
 
