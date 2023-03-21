@@ -128,7 +128,8 @@ export default {
 
 .logo {
   font-family: 'Rowdies', cursive;
-  text-shadow: 0px 4px 4px #00000040;
+  text-shadow: 0px 2px 3px #00000040;
+  color: white;
   letter-spacing: 4px;
 }
 

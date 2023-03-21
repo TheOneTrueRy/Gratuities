@@ -20,10 +20,14 @@
                                     <li><a class="dropdown-item selectable" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Add to business</a>
                                     </li>
-                                    <li v-if="profile?.openToFeedback" @click=""><a class="dropdown-item selectable"
+                                    <li v-if="profile?.openToFeedback && !chat" @click="createChat()"><a class="dropdown-item selectable"
                                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
                                             aria-controls="offcanvasBottom">Send
                                             feedback</a>
+                                    </li>
+                                    <li v-if="profile?.openToFeedback && chat" @click="openChat()"><a class="dropdown-item selectable"
+                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                                            aria-controls="offcanvasBottom">Open Chat</a>
                                     </li>
                                 </ul>
                             </div>
@@ -113,6 +117,7 @@ import { profilesService } from '../services/ProfilesService.js';
 import { ratingsService } from "../services/RatingsService.js";
 import Pop from '../utils/Pop.js';
 import AddEmployee from '../components/AddEmployee.vue';
+import { feedbackService } from '../services/FeedbackService';
 
 export default {
     setup() {
@@ -155,12 +160,30 @@ export default {
             }
         }
 
+        async function getChat(){
+            try {
+                const profileId = route.params.profileId
+                await feedbackService.getChat(profileId)
+            } catch (error) {
+                Pop.error(error, '[getting chat]')
+            }
+        }
+
+        async function getFeedbackInChat() {
+            try {
+                await feedbackService.getFeedbackInChat()
+            } catch (error) {
+                Pop.error(error, '[getting feedback]')
+            }
+        }
+
         watchEffect(async () => {
             if (route.params.profileId) {
                 getProfileById();
                 generateQRCode();
                 getReviewsByProfileId();
                 calculateProfileRating();
+                getChat();
             }
         })
         return {
@@ -173,7 +196,7 @@ export default {
             businesses: computed(() => AppState.businesses),
             account: computed(() => AppState.account),
             theme: computed(() => AppState.account.theme),
-            // chat: computed(() => AppState.chat),
+            chat: computed(() => AppState.chat),
 
             searchTypeDate() {
                 AppState.reviewSearchType = 'date'
@@ -193,6 +216,22 @@ export default {
             //         Pop.error('[STARTING CHAT]', error)
             //     }
             // }
+            async openChat() {
+                try {
+                    await getFeedbackInChat()
+                } catch (error) {
+                    Pop.error(error, '[open chat]')
+                }
+            },
+            async createChat() {
+                try {
+                    const profileId = route.params.profileId
+                    await feedbackService.createChat(profileId)
+                    await getFeedbackInChat()
+                } catch (error) {
+                    Pop.error(error, '[creating chat]')
+                }
+            }
         };
     },
     components: { ProfileCard, ReviewCard, ProfileCarousel, RateProfileOffcanvas, FeedbackOffcanvas, TipUserModal, ProfileStarRating, AddEmployee }

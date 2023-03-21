@@ -11,13 +11,23 @@ class SocketService extends SocketHandler {
       .on('error', this.onError)
       .on('toUser:creatingReview', this.createReview)
       .on('toUser:creatingTip', this.createTip)
-      
+      // .on('created:feedback', this.createFeedback)
+
   }
 
   onError(e) {
     Pop.toast(e.message, 'error')
   }
-  createReview(payload){
+
+  // createFeedback(payload) {
+  //   try {
+  //     Pop.toast(`${payload.giver.name} sent you a message!`)
+  //     AppState.
+  //   } catch (error) {
+  //     Pop.error(error, '[creating feedback]')
+  //   }
+  // }
+  createReview(payload) {
     try {
       Pop.toast(`${payload.creator.name} gave you a review!`)
       AppState.notifications.unshift(new Review(payload))
@@ -26,7 +36,7 @@ class SocketService extends SocketHandler {
       logger.error(error)
     }
   }
-  createTip(payload){
+  createTip(payload) {
     try {
       Pop.toast(`${payload.giver.name} gave you a tip!`)
       payload.createdAt = new Date(payload.createdAt).toLocaleString('en-US')
