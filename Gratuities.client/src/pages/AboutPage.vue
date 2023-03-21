@@ -106,7 +106,7 @@
                   all actually works. Thanks to CodeWorks
                   I've been able to expand my knowledge in programming and web development. Most
                   handsome
-                  developer in
+                  developer on the
                   Gratuities dev team.</p>
               </div>
               <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JLV5G4NB-7e93e64f0292-512" class="d-block w-100 rounded"
