@@ -5,7 +5,7 @@
             <div class="col-3 d-flex align-items-center">
                 <router-link :to="{ name: 'Profile', params: { profileId: profile?.id } }" class="text-light">
                     <img class="profile-picture-small" :src="profile?.picture" :alt="profile?.picture"
-                        :title="`Visit ${profile?.name}'s profile page!`">
+                        :title="`Visit ${profile?.name}'s profile page!`" onerror="this.src='broken-image.png'">
                 </router-link>
             </div>
             <div class="col-8">

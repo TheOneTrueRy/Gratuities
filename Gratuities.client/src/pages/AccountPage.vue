@@ -13,7 +13,7 @@
       <div class="col-5 col-md-3 offset-md-2 ps-3 text-center d-flex align-items-center">
         <router-link v-if="account.id" :to="{ name: 'Profile', params: { profileId: account?.id } }">
           <img class="elevation-3 rounded user-picture" :src="account?.picture" :alt="account?.name"
-            title="Go to your profile page">
+            title="Go to your profile page" onerror="this.src='broken-image.png'">
         </router-link>
       </div>
 

@@ -4,7 +4,8 @@
             :class="theme ? 'text-dark' : 'text-light'">
             <div class="row align-items-center selectable p-2 rounded">
                 <div class="col-3 g-0 text-center">
-                    <img class="profile-picture-small" :src="notification.giver?.picture" :alt="notification.giver?.name">
+                    <img class="profile-picture-small" :src="notification.giver?.picture" :alt="notification.giver?.name"
+                        onerror="this.src='broken-image.png'">
                 </div>
                 <div class="col-9 pt-2">
                     <div class="d-flex align-items-center">
@@ -27,7 +28,7 @@
                 <div class="row align-items-center selectable p-2 rounded">
                     <div class="col-3 g-0 text-center">
                         <img class="profile-picture-small selectable" :src="notification.creator?.picture"
-                            :alt="notification.creator?.picture">
+                            :alt="notification.creator?.picture" onerror="this.src='broken-image.png'">
                     </div>
                     <div class="col-9 pt-2">
                         <div class="d-flex align-items-center">

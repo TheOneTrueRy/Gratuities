@@ -2,7 +2,8 @@
     <div>
         <div class="d-flex align-items-center flex-column">
             <div class="dropdown ps-2">
-                <img class="business-logo elevation-1" :src="business?.logo" alt="" data-bs-toggle="dropdown">
+                <img class="business-logo elevation-1" :src="business?.logo" alt="" data-bs-toggle="dropdown"
+                    onerror="this.src='broken-image.png'">
                 <ul class="dropdown-menu">
                     <li>
                         <router-link :to="{ name: 'Business', params: { businessId: business?.id } }">

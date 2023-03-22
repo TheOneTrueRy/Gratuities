@@ -3,7 +3,8 @@
         <router-link :to="{ name: 'Business', params: { businessId: business.id } }" class="text-light">
             <div class="row align-items-center">
                 <div class="col-3">
-                    <img class="profile-picture-small" :src="business.logo" :alt="business.logo">
+                    <img class="profile-picture-small" :src="business.logo" :alt="business.logo"
+                        onerror="this.src='broken-image.png'">
                 </div>
                 <div class="col-9">
                     <div>

@@ -4,7 +4,7 @@
             <div class="row align-items-center p-2 mb-2">
                 <div class="col-3">
                     <img class="profile-picture border border-dark border-1" :src="tip?.giver.picture"
-                        :alt="tip?.giver.name">
+                        :alt="tip?.giver.name" onerror="this.src='broken-image.png'">
                 </div>
                 <div class="col-9 d-flex align-items-center">
                     <p class="pt-2">

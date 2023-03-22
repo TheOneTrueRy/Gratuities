@@ -4,7 +4,7 @@
             <div class="col-3">
                 <router-link :to="{ name: 'Profile', params: { profileId: review?.creatorId } }" class="text-light">
                     <img class="profile-picture-small selectable" :src="review.creator?.picture"
-                        :alt="review.creator?.picture">
+                        :alt="review.creator?.picture" onerror="this.src='broken-image.png'">
                 </router-link>
             </div>
 

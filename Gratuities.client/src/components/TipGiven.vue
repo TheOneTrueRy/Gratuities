@@ -4,13 +4,13 @@
             <div class="row align-items-center p-2 mb-2">
                 <div class="col-3">
                     <img class="profile-picture border border-dark border-1" :src="tip?.receiver.picture"
-                        :alt="tip?.receiver.name">
+                        :alt="tip?.receiver.name" onerror="this.src='broken-image.png'">
                 </div>
                 <div class="col-9">
-                        <p class="pt-2">
-                            {{ tip?.receiver.name }} - ₲{{ ((tip?.tip).toLocaleString('en-US')) }}<br>
-                            {{ new Date(tip?.createdAt).toLocaleString('en-US') }}
-                        </p>
+                    <p class="pt-2">
+                        {{ tip?.receiver.name }} - ₲{{ ((tip?.tip).toLocaleString('en-US')) }}<br>
+                        {{ new Date(tip?.createdAt).toLocaleString('en-US') }}
+                    </p>
                 </div>
             </div>
         </div>

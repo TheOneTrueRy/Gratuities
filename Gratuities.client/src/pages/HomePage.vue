@@ -8,7 +8,7 @@
             name: 'Account'
           }">
             <img class="profile-picture border border-dark border-2 elevation-1" :src="account?.picture"
-              :alt="account?.picture" title="Go to your account page!">
+              :alt="account?.picture" title="Go to your account page!" onerror="this.src='broken-image.png'">
           </router-link>
         </div>
 

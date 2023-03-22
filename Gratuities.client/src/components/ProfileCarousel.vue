@@ -3,7 +3,8 @@
         <div id="profileCarousel" class="carousel slide">
             <div class="carousel-inner rounded text-center">
                 <div class="carousel-item active text-center">
-                    <img :src="profile?.picture" class="profile-picture" :alt="profile?.picture">
+                    <img :src="profile?.picture" class="profile-picture" :alt="profile?.picture"
+                        onerror="this.src='broken-image.png'">
                 </div>
                 <div class="carousel-item text-center">
                     <img :src="QRCode" class="profile-picture" :alt="QRCode">

@@ -2,11 +2,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 g-0 d-flex justify-content-center">
-                <img class="coverImg" :src="business?.coverImg" alt="">
+                <img class="coverImg" :src="business?.coverImg" alt="" onerror="this.src='broken-cover-image.jpg'">
             </div>
             <div class="col-12 d-flex justify-content-center">
                 <span class="move-logo text-center">
-                    <img class="business-logo" :src="business?.logo" alt="">
+                    <img class="business-logo" :src="business?.logo" alt="" onerror="this.src='broken-image.png'">
                     <h1>{{ business?.name }}</h1>
                     <div v-if="business?.id">
                         <ProfileStarRating :rating="business?.rating" />
@@ -17,7 +17,8 @@
                     <div class="d-flex justify-content-center align-items-center mb-2">
                         <router-link :to="{ name: 'Profile', params: { profileId: business?.owner.id } }">
                             <img :src="business?.owner.picture" :alt="business?.owner.name"
-                                class="rounded-circle border border-dark border-2 ownerIcon" height="75" width="75">
+                                class="rounded-circle border border-dark border-2 ownerIcon" height="75" width="75"
+                                onerror="this.src='broken-image.png'">
                         </router-link>
                         <span class="fs-4 ms-3">{{ business?.owner.name }}</span>
                     </div>

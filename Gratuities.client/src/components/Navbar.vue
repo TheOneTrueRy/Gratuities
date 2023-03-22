@@ -160,7 +160,7 @@ a:hover {
 }
 
 .no-notifications-bell {
-  padding: 5px;
+  padding: 1;
 }
 
 #notifications-bell {
