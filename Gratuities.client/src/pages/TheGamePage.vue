@@ -144,7 +144,8 @@ export default {
 }
 
 .item {
-  height: 45vh;
+  height: 38vh;
+  user-select: none;
 }
 
 .block {
@@ -155,6 +156,9 @@ export default {
 
 @media screen and (min-width: 375px) {
   .block {
+    height: 43vh;
+  }
+  .item{
     height: 43vh;
   }
 }
