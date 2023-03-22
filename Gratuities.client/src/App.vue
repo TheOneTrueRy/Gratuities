@@ -18,7 +18,7 @@ import { accountService } from './services/AccountService'
 import { notificationsService } from './services/NotificationsService'
 import { tipsService } from './services/TipsService'
 import { themeService } from './services/ThemeService'
-import {feedbackService} from './services/FeedbackService'
+import { feedbackService } from './services/FeedbackService'
 export default {
   setup() {
 
@@ -55,6 +55,10 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+
+header {
+  height: 7vh;
+}
 
 .employee-card {
   background-color: #06D6A0;
@@ -95,8 +99,8 @@ export default {
 .footer-light {
   display: grid;
   place-content: center;
-  height: 32px;
   align-items: center;
+  height: 4vh;
   color: white !important;
   background: linear-gradient(270deg, #46F4DF 11.46%, #06D6A0 74.48%);
 }
@@ -104,7 +108,7 @@ export default {
 .footer-dark {
   display: grid;
   place-content: center;
-  height: 32px;
+  height: 4vh;
   align-items: center;
   color: white !important;
   background: linear-gradient(270deg, #50cbbd 11.46%, #05926c 74.48%);

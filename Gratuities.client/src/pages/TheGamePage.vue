@@ -140,7 +140,7 @@ export default {
 
 .backdrop {
   background-size: cover;
-  min-height: 89.1vh;
+  min-height: 89vh;
 }
 
 .item {
@@ -148,9 +148,15 @@ export default {
 }
 
 .block {
-  height: 45vh;
+  height: 38vh;
   cursor: pointer;
   user-select: none;
+}
+
+@media screen and (min-width: 375px) {
+  .block {
+    height: 43vh;
+  }
 }
 
 .block:active {
