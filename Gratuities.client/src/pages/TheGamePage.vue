@@ -150,6 +150,7 @@ export default {
 .block {
   height: 45vh;
   cursor: pointer;
+  user-select: none;
 }
 
 .block:active {
