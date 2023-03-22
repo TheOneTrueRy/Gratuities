@@ -79,6 +79,7 @@ export default {
     width: 10vh;
     border-radius: 50%;
     border: 2px solid black;
+    user-select: none;
 }
 
 .scroller {
