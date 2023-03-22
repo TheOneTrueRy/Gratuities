@@ -57,7 +57,7 @@ export default {
 @import "./assets/scss/main.scss";
 
 header {
-  height: 7vh;
+  min-height: 7vh;
 }
 
 .employee-card {

@@ -117,7 +117,7 @@ export default {
   align-items: center;
   color: white !important;
   background: linear-gradient(270deg, #46F4DF 11.46%, #06D6A0 74.48%);
-  height: 7vh;
+  min-height: 7vh;
 }
 
 .tip-header-dark {
@@ -125,7 +125,7 @@ export default {
   align-items: center;
   color: white !important;
   background: linear-gradient(270deg, #50cbbd 11.46%, #05926c 74.48%);
-  height: 7vh;
+  min-height: 7vh;
 }
 
 .logo {
@@ -160,7 +160,7 @@ a:hover {
 }
 
 .no-notifications-bell {
-  padding: 1;
+  padding: 5px;
 }
 
 #notifications-bell {
