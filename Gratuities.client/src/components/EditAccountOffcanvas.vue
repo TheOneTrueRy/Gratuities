@@ -15,7 +15,7 @@
                             class="form-control" id="name" name="name">
                     </div>
                     <div>
-                        <label for="picture" class="form-label">Picture</label>
+                        <label for="picture" class="form-label">Picture URL</label>
                         <input required v-model="editable.picture" class="form-control" id="picture" type="text">
                     </div>
                     <div>

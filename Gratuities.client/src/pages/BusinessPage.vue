@@ -14,7 +14,7 @@
                     <div class="my-2">
                         <span class="fs-4">Business Owner:</span>
                     </div>
-                    <div class="d-flex justify-content-center align-items-center">
+                    <div class="d-flex justify-content-center align-items-center mb-2">
                         <router-link :to="{ name: 'Profile', params: { profileId: business?.owner.id } }">
                             <img :src="business?.owner.picture" :alt="business?.owner.name"
                                 class="rounded-circle border border-dark border-2 ownerIcon" height="75" width="75">
