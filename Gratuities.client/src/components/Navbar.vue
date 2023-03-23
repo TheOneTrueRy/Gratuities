@@ -27,7 +27,13 @@
         <li>
           <router-link :to="{ name: 'Home' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow hover"
             title="Return to the Home Page.">
-            <div data-bs-toggle="collapse" data-bs-target="#navbarText">
+            <div data-bs-toggle="collapse" data-bs-target="#navbarText" class="d-md-none">
+              <span>
+                Home
+                <i class="mdi mdi-home"></i>
+              </span>
+            </div>
+            <div class="d-none d-md-flex">
               <span>
                 Home
                 <i class="mdi mdi-home"></i>
@@ -38,7 +44,13 @@
         <li>
           <router-link v-if="account.id" :to="{ name: 'Account' }"
             class="btn lighten-30 selectable text-uppercase text-light my-shadow hover" title="Visit your Account Page.">
-            <div data-bs-toggle="collapse" data-bs-target="#navbarText">
+            <div data-bs-toggle="collapse" data-bs-target="#navbarText" class="d-md-none">
+              <span>
+                Account
+                <i class="mdi mdi-cog"></i>
+              </span>
+            </div>
+            <div class="d-none d-md-flex">
               <span>
                 Account
                 <i class="mdi mdi-cog"></i>
@@ -49,7 +61,13 @@
         <li>
           <router-link v-if="account.id" :to="{ name: 'Profile', params: { profileId: account?.id } }"
             class="btn lighten-30 selectable text-uppercase text-light my-shadow hover" title="Visit your Profile Page.">
-            <div data-bs-toggle="collapse" data-bs-target="#navbarText">
+            <div data-bs-toggle="collapse" data-bs-target="#navbarText" class="d-md-none">
+              <span>
+                Profile
+                <i class="mdi mdi-account"></i>
+              </span>
+            </div>
+            <div class="d-none d-md-flex">
               <span>
                 Profile
                 <i class="mdi mdi-account"></i>
@@ -60,7 +78,13 @@
         <li>
           <router-link :to="{ name: 'About' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow hover"
             title="Visit the About Gratuities Page.">
-            <div data-bs-toggle="collapse" data-bs-target="#navbarText">
+            <div data-bs-toggle="collapse" data-bs-target="#navbarText" class="d-md-none">
+              <span>
+                About
+                <i class="mdi mdi-note-text"></i>
+              </span>
+            </div>
+            <div class="d-none d-md-flex">
               <span>
                 About
                 <i class="mdi mdi-note-text"></i>
@@ -80,7 +104,13 @@
         </div>
         <router-link v-if="account.id" :to="{ name: 'Game' }"
           class="btn lighten-30 selectable text-uppercase text-light my-shadow hover" title="Visit the Game Page.">
-          <div data-bs-toggle="collapse" data-bs-target="#navbarText">
+          <div data-bs-toggle="collapse" data-bs-target="#navbarText" class="d-md-none">
+            <span>
+              Earn G-Bucks
+              <i class="mdi mdi-pickaxe"></i>
+            </span>
+          </div>
+          <div class="d-none d-md-flex">
             <span>
               Earn G-Bucks
               <i class="mdi mdi-pickaxe"></i>
