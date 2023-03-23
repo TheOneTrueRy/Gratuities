@@ -36,7 +36,7 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Account' }"
+          <router-link v-if="account.id" :to="{ name: 'Account' }"
             class="btn lighten-30 selectable text-uppercase text-light my-shadow hover" title="Visit your Account Page.">
             <div data-bs-toggle="collapse" data-bs-target="#navbarText">
               <span>
@@ -47,7 +47,7 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Profile', params: { profileId: account.id } }"
+          <router-link v-if="account.id" :to="{ name: 'Profile', params: { profileId: account?.id } }"
             class="btn lighten-30 selectable text-uppercase text-light my-shadow hover" title="Visit your Profile Page.">
             <div data-bs-toggle="collapse" data-bs-target="#navbarText">
               <span>
