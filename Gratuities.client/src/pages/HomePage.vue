@@ -231,8 +231,8 @@ export default {
 }
 
 .profile-picture {
-  height: 20vh;
-  width: 20vh;
+  height: 25vh;
+  width: 25vh;
   border-radius: 50%;
   cursor: pointer;
   transition: 0.5s;
