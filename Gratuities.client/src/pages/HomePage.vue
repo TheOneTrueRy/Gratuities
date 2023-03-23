@@ -89,8 +89,8 @@
         <div class="col-12 col-md-8 offset-md-2 my-3">
           <h6>Top Businesses:</h6>
         </div>
-        <div v-for="b in businesses" class="col-12 rounded col-md-8 offset-md-2">
-          <BusinessCard :business="b" />
+        <div v-for="b in businesses" class="col-12 employee-card rounded col-md-8 offset-md-2">
+          <BusinessCard :business="b" :title="`Visit ${b?.name}'s business page!'`" />
         </div>
       </div>
 
@@ -212,8 +212,12 @@ export default {
   cursor: pointer;
 }
 
+.employee-card:hover {
+  transform: scale(1.02);
+}
+
 .employee-card:active {
-  transform: scale(0.9);
+  transform: scale(0.95);
 }
 
 .biggest-tip {

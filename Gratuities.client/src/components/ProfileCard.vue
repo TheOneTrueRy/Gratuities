@@ -30,11 +30,10 @@
 
 
 <script>
-import { computed, watchEffect } from 'vue';
+import { computed } from 'vue';
 import { AppState } from '../AppState';
 import { Profile } from '../models/Profile.js';
 import { employeesService } from '../services/EmployeesService';
-import { themeService } from '../services/ThemeService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import ProfileStarRating from "./ProfileStarRating.vue";
@@ -47,10 +46,6 @@ export default {
         }
     },
     setup() {
-
-        function themeCheckDark() {
-            themeService.themeCheckDark()
-        }
         return {
             business: computed(() => AppState.business),
             account: computed(() => AppState.account),
@@ -80,6 +75,16 @@ export default {
     border-radius: 50%;
     border: 2px solid black;
     user-select: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.profile-picture-small:hover {
+    transform: scale(1.1);
+}
+
+.profile-picture-small:active {
+    transform: scale(0.8);
 }
 
 .scroller {

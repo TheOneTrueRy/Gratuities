@@ -33,7 +33,7 @@
                 <h2>Top Rated Employees:</h2>
                 <form class="mb-4" @submit.prevent="search()">
                     <div class="input-group">
-                        <input v-model="editable3.query" class="form-control" placeholder="Search Employees"
+                        <input v-model="editable3.query" class="form-control" placeholder="Search employees working here..."
                             aria-describedby="button-addon2" aria-label="Search Employees" type="text">
                         <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
                             <i class="mdi mdi-magnify"></i>

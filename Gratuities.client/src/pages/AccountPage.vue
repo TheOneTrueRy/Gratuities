@@ -47,7 +47,7 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-around pe-4">
+      <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-around pe-4 mt-1">
         <button data-bs-toggle="offcanvas" data-bs-target="#addBusiness" aria-controls="offcanvasExample"
           class="btn figma-buttons text-light elevation-3 rounded-pill hover-text">New
           Business</button>
@@ -55,12 +55,12 @@
           class="btn figma-buttons text-light elevation-3 rounded-pill hover-text">Edit Account</button>
       </div>
 
-      <div class="col-12 col-md-6 offset-md-3 mt-4">
+      <div class="col-12 col-md-6 offset-md-3 mt-3">
         <h1>Recent Tips:</h1>
       </div>
 
       <!-- SECTION buttons to switch between tip types -->
-      <div class="col-12 col-md-6 offset-md-3 mt-3 d-flex justify-content-center mb-3">
+      <div class="col-12 col-md-6 offset-md-3 my-1 d-flex justify-content-center">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
           <input @click="showReceivedTips()" type="radio" class="btn-check" name="btnradio" id="btnradio1"
             autocomplete="off" checked>
@@ -74,12 +74,12 @@
 
       <!-- SECTION tips list -->
       <div v-if="tipType == 'received'" class="col-12 col-md-6 offset-md-3 tips-section">
-        <div v-for="t in receivedTips">
+        <div v-for="t in receivedTips" class="TipCard">
           <Tip :tip="t" />
         </div>
       </div>
       <div v-else class="col-12 col-md-6 offset-md-3 tips-section">
-        <div v-for="t in givenTips">
+        <div v-for="t in givenTips" class="TipCard">
           <TipGiven :tip="t" />
         </div>
       </div>
@@ -237,12 +237,25 @@ export default {
 
 .tips-section {
   padding: 1vh;
-  height: 60vh;
+  height: 36vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
 .tips-section::-webkit-scrollbar {
   display: none;
+}
+
+.TipCard {
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.TipCard:hover {
+  transform: scale(1.02);
+}
+
+.TipCard:active {
+  transform: scale(0.95);
 }
 </style>

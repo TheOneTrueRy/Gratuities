@@ -104,6 +104,16 @@ export default {
     border-radius: 50%;
     border: 2px solid black;
     user-select: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.profile-picture-small:hover {
+    transform: scale(1.1);
+}
+
+.profile-picture-small:active {
+    transform: scale(0.8);
 }
 
 .timestamp {
