@@ -129,7 +129,7 @@ export default {
                 await profilesService.generateQRCode(profileId);
             }
             catch (error) {
-                Pop.error("[GENERATING QR CODE]", error);
+                Pop.error(error.message, '[GENERATING QR CODE]');
             }
         }
         async function getProfileById() {
@@ -138,7 +138,7 @@ export default {
                 await profilesService.getProfileById(profileId);
             }
             catch (error) {
-                Pop.error("[GETTING PROFILE BY ID]", error);
+                Pop.error(error.message, '[GETTING PROFILE BY ID]');
             }
         }
 
@@ -156,7 +156,7 @@ export default {
                 const profileId = route.params.profileId
                 await profilesService.getReviewsByProfileId(profileId)
             } catch (error) {
-                Pop.error('[GETTING REVIEWS BY PROFILEID]', error.message)
+                Pop.error(error.message, '[GETTING REVIEWS BY PROFILE ID]')
             }
         }
 

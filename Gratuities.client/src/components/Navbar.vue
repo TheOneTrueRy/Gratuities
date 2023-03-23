@@ -6,7 +6,7 @@
     </button>
     <router-link class="text-light" :to="{ name: 'Home' }">
       <div class="logo d-flex flex-column align-items-center">
-        <h1 class="nomb">Gratuities</h1>
+        <h1 class="nomb" title="Return to the Home Page.">Gratuities</h1>
       </div>
     </router-link>
     <button v-if="notifications?.length > 0 && account.id" data-bs-toggle="offcanvas"
@@ -25,7 +25,8 @@
     <div class="text-start collapse navbar-collapse ms-4" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'Home' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
+          <router-link :to="{ name: 'Home' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow hover"
+            title="Return to the Home Page.">
             <div data-bs-toggle="collapse" data-bs-target="#navbarText">
               <span>
                 Home
@@ -36,7 +37,7 @@
         </li>
         <li>
           <router-link :to="{ name: 'Account' }"
-            class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
+            class="btn lighten-30 selectable text-uppercase text-light my-shadow hover" title="Visit your Account Page.">
             <div data-bs-toggle="collapse" data-bs-target="#navbarText">
               <span>
                 Account
@@ -47,7 +48,7 @@
         </li>
         <li>
           <router-link :to="{ name: 'Profile', params: { profileId: account.id } }"
-            class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
+            class="btn lighten-30 selectable text-uppercase text-light my-shadow hover" title="Visit your Profile Page.">
             <div data-bs-toggle="collapse" data-bs-target="#navbarText">
               <span>
                 Profile
@@ -57,8 +58,8 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'About' }"
-            class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
+          <router-link :to="{ name: 'About' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow hover"
+            title="Visit the About Gratuities Page.">
             <div data-bs-toggle="collapse" data-bs-target="#navbarText">
               <span>
                 About
@@ -78,7 +79,7 @@
           </span>
         </div>
         <router-link v-if="account.id" :to="{ name: 'Game' }"
-          class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
+          class="btn lighten-30 selectable text-uppercase text-light my-shadow hover" title="Visit the Game Page.">
           <div data-bs-toggle="collapse" data-bs-target="#navbarText">
             <span>
               Earn G-Bucks
@@ -100,7 +101,7 @@
 </template>
 
 <script>
-import { computed, watchEffect } from "vue";
+import { computed } from "vue";
 import { AppState } from "../AppState.js";
 import { themeService } from "../services/ThemeService";
 import Login from './Login.vue'

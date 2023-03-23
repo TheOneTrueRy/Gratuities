@@ -39,7 +39,7 @@ class TipsService {
     const receiver = await profileService.getProfileById(tip.receiverId)
 
     if (giver.currency < tip.tip) {
-      throw new BadRequest("You don't have enough money")
+      throw new BadRequest("You don't have enough G-Bucks!")
     }
     if (giver.id == receiver.id){
       throw new Forbidden("You can't give yourself a tip!")

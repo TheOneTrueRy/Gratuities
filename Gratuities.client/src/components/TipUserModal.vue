@@ -57,7 +57,7 @@ export default {
                     Pop.success(`Tip of ₲${editable.value.tip} sent to ${AppState.profile.name}`)
                     editable.value = {}
                 } catch (error) {
-                    Pop.error('[SENDING TIP]', error)
+                    Pop.error(error.message, '[SENDING TIP]')
                 }
             }
         }

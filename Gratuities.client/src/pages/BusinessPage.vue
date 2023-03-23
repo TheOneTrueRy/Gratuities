@@ -137,7 +137,7 @@ export default {
                     await employeesService.getEmployeeByQuery(query, businessId);
                 }
                 catch (error) {
-                    Pop.error("SEARCHING FOR BUSINESSES", error);
+                    Pop.error(error.message, '[SEARCHING BUSINESSES]');
                 }
             }
         };

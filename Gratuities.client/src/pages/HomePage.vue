@@ -130,7 +130,7 @@ export default {
         await businessesService.getHighestRatedBusinesses();
       }
       catch (error) {
-        Pop.error("[GETTING HIGHEST RATED BUSINESSES]", error);
+        Pop.error(error.message, '[GETTING HIGHEST RATED BUSINESSES]');
       }
     }
 
@@ -139,7 +139,7 @@ export default {
         await profilesService.getHighestRatedProfiles();
       }
       catch (error) {
-        Pop.error("[GETTING HIGHEST RATED PROFILES]", error);
+        Pop.error(error.message, '[GETTING HIGHEST RATED PROFILES]');
       }
     }
 
@@ -184,7 +184,7 @@ export default {
           await profilesService.getProfilesByQuery(query);
         }
         catch (error) {
-          Pop.error("SEARCHING FOR BUSINESSES", error);
+          Pop.error(error.message, '[SEARCHING]');
         }
       },
 
