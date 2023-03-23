@@ -88,13 +88,20 @@ export default {
 }
 
 .profile-picture-small {
-    height: 12vh;
-    width: 12vh;
+    height: 10vh;
+    width: 10vh;
     border-radius: 50%;
     border: 2px solid black;
     user-select: none;
     cursor: pointer;
     transition: 0.5s;
+}
+
+@media screen and (min-width: 768px) {
+    .profile-picture-small {
+        height: 12vh;
+        width: 12vh;
+    }
 }
 
 .profile-picture-small:hover {
