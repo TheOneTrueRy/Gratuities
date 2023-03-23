@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div v-if="business" class="container-fluid">
         <div class="row">
             <div class="col-12 g-0 d-flex justify-content-center">
                 <img class="coverImg" :src="business?.coverImg" alt="" onerror="this.src='broken-cover-image.jpg'">

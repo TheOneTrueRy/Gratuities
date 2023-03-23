@@ -25,10 +25,12 @@
     <div class="text-start collapse navbar-collapse ms-4" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'About' }"
-            class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
+          <router-link :to="{ name: 'Home' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
             <div data-bs-toggle="collapse" data-bs-target="#navbarText">
-              About
+              <span>
+                Home
+                <i class="mdi mdi-home"></i>
+              </span>
             </div>
           </router-link>
         </li>
@@ -36,29 +38,60 @@
           <router-link :to="{ name: 'Account' }"
             class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
             <div data-bs-toggle="collapse" data-bs-target="#navbarText">
-              Account
+              <span>
+                Account
+                <i class="mdi mdi-cog"></i>
+              </span>
             </div>
           </router-link>
         </li>
-        <li v-if="account.id">
-          <div class="my-shadow btn-p text-start text-uppercase">
-            <span>G-Bucks: <span class="ms-1">{{ (((account.currency).toLocaleString('en-US')))
-            }}</span></span>
-          </div>
-        </li>
-        <li v-if="account.id">
-          <router-link :to="{ name: 'Game' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
+        <li>
+          <router-link :to="{ name: 'Profile', params: { profileId: account.id } }"
+            class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
             <div data-bs-toggle="collapse" data-bs-target="#navbarText">
-              Earn G-Bucks
+              <span>
+                Profile
+                <i class="mdi mdi-account"></i>
+              </span>
+            </div>
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'About' }"
+            class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
+            <div data-bs-toggle="collapse" data-bs-target="#navbarText">
+              <span>
+                About
+                <i class="mdi mdi-note-text"></i>
+              </span>
             </div>
           </router-link>
         </li>
       </ul>
+      <div class="d-md-flex">
+        <div v-if="account.id" class="my-shadow btn-p text-start text-uppercase">
+          <span>
+            G-Bucks:
+            <span class="ms-1">
+              ₲{{ (((account.currency).toLocaleString('en-US'))) }}
+            </span>
+          </span>
+        </div>
+        <router-link v-if="account.id" :to="{ name: 'Game' }"
+          class="btn lighten-30 selectable text-uppercase text-light my-shadow hover">
+          <div data-bs-toggle="collapse" data-bs-target="#navbarText">
+            <span>
+              Earn G-Bucks
+              <i class="mdi mdi-pickaxe"></i>
+            </span>
+          </div>
+        </router-link>
+      </div>
       <!-- LOGIN COMPONENT HERE -->
       <div class="d-flex justify-space-between align-items-center">
         <Login />
         <button v-if="account.id" class="btn" @click="toggleTheme()">
-          <h1><i class="mdi mdi-theme-light-dark"></i></h1>
+          <span><i class="mdi mdi-theme-light-dark fs-1"></i></span>
         </button>
       </div>
     </div>
