@@ -31,6 +31,11 @@ class EmployeesService {
     }
     async hireEmployees(body) {
         const foundEmployee = await dbContext.Account.findById(body.accountId)
+        const business = await dbContext.Businesses.findById(body.businessId)
+        const owner = await dbContext.Account.findById(business.ownerId)
+        if(foundEmployee.id == owner.id){
+            throw new Forbidden("You can't add yourself to your own business!")
+        }
         // @ts-ignore
         body.employeeName = foundEmployee.name
         // @ts-ignore
@@ -42,9 +47,7 @@ class EmployeesService {
         const employee = await dbContext.Employees.create(body)
         await employee.populate('business', 'name location')
 
-        const business = await dbContext.Businesses.findById(body.businessId)
         // @ts-ignore
-        const owner = await dbContext.Account.findById(business.ownerId)
 
         // @ts-ignore
         if (foundEmployee.notifications) {

@@ -8,27 +8,9 @@ body{
   overscroll-behavior: none;
   background-color: white;
   &.dark{
-    background: linear-gradient(-45deg, #717388, #474558, #424242, #9897cb);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	height: 100vh;
+    background: rgb(7,8,8);
+    background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(61,61,61,1) 100%);
   color: white;
-}
-
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-  }
-  &.light{
-    background-color: #ffffff;
-    color: #000000;
   }
 }
 

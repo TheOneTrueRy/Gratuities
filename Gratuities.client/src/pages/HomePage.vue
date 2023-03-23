@@ -8,7 +8,7 @@
             name: 'Account'
           }">
             <img class="profile-picture border border-dark border-2 elevation-1" :src="account?.picture"
-              :alt="account?.picture" title="Go to your account page!">
+              :alt="account?.picture" title="Go to your account page!" onerror="this.src='broken-image.png'">
           </router-link>
         </div>
 
@@ -89,8 +89,8 @@
         <div class="col-12 col-md-8 offset-md-2 my-3">
           <h6>Top Businesses:</h6>
         </div>
-        <div v-for="b in businesses" class="col-12 rounded col-md-8 offset-md-2">
-          <BusinessCard :business="b" />
+        <div v-for="b in businesses" class="col-12 employee-card rounded col-md-8 offset-md-2">
+          <BusinessCard :business="b" :title="`Visit ${b?.name}'s business page!'`" />
         </div>
       </div>
 
@@ -130,7 +130,7 @@ export default {
         await businessesService.getHighestRatedBusinesses();
       }
       catch (error) {
-        Pop.error("[GETTING HIGHEST RATED BUSINESSES]", error);
+        Pop.error(error.message, '[GETTING HIGHEST RATED BUSINESSES]');
       }
     }
 
@@ -139,7 +139,7 @@ export default {
         await profilesService.getHighestRatedProfiles();
       }
       catch (error) {
-        Pop.error("[GETTING HIGHEST RATED PROFILES]", error);
+        Pop.error(error.message, '[GETTING HIGHEST RATED PROFILES]');
       }
     }
 
@@ -184,7 +184,7 @@ export default {
           await profilesService.getProfilesByQuery(query);
         }
         catch (error) {
-          Pop.error("SEARCHING FOR BUSINESSES", error);
+          Pop.error(error.message, '[SEARCHING]');
         }
       },
 
@@ -212,8 +212,12 @@ export default {
   cursor: pointer;
 }
 
+.employee-card:hover {
+  transform: scale(1.02);
+}
+
 .employee-card:active {
-  transform: scale(0.9);
+  transform: scale(0.95);
 }
 
 .biggest-tip {
@@ -227,8 +231,8 @@ export default {
 }
 
 .profile-picture {
-  height: 20vh;
-  width: 20vh;
+  height: 25vh;
+  width: 25vh;
   border-radius: 50%;
   cursor: pointer;
   transition: 0.5s;

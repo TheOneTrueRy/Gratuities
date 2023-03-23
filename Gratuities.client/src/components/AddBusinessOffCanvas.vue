@@ -23,12 +23,12 @@
                         </div>
 
                         <div class="mb-2">
-                            <label class="form-label">Logo</label>
+                            <label class="form-label">Logo URL</label>
                             <input required v-model="editable.logo" minlength="3" maxlength="500"
                                 placeholder="What's it's logo?" type="text" class="form-control">
                         </div>
                         <div class="mb-2">
-                            <label class="form-label">Cover Image</label>
+                            <label class="form-label">Cover Image URL</label>
                             <input required v-model="editable.coverImg" minlength="3" maxlength="500"
                                 placeholder="What's it's cover image?" type="text" class="form-control">
                         </div>

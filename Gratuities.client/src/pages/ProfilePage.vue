@@ -1,5 +1,5 @@
 <template>
-    <div class="ProfilePage">
+    <div v-if="profile" class="ProfilePage">
         <div class="container-fluid">
             <div class="row mt-1">
                 <div class="col-12">
@@ -20,14 +20,14 @@
                                     <li><a class="dropdown-item selectable" data-bs-toggle="offcanvas"
                                             data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Add to business</a>
                                     </li>
-                                    <li v-if="profile?.openToFeedback && !chat" @click="createChat()"><a class="dropdown-item selectable"
-                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-                                            aria-controls="offcanvasBottom">Send
+                                    <li v-if="profile?.openToFeedback && !chat" @click="createChat()"><a
+                                            class="dropdown-item selectable" data-bs-toggle="offcanvas"
+                                            data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Send
                                             feedback</a>
                                     </li>
-                                    <li v-if="profile?.openToFeedback && chat" @click="openChat()"><a class="dropdown-item selectable"
-                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-                                            aria-controls="offcanvasBottom">Open Chat</a>
+                                    <li v-if="profile?.openToFeedback && chat" @click="openChat()"><a
+                                            class="dropdown-item selectable" data-bs-toggle="offcanvas"
+                                            data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Open Chat</a>
                                     </li>
                                 </ul>
                             </div>
@@ -129,7 +129,7 @@ export default {
                 await profilesService.generateQRCode(profileId);
             }
             catch (error) {
-                Pop.error("[GENERATING QR CODE]", error);
+                Pop.error(error.message, '[GENERATING QR CODE]');
             }
         }
         async function getProfileById() {
@@ -138,7 +138,7 @@ export default {
                 await profilesService.getProfileById(profileId);
             }
             catch (error) {
-                Pop.error("[GETTING PROFILE BY ID]", error);
+                Pop.error(error.message, '[GETTING PROFILE BY ID]');
             }
         }
 
@@ -156,11 +156,11 @@ export default {
                 const profileId = route.params.profileId
                 await profilesService.getReviewsByProfileId(profileId)
             } catch (error) {
-                Pop.error('[GETTING REVIEWS BY PROFILEID]', error.message)
+                Pop.error(error.message, '[GETTING REVIEWS BY PROFILE ID]')
             }
         }
 
-        async function getChat(){
+        async function getChat() {
             try {
                 const profileId = route.params.profileId
                 await feedbackService.getChat(profileId)

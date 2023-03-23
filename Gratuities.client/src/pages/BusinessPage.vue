@@ -1,17 +1,27 @@
 <template>
-    <div class="container-fluid">
+    <div v-if="business" class="container-fluid">
         <div class="row">
             <div class="col-12 g-0 d-flex justify-content-center">
-                <img class="coverImg" :src="business?.coverImg" alt="">
+                <img class="coverImg" :src="business?.coverImg" alt="" onerror="this.src='broken-cover-image.jpg'">
             </div>
             <div class="col-12 d-flex justify-content-center">
                 <span class="move-logo text-center">
-                    <img class="business-logo" :src="business?.logo" alt="">
+                    <img class="business-logo" :src="business?.logo" alt="" onerror="this.src='broken-image.png'">
                     <h1>{{ business?.name }}</h1>
                     <div v-if="business?.id">
                         <ProfileStarRating :rating="business?.rating" />
                     </div>
-
+                    <div class="my-2">
+                        <span class="fs-4">Business Owner:</span>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center mb-2">
+                        <router-link :to="{ name: 'Profile', params: { profileId: business?.owner.id } }">
+                            <img :src="business?.owner.picture" :alt="business?.owner.name"
+                                class="rounded-circle border border-dark border-2 ownerIcon" height="75" width="75"
+                                onerror="this.src='broken-image.png'">
+                        </router-link>
+                        <span class="fs-4 ms-3">{{ business?.owner.name }}</span>
+                    </div>
                     <button v-if="account.id == business?.ownerId" class="w-50 rounded-pill btn btn-outline-success"
                         type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                         aria-controls="offcanvasExample">
@@ -23,7 +33,7 @@
                 <h2>Top Rated Employees:</h2>
                 <form class="mb-4" @submit.prevent="search()">
                     <div class="input-group">
-                        <input v-model="editable3.query" class="form-control" placeholder="Search Employees"
+                        <input v-model="editable3.query" class="form-control" placeholder="Search employees working here..."
                             aria-describedby="button-addon2" aria-label="Search Employees" type="text">
                         <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
                             <i class="mdi mdi-magnify"></i>
@@ -65,6 +75,7 @@ export default {
             try {
                 const businessId = route.params.businessId;
                 await businessesService.getBusinessById(businessId);
+                logger.log(AppState.business)
             }
             catch (error) {
                 Pop.error(error.message);
@@ -126,7 +137,7 @@ export default {
                     await employeesService.getEmployeeByQuery(query, businessId);
                 }
                 catch (error) {
-                    Pop.error("SEARCHING FOR BUSINESSES", error);
+                    Pop.error(error.message, '[SEARCHING BUSINESSES]');
                 }
             }
         };
@@ -151,9 +162,20 @@ export default {
     border-radius: 50%;
     object-fit: cover;
     background-position: center;
+    user-select: none;
 }
 
 .move-logo {
     transform: translate(0px, -10vh);
+}
+
+.ownerIcon {
+    transition: 0.5s;
+    cursor: pointer;
+    user-select: none;
+}
+
+.ownerIcon:hover {
+    transform: scale(1.1);
 }
 </style>

@@ -5,7 +5,7 @@
             <div class="col-3 d-flex align-items-center">
                 <router-link :to="{ name: 'Profile', params: { profileId: profile?.id } }" class="text-light">
                     <img class="profile-picture-small" :src="profile?.picture" :alt="profile?.picture"
-                        :title="`Visit ${profile?.name}'s profile page!`">
+                        :title="`Visit ${profile?.name}'s profile page!`" onerror="this.src='broken-image.png'">
                 </router-link>
             </div>
             <div class="col-8">
@@ -30,11 +30,10 @@
 
 
 <script>
-import { computed, watchEffect } from 'vue';
+import { computed } from 'vue';
 import { AppState } from '../AppState';
 import { Profile } from '../models/Profile.js';
 import { employeesService } from '../services/EmployeesService';
-import { themeService } from '../services/ThemeService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import ProfileStarRating from "./ProfileStarRating.vue";
@@ -47,10 +46,6 @@ export default {
         }
     },
     setup() {
-
-        function themeCheckDark() {
-            themeService.themeCheckDark()
-        }
         return {
             business: computed(() => AppState.business),
             account: computed(() => AppState.account),
@@ -79,10 +74,28 @@ export default {
     width: 10vh;
     border-radius: 50%;
     border: 2px solid black;
+    user-select: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+@media screen and (min-width: 768px) {
+    .profile-picture-small {
+        height: 12vh;
+        width: 12vh;
+    }
+}
+
+.profile-picture-small:hover {
+    transform: scale(1.1);
+}
+
+.profile-picture-small:active {
+    transform: scale(0.8);
 }
 
 .scroller {
-    height: 75%;
+    height: 9vh;
     overflow-y: scroll;
 }
 

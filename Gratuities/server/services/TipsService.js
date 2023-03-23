@@ -1,5 +1,5 @@
 import { dbContext } from "../db/DbContext"
-import { BadRequest } from "../utils/Errors"
+import { BadRequest, Forbidden } from "../utils/Errors"
 import { profileService } from "./ProfileService"
 import { courier } from "../../authkey";
 import { accountService } from "./AccountService";
@@ -39,7 +39,10 @@ class TipsService {
     const receiver = await profileService.getProfileById(tip.receiverId)
 
     if (giver.currency < tip.tip) {
-      throw new BadRequest("You don't have enough money")
+      throw new BadRequest("You don't have enough G-Bucks!")
+    }
+    if (giver.id == receiver.id){
+      throw new Forbidden("You can't give yourself a tip!")
     }
 
     const tips = await dbContext.Tips.create(tip)

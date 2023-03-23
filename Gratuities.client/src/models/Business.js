@@ -8,5 +8,6 @@ export class Business{
         this.coverImg = data.coverImg
         this.ownerId = data.ownerId
         this.rating = data.rating
+        this.owner = data.owner
     }
 }

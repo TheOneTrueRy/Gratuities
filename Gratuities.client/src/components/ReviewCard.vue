@@ -4,11 +4,11 @@
             <div class="col-3">
                 <router-link :to="{ name: 'Profile', params: { profileId: review?.creatorId } }" class="text-light">
                     <img class="profile-picture-small selectable" :src="review.creator?.picture"
-                        :alt="review.creator?.picture">
+                        :alt="review.creator?.picture" onerror="this.src='broken-image.png'">
                 </router-link>
             </div>
 
-            <div class="col-8 pt-3">
+            <div class="col-8 pt-1">
                 <div class="d-flex align-items-center">
                     <span class="text-start">{{ review.creator?.name }} | <ProfileStarRating :rating="review?.rating">
                         </ProfileStarRating>
@@ -16,9 +16,9 @@
                 </div>
                 <div class="scroller">
                     <span v-if="review?.body">"{{ review?.body }}"</span>
-                    <div class="timestamp pt-1">
-                        <p>{{ review?.createdAt }}</p>
-                    </div>
+                </div>
+                <div class="timestamp pt-1">
+                    <span>{{ review?.createdAt }}</span>
                 </div>
             </div>
 
@@ -79,7 +79,7 @@ export default {
 }
 
 .scroller {
-    height: 75%;
+    height: 7vh;
     overflow-y: scroll;
 }
 
@@ -92,6 +92,24 @@ export default {
     width: 10vh;
     border-radius: 50%;
     border: 2px solid black;
+    user-select: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+@media screen and (min-width: 768px) {
+    .profile-picture-small {
+        height: 12vh;
+        width: 12vh;
+    }
+}
+
+.profile-picture-small:hover {
+    transform: scale(1.1);
+}
+
+.profile-picture-small:active {
+    transform: scale(0.8);
 }
 
 .timestamp {

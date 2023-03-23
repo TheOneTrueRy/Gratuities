@@ -102,7 +102,7 @@ export default {
                     Pop.success('You successfully left a review')
                 }
                 catch (error) {
-                    Pop.error("[LEAVING REVIEW]", error);
+                    Pop.error(error.message, '[LEAVING REVIEW]');
                 }
             },
             theme: computed(() => AppState.account.theme)

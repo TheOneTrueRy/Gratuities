@@ -3,7 +3,8 @@
         <router-link :to="{ name: 'Business', params: { businessId: business.id } }" class="text-light">
             <div class="row align-items-center">
                 <div class="col-3">
-                    <img class="profile-picture-small" :src="business.logo" :alt="business.logo">
+                    <img class="profile-picture-small" :src="business.logo" :alt="business.logo"
+                        onerror="this.src='broken-image.png'">
                 </div>
                 <div class="col-9">
                     <div>
@@ -53,5 +54,23 @@ export default {
     width: 10vh;
     border-radius: 50%;
     border: 2px solid black;
+    user-select: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+@media screen and (min-width: 768px) {
+    .profile-picture-small {
+        height: 12vh;
+        width: 12vh;
+    }
+}
+
+.profile-picture-small:hover {
+    transform: scale(1.1);
+}
+
+.profile-picture-small:active {
+    transform: scale(0.8);
 }
 </style>
