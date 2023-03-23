@@ -50,8 +50,8 @@ export default {
 
 <style lang="scss" scoped>
 .profile-picture-small {
-    height: 10vh;
-    width: 10vh;
+    height: 12vh;
+    width: 12vh;
     border-radius: 50%;
     border: 2px solid black;
     user-select: none;

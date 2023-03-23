@@ -1,5 +1,6 @@
 <template>
-    <router-link :to="{ name: 'Profile', params: { profileId: tip?.giver.id } }" class="text-light">
+    <router-link :to="{ name: 'Profile', params: { profileId: tip?.giver.id } }" class="text-light"
+        :title="`Go to ${tip?.giver.name}'s Profile page!`">
         <div class="rounded col-12 my-1 tips" :class="theme ? 'employee-card' : 'employee-card-dark'">
             <div class="row align-items-center p-2 mb-2">
                 <div class="col-3">
@@ -37,8 +38,8 @@ export default {
 
 <style lang="scss" scoped>
 .profile-picture {
-    height: 8vh;
-    width: 8vh;
+    height: 12vh;
+    width: 12vh;
     border-radius: 50%;
     object-fit: cover;
     background-position: center;
