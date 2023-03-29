@@ -143,6 +143,11 @@ export default {
   min-height: 89vh;
 }
 
+::selection {
+  background-color: transparent;
+  color: #000;
+}
+
 .item {
   height: 38vh;
   user-select: none;
@@ -157,8 +162,11 @@ export default {
 @media screen and (min-width: 375px) {
   .block {
     height: 43vh;
+    touch-action: pan-x pan-y;
+    height: 100%
   }
-  .item{
+
+  .item {
     height: 43vh;
   }
 }
