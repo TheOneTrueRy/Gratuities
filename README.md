@@ -39,3 +39,7 @@ Gratuities is made for both mobile and desktop, though the on-the-fly nature of 
 
 [QR code API](https://goqr.me/api/)
 
+
+## Credit to Mojang
+
+In the making of the placeholder Clicker Minigame to earn the bogus currency on the site, Minecraft textures/assets belonging to Mojang and Microsoft were used. We do not take credit or claim to these textures/assets at all.
