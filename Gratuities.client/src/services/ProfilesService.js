@@ -39,7 +39,7 @@ class ProfilesService {
     }
 
     async generateQRCode(profileId) {
-        AppState.QRCode = `https://api.qrserver.com/v1/create-qr-code/?data=https://gratuities.onrender.com/#/profiles/${profileId};size=100x100`
+        AppState.QRCode = `https://api.qrserver.com/v1/create-qr-code/?data=https://gratuities.onrender.com/%23/profiles/${profileId};size=100x100`
     }
 
     async leaveReview(reviewData, profileId) {
