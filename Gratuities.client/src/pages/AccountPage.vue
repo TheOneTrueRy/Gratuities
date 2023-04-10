@@ -35,11 +35,11 @@
             <h6>Biggest Tip:</h6>
             <ul>
               <li>This Month: <i class="fs-5" :class="theme ? 'cash' : 'cash-light'" v-if="highestTipMonth">₲{{
-                ((highestTipMonth)?.toLocaleString('en-US')) }}</i>
+                ((highestTipMonth).toLocaleString('en-US')) }}</i>
                 <i v-else>No Tips Yet</i>
               </li>
               <li>Ever: <i class="fs-5" :class="theme ? 'cash' : 'cash-light'" v-if="highestTipEver">₲{{
-                ((highestTipEver?.tip)?.toLocaleString('en-US')) }}</i>
+                ((highestTipEver.tip).toLocaleString('en-US')) }}</i>
                 <i v-else>No Tips Yet</i>
               </li>
             </ul>

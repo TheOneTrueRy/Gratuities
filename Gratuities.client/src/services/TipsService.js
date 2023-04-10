@@ -31,7 +31,9 @@ class TipsService {
             })
             tipsThisMonth.sort((a, b) => b.tip - a.tip)
             sortedTips.sort((a, b) => b.tip - a.tip)
-            AppState.highestTipMonth = tipsThisMonth[0].tip
+            if(tipsThisMonth.length > 0){
+              AppState.highestTipMonth = tipsThisMonth[0].tip
+            }
             AppState.highestTipEver = sortedTips[0]
             AppState.availableToPayout = availableToPayout
         }

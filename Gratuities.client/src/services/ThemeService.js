@@ -4,16 +4,10 @@ import { api } from "./AxiosService"
 
 class ThemeService {
     toggleThemeDark() {
-        let indexBody = document.getElementById('HTMLBody')
-        indexBody.classList.remove('light')
-        indexBody.classList.add('dark')
         AppState.account.theme = false
 
     }
     toggleThemeLight() {
-        let indexBody = document.getElementById('HTMLBody')
-        indexBody.classList.remove('dark')
-        indexBody.classList.add('light')
         AppState.account.theme = true
     }
 

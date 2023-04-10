@@ -2,7 +2,7 @@
   <header class="sticky-top">
     <Navbar />
   </header>
-  <main>
+  <main :class="[theme ? 'bg-light' : 'bg-dark']" class="bg-gradient">
     <router-view />
   </main>
   <footer :class="theme ? 'footer-light' : 'footer-dark'">
