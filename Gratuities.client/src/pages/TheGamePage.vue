@@ -138,14 +138,13 @@ export default {
   }
 }
 
+span {
+  user-select: none;
+}
+
 .backdrop {
   background-size: cover;
   min-height: 89vh;
-}
-
-::selection {
-  background-color: transparent;
-  color: #000;
 }
 
 .item {

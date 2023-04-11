@@ -6,7 +6,8 @@
               class="typewriter ms-md-2 d-flex">With
               Ease.</span></i></h1>
       </div>
-      <div class="offset-1 col-10 col-md-8 offset-md-2 mb-2 mt-1 desc-card rounded d-flex justify-content-center">
+      <div class="offset-1 col-10 col-md-8 offset-md-2 mb-2 mt-1 desc-card rounded d-flex justify-content-center"
+        :class="[theme ? 'bg-light-green' : 'bg-dark-green']">
         <p class="p-2 pt-3">&nbsp; &nbsp; &nbsp;The Gratuities App is all about giving deserving workers their due.
           <br><br>
           &nbsp; &nbsp; &nbsp;
@@ -163,11 +164,14 @@
 </template>
 
 <script>
+import { computed } from "vue";
+import { AppState } from "../AppState.js";
+
 
 export default {
   setup() {
     return {
-
+      theme: computed(() => AppState.account.theme)
     }
   }
 }
@@ -188,6 +192,14 @@ export default {
   display: none;
 }
 
+.bg-dark-green {
+  background-color: #186350;
+}
+
+.bg-light-green {
+  background-color: #06D6A0;
+}
+
 .w-ease {
   font-weight: 400;
 }
@@ -195,7 +207,6 @@ export default {
 .desc-card {
   font-size: 2vh;
   font-weight: 200;
-  background-color: #06D6A0;
   color: white;
   text-shadow: 1px 1px 2px black;
   box-shadow: 5px 5px 2px 1px #0158415d;
@@ -286,4 +297,5 @@ img {
 
 .our-names {
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.587);
-}</style>
+}
+</style>
