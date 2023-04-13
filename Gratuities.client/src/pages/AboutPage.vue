@@ -8,7 +8,7 @@
       </div>
       <div class="offset-1 col-10 col-md-8 offset-md-2 mb-2 mt-1 desc-card rounded d-flex justify-content-center"
         :class="[theme ? 'bg-light-green' : 'bg-dark-green']">
-        <p class="p-2 pt-3">&nbsp; &nbsp; &nbsp;The Gratuities App is all about giving deserving workers their due.
+        <p class="p-2 pt-3 fs-5">&nbsp; &nbsp; &nbsp;The Gratuities App is all about giving deserving workers their due.
           <br><br>
           &nbsp; &nbsp; &nbsp;
           Ever run into the problem of doing your best but still having to share your tips with co-workers not pulling
@@ -49,7 +49,7 @@
                   game development but wants all the experience he can get until then. 5th
                   most handsome member of the Gratuities team.</p>
               </div>
-              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JUTAK8CE-7fb60e9eb27e-512" class="d-block w-100 rounded"
+              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04JUTAK8CE-7fb60e9eb27e-512" class="d-flex rounded"
                 alt="...">
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Joe Calvi</h5>
@@ -69,7 +69,7 @@
                   Gratuities
                   team.</p>
               </div>
-              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04KR6PJ7FS-06b92423e603-512" class="d-block w-100 rounded"
+              <img src="https://ca.slack-edge.com/T1GGQN1RU-U04KR6PJ7FS-06b92423e603-512" class="d-block rounded"
                 alt="...">
               <div class="carousel-caption d-flex align-items-center flex-column">
                 <h5 class="our-names">Ryan "Ry" Wittman</h5>
@@ -213,7 +213,6 @@ export default {
 }
 
 img {
-  height: 55vh;
   width: 100%;
 }
 

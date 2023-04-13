@@ -11,22 +11,14 @@
               </div>
             </div>
             <div class="col-6 offset-md-6 text-end" v-if="account?.id != profile?.id">
-              <div class="btn dropstart">
+              <div v-if="account.id" class="btn dropstart">
                 <button class="btn btn-secondary-outline btn-sm dropdown-toggle fs-4" type="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
+                  data-bs-toggle="dropdown" aria-expanded="false" :class="[theme ? 'text-dark' : 'text-light']">
                   ...
                 </button>
                 <ul class="dropdown-menu text-center">
                   <li><a class="dropdown-item selectable" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
                       aria-controls="offcanvasTop">Add to business</a>
-                  </li>
-                  <li v-if="profile?.openToFeedback && !chat" @click="createChat()"><a class="dropdown-item selectable"
-                      data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Send
-                      feedback</a>
-                  </li>
-                  <li v-if="profile?.openToFeedback && chat" @click="openChat()"><a class="dropdown-item selectable"
-                      data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Open
-                      Chat</a>
                   </li>
                 </ul>
               </div>

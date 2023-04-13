@@ -49,10 +49,11 @@
 
       <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-around pe-4 mt-1">
         <button data-bs-toggle="offcanvas" data-bs-target="#addBusiness" aria-controls="offcanvasExample"
-          class="btn figma-buttons text-light elevation-3 rounded-pill hover-text">New
+          class="btn elevation-3 rounded-pill hover-text" :class="[theme ? 'btn-dark' : 'btn-light']">New
           Business</button>
         <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
-          class="btn figma-buttons text-light elevation-3 rounded-pill hover-text">Edit Account</button>
+          class="btn elevation-3 rounded-pill hover-text" :class="[theme ? 'btn-dark' : 'btn-light']">Edit
+          Account</button>
       </div>
 
       <div class="col-12 col-md-6 offset-md-3 mt-3">
