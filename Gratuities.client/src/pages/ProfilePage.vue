@@ -237,9 +237,17 @@ export default {
   text-shadow: 1px 1px 2px black;
 }
 
+.tip-button:hover{
+  background-color: #11a37c;
+}
+
 .review-button {
   background-color: #EF476F;
   color: white;
   text-shadow: 1px 1px 2px black;
+}
+
+.review-button:hover{
+  background-color: #e22f59;
 }
 </style>

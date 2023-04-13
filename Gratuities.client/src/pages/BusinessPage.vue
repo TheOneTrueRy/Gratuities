@@ -25,7 +25,7 @@
                     <button v-if="account.id == business?.ownerId" class="w-50 rounded-pill btn btn-outline-success"
                         type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                         aria-controls="offcanvasExample">
-                        <i class="mdi mdi-pen"></i>
+                        Edit Business
                     </button>
                 </span>
             </div>
