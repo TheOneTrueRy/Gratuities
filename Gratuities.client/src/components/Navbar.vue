@@ -22,8 +22,8 @@
       class="btn btn-dark d-flex justify-content-center align-items-center no-notifications-bell ms-3">
       <i id="notifications-bell" class="mdi mdi-bell text-light fs-5"></i>
     </button>
-    <div class="text-start collapse navbar-collapse ms-4" id="navbarText">
-      <ul class="navbar-nav me-auto">
+    <div class="text-start collapse navbar-collapse ms-md-4" id="navbarText">
+      <ul class="navbar-nav me-auto pt-2">
         <li>
           <router-link :to="{ name: 'Home' }" class="btn lighten-30 selectable text-uppercase text-light my-shadow hover"
             title="Return to the Home Page.">

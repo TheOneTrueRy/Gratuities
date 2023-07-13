@@ -233,6 +233,8 @@ export default {
 .profile-picture {
   height: 25vh;
   width: 25vh;
+  object-fit: cover;
+  object-position: center;
   border-radius: 50%;
   cursor: pointer;
   transition: 0.5s;
