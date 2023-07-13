@@ -64,8 +64,9 @@
               <div class="d-flex justify-content-center">
                 <p class="bio rounded bg-gradient px-3 d-flex align-items-center">Video Game GOD and Official "Funniest
                   Man
-                  Alive" randomly gets into
-                  coding due to actually needing money (we live in a society). 5th most handsome developer on the
+                  Alive" suddenly gets into
+                  coding due to actually needing money (we live in a society) and it being surprisingly enjoyable. 5th
+                  most handsome developer on the
                   Gratuities
                   team.</p>
               </div>
